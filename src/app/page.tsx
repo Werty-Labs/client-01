@@ -51,17 +51,17 @@ async function HomeContent() {
           <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-6xl lg:text-7xl drop-shadow-[0_0_8px_rgba(0,0,0,0.7)]">
             Discover <span>Sri Lanka</span> Like Never Before
           </h1>
-          <p className="mt-5 max-w-2xl text-lg opacity-90 drop-shadow-[0_0_8px_rgba(0,0,0,0.5)]">
+          <p className="mt-5 max-w-2xl text-lg opacity-90 drop-shadow-[0_0_8px_rgba(0,0,0,0.5)] ">
             Wildlife safaris, ancient cities, hill-country trains and palm-fringed
             beaches - crafted into one unforgettable journey.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg">
+          <div className="mt-8 flex flex-wrap gap-3 bg-whit ">
+            <Button asChild size="lg" className={'rounded-full'}>
               <Link href="/tours" prefetch>
                 Browse tours
               </Link>
             </Button>
-            <Button asChild size="lg" variant="secondary">
+            <Button asChild size="lg" variant="secondary" className={'rounded-full'}>
               <Link href="/contact" prefetch>
                 Plan with us
               </Link>
@@ -147,47 +147,63 @@ async function HomeContent() {
               <Link
                 key={tour.slug}
                 href={`/tours/${tour.slug}`}
-                className="group"
+                className="group relative block w-full aspect-[4/5] rounded-[24px] overflow-hidden"
                 prefetch
               >
-                <Card className="h-full overflow-hidden p-0">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={tour.image}
-                      alt={tour.title}
-                      fill
-                      className="object-cover transition group-hover:scale-105"
-                      sizes="(max-width: 1024px) 50vw, 33vw"
-                    />
-                    <span className="absolute left-3 top-3 rounded-full bg-accent px-3 py-1 text-xs font-medium text-accent-foreground">
-                      Featured
-                    </span>
-                    {tour.price ? (
-                      <span className="absolute bottom-3 right-3 rounded-full bg-background/95 px-3 py-1 text-xs font-semibold text-foreground">
-                        From ${tour.price}
-                      </span>
-                    ) : null}
+                <div className="absolute inset-0 z-0">
+                  <Image
+                    src={tour.image}
+                    alt={tour.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/90" />
+                </div>
+                
+                {/* Top Overlay Elements */}
+                <div className="relative z-10 flex w-full items-start justify-between p-4">
+                  <span className="rounded-full bg-[#cc0000] px-3 py-1 text-xs font-semibold text-white">
+                    Featured
+                  </span>
+                  <button className="flex size-8 items-center justify-center rounded-full bg-white/90 text-gray-700 transition hover:bg-white hover:text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                  </button>
+                </div>
+                
+                {/* Bottom Content Area */}
+                <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col p-4 text-white">
+                  <h3 className="font-display text-2xl font-medium sm:text-3xl leading-tight">
+                    {tour.title}
+                  </h3>
+                  
+                  <div className="mt-2 flex items-center gap-1.5 text-sm text-gray-200">
+                    <Star className="size-4 fill-white text-white" />
+                    <span className="font-medium text-white">5.0</span>
+                    <span>(120 Reviews)</span>
                   </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-display transition group-hover:text-primary">
-                      {tour.title}
-                    </h3>
-                    <p className="mt-1 flex items-center gap-1 text-sm text-muted-foreground">
-                      <MapPin className="size-3.5" /> {tour.location}
-                    </p>
-                    <div className="mt-4 flex items-center gap-4 text-xs text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <Clock className="size-3.5" /> {tour.duration}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Users className="size-3.5" /> {tour.groupSize}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Star className="size-3.5 fill-accent text-accent" /> 5.0
-                      </span>
+                  
+                  <div className="my-4 h-px w-full bg-white/20" />
+                  
+                  <div className="flex items-center gap-4 text-sm font-medium text-gray-200">
+                    <span className="flex items-center gap-1.5">
+                      <Clock className="size-4" /> {tour.duration}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Users className="size-4" /> {tour.groupSize} people
+                    </span>
+                  </div>
+                  
+                  <div className="mt-4 flex items-end justify-between">
+                    <div>
+                      <p className="text-xs text-gray-300">From</p>
+                      <p className="font-display text-2xl font-bold">${tour.price || "Enquire"}</p>
+                    </div>
+                    <div className="flex size-10 items-center justify-center rounded-full bg-[#cc0000] text-white transition-transform group-hover:scale-110">
+                      <ArrowRight className="size-5" />
                     </div>
                   </div>
-                </Card>
+                </div>
               </Link>
             ))}
           </div>
