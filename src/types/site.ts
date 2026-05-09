@@ -1,0 +1,44 @@
+export type Category = {
+  title: string;
+  blurb: string;
+  image: string;
+};
+
+export type Destination = {
+  slug: string;
+  name: string;
+  blurb: string;
+  image: string;
+};
+
+export type TourItineraryDay = {
+  day: string;
+  title: string;
+  details: string;
+};
+
+export type Tour = {
+  slug: string;
+  title: string;
+  location: string;
+  duration: string;
+  groupSize: number;
+  price: number | null;
+  featured?: boolean;
+  image: string;
+  gallery: string[];
+  summary: string;
+  highlights: string[];
+  itinerary: TourItineraryDay[];
+};
+
+export type Service = {
+  title: string;
+  blurb: string;
+  image: string;
+};
+
+export type NavigationItem = {
+  href: string;
+  label: string;
+};
