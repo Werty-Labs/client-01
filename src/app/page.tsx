@@ -48,11 +48,8 @@ async function HomeContent() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
         <div className="absolute inset-0 -z-20" />
         <div className="mx-auto max-w-7xl px-4 py-24 z-10 text-[#F2F0EF] sm:px-6">
-          <p className="text-[10px] sm:text-[15px] uppercase tracking-[0.3em] opacity-80 drop-shadow-[0_0_1px_rgba(0,0,0,0.5)]">
-            Welcome to {siteConfig.name}
-          </p>
           <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-6xl lg:text-7xl drop-shadow-[0_0_8px_rgba(0,0,0,0.7)]">
-            Your Sri Lankan adventure awaits.
+            Discover <span>Sri Lanka</span> Like Never Before
           </h1>
           <p className="mt-5 max-w-2xl text-lg opacity-90 drop-shadow-[0_0_8px_rgba(0,0,0,0.5)]">
             Wildlife safaris, ancient cities, hill-country trains and palm-fringed
