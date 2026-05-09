@@ -8,7 +8,7 @@ import { mainNavigation, siteConfig } from "@/lib/site-config";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40  bg-black/95 backdrop-blur text-white py-2">
+    <header className="fixed top-4 left-0 right-0 z-40  bg-black/95 backdrop-blur text-white py-[1px] w-4/5 mx-auto rounded-full px-4">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2" prefetch>
           <Image
@@ -28,8 +28,8 @@ export function Header() {
           <DesktopNavLinks items={mainNavigation} />
         </nav>
 
-        <div className="hidden md:block hover:scale-105">
-          <Button asChild size="lg">
+        <div className="hidden md:block hover:scale-105 ">
+          <Button asChild size="lg" className={"rounded-full"}>
             <Link href="/contact" prefetch>
               Plan your trip
             </Link>
