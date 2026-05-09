@@ -27,7 +27,7 @@ async function HomeContent() {
 
   return (
     <>
-      <section className="relative isolate flex min-h-[88vh] items-center">
+      <section className="relative isolate flex min-h-screen top-0 items-center">
         {/*<Image*/}
         {/*  src={images.hero}*/}
         {/*  alt="Sigiriya rock fortress at sunset"*/}
