@@ -29,8 +29,8 @@ export function DesktopNavLinks({ items }: DesktopNavLinksProps) {
             key={item.href}
             href={item.href}
             className={cn(
-              "text-lg font-medium text-white/90 transition-colors hover:text-primary",
-              active && "font-semibold text-primary",
+              "text-md font-medium text-white/90 transition-colors hover:text-green-500 hover:scale-105",
+              active && "font-semibold text-green-600",
             )}
             prefetch
           >

@@ -71,36 +71,126 @@ async function HomeContent() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-        <div className="mx-auto mb-12 max-w-2xl text-center">
-          <p className="text-sm uppercase tracking-[0.25em] text-primary">
-            Explore by interest
+        <div className="mx-auto mb-16 max-w-2xl text-center">
+          <p className="flex items-center justify-center gap-2 text-sm font-semibold text-gray-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.5l-1.3 2.6c-.2.4-.1 1 .3 1.3L9 14l-4 4-3-1-1 1 4 4 1-1-1-3 4-4 3.4 6.3c.3.5.9.6 1.3.3l2.6-1.3c.4-.2.6-.6.5-1.1z"/></svg> 
+            Explore by Experience
           </p>
-          <h2 className="mt-2 font-display text-3xl sm:text-4xl">
-            Find your perfect way to travel
+          <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-tight text-[#052b36]">
+            Experience Diverse Worlds On <br className="hidden sm:inline" /> One Planet
           </h2>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {categories.map((category) => (
-            <article
-              key={category.title}
-              className="group relative overflow-hidden rounded-xl aspect-[3/4]"
-            >
-              <Image
-                src={category.image}
-                alt={category.title}
-                fill
-                className="object-cover transition group-hover:scale-105"
-                sizes="(max-width: 1024px) 50vw, 20vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-              <div className="absolute inset-0 flex flex-col justify-end p-5 text-white">
-                <h3 className="font-display text-xl">{category.title}</h3>
-                <p className="mt-2 line-clamp-3 text-xs opacity-90">
-                  {category.blurb}
-                </p>
-              </div>
-            </article>
-          ))}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5 items-start">
+          {categories.map((category, index) => {
+            const isTextTop = index % 2 !== 0;
+            return (
+              <article key={category.title} className="flex flex-col gap-4 group cursor-pointer">
+                {isTextTop && (
+                  <div>
+                    <h3 className="font-display font-bold text-xl text-[#052b36] group-hover:text-primary transition-colors">{category.title}</h3>
+                    <p className="mt-2 text-sm text-gray-500 line-clamp-3">{category.blurb}</p>
+                  </div>
+                )}
+                <div className={`relative w-full overflow-hidden rounded-[24px] ${isTextTop ? 'aspect-[4/5]' : 'aspect-[3/4]'}`}>
+                  <Image
+                    src={category.image}
+                    alt={category.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 50vw, 20vw"
+                  />
+                </div>
+                {!isTextTop && (
+                  <div>
+                    <h3 className="font-display font-bold text-xl text-[#052b36] group-hover:text-primary transition-colors">{category.title}</h3>
+                    <p className="mt-2 text-sm text-gray-500 line-clamp-3">{category.blurb}</p>
+                  </div>
+                )}
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="mt-16 flex items-center justify-between gap-6">
+          <p className="whitespace-nowrap text-sm text-gray-500 font-medium">Explore more journeys waiting for you</p>
+          <div className="h-px flex-1 bg-gray-300"></div>
+          <Button asChild size="lg" className="rounded-full bg-[#052b36] hover:bg-[#031d24] text-white pl-6 pr-2 gap-4">
+            <Link href="/tours" prefetch>
+              View Packages
+              <span className="bg-white/10 p-2 rounded-full">
+                <ArrowRight className="size-4" />
+              </span>
+            </Link>
+          </Button>
+        </div>
+      </section>
+
+      <section className="bg-secondary/40 py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-sm uppercase tracking-[0.25em] text-primary">
+                Featured
+              </p>
+              <h2 className="mt-2 font-display text-3xl sm:text-4xl">
+                Popular tours
+              </h2>
+            </div>
+            <Button asChild variant="outline">
+              <Link href="/tours" prefetch>
+                All tours <ArrowRight className="ml-1 size-4" />
+              </Link>
+            </Button>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredTours.map((tour) => (
+              <Link
+                key={tour.slug}
+                href={`/tours/${tour.slug}`}
+                className="group"
+                prefetch
+              >
+                <Card className="h-full overflow-hidden p-0">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={tour.image}
+                      alt={tour.title}
+                      fill
+                      className="object-cover transition group-hover:scale-105"
+                      sizes="(max-width: 1024px) 50vw, 33vw"
+                    />
+                    <span className="absolute left-3 top-3 rounded-full bg-accent px-3 py-1 text-xs font-medium text-accent-foreground">
+                      Featured
+                    </span>
+                    {tour.price ? (
+                      <span className="absolute bottom-3 right-3 rounded-full bg-background/95 px-3 py-1 text-xs font-semibold text-foreground">
+                        From ${tour.price}
+                      </span>
+                    ) : null}
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-lg font-display transition group-hover:text-primary">
+                      {tour.title}
+                    </h3>
+                    <p className="mt-1 flex items-center gap-1 text-sm text-muted-foreground">
+                      <MapPin className="size-3.5" /> {tour.location}
+                    </p>
+                    <div className="mt-4 flex items-center gap-4 text-xs text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <Clock className="size-3.5" /> {tour.duration}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Users className="size-3.5" /> {tour.groupSize}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Star className="size-3.5 fill-accent text-accent" /> 5.0
+                      </span>
+                    </div>
+                  </div>
+                </Card>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -185,74 +275,7 @@ async function HomeContent() {
         </div>
       </section>
 
-      <section className="bg-secondary/40 py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-sm uppercase tracking-[0.25em] text-primary">
-                Featured
-              </p>
-              <h2 className="mt-2 font-display text-3xl sm:text-4xl">
-                Popular tours
-              </h2>
-            </div>
-            <Button asChild variant="outline">
-              <Link href="/tours" prefetch>
-                All tours <ArrowRight className="ml-1 size-4" />
-              </Link>
-            </Button>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredTours.map((tour) => (
-              <Link
-                key={tour.slug}
-                href={`/tours/${tour.slug}`}
-                className="group"
-                prefetch
-              >
-                <Card className="h-full overflow-hidden p-0">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={tour.image}
-                      alt={tour.title}
-                      fill
-                      className="object-cover transition group-hover:scale-105"
-                      sizes="(max-width: 1024px) 50vw, 33vw"
-                    />
-                    <span className="absolute left-3 top-3 rounded-full bg-accent px-3 py-1 text-xs font-medium text-accent-foreground">
-                      Featured
-                    </span>
-                    {tour.price ? (
-                      <span className="absolute bottom-3 right-3 rounded-full bg-background/95 px-3 py-1 text-xs font-semibold text-foreground">
-                        From ${tour.price}
-                      </span>
-                    ) : null}
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-display transition group-hover:text-primary">
-                      {tour.title}
-                    </h3>
-                    <p className="mt-1 flex items-center gap-1 text-sm text-muted-foreground">
-                      <MapPin className="size-3.5" /> {tour.location}
-                    </p>
-                    <div className="mt-4 flex items-center gap-4 text-xs text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <Clock className="size-3.5" /> {tour.duration}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Users className="size-3.5" /> {tour.groupSize}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Star className="size-3.5 fill-accent text-accent" /> 5.0
-                      </span>
-                    </div>
-                  </div>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       <section className="relative isolate py-24">
         <Image
@@ -262,7 +285,7 @@ async function HomeContent() {
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-primary/85" />
+        {/*<div className="absolute inset-0 bg-primary/85" />*/}
         <div className="relative mx-auto max-w-4xl px-4 text-center text-primary-foreground sm:px-6">
           <h2 className="font-display text-4xl sm:text-5xl">
             Discover Sri Lanka with Tarragon Leisure
