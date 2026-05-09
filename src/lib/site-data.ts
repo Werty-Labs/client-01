@@ -18,6 +18,9 @@ export const images = {
   stock2: "/assets/tarragon/StockSnap_8B828310AC.jpg",
   sl: "/assets/tarragon/sl.jpg",
   galle: "/assets/tarragon/sl.jpg",
+  hero:"/assets/tarragon/AI.png",
+  hero1:"/assets/tarragon/smoothly_generate_video_form_t.mp4",
+  hero_vid:"/assets/tarragon/Vid.mp4"
 } as const;
 
 export const categories: Category[] = [

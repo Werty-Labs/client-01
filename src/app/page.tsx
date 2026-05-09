@@ -28,24 +28,33 @@ async function HomeContent() {
   return (
     <>
       <section className="relative isolate flex min-h-[88vh] items-center">
-        <Image
-          src={images.sigiriya}
-          alt="Sigiriya rock fortress at sunset"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
+        {/*<Image*/}
+        {/*  src={images.hero}*/}
+        {/*  alt="Sigiriya rock fortress at sunset"*/}
+        {/*  fill*/}
+        {/*  priority*/}
+        {/*  className="object-cover brightness-70"*/}
+        {/*  sizes="100vw"*/}
+        {/*/>*/}
+        <video
+            src={images.hero_vid}
+            poster={images.hero} // Displays the image while the video loads
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover brightness-80"
+/>
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
         <div className="absolute inset-0 -z-20" />
-        <div className="mx-auto max-w-7xl px-4 py-24 text-white sm:px-6">
-          <p className="text-sm uppercase tracking-[0.3em] opacity-80">
+        <div className="mx-auto max-w-7xl px-4 py-24 z-10 text-[#F2F0EF] sm:px-6">
+          <p className="text-[10px] sm:text-[15px] uppercase tracking-[0.3em] opacity-80 drop-shadow-[0_0_1px_rgba(0,0,0,0.5)]">
             Welcome to {siteConfig.name}
           </p>
-          <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-6xl lg:text-7xl">
+          <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-6xl lg:text-7xl drop-shadow-[0_0_8px_rgba(0,0,0,0.7)]">
             Your Sri Lankan adventure awaits.
           </h1>
-          <p className="mt-5 max-w-2xl text-lg opacity-90">
+          <p className="mt-5 max-w-2xl text-lg opacity-90 drop-shadow-[0_0_8px_rgba(0,0,0,0.5)]">
             Wildlife safaris, ancient cities, hill-country trains and palm-fringed
             beaches - crafted into one unforgettable journey.
           </p>
