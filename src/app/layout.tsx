@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display,Oswald} from "next/font/google";
+import { Inter, Playfair_Display,Bodoni_Moda} from "next/font/google";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { JsonLd } from "@/components/site/json-ld";
@@ -14,10 +14,10 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const playfairDisplay = Oswald({
+const playfairDisplay = Bodoni_Moda({
   variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = buildMetadata({

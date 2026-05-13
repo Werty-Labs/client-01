@@ -28,30 +28,30 @@ async function HomeContent() {
   return (
     <>
       <section className="relative isolate flex min-h-screen top-0 items-center">
-        {/*<Image*/}
-        {/*  src={images.hero}*/}
-        {/*  alt="Sigiriya rock fortress at sunset"*/}
-        {/*  fill*/}
-        {/*  priority*/}
-        {/*  className="object-cover brightness-70"*/}
-        {/*  sizes="100vw"*/}
-        {/*/>*/}
-        <video
-            src={images.hero_vid}
-            poster={images.hero} // Displays the image while the video loads
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover brightness-80"
-/>
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
+        <Image
+          src={images.hero}
+          alt="Sigiriya rock fortress at sunset"
+          fill
+          priority
+          className="object-cover brightness-70"
+          sizes="100vw"
+        />
+{/*        <video*/}
+{/*            src={images.hero_vid}*/}
+{/*            poster={images.hero} // Displays the image while the video loads*/}
+{/*            autoPlay*/}
+{/*            muted*/}
+{/*            loop*/}
+{/*            playsInline*/}
+{/*            className="absolute inset-0 w-full h-full object-cover brightness-100"*/}
+{/*/>*/}
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
         <div className="absolute inset-0 -z-20" />
         <div className="mx-auto max-w-7xl px-4 py-24 z-10 text-[#F2F0EF] sm:px-6">
-          <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-6xl lg:text-7xl drop-shadow-[0_0_8px_rgba(0,0,0,0.7)]">
+          <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-7xl ">
             Discover <span>Sri Lanka</span> Like Never Before
           </h1>
-          <p className="mt-5 max-w-2xl text-lg opacity-90 drop-shadow-[0_0_8px_rgba(0,0,0,0.5)] ">
+          <p className="mt-5 max-w-2xl text-lg opacity-90  ">
             Wildlife safaris, ancient cities, hill-country trains and palm-fringed
             beaches - crafted into one unforgettable journey.
           </p>
