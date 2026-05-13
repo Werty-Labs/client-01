@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display,Bodoni_Moda} from "next/font/google";
+import { Inter, Playfair_Display,Bodoni_Moda,Be_Vietnam_Pro} from "next/font/google";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { JsonLd } from "@/components/site/json-ld";
@@ -9,8 +9,9 @@ import { organizationJsonLd } from "@/lib/structured-data";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
-const inter = Inter({
+const inter = Be_Vietnam_Pro({
   variable: "--font-inter",
+  weight:["100","200","300"],
   subsets: ["latin"],
 });
 
