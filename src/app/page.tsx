@@ -157,20 +157,18 @@ async function HomeContent() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  {index === popularTours.length - 1 ? (
-                    <div className="absolute left-4 right-4 top-4 z-10 sm:left-6 sm:right-6 sm:top-6">
-                      <div className="flex items-center justify-between rounded-full bg-white/95 px-4 py-3 text-[#101828] shadow-[0_14px_30px_rgba(15,23,42,0.12)] backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_18px_36px_rgba(15,23,42,0.18)]">
-                        <span className="flex items-center gap-2 text-sm font-medium text-[#667085] sm:text-base">
-                          <Clock className="size-4 text-[#344054]" />
-                          {tour.duration}
-                        </span>
-                        <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#101828] sm:text-base">
-                          Explore Now
-                          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                        </span>
-                      </div>
+                  <div className="absolute inset-0 z-10 flex items-start opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <div className="mx-4 mt-4 flex w-full items-center justify-between rounded-full bg-white/95 px-4 py-3 text-[#101828] shadow-[0_14px_30px_rgba(15,23,42,0.12)] backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_18px_36px_rgba(15,23,42,0.18)] sm:mx-6 sm:mt-6">
+                      <span className="flex items-center gap-2 text-sm font-medium text-[#667085] sm:text-base">
+                        <Clock className="size-4 text-[#344054]" />
+                        {tour.duration}
+                      </span>
+                      <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#101828] sm:text-base">
+                        Explore Now
+                        <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
                     </div>
-                  ) : null}
+                  </div>
                 </div>
                 <div className="mt-5 px-1">
                   <div className="flex items-end gap-1.5 text-[#101828]">
@@ -257,7 +255,7 @@ async function HomeContent() {
               size="lg"
               className="h-14 rounded-full border-[#84adff] bg-white px-7 text-base font-medium text-[#101828] shadow-none transition hover:bg-white hover:text-[#101828] sm:px-8"
             >
-              <Link href="/destinations" prefetch>
+              <Link href="/destinations" prefetch className={'hover:scale-105 cursor-pointer'}>
                 Browse All Destinations
                 <ArrowRight className="ml-2 size-5" />
               </Link>
