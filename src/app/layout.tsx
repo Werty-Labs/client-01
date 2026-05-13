@@ -9,14 +9,14 @@ import { organizationJsonLd } from "@/lib/structured-data";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
-const inter = Be_Vietnam_Pro({
-  variable: "--font-inter",
+const BeVietnamPro = Be_Vietnam_Pro({
+  variable: "--font-BeVietnamPro",
   weight:["100","200","300"],
   subsets: ["latin"],
 });
 
-const playfairDisplay = Bodoni_Moda({
-  variable: "--font-playfair",
+const BodoniModa = Bodoni_Moda({
+  variable: "--font-Bodoni_Moda",
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfairDisplay.variable} h-full scroll-smooth antialiased`}
+      className={`${BeVietnamPro.variable} ${BodoniModa.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
         <JsonLd data={organizationJsonLd()} />

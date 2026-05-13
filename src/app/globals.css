@@ -32,6 +32,7 @@
   --color-ocean: var(--ocean);
   --font-sans: var(--font-inter);
   --font-display: var(--font-playfair);
+  --font-display1: var(--font-Bodoni_Moda);
 }
 
 :root {
@@ -99,14 +100,22 @@
     font-family: var(--font-sans);
   }
 
-  h1,
-  h2,
+  h1,h2,
+   .font-display1 {
+    font-family: var(--font-display1);
+    letter-spacing: -0.01em;
+  }
+
+
+
   h3,
   h4,
   .font-display {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
   }
+
+
 
   a {
     color: inherit;
