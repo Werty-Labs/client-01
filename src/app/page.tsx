@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { ArrowRight, Clock, MapPin, Star, Users } from "lucide-react";
+import { ArrowRight, Clock, MapPin } from "lucide-react";
 import { JsonLd } from "@/components/site/json-ld";
 import { PageSkeleton } from "@/components/site/page-skeleton";
 import { Button } from "@/components/ui/button";
@@ -24,6 +24,8 @@ export const dynamic = "force-static";
 
 async function HomeContent() {
   const { categories, destinations, featuredTours, services } = await getHomePageData();
+  const featuredDestinations = destinations.slice(0, 3);
+  const popularTours = featuredTours.slice(0, 3);
 
   return (
     <>
@@ -125,138 +127,141 @@ async function HomeContent() {
         </div>
       </section>
 
-      <section className="bg-secondary/40 py-20">
+      <section className="bg-[#f4f5fb] py-18 sm:py-22 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div className="mx-auto max-w-3xl text-center">
             <div>
-              <p className="text-sm uppercase tracking-[0.25em] text-primary">
-                Featured
-              </p>
-              <h2 className="mt-2 font-display text-3xl sm:text-4xl">
-                Popular tours
+              <h2 className="text-3xl font-semibold tracking-tight text-[#101828] sm:text-4xl lg:text-5xl">
+                Explore Popular Tours
               </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#667085] sm:text-lg">
+                Find your next Sri Lanka journey with Tarragon Leisure. From wildlife safaris
+                and surf escapes to cultural landmarks, we&apos;ve got the perfect tour for you.
+              </p>
             </div>
-            <Button asChild variant="outline">
-              <Link href="/tours" prefetch>
-                All tours <ArrowRight className="ml-1 size-4" />
-              </Link>
-            </Button>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredTours.map((tour) => (
+
+          <div className="mt-12 grid gap-x-7 gap-y-10 sm:mt-14 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+            {popularTours.map((tour, index) => (
               <Link
                 key={tour.slug}
                 href={`/tours/${tour.slug}`}
-                className="group relative block w-full aspect-[4/5] rounded-[24px] overflow-hidden"
+                className="group block"
                 prefetch
               >
-                <div className="absolute inset-0 z-0">
+                <div className="relative aspect-[16/12] overflow-hidden rounded-[26px] bg-white shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
                   <Image
                     src={tour.image}
                     alt={tour.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/90" />
+                  {index === popularTours.length - 1 ? (
+                    <div className="absolute left-4 right-4 top-4 z-10 sm:left-6 sm:right-6 sm:top-6">
+                      <div className="flex items-center justify-between rounded-full bg-white/95 px-4 py-3 text-[#101828] shadow-[0_14px_30px_rgba(15,23,42,0.12)] backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_18px_36px_rgba(15,23,42,0.18)]">
+                        <span className="flex items-center gap-2 text-sm font-medium text-[#667085] sm:text-base">
+                          <Clock className="size-4 text-[#344054]" />
+                          {tour.duration}
+                        </span>
+                        <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#101828] sm:text-base">
+                          Explore Now
+                          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        </span>
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
-                
-                {/* Top Overlay Elements */}
-                <div className="relative z-10 flex w-full items-start justify-between p-4">
-                  <span className="rounded-full bg-[#cc0000] px-3 py-1 text-xs font-semibold text-white">
-                    Featured
-                  </span>
-                  <button className="flex size-8 items-center justify-center rounded-full bg-white/90 text-gray-700 transition hover:bg-white hover:text-black">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                  </button>
-                </div>
-                
-                {/* Bottom Content Area */}
-                <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col p-4 text-white">
-                  <h3 className="font-display text-2xl font-medium sm:text-3xl leading-tight">
+                <div className="mt-5 px-1">
+                  <div className="flex items-end gap-1.5 text-[#101828]">
+                    <span className="text-[1.1rem] font-semibold leading-none tracking-tight sm:text-[1.55rem]">
+                      {tour.price !== null ? `$${tour.price.toFixed(2)}` : "Enquire"}
+                    </span>
+                    {/*{tour.price !== null ? (*/}
+                    {/*  <span className="pb-1 text-base font-medium text-[#667085] sm:text-sm">/pp</span>*/}
+                    {/*) : null}*/}
+                  </div>
+                  <h3 className="mt-4 text-[1.45rem] font-sm leading-tight text-[#101828] transition-colors duration-300 group-hover:text-[#0f4c81] sm:text-[1.65rem]">
                     {tour.title}
                   </h3>
-                  
-                  <div className="mt-2 flex items-center gap-1.5 text-sm text-gray-200">
-                    <Star className="size-4 fill-white text-white" />
-                    <span className="font-medium text-white">5.0</span>
-                    <span>(120 Reviews)</span>
-                  </div>
-                  
-                  <div className="my-4 h-px w-full bg-white/20" />
-                  
-                  <div className="flex items-center gap-4 text-sm font-medium text-gray-200">
-                    <span className="flex items-center gap-1.5">
-                      <Clock className="size-4" /> {tour.duration}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Users className="size-4" /> {tour.groupSize} people
-                    </span>
-                  </div>
-                  
-                  <div className="mt-4 flex items-end justify-between">
-                    <div>
-                      <p className="text-xs text-gray-300">From</p>
-                      <p className="font-display text-2xl font-bold">${tour.price || "Enquire"}</p>
-                    </div>
-                    <div className="flex size-10 items-center justify-center rounded-full bg-[#cc0000] text-white transition-transform group-hover:scale-110">
-                      <ArrowRight className="size-5" />
-                    </div>
+                  <div className="mt-3 flex items-center gap-2 text-base text-[#667085] sm:text-lg">
+                    <MapPin className="size-4 shrink-0 text-[#344054] sm:size-4" />
+                    <span>{tour.location}</span>
                   </div>
                 </div>
               </Link>
             ))}
+          </div>
+
+          <div className="mt-12 flex justify-center sm:mt-14">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="group h-14 rounded-full border-green-600 bg-white px-7 text-base font-medium text-[#101828] shadow-none transition-all duration-300 hover:-translate-y-0.5 hover:border-green-700 hover:bg-[#eef3ff] hover:text-[#101828] hover:shadow-[0_16px_32px_rgba(95,141,255,0.18)] sm:px-8"
+            >
+              <Link href="/tours" prefetch>
+                Browse All Tours
+                <ArrowRight className="ml-2 size-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
 
-      <section className="bg-secondary/40 py-20">
+      <section className="bg-[#f4f5fb] py-18 sm:py-22 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-sm uppercase tracking-[0.25em] text-primary">
-                Travel to
-              </p>
-              <h2 className="mt-2 font-display text-3xl sm:text-4xl">
-                Top destinations in Sri Lanka
-              </h2>
-            </div>
-            <Button asChild variant="outline">
-              <Link href="/destinations" prefetch>
-                View all <ArrowRight className="ml-1 size-4" />
-              </Link>
-            </Button>
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="font-display text-4xl font-semibold tracking-tight text-[#101828] sm:text-5xl lg:text-6xl">
+              Top Destinations in Sri Lanka
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#667085] sm:text-lg">
+              From wildlife parks and misty hill towns to heritage cities and coastal escapes,
+              discover the places travelers return to again and again.
+            </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {destinations.map((destination) => (
+
+          <div className="mt-12 grid gap-x-7 gap-y-10 sm:mt-14 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+            {featuredDestinations.map((destination) => (
               <Link
                 key={destination.slug}
                 href={`/destinations/${destination.slug}`}
-                className="group"
+                className="group block"
                 prefetch
               >
-                <Card className="h-full overflow-hidden p-0 transition hover:-translate-y-1 hover:shadow-xl">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={destination.image}
-                      alt={destination.name}
-                      fill
-                      className="object-cover transition group-hover:scale-105"
-                      sizes="(max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                      Travel to
-                    </p>
-                    <h3 className="mt-1 font-display text-xl">{destination.name}</h3>
-                    <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
-                      {destination.blurb}
-                    </p>
-                  </div>
-                </Card>
+                <div className="relative aspect-[16/12] overflow-hidden rounded-[26px] bg-white shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
+                  <Image
+                    src={destination.image}
+                    alt={destination.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="mt-5 px-1">
+                  <h3 className="font-display text-[1rem] leading-tight text-[#101828] sm:text-[1.65rem]">
+                    {destination.name}
+                  </h3>
+                  <p className="mt-3 line-clamp-4 max-w-md text-base leading-8 text-[#667085]">
+                    {destination.blurb}
+                  </p>
+                </div>
               </Link>
             ))}
+          </div>
+
+          <div className="mt-12 flex justify-center sm:mt-14">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="h-14 rounded-full border-[#84adff] bg-white px-7 text-base font-medium text-[#101828] shadow-none transition hover:bg-white hover:text-[#101828] sm:px-8"
+            >
+              <Link href="/destinations" prefetch>
+                Browse All Destinations
+                <ArrowRight className="ml-2 size-5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
