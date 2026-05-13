@@ -47,7 +47,7 @@ async function HomeContent() {
 {/*/>*/}
         <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
         <div className="absolute inset-0 -z-20" />
-        <div className="mx-auto max-w-7xl px-4 py-24 z-10 text-[#F2F0EF] sm:px-6">
+        <div className="w-full mx-auto max-w-7xl px-4 py-24 z-10 text-[#F2F0EF] sm:px-6">
           <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-7xl ">
             Discover <span>Sri Lanka</span> Like Never Before
           </h1>
