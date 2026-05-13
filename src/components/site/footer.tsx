@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site-config";
 export function Footer() {
   return (
     <>
-      <footer className="mt-24 bg-foreground text-background">
+      <footer className="relative z-10 pt-24 bg-foreground text-background">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-4">
           <div>
             <Image

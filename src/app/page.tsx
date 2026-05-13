@@ -29,7 +29,8 @@ async function HomeContent() {
 
   return (
     <>
-      <section className="relative isolate flex min-h-screen top-0 items-center">
+      {/* ── Fixed hero (stays in place while you scroll) ── */}
+      <section className="fixed inset-0 z-0 flex items-center">
         <Image
           src={images.hero}
           alt="Sigiriya rock fortress at sunset"
@@ -46,9 +47,8 @@ async function HomeContent() {
 {/*            loop*/}
 {/*            playsInline*/}
 {/*            className="absolute inset-0 w-full h-full object-cover brightness-100"*/}
-{/*/>*/}
+{/*/> */}
         <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
-        <div className="absolute inset-0 -z-20" />
         <div className="w-full mx-auto max-w-7xl px-4 py-24 z-10 text-[#F2F0EF] sm:px-6">
           <h1 className=" mt-3 max-w-3xl font-display1 text-4xl font-normal leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-7xl ">
             Discover <span>Sri Lanka</span> Like Never Before
@@ -57,7 +57,7 @@ async function HomeContent() {
             Wildlife safaris, ancient cities, hill-country trains and palm-fringed
             beaches - crafted into one unforgettable journey.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3 bg-whit ">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg" className={'rounded-full'}>
               <Link href="/tours" prefetch>
                 Browse tours
@@ -72,6 +72,11 @@ async function HomeContent() {
         </div>
       </section>
 
+      {/* Spacer: pushes scrollable content below the full-screen hero */}
+      <div className="h-screen" />
+
+      {/* ── Scrollable content (slides over the hero) ── */}
+      <div className="relative z-10 bg-background rounded-t-[2.5rem] shadow-[0_-20px_60px_rgba(0,0,0,0.15)]">
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <p className="flex items-center justify-center gap-2 text-sm font-semibold text-gray-600">
@@ -349,6 +354,7 @@ async function HomeContent() {
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 }
