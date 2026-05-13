@@ -29,7 +29,8 @@ async function HomeContent() {
 
   return (
     <>
-      <section className="relative isolate flex min-h-screen top-0 items-center">
+      {/* ── Fixed hero (stays in place while you scroll) ── */}
+      <section className="fixed inset-0 z-0 flex items-center">
         <Image
           src={images.hero}
           alt="Sigiriya rock fortress at sunset"
@@ -46,18 +47,17 @@ async function HomeContent() {
 {/*            loop*/}
 {/*            playsInline*/}
 {/*            className="absolute inset-0 w-full h-full object-cover brightness-100"*/}
-{/*/>*/}
+{/*/> */}
         <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
-        <div className="absolute inset-0 -z-20" />
         <div className="w-full mx-auto max-w-7xl px-4 py-24 z-10 text-[#F2F0EF] sm:px-6">
-          <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-7xl ">
+          <h1 className=" mt-3 max-w-3xl font-display1 text-4xl font-normal leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-7xl ">
             Discover <span>Sri Lanka</span> Like Never Before
           </h1>
           <p className="mt-5 max-w-2xl text-lg opacity-90  ">
             Wildlife safaris, ancient cities, hill-country trains and palm-fringed
             beaches - crafted into one unforgettable journey.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3 bg-whit ">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg" className={'rounded-full'}>
               <Link href="/tours" prefetch>
                 Browse tours
@@ -72,13 +72,18 @@ async function HomeContent() {
         </div>
       </section>
 
+      {/* Spacer: pushes scrollable content below the full-screen hero */}
+      <div className="h-screen" />
+
+      {/* ── Scrollable content (slides over the hero) ── */}
+      <div className="relative z-10 bg-background rounded-t-[2.5rem] shadow-[0_-20px_60px_rgba(0,0,0,0.15)]">
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-        <div className="mx-auto mb-16 max-w-2xl text-center">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
           <p className="flex items-center justify-center gap-2 text-sm font-semibold text-gray-600">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.5l-1.3 2.6c-.2.4-.1 1 .3 1.3L9 14l-4 4-3-1-1 1 4 4 1-1-1-3 4-4 3.4 6.3c.3.5.9.6 1.3.3l2.6-1.3c.4-.2.6-.6.5-1.1z"/></svg> 
             Explore by Experience
           </p>
-          <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold tracking-tight text-[#052b36]">
+          <h2 className="mt-4 font-display1 text-4xl sm:text-5xl font-bold tracking-tight text-[#052b36]">
             Experience Diverse Worlds On <br className="hidden sm:inline" /> One Planet
           </h2>
         </div>
@@ -131,7 +136,7 @@ async function HomeContent() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <div>
-              <h2 className="text-3xl font-semibold tracking-tight text-[#101828] sm:text-4xl lg:text-5xl">
+              <h2 className="font-display1 text-3xl font-semibold tracking-tight text-[#101828] sm:text-4xl lg:text-5xl">
                 Explore Popular Tours
               </h2>
               <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#667085] sm:text-lg">
@@ -209,8 +214,8 @@ async function HomeContent() {
 
       <section className="bg-[#f4f5fb] py-18 sm:py-22 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-display text-4xl font-semibold tracking-tight text-[#101828] sm:text-5xl lg:text-6xl">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="font-display1 text-4xl font-semibold tracking-tight text-[#101828] sm:text-5xl lg:text-6xl">
               Top Destinations in Sri Lanka
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#667085] sm:text-lg">
@@ -349,6 +354,7 @@ async function HomeContent() {
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 }

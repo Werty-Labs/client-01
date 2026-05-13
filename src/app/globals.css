@@ -32,6 +32,16 @@
   --color-ocean: var(--ocean);
   --font-sans: var(--font-inter);
   --font-display: var(--font-playfair);
+  --font-display1: var(--font-Bodoni_Moda);
+}
+
+/* Hide scrollbar but keep scrolling */
+html {
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE / old Edge */
+}
+html::-webkit-scrollbar {
+  display: none;                  /* Chrome, Safari, new Edge */
 }
 
 :root {
@@ -91,6 +101,19 @@
   html,
   body {
     min-height: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   body {
@@ -101,12 +124,21 @@
 
   h1,
   h2,
+  .font-display1 {
+    font-family: var(--font-display1);
+    letter-spacing: -0.01em;
+  }
+
+
+
   h3,
   h4,
   .font-display {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
   }
+
+
 
   a {
     color: inherit;
