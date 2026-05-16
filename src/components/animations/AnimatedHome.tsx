@@ -438,8 +438,8 @@ export function AnimatedHome({
         </div>
       </section>
 
-      {/* ── CTA / Features section ── */}
-      <section className="relative isolate py-24">
+      {/* ── CTA Hero section ── */}
+      <section className="relative isolate h-[40vh] min-h-[350px] flex items-center justify-center">
         <Image
           src={images.teaching}
           alt="Smiling travelers in Sri Lanka"
@@ -447,20 +447,33 @@ export function AnimatedHome({
           className="object-cover"
           sizes="100vw"
         />
-        <div className="relative mx-auto max-w-4xl px-4 text-center text-primary-foreground sm:px-6">
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center text-white sm:px-6">
           <AnimatedHeading threshold={0.2} variant="scaleIn">
-            <h2 className="font-display text-4xl sm:text-5xl">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight drop-shadow-md">
               Discover Sri Lanka with Tarragon Leisure
             </h2>
           </AnimatedHeading>
           <AnimatedHeading threshold={0.2} variant="blurIn" delay={0.2}>
-            <p className="mx-auto mt-4 max-w-2xl opacity-90">
+            <p className="mx-auto mt-4 sm:mt-5 max-w-2xl text-base sm:text-lg font-medium drop-shadow-md">
               Expert knowledge. Tailored experiences. 24/7 support. Let us craft a
               journey you&apos;ll remember forever.
             </p>
           </AnimatedHeading>
+        </div>
+      </section>
+
+      {/* ── Features section ── */}
+      <section className="bg-[#FCFAF5] py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6">
+          <AnimatedHeading threshold={0.2} variant="fadeUp">
+            <h2 className="font-display text-3xl font-bold text-[#344454] sm:text-4xl">
+              Our Services
+            </h2>
+          </AnimatedHeading>
+
           <StaggerContainer
-            className="mt-12 grid gap-6 text-left sm:grid-cols-3"
+            className="mt-12 grid gap-10 text-center sm:grid-cols-3 sm:gap-2 lg:mt-16 lg:gap-4"
             threshold={0.15}
             staggerDelay={0.15}
           >
@@ -469,29 +482,65 @@ export function AnimatedHome({
                 title: "Expert Knowledge",
                 description:
                   "Our team is well-versed in Sri Lanka's best-kept secrets and tourist favorites.",
+                icon: (
+                  <svg width="68" height="68" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="mx-auto">
+                    <path d="M10 20L24 16L38 20L52 16V36C52 36 48 37.14 42 38.86" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M10 20V44L24 40L38 44L41 43.14" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M24 16V40" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M38 20V32" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="44" cy="42" r="10" stroke="#1A1A1A" strokeWidth="2" fill="#FCFAF5"/>
+                    <path d="M51 49L58 56" stroke="#1A1A1A" strokeWidth="3" strokeLinecap="round"/>
+                  </svg>
+                ),
               },
               {
                 title: "Tailored Experiences",
                 description:
                   "We design each itinerary to fit your unique preferences.",
+                icon: (
+                  <svg width="68" height="68" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="mx-auto">
+                    <path d="M30 22C30 18.69 27.31 16 24 16C20.69 16 18 18.69 18 22C18 26 24 32 24 32C24 32 30 26 30 22Z" stroke="#1A1A1A" strokeWidth="2" strokeLinejoin="round"/>
+                    <circle cx="24" cy="22" r="2" fill="#1A1A1A"/>
+                    <path d="M12 36C12 32 20 28 28 30C36 32 36 38 28 40C20 42 12 40 12 46C12 50 18 50 24 50" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" strokeDasharray="3 4" fill="none"/>
+                    <circle cx="48" cy="38" r="14" stroke="#1A1A1A" strokeWidth="2"/>
+                    <path d="M48 26V28M48 48V50M36 38H38M58 38H60" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M44 42L46 34L52 32L50 40L44 42Z" stroke="#1A1A1A" strokeWidth="2" strokeLinejoin="round"/>
+                  </svg>
+                ),
               },
               {
                 title: "24/7 Support",
                 description:
                   "Enjoy peace of mind with our dedicated customer support, available anytime.",
+                icon: (
+                  <svg width="68" height="68" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="mx-auto">
+                    <circle cx="32" cy="36" r="14" stroke="#1A1A1A" strokeWidth="2" fill="#FCFAF5"/>
+                    <path d="M32 30V36L36 40" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M14 36V26C14 16.06 22.06 8 32 8C41.94 8 50 16.06 50 26V36" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M14 30C11.79 30 10 31.79 10 34V42C10 44.21 11.79 46 14 46" stroke="#1A1A1A" strokeWidth="2"/>
+                    <path d="M50 30C52.21 30 54 31.79 54 34V42C54 44.21 52.21 46 50 46" stroke="#1A1A1A" strokeWidth="2"/>
+                    <path d="M50 44C50 49.52 45.52 54 40 54H32" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="30" cy="54" r="2" fill="#1A1A1A"/>
+                    <path d="M32 22V24M32 48V50M18 36H20M44 36H46" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                ),
               },
             ].map((feature) => (
-              <AntiGravityCard key={feature.title}>
-                <div className="rounded-xl border border-white/20 bg-white/10 p-6 backdrop-blur">
-                  <h3 className="font-display text-xl">{feature.title}</h3>
-                  <p className="mt-2 text-sm opacity-90">{feature.description}</p>
+              <div key={feature.title} className="flex flex-col items-center">
+                <div className="mb-6 flex h-[72px] w-[72px] items-center justify-center text-[#1A1A1A]">
+                  {feature.icon}
                 </div>
-              </AntiGravityCard>
+                <h3 className="font-display text-[1.35rem] font-bold text-[#111827]">{feature.title}</h3>
+                <p className="mt-2 text-sm text-[#374151] sm:text-[0.95rem] leading-relaxed max-w-[280px]">
+                  {feature.description}
+                </p>
+              </div>
             ))}
           </StaggerContainer>
+
           <AnimatedHeading threshold={0.2} delay={0.4}>
-            <div className="mt-12">
-              <Button asChild size="lg" variant="secondary">
+            <div className="mt-14 sm:mt-16">
+              <Button asChild size="lg" className="bg-[#344454] hover:bg-[#2A3744] text-white rounded-lg px-8 h-12 font-medium">
                 <Link href="/services" prefetch>
                   Explore our services
                 </Link>
