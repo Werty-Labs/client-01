@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display,Bodoni_Moda,Be_Vietnam_Pro} from "next/font/google";
 import { Footer } from "@/components/site/footer";
-import { Header } from "@/components/site/header";
+import { HeaderAnimated } from "@/components/site/header-animated";
 import { JsonLd } from "@/components/site/json-ld";
 import { Providers } from "@/components/providers";
 import { buildMetadata } from "@/lib/metadata";
@@ -43,7 +43,7 @@ export default function RootLayout({
         <JsonLd data={organizationJsonLd()} />
         <Providers>
           <div className="flex min-h-screen flex-col">
-            <Header />
+            <HeaderAnimated />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
