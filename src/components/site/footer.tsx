@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { NewsletterForm } from "@/components/site/newsletter-form";
-import { WhatsAppFab } from "@/components/site/whatsapp-fab";
+import { WhatsAppFabAnimated } from "@/components/site/whatsapp-fab-animated";
 import { images } from "@/lib/site-data";
 import { siteConfig } from "@/lib/site-config";
 
@@ -75,7 +75,7 @@ export function Footer() {
           &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
         </div>
       </footer>
-      <WhatsAppFab />
+      <WhatsAppFabAnimated />
     </>
   );
 }
