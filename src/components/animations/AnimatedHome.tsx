@@ -1,10 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock, MapPin } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import {
   HeroParallax,
   HeroContentParallax,
@@ -37,6 +37,15 @@ export function AnimatedHome({
   popularTours,
   services,
 }: AnimatedHomeProps) {
+  const [activeService, setActiveService] = useState(1);
+
+  const prevService = () => {
+    setActiveService((prev) => (prev - 1 + services.length) % services.length);
+  };
+  const nextService = () => {
+    setActiveService((prev) => (prev + 1) % services.length);
+  };
+
   return (
     <>
       {/* Scroll progress bar at top of viewport */}
@@ -246,7 +255,7 @@ export function AnimatedHome({
       </section>
 
       {/* ── Destinations section ── */}
-      <section className="bg-[#f4f5fb] py-18 sm:py-22 lg:py-24">
+      <section className="bg-[#fdfcf8] py-18 sm:py-22 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mx-auto max-w-4xl text-center">
             <AnimatedHeading threshold={0.25} variant="scaleIn">
@@ -287,7 +296,7 @@ export function AnimatedHome({
                     <h3 className="font-display text-[1rem] leading-tight text-[#101828] sm:text-[1.65rem]">
                       {destination.name}
                     </h3>
-                    <p className="mt-3 line-clamp-4 max-w-md text-base leading-8 text-[#667085]">
+                    <p className="mt-3 max-w-md text-base leading-8 text-[#667085] line-clamp-2">
                       {destination.blurb}
                     </p>
                   </div>
@@ -314,45 +323,119 @@ export function AnimatedHome({
         </div>
       </section>
 
-      {/* ── Services section ── */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-        <div className="mx-auto mb-12 max-w-2xl text-center">
+      {/* ── Services carousel section ── */}
+      <section className="py-12 sm:py-16 overflow-hidden bg-white relative">
+        <div className="mx-auto mb-8 max-w-2xl text-center px-4 sm:px-6">
           <AnimatedHeading threshold={0.2} variant="fadeUp">
-            <p className="text-sm uppercase tracking-[0.25em] text-primary">
+            <p className="text-sm uppercase tracking-widest text-[#287A71] font-bold">
               Our services
             </p>
           </AnimatedHeading>
           <AnimatedHeading threshold={0.2} variant="fadeUp" delay={0.15}>
-            <h2 className="mt-2 font-display text-3xl sm:text-4xl">
+            <h2 className="mt-2 font-sans text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111827]">
               Curated trips for every traveler
             </h2>
           </AnimatedHeading>
         </div>
-        <StaggerContainer
-          className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-          threshold={0.1}
-          staggerDelay={0.15}
-        >
-          {services.map((service) => (
-            <AntiGravityCard key={service.title}>
-              <Card className="overflow-hidden p-0">
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 50vw, 33vw"
-                  />
+
+        <div className="relative mx-auto w-full max-w-[1536px]" style={{ height: 'clamp(320px, 35vw, 480px)' }}>
+          {/* Left/Right Fade Overlays */}
+          <div className="absolute top-0 left-0 w-24 sm:w-48 lg:w-64 h-full bg-gradient-to-r from-white via-white/90 to-transparent z-10 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-24 sm:w-48 lg:w-64 h-full bg-gradient-to-l from-white via-white/90 to-transparent z-10 pointer-events-none" />
+
+          {/* Left arrow */}
+          <button
+            onClick={prevService}
+            className="absolute left-4 sm:left-12 lg:left-24 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-all duration-300 shadow-sm"
+            aria-label="Previous service"
+          >
+            <ChevronLeft className="size-5 sm:size-6" />
+          </button>
+
+          {/* Carousel cards */}
+          <div className="absolute inset-0 flex justify-center items-center">
+            {services.map((service, index) => {
+              let offset = index - activeService;
+              if (offset > services.length / 2) offset -= services.length;
+              if (offset < -services.length / 2) offset += services.length;
+
+              const isCenter = offset === 0;
+              const isAdjacent = Math.abs(offset) === 1;
+
+              // Base width for the center card
+              const cardWidth = 'clamp(300px, 40vw, 560px)';
+
+              let translateX: string;
+              let scale: number;
+              let opacity: number;
+              let zIndex: number;
+
+              if (offset === 0) {
+                translateX = '0%';
+                scale = 1;
+                opacity = 1;
+                zIndex = 5;
+              } else if (offset === -1) {
+                translateX = '-95%'; // Brought closer
+                scale = 0.8;
+                opacity = 1;
+                zIndex = 4;
+              } else if (offset === 1) {
+                translateX = '95%'; // Brought closer
+                scale = 0.8;
+                opacity = 1;
+                zIndex = 4;
+              } else {
+                translateX = offset < 0 ? '-180%' : '180%'; // Brought hidden cards closer to match
+                scale = 0.6;
+                opacity = 0;
+                zIndex = 1;
+              }
+
+              return (
+                <div
+                  key={service.title}
+                  className="absolute top-0 h-full transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+                  style={{
+                    width: cardWidth,
+                    transform: `translateX(${translateX}) scale(${scale})`,
+                    opacity,
+                    zIndex,
+                    transformOrigin: 'center center',
+                  }}
+                >
+                  <div className="relative w-full h-full overflow-hidden rounded-[32px] shadow-[0_12px_48px_rgba(0,0,0,0.12)]">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    {/* Glassmorphism text overlay */}
+                    <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 rounded-[20px] bg-gradient-to-br from-white/95 to-white/75 backdrop-blur-xl backdrop-saturate-150 px-5 py-4 sm:px-6 sm:py-5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-white/60">
+                      <h3 className="font-sans text-lg sm:text-xl font-bold text-[#111827] text-center tracking-tight">
+                        {service.title}
+                      </h3>
+                      <p className="mt-1.5 text-xs sm:text-sm text-[#4b5563] text-center leading-relaxed font-medium">
+                        {service.blurb}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-display text-xl">{service.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{service.blurb}</p>
-                </div>
-              </Card>
-            </AntiGravityCard>
-          ))}
-        </StaggerContainer>
+              );
+            })}
+          </div>
+
+          {/* Right arrow */}
+          <button
+            onClick={nextService}
+            className="absolute right-4 sm:right-12 lg:right-24 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-all duration-300 shadow-sm"
+            aria-label="Next service"
+          >
+            <ChevronRight className="size-6" />
+          </button>
+        </div>
       </section>
 
       {/* ── CTA / Features section ── */}
