@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,6 +22,7 @@ import {
   AntiGravityCard,
   MagneticScrollCard,
 } from "@/components/animations/AnimatedSection";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { images } from "@/lib/site-data";
 import type { Category, Destination, Tour, Service } from "@/types/site";
 
@@ -332,110 +334,13 @@ export function AnimatedHome({
             </p>
           </AnimatedHeading>
           <AnimatedHeading threshold={0.2} variant="fadeUp" delay={0.15}>
-            <h2 className="mt-2 font-sans text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111827]">
+            <h2 className="mt-2 font-display1 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111827]">
               Curated trips for every traveler
             </h2>
           </AnimatedHeading>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[1536px]" style={{ height: 'clamp(320px, 35vw, 480px)' }}>
-          {/* Left/Right Fade Overlays */}
-          <div className="absolute top-0 left-0 w-24 sm:w-48 lg:w-64 h-full bg-gradient-to-r from-white via-white/90 to-transparent z-10 pointer-events-none" />
-          <div className="absolute top-0 right-0 w-24 sm:w-48 lg:w-64 h-full bg-gradient-to-l from-white via-white/90 to-transparent z-10 pointer-events-none" />
-
-          {/* Left arrow */}
-          <button
-            onClick={prevService}
-            className="absolute left-4 sm:left-12 lg:left-24 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-all duration-300 shadow-sm"
-            aria-label="Previous service"
-          >
-            <ChevronLeft className="size-5 sm:size-6" />
-          </button>
-
-          {/* Carousel cards */}
-          <div className="absolute inset-0 flex justify-center items-center">
-            {services.map((service, index) => {
-              let offset = index - activeService;
-              if (offset > services.length / 2) offset -= services.length;
-              if (offset < -services.length / 2) offset += services.length;
-
-              const isCenter = offset === 0;
-              const isAdjacent = Math.abs(offset) === 1;
-
-              // Base width for the center card
-              const cardWidth = 'clamp(300px, 40vw, 560px)';
-
-              let translateX: string;
-              let scale: number;
-              let opacity: number;
-              let zIndex: number;
-
-              if (offset === 0) {
-                translateX = '0%';
-                scale = 1;
-                opacity = 1;
-                zIndex = 5;
-              } else if (offset === -1) {
-                translateX = '-95%'; // Brought closer
-                scale = 0.8;
-                opacity = 1;
-                zIndex = 4;
-              } else if (offset === 1) {
-                translateX = '95%'; // Brought closer
-                scale = 0.8;
-                opacity = 1;
-                zIndex = 4;
-              } else {
-                translateX = offset < 0 ? '-180%' : '180%'; // Brought hidden cards closer to match
-                scale = 0.6;
-                opacity = 0;
-                zIndex = 1;
-              }
-
-              return (
-                <div
-                  key={service.title}
-                  className="absolute top-0 h-full transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-                  style={{
-                    width: cardWidth,
-                    transform: `translateX(${translateX}) scale(${scale})`,
-                    opacity,
-                    zIndex,
-                    transformOrigin: 'center center',
-                  }}
-                >
-                  <div className="relative w-full h-full overflow-hidden rounded-[32px] shadow-[0_12px_48px_rgba(0,0,0,0.12)]">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    {/* Glassmorphism text overlay */}
-                    <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 rounded-[20px] bg-gradient-to-br from-white/95 to-white/75 backdrop-blur-xl backdrop-saturate-150 px-5 py-4 sm:px-6 sm:py-5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-white/60">
-                      <h3 className="font-sans text-lg sm:text-xl font-bold text-[#111827] text-center tracking-tight">
-                        {service.title}
-                      </h3>
-                      <p className="mt-1.5 text-xs sm:text-sm text-[#4b5563] text-center leading-relaxed font-medium">
-                        {service.blurb}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Right arrow */}
-          <button
-            onClick={nextService}
-            className="absolute right-4 sm:right-12 lg:right-24 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-all duration-300 shadow-sm"
-            aria-label="Next service"
-          >
-            <ChevronRight className="size-6" />
-          </button>
-        </div>
+        <ServiceCarousel services={services} activeService={activeService} prevService={prevService} nextService={nextService} />
       </section>
 
       {/* ── CTA Hero section ── */}
@@ -467,7 +372,7 @@ export function AnimatedHome({
       <section className="bg-[#FCFAF5] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6">
           <AnimatedHeading threshold={0.2} variant="fadeUp">
-            <h2 className="font-display text-3xl font-bold text-[#344454] sm:text-4xl">
+            <h2 className="font-display1 text-3xl font-bold text-[#344454] sm:text-4xl">
               Our Services
             </h2>
           </AnimatedHeading>
@@ -551,5 +456,172 @@ export function AnimatedHome({
       </section>
       </div>
     </>
+  );
+}
+
+// ─── Service Carousel with Framer Motion ─────────────────────────────────────
+function ServiceCarousel({
+  services,
+  activeService,
+  prevService,
+  nextService,
+}: {
+  services: Service[];
+  activeService: number;
+  prevService: () => void;
+  nextService: () => void;
+}) {
+  const { ref, inView } = useScrollAnimation(0.15);
+
+  // Compute card positions based on offset
+  function getCardStyle(index: number) {
+    let offset = index - activeService;
+    if (offset > services.length / 2) offset -= services.length;
+    if (offset < -services.length / 2) offset += services.length;
+
+    const cardWidth = 'clamp(300px, 40vw, 560px)';
+
+    let xPercent: number;
+    let scale: number;
+    let opacity: number;
+    let zIndex: number;
+
+    if (offset === 0) {
+      xPercent = 0;
+      scale = 1;
+      opacity = 1;
+      zIndex = 5;
+    } else if (offset === -1) {
+      xPercent = -95;
+      scale = 0.8;
+      opacity = 1;
+      zIndex = 4;
+    } else if (offset === 1) {
+      xPercent = 95;
+      scale = 0.8;
+      opacity = 1;
+      zIndex = 4;
+    } else {
+      xPercent = offset < 0 ? -180 : 180;
+      scale = 0.6;
+      opacity = 0;
+      zIndex = 1;
+    }
+
+    return { xPercent, scale, opacity, zIndex, cardWidth, offset };
+  }
+
+  return (
+    <div
+      ref={ref}
+      className="relative mx-auto w-full max-w-[1536px]"
+      style={{ height: 'clamp(320px, 35vw, 480px)' }}
+    >
+      {/* Left/Right Fade Overlays */}
+      <div className="absolute top-0 left-0 w-24 sm:w-48 lg:w-64 h-full bg-gradient-to-r from-white via-white/90 to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-24 sm:w-48 lg:w-64 h-full bg-gradient-to-l from-white via-white/90 to-transparent z-10 pointer-events-none" />
+
+      {/* Left arrow */}
+      <motion.button
+        onClick={prevService}
+        initial={{ opacity: 0, x: -20 }}
+        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+        transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="absolute left-4 sm:left-12 lg:left-24 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-colors duration-300 shadow-sm"
+        aria-label="Previous service"
+      >
+        <ChevronLeft className="size-5 sm:size-6" />
+      </motion.button>
+
+      {/* Carousel cards */}
+      <div className="absolute inset-0 flex justify-center items-center">
+        {services.map((service, index) => {
+          const { xPercent, scale, opacity, zIndex, cardWidth } = getCardStyle(index);
+
+          return (
+            <motion.div
+              key={service.title}
+              className="absolute top-0 h-full"
+              initial={{
+                x: '0%',
+                scale: 0.5,
+                opacity: 0,
+                rotateY: 15,
+              }}
+              animate={
+                inView
+                  ? {
+                      x: `${xPercent}%`,
+                      scale,
+                      opacity,
+                      rotateY: 0,
+                    }
+                  : {
+                      x: '0%',
+                      scale: 0.5,
+                      opacity: 0,
+                      rotateY: 15,
+                    }
+              }
+              transition={{
+                type: 'spring',
+                stiffness: 70,
+                damping: 18,
+                mass: 0.9,
+                restDelta: 0.001,
+              }}
+              style={{
+                width: cardWidth,
+                zIndex,
+                transformOrigin: 'center center',
+                perspective: 1200,
+                willChange: 'transform, opacity',
+              }}
+            >
+              <div className="relative w-full h-full overflow-hidden rounded-[32px] shadow-[0_12px_48px_rgba(0,0,0,0.12)]">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                {/* Glassmorphism text overlay */}
+                <motion.div
+                  className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 rounded-[20px] bg-gradient-to-br from-white/95 to-white/75 backdrop-blur-xl backdrop-saturate-150 px-5 py-4 sm:px-6 sm:py-5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-white/60"
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={inView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 100,
+                    damping: 15,
+                    delay: 0.3,
+                  }}
+                >
+                  <h3 className="font-sans text-lg sm:text-xl font-bold text-[#111827] text-center tracking-tight">
+                    {service.title}
+                  </h3>
+                  <p className="mt-1.5 text-xs sm:text-sm text-[#4b5563] text-center leading-relaxed font-medium">
+                    {service.blurb}
+                  </p>
+                </motion.div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Right arrow */}
+      <motion.button
+        onClick={nextService}
+        initial={{ opacity: 0, x: 20 }}
+        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+        transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="absolute right-4 sm:right-12 lg:right-24 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-colors duration-300 shadow-sm"
+        aria-label="Next service"
+      >
+        <ChevronRight className="size-6" />
+      </motion.button>
+    </div>
   );
 }
