@@ -16,6 +16,7 @@ export function Header() {
             alt={siteConfig.name}
             width={180}
             height={72}
+            loading={"eager"}
             className="h-8 w-auto invert-0 dark:invert"
             priority
           />

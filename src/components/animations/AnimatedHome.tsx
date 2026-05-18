@@ -352,7 +352,7 @@ export function AnimatedHome({
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center text-white sm:px-6">
           <AnimatedHeading threshold={0.2} variant="scaleIn">
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight drop-shadow-md">

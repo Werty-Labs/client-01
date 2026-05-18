@@ -1,19 +1,14 @@
-import Image from "next/image";
-import { Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/forms/contact-form";
 import { JsonLd } from "@/components/site/json-ld";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { buildMetadata } from "@/lib/metadata";
-import { images } from "@/lib/site-data";
 import { siteConfig } from "@/lib/site-config";
 import { breadcrumbJsonLd, contactPageJsonLd } from "@/lib/structured-data";
+import { MessageCircle, Phone, Mail, MapPin, Camera, Share2, Play } from "lucide-react";
 
 export const metadata = buildMetadata({
   title: "Contact",
   description: "Get in touch with Tarragon Leisure to plan your Sri Lanka trip.",
   path: "/contact",
-  image: images.colombo,
 });
 
 export const dynamic = "force-static";
@@ -30,68 +25,99 @@ export default function ContactPage() {
           ]),
         ]}
       />
-      <div>
-        <section className="relative h-[40vh] min-h-[300px]">
-          <Image
-            src={images.colombo}
-            alt="Colombo skyline"
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-center px-4 text-white sm:px-6">
-            <p className="text-sm uppercase tracking-[0.25em] opacity-90">Say hello</p>
-            <h1 className="mt-2 font-display text-5xl sm:text-6xl">Contact us</h1>
+      <div className="bg-[#f8f9fa] min-h-screen py-20 pb-32">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center mb-16 mt-8">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-[54px] text-[#0B3B24] mb-6 tracking-tight">
+            Chat with a Travel Expert
+          </h1>
+          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-10 font-light">
+            Experience guided serenity before your journey even begins. Connect with our concierge
+            team instantly for personalized recommendations and booking assistance.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href={`https://wa.me/${siteConfig.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#25D366] px-6 py-3.5 text-white font-medium hover:bg-[#20bd5a] transition-colors shadow-sm"
+            >
+              <MessageCircle className="size-5" />
+              Start WhatsApp Chat
+            </a>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-75"></span>
+                <span className="relative inline-flex size-2 rounded-full bg-[#25D366]"></span>
+              </span>
+              Typically replies in minutes
+            </div>
           </div>
-        </section>
+        </div>
 
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-3">
-          <div className="lg:col-span-2">
-            <Card className="p-6 sm:p-8">
-              <h2 className="mb-1 font-display text-2xl">Tell us about your trip</h2>
-              <p className="mb-6 text-sm text-muted-foreground">
-                We usually reply within a few hours.
+        <div className="mx-auto grid max-w-[1000px] gap-8 px-4 sm:px-6 lg:grid-cols-5">
+          <div className="lg:col-span-3">
+            <div className="bg-white rounded-[24px] p-8 sm:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-border/40">
+              <h2 className="font-display text-[28px] text-[#0B3B24] mb-2 tracking-tight">Send an Enquiry</h2>
+              <p className="text-muted-foreground text-sm sm:text-base mb-8">
+                Prefer email? Fill out the details below and we'll craft your perfect itinerary.
               </p>
               <ContactForm />
-            </Card>
+            </div>
           </div>
 
-          <aside className="space-y-4">
-            <Card className="p-6">
-              <h3 className="mb-4 font-display text-lg">Get in touch</h3>
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 size-4 text-primary" />
-                  {siteConfig.address}
+          <aside className="lg:col-span-2 space-y-6">
+            <div className="bg-white rounded-[24px] p-8 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-border/40">
+              <h3 className="font-display text-2xl text-[#0B3B24] mb-6 tracking-tight">Other Ways to<br/>Connect</h3>
+              <ul className="space-y-6">
+                <li className="flex items-start gap-4">
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#f2f5f4] text-[#0B3B24]">
+                    <Phone className="size-4" strokeWidth={2.5} />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-[15px] text-[#1c1c1c]">Global Office</p>
+                    <p className="text-sm text-muted-foreground mt-0.5">+1 (800) 555-0199</p>
+                  </div>
                 </li>
-                <li className="flex items-start gap-3">
-                  <Phone className="mt-0.5 size-4 text-primary" />
-                  {siteConfig.phone}
+                <li className="flex items-start gap-4">
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#f2f5f4] text-[#0B3B24]">
+                    <Mail className="size-4" strokeWidth={2.5} />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-[15px] text-[#1c1c1c]">General Inquiries</p>
+                    <p className="text-sm text-muted-foreground mt-0.5">concierge@tarragon.com</p>
+                  </div>
                 </li>
-                <li className="flex items-start gap-3">
-                  <Mail className="mt-0.5 size-4 text-primary" />
-                  {siteConfig.email}
+                <li className="flex items-start gap-4">
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#f2f5f4] text-[#0B3B24]">
+                    <MapPin className="size-4" strokeWidth={2.5} />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-[15px] text-[#1c1c1c]">Headquarters</p>
+                    <p className="text-sm text-muted-foreground mt-0.5 whitespace-pre-line leading-relaxed">
+                      100 Serenity Way,<br/>
+                      Suite 400<br/>
+                      New York, NY 10001
+                    </p>
+                  </div>
                 </li>
               </ul>
-            </Card>
+            </div>
 
-            <Card className="p-6">
-              <h3 className="mb-2 font-display text-lg">WhatsApp</h3>
-              <p className="mb-4 text-sm text-muted-foreground">
-                Fastest way to reach us.
-              </p>
-              <Button asChild className="w-full bg-[#25D366] text-white hover:bg-[#20bd5a]">
-                <a
-                  href={`https://wa.me/${siteConfig.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Chat on WhatsApp
+            <div className="bg-white rounded-[24px] p-8 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-border/40">
+              <h3 className="font-display text-2xl text-[#0B3B24] mb-6 tracking-tight">Follow Our Journeys</h3>
+              <div className="flex gap-4">
+                <a href="#" className="flex size-11 items-center justify-center rounded-full bg-[#f2f5f4] text-[#0B3B24] hover:bg-[#e8ecea] transition-colors">
+                  <Camera className="size-[18px]" strokeWidth={2} />
                 </a>
-              </Button>
-            </Card>
+                <a href="#" className="flex size-11 items-center justify-center rounded-full bg-[#f2f5f4] text-[#0B3B24] hover:bg-[#e8ecea] transition-colors">
+                  <Share2 className="size-[18px]" strokeWidth={2} />
+                </a>
+                <a href="#" className="flex size-11 items-center justify-center rounded-full bg-[#f2f5f4] text-[#0B3B24] hover:bg-[#e8ecea] transition-colors">
+                  <Play className="size-[18px]" strokeWidth={2} />
+                </a>
+              </div>
+            </div>
           </aside>
         </div>
       </div>
