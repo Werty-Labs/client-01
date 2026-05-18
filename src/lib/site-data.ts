@@ -147,7 +147,7 @@ export const destinations: Destination[] = [
 export const tours: Tour[] = [
   {
     slug: "arugam-bay-the-surfing-paradise",
-    title: "Arugam Bay - The Surfing Paradise",
+    title: "The Surfing Paradise",
     location: "Arugam Bay",
     duration: "5 days",
     groupSize: 20,
@@ -195,7 +195,7 @@ export const tours: Tour[] = [
   },
   {
     slug: "colombo-the-vibrant-capital",
-    title: "Colombo - The Vibrant Capital",
+    title: "The Vibrant Capital",
     location: "Colombo, Sri Lanka",
     duration: "2 days",
     groupSize: 20,

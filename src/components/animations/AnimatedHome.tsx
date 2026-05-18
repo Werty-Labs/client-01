@@ -225,10 +225,10 @@ export function AnimatedHome({
                           : "Enquire"}
                       </span>
                     </div>
-                    <h3 className="mt-4 text-[1.45rem] font-sm leading-tight text-[#101828] transition-colors duration-300 group-hover:text-[#0f4c81] sm:text-[1.55rem] font-semibold">
+                    <h3 className="mt-4 text-[1.45rem] font-sm leading-tight text-[#101828] transition-colors duration-300 group-hover:text-green-600 sm:text-[1.55rem] font-semibold">
                       {tour.title}
                     </h3>
-                    <div className="mt-3 flex items-center gap-2 text-base text-[#667085] sm:text-[1.1rem]">
+                    <div className="mt-2 flex items-center gap-2 text-base text-[#667085] sm:text-[1.1rem]">
                       <MapPin className="size-4 shrink-0 text-[#344054] sm:size-4" />
                       <span>{tour.location}</span>
                     </div>
