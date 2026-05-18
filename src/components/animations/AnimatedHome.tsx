@@ -430,8 +430,19 @@ export function AnimatedHome({
                   </svg>
                 ),
               },
-            ].map((feature) => (
-              <div key={feature.title} className="flex flex-col items-center">
+            ].map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                className="flex flex-col items-center"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{
+                  duration: 0.8,
+                  ease: "easeOut",
+                  delay: index * 0.2
+                }}
+              >
                 <div className="mb-6 flex h-[72px] w-[72px] items-center justify-center text-[#1A1A1A]">
                   {feature.icon}
                 </div>
@@ -439,7 +450,7 @@ export function AnimatedHome({
                 <p className="mt-2 text-sm text-[#374151] sm:text-[0.95rem] leading-relaxed max-w-[280px]">
                   {feature.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </StaggerContainer>
 
