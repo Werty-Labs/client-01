@@ -1,8 +1,10 @@
+import Image from "next/image";
 import { ContactForm } from "@/components/forms/contact-form";
 import { JsonLd } from "@/components/site/json-ld";
 import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
 import { breadcrumbJsonLd, contactPageJsonLd } from "@/lib/structured-data";
+import { images } from "@/lib/site-data";
 import { MessageCircle, Phone, Mail, MapPin, Camera, Share2, Play } from "lucide-react";
 
 export const metadata = buildMetadata({
@@ -25,8 +27,22 @@ export default function ContactPage() {
           ]),
         ]}
       />
-      <div className="bg-[#f8f9fa] min-h-screen py-20 pb-32">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center mb-16 mt-8">
+      <div className="relative min-h-[100dvh] py-20 pb-32 overflow-hidden bg-[#f8f9fa]">
+        {/* Blurred Background Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src={images.contact}
+            alt="Blurred landscape background"
+            fill
+            className="object-cover object-bottom blur-sm scale-110 opacity-60"
+            quality={60}
+            priority
+          />
+          {/* Gradient to blend image smoothly into the background color */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#f8f9fa]/80 via-[#f8f9fa]/65 to-transparent" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center mb-16 mt-8">
           <h1 className="font-display text-4xl sm:text-5xl lg:text-[54px] text-[#0B3B24] mb-6 tracking-tight">
             Chat with a Travel Expert
           </h1>
@@ -55,7 +71,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="mx-auto grid max-w-[1000px] gap-8 px-4 sm:px-6 lg:grid-cols-5">
+        <div className="relative z-10 mx-auto grid max-w-[1000px] gap-8 px-4 sm:px-6 lg:grid-cols-5">
           <div className="lg:col-span-3">
             <div className="bg-white rounded-[24px] p-8 sm:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-border/40">
               <h2 className="font-display text-[28px] text-[#0B3B24] mb-2 tracking-tight">Send an Enquiry</h2>
