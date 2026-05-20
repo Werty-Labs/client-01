@@ -29,7 +29,7 @@ async function ToursContent() {
         <p className="text-sm uppercase tracking-[0.25em] text-primary font-semibold">
           Our journeys
         </p>
-        <h1 className="mt-4 font-display1 text-4xl sm:text-5xl font-bold tracking-tight text-[#052b36]">All Tours</h1>
+        <h1 className="mt-4 font-display1 text-4xl sm:text-5xl font-bold tracking-tight text-[#0B3B24]">All Tours</h1>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#667085] sm:text-lg">
           Hand-crafted itineraries across Sri Lanka - pick a starting point and
           we&apos;ll customise the rest.
@@ -71,7 +71,7 @@ async function ToursContent() {
                   {tour.price !== null ? `$${tour.price.toFixed(2)}` : "Enquire"}
                 </span>
               </div>
-              <h3 className="mt-4 font-semibold text-[1.45rem] font-sm leading-tight text-[#101828] transition-colors duration-300 group-hover:text-green-600 sm:text-[1.45rem]">
+              <h3 className="mt-4 font-semibold text-[1.45rem] font-sm leading-tight text-[#0B3B24] transition-colors duration-300 group-hover:text-green-600 sm:text-[1.45rem]">
                 {tour.title}
               </h3>
               <div className="mt-1 flex items-center gap-2 text-base text-[#667085] sm:text-lg">
