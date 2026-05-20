@@ -30,8 +30,8 @@ export function DesktopNavLinksAnimated({ items }: DesktopNavLinksProps) {
             <Link
               href={item.href}
               className={cn(
-                "text-md font-medium text-white/90 transition-colors hover:text-green-500 hover:scale-105",
-                active && "font-semibold text-green-600",
+                "text-md font-medium text-white/90 transition-colors hover:text-primary hover:scale-105",
+                active && "font-semibold text-primary",
               )}
               prefetch
             >

@@ -21,7 +21,7 @@ export const images = {
   hero:"/assets/tarragon/AI2.png",
   hero1:"/assets/tarragon/smoothly_generate_video_form_t.mp4",
   hero_vid:"/assets/tarragon/Hero_Vid Final1.mp4",
-  contact: "/assets/tarragon/tour-7.jpg",
+  contact: "/assets/tarragon/GalleFort.jpg",
 } as const;
 
 export const categories: Category[] = [

@@ -26,11 +26,11 @@ async function ToursContent() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
       <header className="mb-12 text-center">
-        <p className="text-sm uppercase tracking-[0.25em] text-primary">
+        <p className="text-sm uppercase tracking-[0.25em] text-primary font-semibold">
           Our journeys
         </p>
-        <h1 className="mt-2 font-display text-4xl sm:text-5xl">All Tours</h1>
-        <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
+        <h1 className="mt-4 font-display1 text-4xl sm:text-5xl font-bold tracking-tight text-[#052b36]">All Tours</h1>
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#667085] sm:text-lg">
           Hand-crafted itineraries across Sri Lanka - pick a starting point and
           we&apos;ll customise the rest.
         </p>
