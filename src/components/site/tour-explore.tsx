@@ -23,7 +23,7 @@ export function TourExplore({ tour }: TourExploreProps) {
       </div>
 
       {/* Highlights + Image */}
-      <div className="grid items-start gap-6 sm:grid-cols-2">
+      <div className="grid items-center gap-6 sm:grid-cols-2 ">
         <div>
           <p className="mb-3 font-semibold text-foreground">Highlights:</p>
           <ul className="space-y-3">

@@ -49,11 +49,11 @@ export function MobileNav({ items }: MobileNavProps) {
         <AnimatePresence>
           {open && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex flex-col bg-black text-white p-6 justify-between"
+            className="fixed top-0 inset-x-0 z-50 flex flex-col bg-black text-white p-6 gap-8 pb-10 rounded-b-3xl shadow-2xl"
           >
             {/* Top Bar */}
             <div className="flex items-center justify-between">
@@ -76,7 +76,7 @@ export function MobileNav({ items }: MobileNavProps) {
             </div>
 
             {/* Centered navigation links */}
-            <nav className="flex flex-col items-center gap-8 my-auto">
+            <nav className="flex flex-col items-center gap-6">
               {items.map((item, index) => {
                 const active = isActivePath(pathname, item.href);
                 return (
