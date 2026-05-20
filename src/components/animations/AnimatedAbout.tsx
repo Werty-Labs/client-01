@@ -94,7 +94,7 @@ function AnimatedStat({ number, label }: { number: string; label: string }) {
       transition={springTransition(0)}
     >
       <motion.p
-        className="font-display1 text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold tracking-tight text-[#052b36]"
+        className="font-display1 text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold tracking-tight text-[#0B3B24]"
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -158,7 +158,7 @@ export function AnimatedAbout() {
               </motion.p>
 
               <motion.h1
-                className="mt-6 font-display1 text-[2.75rem] sm:text-[3.5rem] lg:text-[4rem] font-semibold leading-[1.05] tracking-[-0.03em] text-[#052b36]"
+                className="mt-6 font-display1 text-[2.75rem] sm:text-[3.5rem] lg:text-[4rem] font-semibold leading-[1.05] tracking-[-0.03em] text-[#0B3B24]"
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
@@ -189,7 +189,7 @@ export function AnimatedAbout() {
                 <Button
                   asChild
                   size="lg"
-                  className="rounded-full bg-[#052b36] hover:bg-[#031d24] text-white pl-6 pr-2 gap-4 h-12"
+                  className="rounded-full bg-[#0B3B24] hover:bg-[#072617] text-white pl-6 pr-2 gap-4 h-12"
                 >
                   <Link href="/contact" prefetch>
                     Plan Your Trip
@@ -276,7 +276,7 @@ function StorySection() {
             <p className="text-sm font-semibold text-[#287A71] tracking-wide uppercase mb-4">
               Our Story
             </p>
-            <h2 className="font-display1 text-3xl sm:text-4xl font-semibold tracking-tight text-[#052b36] leading-tight">
+            <h2 className="font-display1 text-3xl sm:text-4xl font-semibold tracking-tight text-[#0B3B24] leading-tight">
               Born from a love for
               <br />
               Sri Lanka
@@ -324,7 +324,7 @@ function ValuesSection() {
           <p className="text-sm font-semibold text-[#287A71] tracking-wide uppercase mb-4">
             Our Philosophy
           </p>
-          <h2 className="font-display1 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#052b36]">
+          <h2 className="font-display1 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#0B3B24]">
             What sets us apart
           </h2>
           <p className="mt-4 mx-auto max-w-2xl text-[16px] leading-relaxed text-[#667085]">
@@ -352,10 +352,10 @@ function ValuesSection() {
               transition={springTransition(0)}
             >
               {/* Icon */}
-              <div className="flex size-14 items-center justify-center rounded-2xl bg-[#f2f5f4] text-[#0B3B24] mb-6 group-hover:bg-[#052b36] group-hover:text-white transition-colors duration-500">
+              <div className="flex size-14 items-center justify-center rounded-2xl bg-[#f2f5f4] text-[#0B3B24] mb-6 group-hover:bg-[#0B3B24] group-hover:text-white transition-colors duration-500">
                 {value.icon}
               </div>
-              <h3 className="font-display text-xl font-semibold text-[#052b36] mb-3">
+              <h3 className="font-display text-xl font-semibold text-[#0B3B24] mb-3">
                 {value.title}
               </h3>
               <p className="text-sm leading-relaxed text-[#667085]">
@@ -394,7 +394,7 @@ function GallerySection() {
           <p className="text-sm font-semibold text-[#287A71] tracking-wide uppercase mb-4">
             Our World
           </p>
-          <h2 className="font-display1 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#052b36]">
+          <h2 className="font-display1 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#0B3B24]">
             Sri Lanka through our eyes
           </h2>
         </motion.div>
@@ -453,7 +453,7 @@ function CTASection() {
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[#00724c]/75 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-[#000000]/70 backdrop-blur-[2px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 text-center">
@@ -490,7 +490,7 @@ function CTASection() {
           <Button
             asChild
             size="lg"
-            className="rounded-full bg-white text-[#052b36] hover:bg-white/90 font-semibold px-8 h-13 text-base shadow-[0_8px_32px_rgba(0,0,0,0.15)]"
+            className="rounded-full bg-white text-[#0B3B24] hover:bg-white/90 font-semibold px-8 h-13 text-base shadow-[0_8px_32px_rgba(0,0,0,0.15)]"
           >
             <Link href="/contact" prefetch>
               Start Planning

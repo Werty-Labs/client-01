@@ -31,7 +31,7 @@ async function DestinationsContent() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <header className="mx-auto max-w-4xl text-center">
           <AnimatedHeading threshold={0.25} variant="scaleIn">
-            <h1 className="font-display1 text-4xl font-semibold tracking-tight text-[#101828] sm:text-5xl lg:text-6xl">
+            <h1 className="font-display1 text-4xl font-semibold tracking-tight text-[#0B3B24] sm:text-5xl lg:text-6xl">
               Destinations
             </h1>
           </AnimatedHeading>
@@ -65,7 +65,7 @@ async function DestinationsContent() {
                   />
                 </div>
                 <div className="mt-5 px-1">
-                  <h2 className="font-display text-[1rem] leading-tight text-[#101828] sm:text-[1.65rem]">
+                  <h2 className="font-display text-[1rem] leading-tight text-[#0B3B24] sm:text-[1.65rem]">
                     {destination.name}
                   </h2>
                   <p className="mt-3 max-w-md text-base leading-8 text-[#667085] line-clamp-2">

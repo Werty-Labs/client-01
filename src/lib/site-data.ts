@@ -22,6 +22,7 @@ export const images = {
   hero1:"/assets/tarragon/smoothly_generate_video_form_t.mp4",
   hero_vid:"/assets/tarragon/Hero_Vid Final1.mp4",
   contact: "/assets/tarragon/GalleFort.jpg",
+  LotusT :"/assets/tarragon/LotusT.jpg",
 } as const;
 
 export const categories: Category[] = [

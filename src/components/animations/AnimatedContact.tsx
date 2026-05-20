@@ -73,7 +73,7 @@ export function AnimatedContact() {
       {/* Hero text section — staggered entrance */}
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center mb-16 mt-8">
         <motion.h1
-          className="font-display1 text-4xl sm:text-5xl font-bold tracking-tight text-[#052b36] mb-6"
+          className="font-display1 text-4xl sm:text-5xl font-bold tracking-tight text-[#0B3B24] mb-6"
           variants={fadeUp}
           initial="hidden"
           animate="visible"

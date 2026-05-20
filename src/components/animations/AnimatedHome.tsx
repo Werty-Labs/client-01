@@ -109,7 +109,7 @@ export function AnimatedHome({
           </AnimatedHeading>
           <StaggeredWords
             text="Experience Diverse Worlds On One Planet"
-            className="mt-4 font-display1 text-4xl sm:text-5xl font-bold tracking-tight text-[#052b36]"
+            className="mt-4 font-display1 text-4xl sm:text-5xl font-bold tracking-tight text-[#0B3B24]"
             threshold={0.3}
             staggerMs={60}
           />
@@ -125,7 +125,7 @@ export function AnimatedHome({
               <AntiGravityCard key={category.title} className="flex flex-col gap-4 group cursor-pointer">
                 {isTextTop && (
                   <div>
-                    <h3 className="font-display font-bold text-xl text-[#052b36] group-hover:text-primary transition-colors">{category.title}</h3>
+                    <h3 className="font-display font-bold text-xl text-[#0B3B24] group-hover:text-primary transition-colors">{category.title}</h3>
                     <p className="mt-2 text-sm text-gray-500 line-clamp-3">{category.blurb}</p>
                   </div>
                 )}
@@ -140,7 +140,7 @@ export function AnimatedHome({
                 </div>
                 {!isTextTop && (
                   <div>
-                    <h3 className="font-display font-bold text-xl text-[#052b36] group-hover:text-primary transition-colors">{category.title}</h3>
+                    <h3 className="font-display font-bold text-xl text-[#0B3B24] group-hover:text-primary transition-colors">{category.title}</h3>
                     <p className="mt-2 text-sm text-gray-500 line-clamp-3">{category.blurb}</p>
                   </div>
                 )}
@@ -153,7 +153,7 @@ export function AnimatedHome({
           <div className="mt-16 flex items-center justify-between gap-6">
             <p className="whitespace-nowrap text-sm text-gray-500 font-medium">Explore more journeys waiting for you</p>
             <div className="h-px flex-1 bg-gray-300"></div>
-            <Button asChild size="lg" className="rounded-full bg-[#052b36] hover:bg-[#031d24] text-white pl-6 pr-2 gap-4">
+            <Button asChild size="lg" className="rounded-full bg-[#0B3B24] hover:bg-[#072617] text-white pl-6 pr-2 gap-4">
               <Link href="/tours" prefetch>
                 View Packages
                 <span className="bg-white/10 p-2 rounded-full">
@@ -171,7 +171,7 @@ export function AnimatedHome({
           <div className="mx-auto max-w-3xl text-center">
             <div>
               <AnimatedHeading threshold={0.25} variant="scaleIn">
-                <h2 className="font-display1 text-3xl font-semibold tracking-tight text-[#101828] sm:text-4xl lg:text-5xl">
+                <h2 className="font-display1 text-3xl font-semibold tracking-tight text-[#0B3B24] sm:text-4xl lg:text-5xl">
                   Explore Popular Tours
                 </h2>
               </AnimatedHeading>
@@ -225,7 +225,7 @@ export function AnimatedHome({
                           : "Enquire"}
                       </span>
                     </div>
-                    <h3 className="mt-4 text-[1.45rem] font-sm leading-tight text-[#101828] transition-colors duration-300 group-hover:text-green-600 sm:text-[1.55rem] font-semibold">
+                    <h3 className="mt-4 text-[1.45rem] font-sm leading-tight text-[#0B3B24] transition-colors duration-300 group-hover:text-green-600 sm:text-[1.55rem] font-semibold">
                       {tour.title}
                     </h3>
                     <div className="mt-2 flex items-center gap-2 text-base text-[#667085] sm:text-[1.1rem]">
@@ -244,7 +244,7 @@ export function AnimatedHome({
                 asChild
                 variant="outline"
                 size="lg"
-                className="group h-14 rounded-full border-green-600 bg-white px-7 text-base font-medium text-[#101828] shadow-none transition-all duration-300 hover:-translate-y-0.5 hover:border-green-700 hover:bg-[#eef3ff] hover:text-[#101828] hover:shadow-[0_16px_32px_rgba(95,141,255,0.18)] sm:px-8"
+                className="group h-14 rounded-full border-[#0B3B24] bg-white px-7 text-base font-medium text-[#0B3B24] shadow-none transition-all duration-300 hover:-translate-y-0.5 hover:border-[#072617] hover:bg-[#f2f5f4] hover:text-[#072617] hover:shadow-[0_16px_32px_rgba(11,59,36,0.12)] sm:px-8"
               >
                 <Link href="/tours" prefetch>
                   Browse All Tours
@@ -261,7 +261,7 @@ export function AnimatedHome({
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mx-auto max-w-4xl text-center">
             <AnimatedHeading threshold={0.25} variant="scaleIn">
-              <h2 className="font-display1 text-4xl font-semibold tracking-tight text-[#101828] sm:text-5xl lg:text-6xl">
+              <h2 className="font-display1 text-4xl font-semibold tracking-tight text-[#0B3B24] sm:text-5xl lg:text-6xl">
                 Top Destinations in Sri Lanka
               </h2>
             </AnimatedHeading>
@@ -295,7 +295,7 @@ export function AnimatedHome({
                     />
                   </div>
                   <div className="mt-5 px-1">
-                    <h3 className="font-display text-[1rem] leading-tight text-[#101828] sm:text-[1.65rem]">
+                    <h3 className="font-display text-[1rem] leading-tight text-[#0B3B24] sm:text-[1.65rem]">
                       {destination.name}
                     </h3>
                     <p className="mt-3 max-w-md text-base leading-8 text-[#667085] line-clamp-2">
@@ -313,7 +313,7 @@ export function AnimatedHome({
                 asChild
                 variant="outline"
                 size="lg"
-                className="h-14 rounded-full border-[#84adff] bg-white px-7 text-base font-medium text-[#101828] shadow-none transition hover:bg-white hover:text-[#101828] sm:px-8"
+                className="h-14 rounded-full border-[#0B3B24] bg-white px-7 text-base font-medium text-[#0B3B24] shadow-none transition hover:bg-[#f2f5f4] hover:text-[#072617] sm:px-8"
               >
                 <Link href="/destinations" prefetch className={'hover:scale-105 cursor-pointer'}>
                   Browse All Destinations
@@ -334,7 +334,7 @@ export function AnimatedHome({
             </p>
           </AnimatedHeading>
           <AnimatedHeading threshold={0.2} variant="fadeUp" delay={0.15}>
-            <h2 className="mt-2 font-display1 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111827]">
+            <h2 className="mt-2 font-display1 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0B3B24]">
               Curated trips for every traveler
             </h2>
           </AnimatedHeading>
@@ -372,7 +372,7 @@ export function AnimatedHome({
       <section className="bg-[#FCFAF5] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6">
           <AnimatedHeading threshold={0.2} variant="fadeUp">
-            <h2 className="font-display1 text-3xl font-bold text-[#344454] sm:text-4xl">
+            <h2 className="font-display1 text-3xl font-bold text-[#0B3B24] sm:text-4xl">
               Our Services
             </h2>
           </AnimatedHeading>
@@ -446,7 +446,7 @@ export function AnimatedHome({
                 <div className="mb-6 flex h-[72px] w-[72px] items-center justify-center text-[#1A1A1A]">
                   {feature.icon}
                 </div>
-                <h3 className="font-display text-[1.35rem] font-bold text-[#111827]">{feature.title}</h3>
+                <h3 className="font-display text-[1.35rem] font-bold text-[#0B3B24]">{feature.title}</h3>
                 <p className="mt-2 text-sm text-[#374151] sm:text-[0.95rem] leading-relaxed max-w-[280px]">
                   {feature.description}
                 </p>
@@ -456,7 +456,7 @@ export function AnimatedHome({
 
           <AnimatedHeading threshold={0.2} delay={0.4}>
             <div className="mt-14 sm:mt-16">
-              <Button asChild size="lg" className="bg-[#344454] hover:bg-[#2A3744] text-white rounded-lg px-8 h-12 font-medium">
+              <Button asChild size="lg" className="bg-[#0B3B24] hover:bg-[#072617] text-white rounded-lg px-8 h-12 font-medium">
                 <Link href="/services" prefetch>
                   Explore our services
                 </Link>
