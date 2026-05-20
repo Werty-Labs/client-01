@@ -1,0 +1,513 @@
+"use client";
+
+import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, useScroll, useTransform, useInView } from "motion/react";
+import { ArrowRight, Compass, Heart, Shield, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { images } from "@/lib/site-data";
+import { siteConfig } from "@/lib/site-config";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
+// ─── Animation variants (matching contact page style) ────────────────────────
+const fadeUp = {
+  hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+};
+
+const fadeInScale = {
+  hidden: { opacity: 0, scale: 0.95, filter: "blur(6px)" },
+  visible: { opacity: 1, scale: 1, filter: "blur(0px)" },
+};
+
+const slideInLeft = {
+  hidden: { opacity: 0, x: -60, filter: "blur(4px)" },
+  visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 60, filter: "blur(4px)" },
+  visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+};
+
+const transition = (delay: number = 0) => ({
+  duration: 0.9,
+  delay,
+  ease: [0.25, 0.46, 0.45, 0.94] as const,
+});
+
+const springTransition = (delay: number = 0) => ({
+  type: "spring" as const,
+  stiffness: 80,
+  damping: 18,
+  mass: 0.8,
+  delay,
+});
+
+// ─── Stats data ──────────────────────────────────────────────────────────────
+const stats = [
+  { number: "10+", label: "Years experience" },
+  { number: "1,200+", label: "Happy travelers" },
+  { number: "100%", label: "Positive reviews" },
+  { number: "25+", label: "Destinations covered" },
+];
+
+// ─── Values data ─────────────────────────────────────────────────────────────
+const values = [
+  {
+    icon: <Compass className="size-6" strokeWidth={1.5} />,
+    title: "Local Expertise",
+    description:
+      "Our guides are born and raised across Sri Lanka — they don't just know the routes, they know the stories behind every turn.",
+  },
+  {
+    icon: <Heart className="size-6" strokeWidth={1.5} />,
+    title: "Crafted with Care",
+    description:
+      "Every itinerary is handcrafted to match your pace, passions, and curiosity. No cookie-cutter trips here.",
+  },
+  {
+    icon: <Shield className="size-6" strokeWidth={1.5} />,
+    title: "Safe & Supported",
+    description:
+      "From your first inquiry to your last sunset, our 24/7 concierge team ensures a seamless, worry-free experience.",
+  },
+  {
+    icon: <Users className="size-6" strokeWidth={1.5} />,
+    title: "Community First",
+    description:
+      "We partner with local families, eco-lodges, and artisans — your journey directly supports Sri Lankan communities.",
+  },
+];
+
+// ─── Animated counter ────────────────────────────────────────────────────────
+function AnimatedStat({ number, label }: { number: string; label: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      className="text-left"
+      variants={fadeInScale}
+      transition={springTransition(0)}
+    >
+      <motion.p
+        className="font-display1 text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold tracking-tight text-[#052b36]"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+      >
+        {number}
+      </motion.p>
+      <motion.p
+        className="mt-2 text-sm sm:text-[15px] text-[#667085] font-medium"
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+      >
+        {label}
+      </motion.p>
+    </motion.div>
+  );
+}
+
+// ─── Main component ──────────────────────────────────────────────────────────
+export function AnimatedAbout() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.97]);
+
+  return (
+    <div className="relative overflow-hidden bg-[#f8f9fa]">
+      {/* ── Hero Section — minimalist with stats (inspired by reference) ── */}
+      <motion.section
+        ref={heroRef}
+        className="relative py-24 sm:py-32 lg:py-40"
+        style={{ opacity: heroOpacity, scale: heroScale }}
+      >
+        {/* Subtle textured background */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 60% at 30% 50%, rgba(5,43,54,0.03) 0%, transparent 70%)",
+            }}
+          />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            {/* Left: Title + description */}
+            <div>
+              <motion.p
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#667085] tracking-wide uppercase"
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                transition={transition(0.2)}
+              >
+                <span className="flex size-2 rounded-full bg-[#0B3B24]" />
+                About Us
+              </motion.p>
+
+              <motion.h1
+                className="mt-6 font-display1 text-[2.75rem] sm:text-[3.5rem] lg:text-[4rem] font-semibold leading-[1.05] tracking-[-0.03em] text-[#052b36]"
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                transition={transition(0.35)}
+              >
+                {siteConfig.name}
+              </motion.h1>
+
+              <motion.p
+                className="mt-6 max-w-lg text-[17px] leading-[1.75] text-[#667085]"
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                transition={transition(0.5)}
+              >
+                For over a decade, we&apos;ve been dedicated to crafting deeply
+                personal journeys across Sri Lanka. Because to us, your trip
+                isn&apos;t just a booking — it&apos;s a story waiting to unfold.
+              </motion.p>
+
+              <motion.div
+                className="mt-8"
+                variants={fadeUp}
+                initial="hidden"
+                animate="visible"
+                transition={transition(0.65)}
+              >
+                <Button
+                  asChild
+                  size="lg"
+                  className="rounded-full bg-[#052b36] hover:bg-[#031d24] text-white pl-6 pr-2 gap-4 h-12"
+                >
+                  <Link href="/contact" prefetch>
+                    Plan Your Trip
+                    <span className="bg-white/10 p-2 rounded-full">
+                      <ArrowRight className="size-4" />
+                    </span>
+                  </Link>
+                </Button>
+              </motion.div>
+            </div>
+
+            {/* Right: Stats grid */}
+            <motion.div
+              className="grid grid-cols-2 gap-x-12 gap-y-10 sm:gap-y-12 lg:pt-8"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: {
+                  transition: { staggerChildren: 0.15, delayChildren: 0.5 },
+                },
+              }}
+            >
+              {stats.map((stat) => (
+                <AnimatedStat
+                  key={stat.label}
+                  number={stat.number}
+                  label={stat.label}
+                />
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* ── Story Section — large image with overlaid text ── */}
+      <StorySection />
+
+      {/* ── Values Section ── */}
+      <ValuesSection />
+
+      {/* ── Team / Gallery Section ── */}
+      <GallerySection />
+
+      {/* ── CTA Section ── */}
+      <CTASection />
+    </div>
+  );
+}
+
+// ─── Story section ───────────────────────────────────────────────────────────
+function StorySection() {
+  const { ref, inView } = useScrollAnimation(0.15);
+
+  return (
+    <section ref={ref} className="py-20 sm:py-28 bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Image */}
+          <motion.div
+            className="relative aspect-[4/3] rounded-[32px] overflow-hidden shadow-[0_24px_64px_rgba(0,0,0,0.08)]"
+            variants={slideInLeft}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            transition={springTransition(0.2)}
+          >
+            <Image
+              src={images.teaching}
+              alt="Tarragon Leisure team with travelers"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            {/* Subtle overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          </motion.div>
+
+          {/* Text */}
+          <motion.div
+            variants={slideInRight}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            transition={springTransition(0.4)}
+          >
+            <p className="text-sm font-semibold text-[#287A71] tracking-wide uppercase mb-4">
+              Our Story
+            </p>
+            <h2 className="font-display1 text-3xl sm:text-4xl font-semibold tracking-tight text-[#052b36] leading-tight">
+              Born from a love for
+              <br />
+              Sri Lanka
+            </h2>
+            <div className="mt-6 space-y-5 text-[16px] leading-[1.8] text-[#667085]">
+              <p>
+                Tarragon Leisure began with a simple belief: the best way to
+                experience Sri Lanka is through the eyes of those who call it
+                home. Our founders, born and raised across the island, wanted to
+                share the Sri Lanka they knew — beyond the guidebooks.
+              </p>
+              <p>
+                Our team of local guides, naturalists, and experience designers
+                has decades of combined experience and an obsessive love for this
+                island — from the leopards of Yala to the tea trains of Ella, the
+                surf of Arugam Bay and the cobbled streets of Galle Fort.
+              </p>
+              <p>
+                Every itinerary we build is unique. We listen first, suggest
+                second, and stay with you the whole way through.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Values section ──────────────────────────────────────────────────────────
+function ValuesSection() {
+  const { ref, inView } = useScrollAnimation(0.1);
+
+  return (
+    <section ref={ref} className="py-20 sm:py-28 bg-[#fdfcf8]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        {/* Heading */}
+        <motion.div
+          className="text-center mb-16"
+          variants={fadeUp}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          transition={transition(0.1)}
+        >
+          <p className="text-sm font-semibold text-[#287A71] tracking-wide uppercase mb-4">
+            Our Philosophy
+          </p>
+          <h2 className="font-display1 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#052b36]">
+            What sets us apart
+          </h2>
+          <p className="mt-4 mx-auto max-w-2xl text-[16px] leading-relaxed text-[#667085]">
+            We don&apos;t just plan trips. We create transformative experiences
+            rooted in authenticity, sustainability, and genuine human connection.
+          </p>
+        </motion.div>
+
+        {/* Values grid */}
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.12, delayChildren: 0.3 },
+            },
+          }}
+        >
+          {values.map((value, i) => (
+            <motion.div
+              key={value.title}
+              className="group relative bg-white rounded-[24px] p-8 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-border/40 transition-all duration-500 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1"
+              variants={fadeInScale}
+              transition={springTransition(0)}
+            >
+              {/* Icon */}
+              <div className="flex size-14 items-center justify-center rounded-2xl bg-[#f2f5f4] text-[#0B3B24] mb-6 group-hover:bg-[#052b36] group-hover:text-white transition-colors duration-500">
+                {value.icon}
+              </div>
+              <h3 className="font-display text-xl font-semibold text-[#052b36] mb-3">
+                {value.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-[#667085]">
+                {value.description}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Gallery section ─────────────────────────────────────────────────────────
+function GallerySection() {
+  const { ref, inView } = useScrollAnimation(0.1);
+
+  const galleryImages = [
+    { src: images.sigiriya, alt: "Sigiriya Rock Fortress", span: "col-span-2 row-span-2" },
+    { src: images.yala, alt: "Yala National Park Safari", span: "" },
+    { src: images.ella, alt: "Ella Hill Country", span: "" },
+    { src: images.arugamWebp, alt: "Arugam Bay Beach", span: "col-span-2" },
+  ];
+
+  return (
+    <section ref={ref} className="py-20 sm:py-28 bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        {/* Heading */}
+        <motion.div
+          className="text-center mb-14"
+          variants={fadeUp}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          transition={transition(0.1)}
+        >
+          <p className="text-sm font-semibold text-[#287A71] tracking-wide uppercase mb-4">
+            Our World
+          </p>
+          <h2 className="font-display1 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#052b36]">
+            Sri Lanka through our eyes
+          </h2>
+        </motion.div>
+
+        {/* Mosaic grid */}
+        <motion.div
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 auto-rows-[200px] sm:auto-rows-[240px]"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+            },
+          }}
+        >
+          {galleryImages.map((img, i) => (
+            <motion.div
+              key={img.alt}
+              className={`relative rounded-[20px] overflow-hidden group ${img.span}`}
+              variants={fadeInScale}
+              transition={springTransition(0)}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 1024px) 50vw, 25vw"
+              />
+              {/* Hover overlay with location name */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <p className="absolute bottom-4 left-5 text-white text-sm font-medium">
+                  {img.alt}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── CTA section ─────────────────────────────────────────────────────────────
+function CTASection() {
+  const { ref, inView } = useScrollAnimation(0.15);
+
+  return (
+    <section ref={ref} className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={images.kandy}
+          alt="Sri Lanka landscape"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[#00724c]/75 backdrop-blur-[2px]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 text-center">
+        <motion.h2
+          className="font-display1 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white leading-tight"
+          variants={fadeUp}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          transition={transition(0.1)}
+        >
+          Ready to discover your
+          <br />
+          Sri Lanka story?
+        </motion.h2>
+
+        <motion.p
+          className="mt-5 text-[17px] leading-relaxed text-white/80 max-w-xl mx-auto"
+          variants={fadeUp}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          transition={transition(0.25)}
+        >
+          Let our team of local experts craft a journey as unique as you are.
+          Your adventure begins with a conversation.
+        </motion.p>
+
+        <motion.div
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          variants={fadeUp}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          transition={transition(0.4)}
+        >
+          <Button
+            asChild
+            size="lg"
+            className="rounded-full bg-white text-[#052b36] hover:bg-white/90 font-semibold px-8 h-13 text-base shadow-[0_8px_32px_rgba(0,0,0,0.15)]"
+          >
+            <Link href="/contact" prefetch>
+              Start Planning
+              <ArrowRight className="ml-2 size-5" />
+            </Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            className="rounded-full border-2 border-white/60 bg-transparent text-white hover:bg-white/15 hover:border-white font-medium px-8 h-13 text-base shadow-none"
+          >
+            <Link href="/tours" prefetch>
+              Browse Tours
+            </Link>
+          </Button>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
