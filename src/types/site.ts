@@ -30,6 +30,9 @@ export type Tour = {
   summary: string;
   highlights: string[];
   itinerary: TourItineraryDay[];
+  advanceFacilities?: { label: string; description: string }[];
+  includedExcluded?: { included: string[]; excluded: string[] };
+  amenities?: string[];
 };
 
 export type Service = {

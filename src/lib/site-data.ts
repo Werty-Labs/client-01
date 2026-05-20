@@ -192,6 +192,35 @@ export const tours: Tour[] = [
         details: "Free morning, transfer back to Colombo.",
       },
     ],
+    advanceFacilities: [
+      { label: "Surfing Guide", description: "Lessons for beginners." },
+      { label: "Transportation", description: "Private vehicle from airport." },
+      { label: "24/7 Support", description: "Available for assistance." },
+    ],
+    includedExcluded: {
+      included: [
+        "Hotel accommodation and breakfast.",
+        "Surfing lessons and yoga classes.",
+        "Hotel pick-up and drop-off.",
+        "Surfing equipment rental.",
+        "Breakfast at the hotel.",
+      ],
+      excluded: [
+        "Additional Services",
+        "Insurance",
+        "Food & Drinks",
+        "Tickets",
+      ],
+    },
+    amenities: [
+      "Accepts Credit Cards",
+      "Car Parking",
+      "Laundry Service",
+      "Outdoor Seating",
+      "Restaurant",
+      "Smoking Allowed",
+      "Wireless Internet",
+    ],
   },
   {
     slug: "colombo-the-vibrant-capital",
@@ -223,6 +252,34 @@ export const tours: Tour[] = [
         title: "Modern Colombo",
         details: "Lotus Tower, art galleries, rooftop dinner.",
       },
+    ],
+    advanceFacilities: [
+      { label: "City Guide", description: "Expert local guides for every stop." },
+      { label: "Transportation", description: "Air-conditioned private vehicle." },
+      { label: "24/7 Support", description: "Round-the-clock concierge." },
+    ],
+    includedExcluded: {
+      included: [
+        "Hotel accommodation and breakfast.",
+        "Private city transport.",
+        "Museum and temple entrance fees.",
+        "Hotel pick-up and drop-off.",
+        "Welcome dinner at a rooftop restaurant.",
+      ],
+      excluded: [
+        "Additional Services",
+        "Insurance",
+        "Food & Drinks",
+        "Tickets",
+      ],
+    },
+    amenities: [
+      "Accepts Credit Cards",
+      "Car Parking",
+      "Laundry Service",
+      "Outdoor Seating",
+      "Restaurant",
+      "Wireless Internet",
     ],
   },
   {
@@ -260,6 +317,33 @@ export const tours: Tour[] = [
         details: "Cooking class and transfer.",
       },
     ],
+    advanceFacilities: [
+      { label: "Heritage Guide", description: "Certified archaeological guide." },
+      { label: "Transportation", description: "Private vehicle with A/C." },
+      { label: "24/7 Support", description: "On-call assistance throughout." },
+    ],
+    includedExcluded: {
+      included: [
+        "Hotel accommodation and breakfast.",
+        "Sigiriya and Dambulla entrance fees.",
+        "Hotel pick-up and drop-off.",
+        "Cooking class materials.",
+        "Village cycling tour.",
+      ],
+      excluded: [
+        "Additional Services",
+        "Insurance",
+        "Food & Drinks",
+        "Tickets",
+      ],
+    },
+    amenities: [
+      "Accepts Credit Cards",
+      "Car Parking",
+      "Laundry Service",
+      "Restaurant",
+      "Wireless Internet",
+    ],
   },
   {
     slug: "yala-wildlife-safari",
@@ -294,6 +378,34 @@ export const tours: Tour[] = [
         title: "Bundala & Departure",
         details: "Morning birdwatching, transfer back.",
       },
+    ],
+    advanceFacilities: [
+      { label: "Safari Naturalist", description: "Expert wildlife tracker on every drive." },
+      { label: "Transportation", description: "4x4 jeep with experienced driver." },
+      { label: "24/7 Support", description: "Camp staff available around the clock." },
+    ],
+    includedExcluded: {
+      included: [
+        "Luxury tented camp accommodation.",
+        "All meals during the safari.",
+        "Two full-day jeep safaris.",
+        "Bundala birdwatching excursion.",
+        "Park entrance fees.",
+      ],
+      excluded: [
+        "Additional Services",
+        "Insurance",
+        "Food & Drinks outside camp",
+        "Souvenirs",
+      ],
+    },
+    amenities: [
+      "Accepts Credit Cards",
+      "Car Parking",
+      "Laundry Service",
+      "Outdoor Seating",
+      "Restaurant",
+      "Wireless Internet",
     ],
   },
   {
@@ -335,6 +447,35 @@ export const tours: Tour[] = [
         details: "Transfer to Colombo.",
       },
     ],
+    advanceFacilities: [
+      { label: "Trekking Guide", description: "Experienced hill-country guide." },
+      { label: "Transportation", description: "Private vehicle and train tickets." },
+      { label: "24/7 Support", description: "On-call travel coordinator." },
+    ],
+    includedExcluded: {
+      included: [
+        "Boutique hotel accommodation.",
+        "Daily breakfast and one dinner.",
+        "Scenic train tickets (reserved seats).",
+        "Tea factory entrance and tasting.",
+        "Hotel pick-up and drop-off.",
+      ],
+      excluded: [
+        "Additional Services",
+        "Insurance",
+        "Food & Drinks",
+        "Tickets",
+      ],
+    },
+    amenities: [
+      "Accepts Credit Cards",
+      "Car Parking",
+      "Laundry Service",
+      "Outdoor Seating",
+      "Restaurant",
+      "Smoking Allowed",
+      "Wireless Internet",
+    ],
   },
   {
     slug: "galle-coastal-heritage",
@@ -369,6 +510,35 @@ export const tours: Tour[] = [
         title: "Departure",
         details: "Stilt fishermen visit, return transfer.",
       },
+    ],
+    advanceFacilities: [
+      { label: "Heritage Guide", description: "Expert on Dutch-colonial history." },
+      { label: "Transportation", description: "Private vehicle from Colombo." },
+      { label: "24/7 Support", description: "Available for assistance." },
+    ],
+    includedExcluded: {
+      included: [
+        "Boutique hotel inside Galle Fort.",
+        "Daily breakfast.",
+        "Guided Fort walking tour.",
+        "Unawatuna beach transfer.",
+        "Hotel pick-up and drop-off.",
+      ],
+      excluded: [
+        "Additional Services",
+        "Insurance",
+        "Food & Drinks",
+        "Tickets",
+      ],
+    },
+    amenities: [
+      "Accepts Credit Cards",
+      "Car Parking",
+      "Laundry Service",
+      "Outdoor Seating",
+      "Restaurant",
+      "Smoking Allowed",
+      "Wireless Internet",
     ],
   },
 ];
