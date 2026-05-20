@@ -37,7 +37,7 @@ export function TourExplore({ tour }: TourExploreProps) {
             ))}
           </ul>
         </div>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+        <div className="relative aspect-[4/3] overflow-hidden rounded-none">
           <Image
             src={tour.image}
             alt={`${tour.title} highlight`}

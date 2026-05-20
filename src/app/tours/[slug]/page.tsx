@@ -1,6 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Check, Clock, MapPin, Users } from "lucide-react";
+import {
+  Check,
+  Clock,
+  MapPin,
+  Users,
+  Star,
+  Car,
+  UtensilsCrossed,
+  UserCheck,
+  Compass,
+  type LucideIcon,
+} from "lucide-react";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/site/json-ld";
 import { TourAmenities } from "@/components/site/tour-amenities";
@@ -11,6 +22,16 @@ import { Card } from "@/components/ui/card";
 import { getTourBySlug, getTourSlugs } from "@/lib/api";
 import { buildMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd, tourProductJsonLd } from "@/lib/structured-data";
+
+function getHighlightIcon(text: string): LucideIcon {
+  const lower = text.toLowerCase();
+  if (lower.includes("accommodation") || lower.includes("hotel") || lower.includes("star") || lower.includes("stay") || lower.includes("resort")) return Star;
+  if (lower.includes("chauffeur") || lower.includes("car") || lower.includes("transport") || lower.includes("transfer") || lower.includes("vehicle")) return Car;
+  if (lower.includes("culinary") || lower.includes("food") || lower.includes("dining") || lower.includes("cuisine") || lower.includes("meal")) return UtensilsCrossed;
+  if (lower.includes("guide") || lower.includes("expert") || lower.includes("private")) return UserCheck;
+  if (lower.includes("heritage") || lower.includes("culture") || lower.includes("explore")) return Compass;
+  return Check;
+}
 
 type TourPageProps = {
   params: Promise<{ slug: string }>;
@@ -65,7 +86,8 @@ export default async function TourDetailPage({ params }: TourPageProps) {
       />
 
       <article>
-        <section className="relative h-[60vh] min-h-[420px]">
+        {/* ── Hero Section ── */}
+        <section className="relative h-[70vh] min-h-[480px]">
           <Image
             src={tour.image}
             alt={tour.title}
@@ -74,116 +96,213 @@ export default async function TourDetailPage({ params }: TourPageProps) {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/30" />
-          <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-4 pb-12 text-white sm:px-6">
-            <p className="flex items-center gap-1 text-sm uppercase tracking-[0.25em] opacity-90">
+          {/* Bright airy overlay */}
+          <div className="absolute inset-0 bg-white/10" />
+          <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-white/95 via-white/80 to-transparent" />
+          <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-end px-4 pb-14 text-center sm:px-6">
+            <p className="flex items-center gap-1.5 text-sm uppercase tracking-[0.3em] text-primary font-bold">
               <MapPin className="size-3.5" /> {tour.location}
             </p>
-            <h1 className="mt-2 max-w-3xl font-display text-4xl sm:text-6xl">
+            <h1 className="mt-3 max-w-3xl font-display text-4xl leading-tight text-primary sm:text-5xl lg:text-6xl">
               {tour.title}
             </h1>
-            <div className="mt-4 flex flex-wrap items-center gap-5 text-sm">
-              <span className="flex items-center gap-1">
-                <Clock className="size-4" /> {tour.duration}
-              </span>
-              <span className="flex items-center gap-1">
-                <Users className="size-4" /> Up to {tour.groupSize}
-              </span>
-              {tour.price ? (
-                <span className="rounded-full bg-accent px-3 py-1 font-semibold text-accent-foreground">
-                  From ${tour.price}
-                </span>
-              ) : null}
-            </div>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-foreground/70 sm:text-base">
+              {tour.summary}
+            </p>
           </div>
         </section>
 
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-3">
-          <div className="space-y-12 lg:col-span-2">
+        {/* ── Main Content Grid ── */}
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_360px] lg:gap-14">
+          {/* Left Column */}
+          <div className="space-y-14">
+            {/* Curated Experience */}
             <div>
-              <h2 className="mb-3 font-display text-2xl">Overview</h2>
-              <p className="leading-relaxed text-muted-foreground">{tour.summary}</p>
+              <h2 className="mb-4 font-display text-3xl sm:text-4xl">
+                Curated Experience
+              </h2>
+              <p className="max-w-2xl leading-relaxed text-muted-foreground">
+                {tour.summary}
+              </p>
             </div>
 
+            {/* Suggested Itinerary */}
             <div>
-              <h2 className="mb-4 font-display text-2xl">Highlights</h2>
-              <ul className="grid gap-3 sm:grid-cols-2">
-                {tour.highlights.map((highlight) => (
-                  <li key={highlight} className="flex items-start gap-2">
-                    <Check className="mt-0.5 size-5 shrink-0 text-primary" />
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="mb-4 font-display text-2xl">Itinerary</h2>
-              <ol className="space-y-4">
+              <h2 className="mb-8 font-display text-2xl sm:text-3xl">
+                Suggested Itinerary
+              </h2>
+              <div className="relative space-y-10 pl-8">
+                {/* Vertical timeline line */}
+                <div
+                  className="absolute left-[7px] top-[6px] w-px bg-primary/25"
+                  style={{
+                    height: "calc(100% - 12px)",
+                  }}
+                />
                 {tour.itinerary.map((day) => (
-                  <li
-                    key={day.day}
-                    className="rounded-xl border border-border bg-card p-5"
-                  >
-                    <p className="text-xs uppercase tracking-wider text-primary">
+                  <div key={day.day} className="relative">
+                    {/* Timeline dot */}
+                    <div className="absolute -left-8 top-[6px] flex size-4 items-center justify-center rounded-full border-2 border-primary bg-background">
+                      <div className="size-1.5 rounded-full bg-primary" />
+                    </div>
+                    <p className="text-[10px] uppercase tracking-widest text-primary mb-1">
                       {day.day}
                     </p>
-                    <h3 className="mt-1 font-display text-lg">{day.title}</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">
+                    <h3 className="font-display text-lg font-semibold">
+                      {day.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                       {day.details}
                     </p>
-                  </li>
+                  </div>
                 ))}
-              </ol>
+              </div>
             </div>
 
             {/* Explore Tours */}
             <TourExplore tour={tour} />
 
-            {/* Included / Exclude */}
+            {/* Included / Excluded */}
             <TourIncludedExcluded tour={tour} />
 
             {/* Tour Amenities */}
             <TourAmenities tour={tour} />
-
-            <div>
-              <h2 className="mb-4 font-display text-2xl">Gallery</h2>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                {tour.gallery.map((image, index) => (
-                  <div key={`${image}-${index}`} className="relative aspect-square">
-                    <Image
-                      src={image}
-                      alt={`${tour.title} photo ${index + 1}`}
-                      fill
-                      className="rounded-lg object-cover"
-                      sizes="(max-width: 640px) 50vw, 33vw"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
+          {/* Right Sidebar */}
           <aside className="self-start lg:sticky lg:top-24">
-            <Card className="p-6">
-              <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                Starting from
-              </p>
-              <p className="mt-1 font-display text-3xl">
-                {tour.price ? `$${tour.price}` : "Contact for pricing"}
-              </p>
-              <p className="text-xs text-muted-foreground">per person</p>
-              <Button asChild className="mt-5 w-full">
-                <Link href="/contact" prefetch>
-                  Enquire now
-                </Link>
-              </Button>
-              <p className="mt-3 text-center text-xs text-muted-foreground">
-                Or WhatsApp us for instant replies.
-              </p>
+            <Card className="overflow-hidden border border-border/60 p-0 shadow-sm">
+              <div className="p-6 pb-2">
+                <h3 className="font-display text-xl font-semibold">
+                  Experience Highlights
+                </h3>
+              </div>
+
+              <div className="border-b border-border/40 mx-6" />
+
+              {/* Highlights list */}
+              <ul className="space-y-4 p-6 pt-5">
+                {tour.highlights.map((highlight) => {
+                  const Icon = getHighlightIcon(highlight);
+                  return (
+                    <li
+                      key={highlight}
+                      className="flex items-center gap-3"
+                    >
+                      <Icon className="size-4.5 shrink-0  text-green-600" />
+                      <span className="text-sm">
+                        {highlight}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+
+              {/* Tour details */}
+              <div className="flex items-center gap-4 px-6 pb-4 text-xs text-muted-foreground">
+                <span className="flex items-center gap-1">
+                  <Clock className="size-3.5" /> {tour.duration}
+                </span>
+                <span className="flex items-center gap-1">
+                  <Users className="size-3.5" /> Up to {tour.groupSize}
+                </span>
+              </div>
+
+              {/* Pricing */}
+              <div className="border-t border-border/40 px-6 pt-5 pb-2">
+                <p className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+                  Starting from
+                </p>
+                <p className="mt-1 font-display text-4xl font-bold">
+                  {tour.price
+                    ? `$${tour.price.toLocaleString()}`
+                    : "Contact for pricing"}
+                  <span className="text-base font-normal text-muted-foreground">
+                    {" "}
+                    / person
+                  </span>
+                </p>
+              </div>
+
+              {/* CTA */}
+              <div className="px-6 pb-6 pt-4">
+                <Button asChild className="w-full rounded-md">
+                  <Link href="/contact" prefetch>
+                    Enquire About This Journey
+                  </Link>
+                </Button>
+                <p className="mt-3 text-center text-xs text-muted-foreground">
+                  Or WhatsApp us for instant replies.
+                </p>
+              </div>
             </Card>
           </aside>
         </div>
+
+        {/* ── Visual Serenity Gallery ── */}
+        <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6">
+          <h2 className="mb-10 text-center font-display text-3xl sm:text-4xl">
+            Visual Serenity
+          </h2>
+          <div className="grid gap-4 md:grid-cols-[2fr_1fr]">
+            {/* Large featured image */}
+            {tour.gallery[0] && (
+              <div className="relative aspect-[4/3] overflow-hidden rounded-none md:row-span-2 md:aspect-auto md:h-full">
+                <Image
+                  src={tour.gallery[0]}
+                  alt={`${tour.title} photo 1`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 66vw"
+                />
+              </div>
+            )}
+            {/* Top-right image */}
+            {tour.gallery[1] && (
+              <div className="relative aspect-[4/3] overflow-hidden rounded-none">
+                <Image
+                  src={tour.gallery[1]}
+                  alt={`${tour.title} photo 2`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+            )}
+            {/* Bottom-right image */}
+            {tour.gallery[2] && (
+              <div className="relative aspect-[4/3] overflow-hidden rounded-none">
+                <Image
+                  src={tour.gallery[2]}
+                  alt={`${tour.title} photo 3`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Remaining gallery images */}
+          {tour.gallery.length > 3 && (
+            <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3">
+              {tour.gallery.slice(3).map((image, index) => (
+                <div
+                  key={`${image}-${index + 3}`}
+                  className="relative aspect-square overflow-hidden rounded-none"
+                >
+                  <Image
+                    src={image}
+                    alt={`${tour.title} photo ${index + 4}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 50vw, 33vw"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
       </article>
     </>
   );
