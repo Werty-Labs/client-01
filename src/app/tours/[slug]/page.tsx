@@ -3,6 +3,9 @@ import Link from "next/link";
 import { Check, Clock, MapPin, Users } from "lucide-react";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/site/json-ld";
+import { TourAmenities } from "@/components/site/tour-amenities";
+import { TourExplore } from "@/components/site/tour-explore";
+import { TourIncludedExcluded } from "@/components/site/tour-included-excluded";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { getTourBySlug, getTourSlugs } from "@/lib/api";
@@ -133,6 +136,15 @@ export default async function TourDetailPage({ params }: TourPageProps) {
                 ))}
               </ol>
             </div>
+
+            {/* Explore Tours */}
+            <TourExplore tour={tour} />
+
+            {/* Included / Exclude */}
+            <TourIncludedExcluded tour={tour} />
+
+            {/* Tour Amenities */}
+            <TourAmenities tour={tour} />
 
             <div>
               <h2 className="mb-4 font-display text-2xl">Gallery</h2>
