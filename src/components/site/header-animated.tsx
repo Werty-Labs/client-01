@@ -11,7 +11,7 @@ import { mainNavigation, siteConfig } from "@/lib/site-config";
 
 export function HeaderAnimated() {
   return (
-    <header className="fixed top-4 left-0 right-0 z-40  bg-black/75 backdrop-blur text-white py-[0.5px] w-4/5 mx-auto rounded-full px-2 pr-[0.001px]">
+    <header className="fixed top-4 left-0 right-0 z-40  bg-black/75 backdrop-blur text-white py-[0.5px] w-[92%] sm:w-[90%] md:w-4/5 mx-auto rounded-full px-2 pr-[0.001px]">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <LogoAnimation>
           <Link href="/" className="flex items-center gap-2" prefetch>

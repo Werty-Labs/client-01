@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
@@ -67,7 +67,7 @@ export function AnimatedHome({
         </HeroParallax>
         <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
         <HeroContentParallax className="w-full mx-auto max-w-7xl px-4 py-24 z-10 text-[#F2F0EF] sm:px-6">
-          <HeroHeadline className=" mt-3 max-w-3xl font-display1 text-4xl font-normal leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-7xl ">
+          <HeroHeadline className=" mt-3 max-w-3xl font-display1 text-4xl font-normal leading-[1.1] sm:leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-7xl ">
             Discover Sri Lanka Like Never Before
           </HeroHeadline>
           <HeroSubtext className="mt-5 max-w-2xl text-lg opacity-90  ">
@@ -94,7 +94,7 @@ export function AnimatedHome({
       </section>
 
       {/* Spacer: pushes scrollable content below the full-screen hero */}
-      <div className="h-screen" />
+      <div className="h-[100dvh]" />
 
       {/* ── Scrollable content (slides over the hero) ── */}
       <div className="relative z-10 bg-background rounded-t-[2.5rem] shadow-[0_-20px_60px_rgba(0,0,0,0.15)]">
@@ -150,9 +150,9 @@ export function AnimatedHome({
         </StaggerContainer>
 
         <AnimatedHeading threshold={0.2} delay={0.2}>
-          <div className="mt-16 flex items-center justify-between gap-6">
-            <p className="whitespace-nowrap text-sm text-gray-500 font-medium">Explore more journeys waiting for you</p>
-            <div className="h-px flex-1 bg-gray-300"></div>
+          <div className="mt-16 flex flex-col sm:flex-row items-center sm:justify-between text-center sm:text-left gap-6">
+            <p className="sm:whitespace-nowrap text-sm text-gray-500 font-medium">Explore more journeys waiting for you</p>
+            <div className="hidden sm:block h-px flex-1 bg-gray-300"></div>
             <Button asChild size="lg" className="rounded-full bg-[#052b36] hover:bg-[#031d24] text-white pl-6 pr-2 gap-4">
               <Link href="/tours" prefetch>
                 View Packages
@@ -166,7 +166,7 @@ export function AnimatedHome({
       </section>
 
       {/* ── Tours section ── */}
-      <section className="bg-[#f4f5fb] py-18 sm:py-22 lg:py-24">
+      <section className="bg-[#f4f5fb] py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <div>
@@ -257,7 +257,7 @@ export function AnimatedHome({
       </section>
 
       {/* ── Destinations section ── */}
-      <section className="bg-[#fdfcf8] py-18 sm:py-22 lg:py-24">
+      <section className="bg-[#fdfcf8] py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mx-auto max-w-4xl text-center">
             <AnimatedHeading threshold={0.25} variant="scaleIn">
@@ -483,6 +483,14 @@ function ServiceCarousel({
   nextService: () => void;
 }) {
   const { ref, inView } = useScrollAnimation(0.15);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Compute card positions based on offset
   function getCardStyle(index: number) {
@@ -505,12 +513,12 @@ function ServiceCarousel({
     } else if (offset === -1) {
       xPercent = -95;
       scale = 0.8;
-      opacity = 1;
+      opacity = isMobile ? 0 : 1;
       zIndex = 4;
     } else if (offset === 1) {
       xPercent = 95;
       scale = 0.8;
-      opacity = 1;
+      opacity = isMobile ? 0 : 1;
       zIndex = 4;
     } else {
       xPercent = offset < 0 ? -180 : 180;
@@ -538,10 +546,10 @@ function ServiceCarousel({
         initial={{ opacity: 0, x: -20 }}
         animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
         transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="absolute left-4 sm:left-12 lg:left-24 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-colors duration-300 shadow-sm"
+        className="absolute left-2 sm:left-12 lg:left-24 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-colors duration-300 shadow-sm"
         aria-label="Previous service"
       >
-        <ChevronLeft className="size-5 sm:size-6" />
+        <ChevronLeft className="size-6" />
       </motion.button>
 
       {/* Carousel cards */}
@@ -628,7 +636,7 @@ function ServiceCarousel({
         initial={{ opacity: 0, x: 20 }}
         animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
         transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="absolute right-4 sm:right-12 lg:right-24 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-colors duration-300 shadow-sm"
+        className="absolute right-2 sm:right-12 lg:right-24 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-colors duration-300 shadow-sm"
         aria-label="Next service"
       >
         <ChevronRight className="size-6" />
