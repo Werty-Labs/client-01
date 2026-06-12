@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, useEffect, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useInView } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform, useInView } from "motion/react";
 import { ArrowRight, Compass, Heart, Shield, Users, Waves, Building2, Binoculars, LayoutTemplate } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { images } from "@/lib/site-data";
@@ -83,9 +83,52 @@ const values = [
 ];
 
 // ─── Animated counter ────────────────────────────────────────────────────────
+// Parses "10+", "1,200+", "100%", "25+" into { target, suffix }.
+function parseStatNumber(raw: string): { target: number; suffix: string } {
+  // Strip commas, then split at the first non-digit char
+  const cleaned = raw.replace(/,/g, "");
+  const match = cleaned.match(/^([\d.]+)(.*)$/);
+  if (!match) return { target: 0, suffix: raw };
+  return { target: parseFloat(match[1]), suffix: match[2] };
+}
+
 function AnimatedStat({ number, label }: { number: string; label: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const hasAnimated = useRef(false);
+
+  const { target, suffix } = parseStatNumber(number);
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    if (!isInView || hasAnimated.current) return;
+    hasAnimated.current = true;
+
+    const duration = 1600;
+    const start = performance.now();
+
+    const tick = (now: number) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Expo easeOut: feels punchy then settles
+      const eased = 1 - Math.pow(1 - progress, 4);
+      setDisplay(eased * target);
+      if (progress < 1) requestAnimationFrame(tick);
+      else setDisplay(target);
+    };
+
+    // Small delay so the fade-in animation plays first
+    const id = setTimeout(() => requestAnimationFrame(tick), 200);
+    return () => clearTimeout(id);
+  }, [isInView, target]);
+
+  // Format: if the original had a comma (e.g. 1,200) use toLocaleString
+  const hasComma = number.includes(",");
+  const formatted = hasComma
+    ? Math.round(display).toLocaleString("en-US")
+    : Number.isInteger(target)
+    ? Math.round(display).toString()
+    : display.toFixed(0);
 
   return (
     <motion.div
@@ -100,13 +143,14 @@ function AnimatedStat({ number, label }: { number: string; label: string }) {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
-        {number}
+        {formatted}
+        <span>{suffix}</span>
       </motion.p>
       <motion.p
         className="mt-2 text-sm sm:text-[15px] text-[#667085] font-medium"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
       >
         {label}
       </motion.p>
@@ -518,50 +562,97 @@ function CTASection() {
 
 // ─── Service icon map ────────────────────────────────────────────────────────
 const serviceIconMap: Record<string, ReactNode> = {
-  "Family-Friendly Tours": <Users className="size-5" strokeWidth={1.5} />,
-  "Beach Holidays": <Waves className="size-5" strokeWidth={1.5} />,
-  "City Tours": <Building2 className="size-5" strokeWidth={1.5} />,
-  "Honeymoon Tours": <Heart className="size-5" strokeWidth={1.5} />,
-  "Wildlife Safaris": <Binoculars className="size-5" strokeWidth={1.5} />,
-  "Customized Tours": <LayoutTemplate className="size-5" strokeWidth={1.5} />,
+  "Family-Friendly Tours": <Users className="size-[18px]" strokeWidth={1.6} />,
+  "Beach Holidays":        <Waves className="size-[18px]" strokeWidth={1.6} />,
+  "City Tours":            <Building2 className="size-[18px]" strokeWidth={1.6} />,
+  "Honeymoon Tours":       <Heart className="size-[18px]" strokeWidth={1.6} />,
+  "Wildlife Safaris":      <Binoculars className="size-[18px]" strokeWidth={1.6} />,
+  "Customized Tours":      <LayoutTemplate className="size-[18px]" strokeWidth={1.6} />,
 };
 
-// ─── Services section ─────────────────────────────────────────────────────────
+// ─── Services section — compact interactive panel ────────────────────────────
 function ServicesSection() {
   const { ref, inView } = useScrollAnimation(0.08);
+  const [active, setActive] = useState(0);
+  const [dir, setDir] = useState(1); // 1 = down, -1 = up
+  const prevActive = useRef(0);
+
+  const ease = [0.16, 1, 0.3, 1] as const;
+  const cinematic: [number, number, number, number] = [0.76, 0, 0.24, 1];
+
+  function handleActivate(i: number) {
+    if (i === prevActive.current) return;
+    setDir(i > prevActive.current ? 1 : -1);
+    prevActive.current = i;
+    setActive(i);
+  }
+
+  // Smooth opacity crossfade + directional drift — no background bleed
+  const imgVariants = {
+    enter: (d: number) => ({
+      opacity: 0,
+      scale: 1.04,
+      y: d > 0 ? 16 : -16,
+    }),
+    center: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: { duration: 0.65, ease: cinematic },
+    },
+    exit: (d: number) => ({
+      opacity: 0,
+      scale: 0.97,
+      y: d > 0 ? -10 : 10,
+      transition: { duration: 0.45, ease: cinematic },
+    }),
+  };
+
+  // Text variants — directional slide
+  const textVariants = {
+    enter: (d: number) => ({ opacity: 0, y: d > 0 ? 22 : -22, filter: "blur(4px)" }),
+    center: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.45, ease, delay: 0.18 } },
+    exit: (d: number) => ({ opacity: 0, y: d > 0 ? -14 : 14, filter: "blur(4px)", transition: { duration: 0.25, ease } }),
+  };
 
   return (
-    <section ref={ref} className="py-24 sm:py-32 bg-[#FAFAF8]">
+    <section ref={ref} className="py-20 sm:py-28 bg-[#FAFAF8] overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
 
-        {/* ── Section header ── */}
-        <motion.div
-          className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6"
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          transition={transition(0.05)}
-        >
+        {/* ── Compact header row ── */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
           <div>
-            <p className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-[#287A71] mb-5">
-              <span className="flex size-[5px] rounded-full bg-[#287A71]" />
-              What We Offer
-            </p>
-            <h2
-              className="font-display1 text-[2.25rem] sm:text-[2.75rem] lg:text-[3.25rem] font-semibold leading-[1.08] tracking-[-0.03em] text-[#0B3B24]"
+            <motion.p
+              className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-[#287A71] mb-3"
+              initial={{ opacity: 0, x: -12 }}
+              animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
+              transition={{ duration: 0.55, ease, delay: 0.05 }}
             >
-              Curated trips for<br />every traveller
-            </h2>
+              <motion.span
+                className="flex size-[5px] rounded-full bg-[#287A71]"
+                initial={{ scale: 0 }}
+                animate={inView ? { scale: 1 } : { scale: 0 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.18 }}
+              />
+              What We Offer
+            </motion.p>
+            <motion.h2
+              className="font-display1 text-[2rem] sm:text-[2.5rem] font-semibold leading-[1.1] tracking-[-0.03em] text-[#0B3B24]"
+              initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+              animate={inView ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 0, y: 18, filter: "blur(6px)" }}
+              transition={{ duration: 0.7, ease, delay: 0.12 }}
+            >
+              Curated for every traveller
+            </motion.h2>
           </div>
           <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            transition={transition(0.2)}
+            initial={{ opacity: 0, x: 20 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+            transition={{ duration: 0.6, ease, delay: 0.25 }}
           >
             <Button
               asChild
-              className="rounded-sm bg-[#111111] hover:bg-[#2a2a2a] text-white font-medium px-6 h-11 text-sm shadow-none active:scale-[0.98] transition-all duration-200"
+              className="rounded-sm bg-[#111111] hover:bg-[#2a2a2a] text-white font-medium px-6 h-10 text-sm shadow-none active:scale-[0.98] transition-all duration-200"
             >
               <Link href="/contact" prefetch>
                 Plan your journey
@@ -569,75 +660,130 @@ function ServicesSection() {
               </Link>
             </Button>
           </motion.div>
-        </motion.div>
+        </div>
 
-        {/* ── Divider ── */}
+        {/* ── Two-panel interactive layout ── */}
         <motion.div
-          className="h-px bg-[#EAEAEA] mb-0"
-          initial={{ scaleX: 0, originX: 0 }}
-          animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        />
-
-        {/* ── Service rows ── */}
-        <motion.div
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={{
-            visible: { transition: { staggerChildren: 0.09, delayChildren: 0.2 } },
-          }}
+          className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-0 rounded-2xl overflow-hidden border border-[#EAEAEA] bg-white"
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          transition={{ duration: 0.8, ease, delay: 0.3 }}
+          style={{ boxShadow: "0 2px 32px rgba(0,0,0,0.04)" }}
         >
-          {allServices.map((service, i) => (
-            <motion.div
-              key={service.title}
-              variants={{
-                hidden: { opacity: 0, y: 14, filter: "blur(4px)" },
-                visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-              }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="group grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-0 border-b border-[#EAEAEA] py-8 sm:py-10 items-center hover:bg-white transition-colors duration-300 cursor-default px-0 sm:px-2 rounded-sm">
-                {/* Left: number + icon + text */}
-                <div className="flex items-start gap-6 sm:gap-8">
-                  {/* Index number */}
-                  <span
-                    className="shrink-0 font-mono text-[11px] font-medium text-[#BEBEBE] tracking-wider pt-1 w-6 text-right"
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+          {/* LEFT — service list */}
+          <div className="flex flex-col border-r border-[#EAEAEA]">
+            {allServices.map((service, i) => (
+              <button
+                key={service.title}
+                onMouseEnter={() => handleActivate(i)}
+                onClick={() => handleActivate(i)}
+                className={`group relative flex items-center gap-4 px-6 py-5 text-left transition-colors duration-200 focus:outline-none ${
+                  i < allServices.length - 1 ? "border-b border-[#EAEAEA]" : ""
+                } ${active === i ? "bg-[#F4F8F6]" : "hover:bg-[#FAFAFA]"}`}
+              >
+                {/* Active bar */}
+                <motion.div
+                  className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#0B3B24] rounded-r-full"
+                  initial={false}
+                  animate={{ scaleY: active === i ? 1 : 0, opacity: active === i ? 1 : 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 28 }}
+                  style={{ originY: 0.5 }}
+                />
 
-                  {/* Icon chip */}
-                  <div className="shrink-0 flex size-10 items-center justify-center rounded-[8px] border border-[#EAEAEA] bg-white text-[#0B3B24] group-hover:border-[#0B3B24]/20 group-hover:bg-[#EDF3EC] transition-all duration-300">
-                    {serviceIconMap[service.title] ?? <Compass className="size-5" strokeWidth={1.5} />}
-                  </div>
+                {/* Icon chip */}
+                <motion.span
+                  className="shrink-0 flex size-9 items-center justify-center rounded-lg border"
+                  animate={active === i
+                    ? { borderColor: "rgba(11,59,36,0.2)", backgroundColor: "#EDF3EC", color: "#0B3B24" }
+                    : { borderColor: "#EAEAEA", backgroundColor: "#ffffff", color: "#AAAAAA" }}
+                  transition={{ duration: 0.25 }}
+                >
+                  {serviceIconMap[service.title] ?? <Compass className="size-[18px]" strokeWidth={1.6} />}
+                </motion.span>
 
-                  {/* Title + blurb */}
-                  <div className="min-w-0">
-                    <h3 className="font-display text-[1.15rem] sm:text-[1.25rem] font-semibold text-[#111111] tracking-[-0.01em] leading-snug group-hover:text-[#0B3B24] transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="mt-2 text-[14px] leading-[1.7] text-[#787774] max-w-xl">
-                      {service.blurb}
-                    </p>
-                  </div>
-                </div>
+                {/* Title */}
+                <span className={`font-display text-[0.95rem] font-semibold leading-tight transition-colors duration-200 ${active === i ? "text-[#0B3B24]" : "text-[#444444]"}`}>
+                  {service.title}
+                </span>
 
-                {/* Right: image thumbnail — hidden on mobile */}
-                <div className="hidden lg:block relative aspect-[16/7] rounded-[10px] overflow-hidden border border-[#EAEAEA] group-hover:border-transparent group-hover:shadow-[0_2px_16px_rgba(0,0,0,0.06)] transition-all duration-500">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="380px"
-                  />
-                  <div className="absolute inset-0 bg-white/10 group-hover:bg-transparent transition-colors duration-500" />
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                {/* Arrow indicator */}
+                <motion.span
+                  className="ml-auto text-[#0B3B24]"
+                  animate={{ x: active === i ? 0 : -4, opacity: active === i ? 1 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ArrowRight className="size-3.5" />
+                </motion.span>
+              </button>
+            ))}
+          </div>
+
+          {/* RIGHT — cinematic image panel with direction-aware curtain wipe */}
+          <div className="relative min-h-[320px] lg:min-h-0 overflow-hidden bg-[#1a2e20]">
+            {/* Images layer — sync so enter+exit overlap */}
+            <AnimatePresence mode="sync" custom={dir}>
+              <motion.div
+                key={`img-${active}`}
+                className="absolute inset-0"
+                custom={dir}
+                variants={imgVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+              >
+                <Image
+                  src={allServices[active].image}
+                  alt={allServices[active].title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  priority
+                />
+
+                {/* Gradient for text legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/18 to-transparent" />
+
+                {/* Shimmer glint — sweeps diagonally on enter */}
+                <motion.div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.12) 50%, transparent 70%)",
+                    backgroundSize: "200% 100%",
+                  }}
+                  initial={{ backgroundPosition: "-100% 0" }}
+                  animate={{ backgroundPosition: "200% 0" }}
+                  transition={{ duration: 0.85, ease: "easeOut", delay: 0.1 }}
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Text overlay — directional slide, independent from image */}
+            <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-10 pointer-events-none z-30">
+              <AnimatePresence mode="wait" custom={dir}>
+                <motion.div
+                  key={`text-${active}`}
+                  custom={dir}
+                  variants={textVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                >
+                  <p className="font-display text-xl sm:text-2xl font-semibold text-white leading-snug drop-shadow-sm">
+                    {allServices[active].title}
+                  </p>
+                  <p className="mt-2 text-[14px] leading-[1.7] text-white/80 max-w-sm">
+                    {allServices[active].blurb}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
   );
 }
+
+
+

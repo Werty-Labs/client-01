@@ -16,7 +16,7 @@ export function HeroParallax({ children }: { children: ReactNode }) {
   const scale = useTransform(scrollY, [0, 800], [1, shouldReduce ? 1 : 1.15]);
 
   return (
-    <motion.div style={{ y, scale, willChange: "transform" }} className="absolute inset-0">
+    <motion.div style={{ y, scale, willChange: "transform" }} className="absolute inset-0 overflow-hidden">
       {children}
     </motion.div>
   );
@@ -61,11 +61,11 @@ export function HeroHeadline({
   const words = children.split(" ");
 
   return (
-    <h1 className={className}>
+    <h1 className={className} style={{ overflowWrap: "break-word", wordBreak: "break-word" }}>
       {words.map((word, i) => (
         <motion.span
           key={`${word}-${i}`}
-          className="inline-block"
+          className="inline-block mr-[0.25em] last:mr-0"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -76,7 +76,6 @@ export function HeroHeadline({
           }}
         >
           {word}
-          {i < words.length - 1 ? "\u00A0" : ""}
         </motion.span>
       ))}
     </h1>

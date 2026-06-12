@@ -54,7 +54,7 @@ export function AnimatedHome({
       <ScrollProgressBar />
 
       {/* ── Fixed hero (stays in place while you scroll) ── */}
-      <section className="fixed inset-0 z-0 flex items-center">
+      <section className="fixed inset-0 z-0 flex items-center overflow-hidden">
         <HeroParallax>
           <Image
             src={images.hero}
@@ -66,13 +66,13 @@ export function AnimatedHome({
           />
         </HeroParallax>
         <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
-        <HeroContentParallax className="w-full mx-auto max-w-7xl px-4 py-24 z-10 text-[#F2F0EF] sm:px-6">
-          <HeroHeadline className=" mt-3 max-w-3xl font-display1 text-4xl font-normal leading-[1.1] sm:leading-[0.92] tracking-[-0.04em] sm:text-6xl lg:text-7xl ">
+        <HeroContentParallax className="w-full min-w-0 overflow-hidden mx-auto max-w-7xl px-5 sm:px-6 py-20 sm:py-24 z-10 text-[#F2F0EF]">
+          <HeroHeadline className="mt-3 max-w-full sm:max-w-2xl lg:max-w-3xl font-display1 text-[1.85rem] leading-[1.1] sm:text-5xl sm:leading-[0.95] lg:text-7xl lg:leading-[0.92] font-normal tracking-[-0.02em] sm:tracking-[-0.04em]">
             Discover Sri Lanka Like Never Before
           </HeroHeadline>
-          <HeroSubtext className="mt-5 max-w-2xl text-lg opacity-90  ">
+          <HeroSubtext className="mt-4 sm:mt-5 max-w-xl text-base sm:text-lg opacity-90 leading-relaxed">
             Wildlife safaris, ancient cities, hill-country trains and palm-fringed
-            beaches - crafted into one unforgettable journey.
+            beaches — crafted into one unforgettable journey.
           </HeroSubtext>
           <HeroButtons>
             <HeroButton>
@@ -115,7 +115,7 @@ export function AnimatedHome({
           />
         </div>
         <StaggerContainer
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5 items-start"
+          className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-5 items-start"
           threshold={0.15}
           staggerDelay={0.2}
         >
@@ -150,10 +150,10 @@ export function AnimatedHome({
         </StaggerContainer>
 
         <AnimatedHeading threshold={0.2} delay={0.2}>
-          <div className="mt-16 flex items-center justify-between gap-6">
-            <p className="whitespace-nowrap text-sm text-gray-500 font-medium">Explore more journeys waiting for you</p>
-            <div className="h-px flex-1 bg-gray-300"></div>
-            <Button asChild size="lg" className="rounded-full bg-[#0B3B24] hover:bg-[#072617] text-white pl-6 pr-2 gap-4">
+          <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <p className="text-sm text-gray-500 font-medium">Explore more journeys waiting for you</p>
+            <div className="hidden sm:block h-px flex-1 bg-gray-300 mx-4" />
+            <Button asChild size="lg" className="self-start sm:self-auto rounded-full bg-[#0B3B24] hover:bg-[#072617] text-white pl-6 pr-2 gap-4">
               <Link href="/tours" prefetch>
                 View Packages
                 <span className="bg-white/10 p-2 rounded-full">
@@ -378,7 +378,7 @@ export function AnimatedHome({
           </AnimatedHeading>
 
           <StaggerContainer
-            className="mt-12 grid gap-10 text-center sm:grid-cols-3 sm:gap-2 lg:mt-16 lg:gap-4"
+            className="mt-12 grid gap-10 text-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-8 lg:mt-16 lg:gap-6"
             threshold={0.15}
             staggerDelay={0.15}
           >
@@ -446,8 +446,8 @@ export function AnimatedHome({
                 <div className="mb-6 flex h-[72px] w-[72px] items-center justify-center text-[#1A1A1A]">
                   {feature.icon}
                 </div>
-                <h3 className="font-display text-[1.35rem] font-bold text-[#0B3B24]">{feature.title}</h3>
-                <p className="mt-2 text-sm text-[#374151] sm:text-[0.95rem] leading-relaxed max-w-[280px]">
+                <h3 className="font-display text-[1.25rem] sm:text-[1.35rem] font-bold text-[#0B3B24]">{feature.title}</h3>
+                <p className="mt-2 text-sm text-[#374151] sm:text-[0.95rem] leading-relaxed max-w-xs mx-auto">
                   {feature.description}
                 </p>
               </motion.div>
@@ -534,7 +534,7 @@ function ServiceCarousel({
     <div
       ref={ref}
       className="relative mx-auto w-full max-w-[1536px]"
-      style={{ height: 'clamp(320px, 35vw, 480px)' }}
+      style={{ height: isMobile ? '420px' : 'clamp(380px, 35vw, 500px)' }}
     >
       {/* Left/Right Fade Overlays */}
       <div className="absolute top-0 left-0 w-24 sm:w-48 lg:w-64 h-full bg-gradient-to-r from-white via-white/90 to-transparent z-10 pointer-events-none" />
@@ -546,10 +546,10 @@ function ServiceCarousel({
         initial={{ opacity: 0, x: -20 }}
         animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
         transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="absolute left-2 sm:left-12 lg:left-24 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-colors duration-300 shadow-sm"
+        className="absolute left-3 sm:left-8 lg:left-20 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-colors duration-300 shadow-sm"
         aria-label="Previous service"
       >
-        <ChevronLeft className="size-6" />
+        <ChevronLeft className="size-5 sm:size-6" />
       </motion.button>
 
       {/* Carousel cards */}
@@ -636,10 +636,10 @@ function ServiceCarousel({
         initial={{ opacity: 0, x: 20 }}
         animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
         transition={{ duration: 0.6, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="absolute right-2 sm:right-12 lg:right-24 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-colors duration-300 shadow-sm"
+        className="absolute right-3 sm:right-8 lg:right-20 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-300 bg-white flex items-center justify-center text-gray-700 hover:bg-gray-50 hover:text-black hover:border-gray-400 transition-colors duration-300 shadow-sm"
         aria-label="Next service"
       >
-        <ChevronRight className="size-6" />
+        <ChevronRight className="size-5 sm:size-6" />
       </motion.button>
     </div>
   );
