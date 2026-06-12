@@ -457,7 +457,7 @@ export function AnimatedHome({
           <AnimatedHeading threshold={0.2} delay={0.4}>
             <div className="mt-14 sm:mt-16">
               <Button asChild size="lg" className="bg-[#0B3B24] hover:bg-[#072617] text-white rounded-lg px-8 h-12 font-medium">
-                <Link href="/services" prefetch>
+                <Link href="/about" prefetch>
                   Explore our services
                 </Link>
               </Button>

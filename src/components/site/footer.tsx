@@ -62,7 +62,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services" prefetch>
+                <Link href="/about" prefetch>
                   Services
                 </Link>
               </li>

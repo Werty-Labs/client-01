@@ -86,7 +86,6 @@ export async function getAllStaticPagePaths() {
     "/",
     "/about",
     "/contact",
-    "/services",
     "/destinations",
     "/tours",
     ...destinationPaths,

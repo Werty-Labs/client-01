@@ -1,14 +1,15 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useInView } from "motion/react";
-import { ArrowRight, Compass, Heart, Shield, Users } from "lucide-react";
+import { ArrowRight, Compass, Heart, Shield, Users, Waves, Building2, Binoculars, LayoutTemplate } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { images } from "@/lib/site-data";
 import { siteConfig } from "@/lib/site-config";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { services as allServices } from "@/lib/site-data";
 
 // ─── Animation variants (matching contact page style) ────────────────────────
 const fadeUp = {
@@ -229,6 +230,9 @@ export function AnimatedAbout() {
 
       {/* ── Values Section ── */}
       <ValuesSection />
+
+      {/* ── Services Section (merged from /services) ── */}
+      <ServicesSection />
 
       {/* ── Team / Gallery Section ── */}
       <GallerySection />
@@ -506,6 +510,132 @@ function CTASection() {
               Browse Tours
             </Link>
           </Button>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Service icon map ────────────────────────────────────────────────────────
+const serviceIconMap: Record<string, ReactNode> = {
+  "Family-Friendly Tours": <Users className="size-5" strokeWidth={1.5} />,
+  "Beach Holidays": <Waves className="size-5" strokeWidth={1.5} />,
+  "City Tours": <Building2 className="size-5" strokeWidth={1.5} />,
+  "Honeymoon Tours": <Heart className="size-5" strokeWidth={1.5} />,
+  "Wildlife Safaris": <Binoculars className="size-5" strokeWidth={1.5} />,
+  "Customized Tours": <LayoutTemplate className="size-5" strokeWidth={1.5} />,
+};
+
+// ─── Services section ─────────────────────────────────────────────────────────
+function ServicesSection() {
+  const { ref, inView } = useScrollAnimation(0.08);
+
+  return (
+    <section ref={ref} className="py-24 sm:py-32 bg-[#FAFAF8]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+
+        {/* ── Section header ── */}
+        <motion.div
+          className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6"
+          variants={fadeUp}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          transition={transition(0.05)}
+        >
+          <div>
+            <p className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] uppercase text-[#287A71] mb-5">
+              <span className="flex size-[5px] rounded-full bg-[#287A71]" />
+              What We Offer
+            </p>
+            <h2
+              className="font-display1 text-[2.25rem] sm:text-[2.75rem] lg:text-[3.25rem] font-semibold leading-[1.08] tracking-[-0.03em] text-[#0B3B24]"
+            >
+              Curated trips for<br />every traveller
+            </h2>
+          </div>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            transition={transition(0.2)}
+          >
+            <Button
+              asChild
+              className="rounded-sm bg-[#111111] hover:bg-[#2a2a2a] text-white font-medium px-6 h-11 text-sm shadow-none active:scale-[0.98] transition-all duration-200"
+            >
+              <Link href="/contact" prefetch>
+                Plan your journey
+                <ArrowRight className="ml-2 size-4" />
+              </Link>
+            </Button>
+          </motion.div>
+        </motion.div>
+
+        {/* ── Divider ── */}
+        <motion.div
+          className="h-px bg-[#EAEAEA] mb-0"
+          initial={{ scaleX: 0, originX: 0 }}
+          animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+        />
+
+        {/* ── Service rows ── */}
+        <motion.div
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={{
+            visible: { transition: { staggerChildren: 0.09, delayChildren: 0.2 } },
+          }}
+        >
+          {allServices.map((service, i) => (
+            <motion.div
+              key={service.title}
+              variants={{
+                hidden: { opacity: 0, y: 14, filter: "blur(4px)" },
+                visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+              }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="group grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-0 border-b border-[#EAEAEA] py-8 sm:py-10 items-center hover:bg-white transition-colors duration-300 cursor-default px-0 sm:px-2 rounded-sm">
+                {/* Left: number + icon + text */}
+                <div className="flex items-start gap-6 sm:gap-8">
+                  {/* Index number */}
+                  <span
+                    className="shrink-0 font-mono text-[11px] font-medium text-[#BEBEBE] tracking-wider pt-1 w-6 text-right"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Icon chip */}
+                  <div className="shrink-0 flex size-10 items-center justify-center rounded-[8px] border border-[#EAEAEA] bg-white text-[#0B3B24] group-hover:border-[#0B3B24]/20 group-hover:bg-[#EDF3EC] transition-all duration-300">
+                    {serviceIconMap[service.title] ?? <Compass className="size-5" strokeWidth={1.5} />}
+                  </div>
+
+                  {/* Title + blurb */}
+                  <div className="min-w-0">
+                    <h3 className="font-display text-[1.15rem] sm:text-[1.25rem] font-semibold text-[#111111] tracking-[-0.01em] leading-snug group-hover:text-[#0B3B24] transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <p className="mt-2 text-[14px] leading-[1.7] text-[#787774] max-w-xl">
+                      {service.blurb}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right: image thumbnail — hidden on mobile */}
+                <div className="hidden lg:block relative aspect-[16/7] rounded-[10px] overflow-hidden border border-[#EAEAEA] group-hover:border-transparent group-hover:shadow-[0_2px_16px_rgba(0,0,0,0.06)] transition-all duration-500">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="380px"
+                  />
+                  <div className="absolute inset-0 bg-white/10 group-hover:bg-transparent transition-colors duration-500" />
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
