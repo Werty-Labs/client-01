@@ -10,6 +10,7 @@ export const images = {
   kumana: "/assets/tarragon/Kumana-National-Park-Safari.jpg",
   kudumbigala: "/assets/tarragon/kudumbigala-monastery.jpg",
   teaching: "/assets/tarragon/a-cool-day-of-teaching.jpg",
+  sun_set: "/assets/tarragon/tropical-sunset.jpg",
   arugamWebp: "/assets/tarragon/ArugamBay.webp",
   arugam4: "/assets/tarragon/Arugam-Bay-4.jpg",
   colombo: "/assets/tarragon/colombo-sri-lanka.jpg",
@@ -18,11 +19,11 @@ export const images = {
   stock2: "/assets/tarragon/StockSnap_8B828310AC.jpg",
   sl: "/assets/tarragon/sl.jpg",
   galle: "/assets/tarragon/sl.jpg",
-  hero:"/assets/tarragon/AI2.png",
-  hero1:"/assets/tarragon/smoothly_generate_video_form_t.mp4",
-  hero_vid:"/assets/tarragon/Hero_Vid Final1.mp4",
+  hero: "/assets/tarragon/AI2.png",
+  hero1: "/assets/tarragon/smoothly_generate_video_form_t.mp4",
+  hero_vid: "/assets/tarragon/Hero_Vid Final1.mp4",
   contact: "/assets/tarragon/GalleFort.jpg",
-  LotusT :"/assets/tarragon/LotusT.jpg",
+  LotusT: "/assets/tarragon/LotusT.jpg",
 } as const;
 
 export const categories: Category[] = [
