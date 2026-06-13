@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { ArrowRight, ChevronLeft, ChevronRight, Clock, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,6 +25,132 @@ import {
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { images } from "@/lib/site-data";
 import type { Category, Destination, Tour, Service } from "@/types/site";
+
+// ─── Mobile sticky-card blur helper ──────────────────────────────────────────
+type ScrollProgress = ReturnType<typeof useScroll>["scrollYProgress"];
+
+function MobileStickyCard({
+  category,
+  index,
+  total,
+  containerProgress,
+}: {
+  category: Category;
+  index: number;
+  total: number;
+  containerProgress: ScrollProgress;
+}) {
+  const isLast = index === total - 1;
+
+  // Each card blurs once the next card starts overlapping it
+  const seg = 1 / (total + 1);
+  const blurStart = (index + 1) * seg;
+  const blurEnd   = (index + 1.5) * seg;
+  const overlayOpacity = useTransform(containerProgress, [blurStart, blurEnd], [0, 1]);
+
+  return (
+    <motion.div
+      className="sticky mt-5 rounded-[24px] overflow-hidden bg-white group cursor-pointer"
+      style={{
+        top: `${120 + index * 14}px`,
+        zIndex: 11 + index,
+        boxShadow: `0 ${8 + index * 2}px ${32 + index * 4}px rgba(0,0,0,${0.06 + index * 0.01})`,
+      }}
+      initial={{ opacity: 0, y: 60, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{
+        duration: 0.55,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        delay: 0.05,
+      }}
+    >
+      <div className="relative w-full aspect-[16/10] overflow-hidden">
+        <Image
+          src={category.image}
+          alt={category.title}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          sizes="100vw"
+        />
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/15 to-transparent" />
+      </div>
+      <div className="px-5 py-4">
+        <h3 className="font-display font-bold text-lg text-[#0B3B24] group-hover:text-primary transition-colors">
+          {category.title}
+        </h3>
+        <p className="mt-1 text-sm text-gray-500 leading-relaxed line-clamp-2">
+          {category.blurb}
+        </p>
+      </div>
+
+      {/* Gradient blur overlay — fades in as the next card stacks on top */}
+      {!isLast && (
+        <motion.div
+          className="absolute inset-0 rounded-[24px] pointer-events-none z-10 overflow-hidden"
+          style={{ opacity: overlayOpacity }}
+        >
+          {/* Backdrop blur with gradient mask — strongest at top, fading out toward bottom */}
+          <div
+            className="absolute inset-0 backdrop-blur-[6px]"
+            style={{
+              maskImage:
+                "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 75%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 75%)",
+            }}
+          />
+          {/* Subtle white wash for the frosted look */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/45 via-white/20 to-transparent" />
+        </motion.div>
+      )}
+    </motion.div>
+  );
+}
+
+function MobileExperienceStack({ categories }: { categories: Category[] }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  return (
+    <div ref={containerRef} className="sm:hidden -mx-4 px-4">
+      {/* Intro card — pinned at the top */}
+      <motion.div
+        className="sticky top-16 z-[10] rounded-[28px] bg-white/80 backdrop-blur-2xl backdrop-saturate-150 px-5 py-6 text-center"
+        style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)" }}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      >
+        <p className="flex items-center justify-center gap-2 text-xs font-semibold text-gray-500 tracking-[0.15em] uppercase">
+          <span className="flex size-1.5 rounded-full bg-[#287A71]" />
+          Explore by Experience
+        </p>
+        <h2 className="mt-3 font-display1 text-[1.5rem] font-bold tracking-tight leading-[1.15] text-[#0B3B24]">
+          Experience Diverse Worlds<br />On One Planet
+        </h2>
+      </motion.div>
+
+      {/* Category cards */}
+      {categories.map((category, i) => (
+        <MobileStickyCard
+          key={category.title}
+          category={category}
+          index={i}
+          total={categories.length}
+          containerProgress={scrollYProgress}
+        />
+      ))}
+
+      {/* Spacer — gives enough scroll room for the last cards to fully stack */}
+      <div className="h-[30vh]" />
+    </div>
+  );
+}
 
 type AnimatedHomeProps = {
   categories: Category[];
@@ -100,7 +226,8 @@ export function AnimatedHome({
       <div className="relative z-10 bg-background rounded-t-[2.5rem] shadow-[0_-20px_60px_rgba(0,0,0,0.15)]">
       {/* ── Experience section ── */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
-        <div className="mx-auto mb-16 max-w-3xl text-center">
+        {/* ── Desktop heading (unchanged) ── */}
+        <div className="hidden sm:block mx-auto mb-16 max-w-3xl text-center">
           <AnimatedHeading threshold={0.2} variant="fadeUp">
             <p className="flex items-center justify-center gap-2 text-sm font-semibold text-gray-600">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.5l-1.3 2.6c-.2.4-.1 1 .3 1.3L9 14l-4 4-3-1-1 1 4 4 1-1-1-3 4-4 3.4 6.3c.3.5.9.6 1.3.3l2.6-1.3c.4-.2.6-.6.5-1.1z"/></svg>{" "}
@@ -114,8 +241,13 @@ export function AnimatedHome({
             staggerMs={60}
           />
         </div>
+
+        {/* ── Mobile: Sticky card stack with scroll-driven blur ── */}
+        <MobileExperienceStack categories={categories} />
+
+        {/* ── Desktop: Original grid (unchanged) ── */}
         <StaggerContainer
-          className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-5 items-start"
+          className="hidden sm:grid grid-cols-2 sm:gap-6 lg:grid-cols-5 items-start"
           threshold={0.15}
           staggerDelay={0.2}
         >
@@ -537,8 +669,8 @@ function ServiceCarousel({
       style={{ height: isMobile ? '420px' : 'clamp(380px, 35vw, 500px)' }}
     >
       {/* Left/Right Fade Overlays */}
-      <div className="absolute top-0 left-0 w-24 sm:w-48 lg:w-64 h-full bg-gradient-to-r from-white via-white/90 to-transparent z-10 pointer-events-none" />
-      <div className="absolute top-0 right-0 w-24 sm:w-48 lg:w-64 h-full bg-gradient-to-l from-white via-white/90 to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 left-0 w-6 sm:w-48 lg:w-64 h-full bg-gradient-to-r from-white via-white/60 sm:via-white/90 to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-6 sm:w-48 lg:w-64 h-full bg-gradient-to-l from-white via-white/60 sm:via-white/90 to-transparent z-10 pointer-events-none" />
 
       {/* Left arrow */}
       <motion.button
