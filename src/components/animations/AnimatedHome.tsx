@@ -505,7 +505,7 @@ export function AnimatedHome({
           <div className="mx-auto max-w-7xl px-4 text-center sm:px-6">
             <AnimatedHeading threshold={0.2} variant="fadeUp">
               <h2 className="font-display1 text-3xl font-bold text-[#0B3B24] sm:text-4xl">
-                Our Services
+                Why Choose Us
               </h2>
             </AnimatedHeading>
 
