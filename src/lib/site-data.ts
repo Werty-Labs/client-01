@@ -64,6 +64,7 @@ export const destinations: Destination[] = [
     slug: "yala",
     name: "Yala National Park",
     image: images.yala,
+    category: "WILDLIFE",
     blurb:
       "One of the best places in Sri Lanka for wildlife safaris, famous for its leopard population. Visitors can also spot elephants, sloth bears, and a variety of bird species in this diverse ecosystem.",
     description: "Yala National Park is Sri Lanka's most famous wildlife sanctuary, hugging the island's southeastern coastline. It offers incredible biodiversity and is celebrated globally for having one of the highest leopard densities in the world.",
@@ -97,6 +98,7 @@ export const destinations: Destination[] = [
     slug: "ella",
     name: "Ella",
     image: images.ella,
+    category: "HILLS",
     blurb:
       "A charming hill station known for its lush tea plantations, stunning landscapes, and hiking opportunities. Key attractions include the Nine Arches Bridge, Little Adam's Peak, and Ella Rock.",
     description: "Ella is a picturesque hill-country village surrounded by misty tea plantations and forested peaks. Famous for its relaxed vibe and stunning hiking trails, it serves as the perfect base for exploring Sri Lanka's central highlands.",
@@ -132,6 +134,7 @@ export const destinations: Destination[] = [
     slug: "galle",
     name: "Galle",
     image: images.galle,
+    category: "COASTAL",
     blurb:
       "Renowned for its well-preserved colonial architecture and the historic Galle Fort, a UNESCO World Heritage Site. The fort area features charming streets, boutiques, cafes, and beautiful ocean views.",
     description: "Galle is a captivating coastal city that perfectly blends its colonial past with vibrant tropical beauty. Its centerpiece is the historic Galle Fort, a beautifully preserved architectural marvel built by the Portuguese and Dutch.",
@@ -167,6 +170,7 @@ export const destinations: Destination[] = [
     slug: "kandy",
     name: "Kandy",
     image: images.kandy,
+    category: "HERITAGE",
     blurb:
       "Famous for the Temple of the Tooth, which houses a sacred relic of the Buddha. Kandy is also known for its picturesque lake, botanical gardens, and cultural performances.",
     description: "Surrounded by lush mountains, Kandy is the cultural capital of Sri Lanka and the last royal capital of the island's ancient kings. The city is centered around a scenic lake and is revered as the home of the sacred Temple of the Tooth Relic.",
@@ -202,6 +206,7 @@ export const destinations: Destination[] = [
     slug: "sigiriya",
     name: "Sigiriya",
     image: images.sigiriya,
+    category: "HERITAGE",
     blurb:
       "Known for the iconic Sigiriya Rock Fortress, a UNESCO World Heritage Site. Visitors can explore ancient frescoes, water gardens, and climb to the summit for stunning views.",
     description: "Sigiriya, or the 'Lion Rock', is an ancient rock fortress and palace ruin dominating the surrounding jungle landscape. This astonishing feat of engineering and art features beautiful frescoes, water gardens, and a dramatic climb to the summit.",
@@ -237,6 +242,7 @@ export const destinations: Destination[] = [
     slug: "colombo",
     name: "Colombo",
     image: images.colombo,
+    category: "COASTAL",
     blurb:
       "Sri Lanka's vibrant capital - a mix of modern skyline, colonial-era buildings, bustling markets, and beachfront promenades along Galle Face Green.",
     description: "Colombo is the bustling commercial capital of Sri Lanka, a vibrant metropolis that reflects the island's mix of diverse cultures and colonial history. From historic temples to modern skyscrapers and lively markets, it is a city of exciting contrasts.",
@@ -273,6 +279,7 @@ export const destinations: Destination[] = [
     slug: "arugam-bay",
     name: "Arugam Bay",
     image: images.arugamWebp,
+    category: "COASTAL",
     blurb:
       "A world-class surfing destination on the east coast with laid-back vibes, golden beaches, and access to Kumana National Park.",
     description: "Arugam Bay is a laid-back coastal town on the east coast, famous for its world-class surf breaks and relaxed bohemian atmosphere. Beyond surfing, it offers pristine beaches, lagoon safaris, and proximity to excellent wildlife parks.",
@@ -309,6 +316,7 @@ export const destinations: Destination[] = [
     slug: "mirissa",
     name: "Mirissa",
     image: images.stock2,
+    category: "COASTAL",
     blurb:
       "A picturesque coastal town famed for whale watching, palm-fringed beaches, and stunning sunsets.",
     description: "Mirissa is a vibrant coastal town in the south known for its golden beaches, vibrant nightlife, and incredible marine life. It is widely considered one of the best places in the world to witness blue whales in their natural habitat.",
@@ -344,6 +352,7 @@ export const destinations: Destination[] = [
     slug: "nuwara-eliya",
     name: "Nuwara Eliya",
     image: images.teaching,
+    category: "HILLS",
     blurb:
       "'Little England' - cool climate, rolling tea estates, colonial bungalows, and Horton Plains nearby.",
     description: "Often referred to as 'Little England', Nuwara Eliya is characterized by its colonial-era bungalows, manicured gardens, and cool climate. Nestled in the heart of tea country, it offers a refreshing contrast to the island's tropical coastal areas.",
@@ -377,9 +386,47 @@ export const destinations: Destination[] = [
     ]
   },
   {
+    slug: "trincomalee",
+    name: "Trincomalee",
+    image: images.sl,
+    category: "COASTAL",
+    blurb:
+      "A natural deepwater harbour on the east coast with pristine beaches, coral reefs and historic temples.",
+    description: "Located on the northeast coast, Trincomalee is built around one of the world's deepest natural harbors and features stunning white sand beaches. The area boasts a rich history, ancient Hindu temples, and excellent opportunities for diving and whale watching.",
+    highlights: [
+      "Koneswaram Temple (Temple of a Thousand Pillars)",
+      "Fort Fredrick",
+      "Pigeon Island National Park",
+      "Nilaveli and Uppuveli beaches",
+      "Marble Beach"
+    ],
+    bestSeason: "May – October",
+    activities: [
+      "Snorkeling with reef sharks at Pigeon Island",
+      "Whale watching (Blue and Sperm whales)",
+      "Relaxing on Nilaveli Beach",
+      "Exploring Fort Fredrick and the deer that roam there"
+    ],
+    quickFacts: {
+      "Harbor": "5th largest natural harbor in the world",
+      "Coast": "East Coast",
+      "Key Attraction": "Pigeon Island Marine Sanctuary"
+    },
+    localTips: [
+      "If planning to snorkel at Pigeon Island, go early in the morning to enjoy better visibility and fewer crowds.",
+      "When visiting Koneswaram Temple, enjoy the incredible panoramic ocean views from Swami Rock."
+    ],
+    gallery: [
+      images.surf,
+      images.sun_set,
+      images.sl
+    ]
+  },
+  {
     slug: "anuradhapura",
     name: "Anuradhapura",
     image: images.stock1,
+    category: "HERITAGE",
     blurb:
       "An ancient sacred city with vast stupas, monasteries, and the sacred Bodhi tree.",
     description: "Anuradhapura is one of the ancient capitals of Sri Lanka, renowned for its well-preserved ruins of ancient Sinhala civilization. As a major center of Theravada Buddhism, it is home to magnificent stupas, ancient pools, and the sacred Bodhi Tree.",
@@ -416,6 +463,7 @@ export const destinations: Destination[] = [
     slug: "polonnaruwa",
     name: "Polonnaruwa",
     image: images.kudumbigala,
+    category: "HERITAGE",
     blurb:
       "A medieval capital filled with well-preserved ruins, royal palaces, and rock-carved Buddhas.",
     description: "Polonnaruwa was the second ancient royal capital of Sri Lanka, offering incredibly preserved ruins in a compact and easily navigable archaeological park. The city showcases magnificent monumental architecture and stunning rock sculptures created by masterful ancient artisans.",
@@ -446,42 +494,6 @@ export const destinations: Destination[] = [
       images.stock2,
       images.sl,
       images.sun_set
-    ]
-  },
-  {
-    slug: "trincomalee",
-    name: "Trincomalee",
-    image: images.sl,
-    blurb:
-      "A natural deepwater harbour on the east coast with pristine beaches, coral reefs and historic temples.",
-    description: "Located on the northeast coast, Trincomalee is built around one of the world's deepest natural harbors and features stunning white sand beaches. The area boasts a rich history, ancient Hindu temples, and excellent opportunities for diving and whale watching.",
-    highlights: [
-      "Koneswaram Temple (Temple of a Thousand Pillars)",
-      "Fort Fredrick",
-      "Pigeon Island National Park",
-      "Nilaveli and Uppuveli beaches",
-      "Marble Beach"
-    ],
-    bestSeason: "May – October",
-    activities: [
-      "Snorkeling with reef sharks at Pigeon Island",
-      "Whale watching (Blue and Sperm whales)",
-      "Relaxing on Nilaveli Beach",
-      "Exploring Fort Fredrick and the deer that roam there"
-    ],
-    quickFacts: {
-      "Harbor": "5th largest natural harbor in the world",
-      "Coast": "East Coast",
-      "Key Attraction": "Pigeon Island Marine Sanctuary"
-    },
-    localTips: [
-      "If planning to snorkel at Pigeon Island, go early in the morning to enjoy better visibility and fewer crowds.",
-      "When visiting Koneswaram Temple, enjoy the incredible panoramic ocean views from Swami Rock."
-    ],
-    gallery: [
-      images.surf,
-      images.sun_set,
-      images.sl
     ]
   }
 ];

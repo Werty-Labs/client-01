@@ -9,6 +9,7 @@ export type Destination = {
   name: string;
   blurb: string;
   image: string;
+  category: string;
   description?: string;
   gallery?: string[];
   highlights?: string[];
