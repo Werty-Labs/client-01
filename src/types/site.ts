@@ -9,6 +9,13 @@ export type Destination = {
   name: string;
   blurb: string;
   image: string;
+  description?: string;
+  gallery?: string[];
+  highlights?: string[];
+  bestSeason?: string;
+  activities?: string[];
+  quickFacts?: Record<string, string>;
+  localTips?: string[];
 };
 
 export type TourItineraryDay = {

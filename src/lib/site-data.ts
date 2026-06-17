@@ -66,6 +66,32 @@ export const destinations: Destination[] = [
     image: images.yala,
     blurb:
       "One of the best places in Sri Lanka for wildlife safaris, famous for its leopard population. Visitors can also spot elephants, sloth bears, and a variety of bird species in this diverse ecosystem.",
+    description: "Yala National Park is Sri Lanka's most famous wildlife sanctuary, hugging the island's southeastern coastline. It offers incredible biodiversity and is celebrated globally for having one of the highest leopard densities in the world.",
+    highlights: [
+      "Spotting elusive leopards in Block 1",
+      "Watching herds of roaming elephants",
+      "Exploring ancient Buddhist ruins inside the park"
+    ],
+    bestSeason: "February – July",
+    activities: [
+      "Morning and evening jeep safaris",
+      "Wildlife photography",
+      "Bird watching in the lagoons"
+    ],
+    quickFacts: {
+      "Area": "979 sq km",
+      "Status": "Designated Wildlife Sanctuary since 1900",
+      "Altitude": "0-30 meters"
+    },
+    localTips: [
+      "Opt for a morning safari arriving at the gate by 5:30 AM for the best chance to see leopards.",
+      "Bring a zoom lens of at least 300mm for wildlife photography."
+    ],
+    gallery: [
+      images.yala,
+      images.kumana,
+      images.sl
+    ]
   },
   {
     slug: "ella",
@@ -73,6 +99,34 @@ export const destinations: Destination[] = [
     image: images.ella,
     blurb:
       "A charming hill station known for its lush tea plantations, stunning landscapes, and hiking opportunities. Key attractions include the Nine Arches Bridge, Little Adam's Peak, and Ella Rock.",
+    description: "Ella is a picturesque hill-country village surrounded by misty tea plantations and forested peaks. Famous for its relaxed vibe and stunning hiking trails, it serves as the perfect base for exploring Sri Lanka's central highlands.",
+    highlights: [
+      "Nine Arches Bridge",
+      "Ella Rock",
+      "Little Adam's Peak",
+      "Ravana Falls"
+    ],
+    bestSeason: "January – May",
+    activities: [
+      "Hiking to Ella Rock",
+      "Watching the train cross the Nine Arches Bridge",
+      "Touring a tea factory",
+      "Taking a cooking class"
+    ],
+    quickFacts: {
+      "Altitude": "1,041 m",
+      "Climate": "Cool and misty",
+      "Province": "Uva Province"
+    },
+    localTips: [
+      "Hike Little Adam's Peak at sunrise for breathtaking views before the heat and mist roll in.",
+      "Book your scenic train ticket from Kandy well in advance as it sells out quickly."
+    ],
+    gallery: [
+      images.ella,
+      images.stock1,
+      images.sl
+    ]
   },
   {
     slug: "galle",
@@ -80,6 +134,34 @@ export const destinations: Destination[] = [
     image: images.galle,
     blurb:
       "Renowned for its well-preserved colonial architecture and the historic Galle Fort, a UNESCO World Heritage Site. The fort area features charming streets, boutiques, cafes, and beautiful ocean views.",
+    description: "Galle is a captivating coastal city that perfectly blends its colonial past with vibrant tropical beauty. Its centerpiece is the historic Galle Fort, a beautifully preserved architectural marvel built by the Portuguese and Dutch.",
+    highlights: [
+      "Galle Fort and its ramparts",
+      "Historic Galle Lighthouse",
+      "Dutch Reformed Church",
+      "Boutique shops and cafes"
+    ],
+    bestSeason: "December – April",
+    activities: [
+      "Walking along the fort walls at sunset",
+      "Exploring colonial architecture",
+      "Shopping for gems and local crafts",
+      "Visiting the maritime museum"
+    ],
+    quickFacts: {
+      "UNESCO Status": "World Heritage Site since 1988",
+      "Established": "Fortified in 1588",
+      "Province": "Southern Province"
+    },
+    localTips: [
+      "Visit the fort ramparts just before sunset for the best views and a spectacular atmosphere.",
+      "Try the local seafood dishes at the cafes tucked inside the fort's narrow cobblestone streets."
+    ],
+    gallery: [
+      images.galle,
+      images.sun_set,
+      images.sl
+    ]
   },
   {
     slug: "kandy",
@@ -87,6 +169,34 @@ export const destinations: Destination[] = [
     image: images.kandy,
     blurb:
       "Famous for the Temple of the Tooth, which houses a sacred relic of the Buddha. Kandy is also known for its picturesque lake, botanical gardens, and cultural performances.",
+    description: "Surrounded by lush mountains, Kandy is the cultural capital of Sri Lanka and the last royal capital of the island's ancient kings. The city is centered around a scenic lake and is revered as the home of the sacred Temple of the Tooth Relic.",
+    highlights: [
+      "Temple of the Sacred Tooth Relic",
+      "Royal Botanical Gardens in Peradeniya",
+      "Kandy Lake",
+      "Udawatta Kele Sanctuary"
+    ],
+    bestSeason: "January – April",
+    activities: [
+      "Attending a traditional Kandyan dance performance",
+      "Strolling through the botanical gardens",
+      "Boating on Kandy Lake",
+      "Visiting the Ceylon Tea Museum"
+    ],
+    quickFacts: {
+      "Altitude": "500 m",
+      "UNESCO Status": "World Heritage Site since 1988",
+      "Significance": "Last capital of the ancient kings' era"
+    },
+    localTips: [
+      "Dress modestly when visiting the Temple of the Tooth, ensuring shoulders and knees are covered.",
+      "Try to visit during the Esala Perahera festival in July/August to witness spectacular cultural parades."
+    ],
+    gallery: [
+      images.kandy,
+      images.teaching,
+      images.stock2
+    ]
   },
   {
     slug: "sigiriya",
@@ -94,6 +204,34 @@ export const destinations: Destination[] = [
     image: images.sigiriya,
     blurb:
       "Known for the iconic Sigiriya Rock Fortress, a UNESCO World Heritage Site. Visitors can explore ancient frescoes, water gardens, and climb to the summit for stunning views.",
+    description: "Sigiriya, or the 'Lion Rock', is an ancient rock fortress and palace ruin dominating the surrounding jungle landscape. This astonishing feat of engineering and art features beautiful frescoes, water gardens, and a dramatic climb to the summit.",
+    highlights: [
+      "The Lion Gate",
+      "Ancient frescoes of maidens",
+      "The Mirror Wall",
+      "Intricate water gardens at the base"
+    ],
+    bestSeason: "January – April",
+    activities: [
+      "Climbing the 1,200 steps to the summit",
+      "Exploring the royal gardens",
+      "Hiking Pidurangala Rock for sunset views of Sigiriya",
+      "Cycling around the ancient ruins"
+    ],
+    quickFacts: {
+      "Height": "200 meters (660 ft) rock column",
+      "UNESCO Status": "World Heritage Site since 1982",
+      "Era": "Built by King Kashyapa (477 – 495 CE)"
+    },
+    localTips: [
+      "Start your climb as soon as the site opens at 7:00 AM to avoid the intense midday heat and large crowds.",
+      "Beware of the resident monkeys and wasp nests on the rock; do not feed the wildlife or make loud noises."
+    ],
+    gallery: [
+      images.sigiriya,
+      images.sun_set,
+      images.stock1
+    ]
   },
   {
     slug: "colombo",
@@ -101,6 +239,35 @@ export const destinations: Destination[] = [
     image: images.colombo,
     blurb:
       "Sri Lanka's vibrant capital - a mix of modern skyline, colonial-era buildings, bustling markets, and beachfront promenades along Galle Face Green.",
+    description: "Colombo is the bustling commercial capital of Sri Lanka, a vibrant metropolis that reflects the island's mix of diverse cultures and colonial history. From historic temples to modern skyscrapers and lively markets, it is a city of exciting contrasts.",
+    highlights: [
+      "Gangaramaya Temple",
+      "Galle Face Green",
+      "Pettah Floating Market",
+      "National Museum of Colombo",
+      "Lotus Tower"
+    ],
+    bestSeason: "January – March",
+    activities: [
+      "Eating street food at Galle Face Green",
+      "Shopping at Pettah Market",
+      "Enjoying the views from the Lotus Tower",
+      "Taking a Tuk-Tuk city tour"
+    ],
+    quickFacts: {
+      "Population": "Over 5.6 million (metro)",
+      "Status": "Commercial Capital",
+      "Area": "37.31 sq km"
+    },
+    localTips: [
+      "Use ride-hailing apps like PickMe or Uber for transparent Tuk-Tuk fares.",
+      "Spend an evening strolling along Galle Face Green to experience the local street food and ocean breeze."
+    ],
+    gallery: [
+      images.colombo,
+      images.lotus,
+      images.LotusT
+    ]
   },
   {
     slug: "arugam-bay",
@@ -108,6 +275,35 @@ export const destinations: Destination[] = [
     image: images.arugamWebp,
     blurb:
       "A world-class surfing destination on the east coast with laid-back vibes, golden beaches, and access to Kumana National Park.",
+    description: "Arugam Bay is a laid-back coastal town on the east coast, famous for its world-class surf breaks and relaxed bohemian atmosphere. Beyond surfing, it offers pristine beaches, lagoon safaris, and proximity to excellent wildlife parks.",
+    highlights: [
+      "Main Point surf break",
+      "Elephant Rock",
+      "Muhudu Maha Viharaya",
+      "Kumana National Park nearby",
+      "Kudumbigala Monastery"
+    ],
+    bestSeason: "May – September",
+    activities: [
+      "Surfing and taking surf lessons",
+      "Lagoon safari at Pottuvil or Panama",
+      "Wildlife spotting in Kumana",
+      "Beachside yoga"
+    ],
+    quickFacts: {
+      "Vibe": "Surfer town",
+      "Coast": "East Coast",
+      "Key Attraction": "Top 10 surf destination in the world"
+    },
+    localTips: [
+      "Rent a scooter to easily travel between different surf breaks and hidden beaches.",
+      "Visit Kumana National Park for a quieter, less crowded alternative to Yala."
+    ],
+    gallery: [
+      images.arugamWebp,
+      images.arugam4,
+      images.surf
+    ]
   },
   {
     slug: "mirissa",
@@ -115,6 +311,34 @@ export const destinations: Destination[] = [
     image: images.stock2,
     blurb:
       "A picturesque coastal town famed for whale watching, palm-fringed beaches, and stunning sunsets.",
+    description: "Mirissa is a vibrant coastal town in the south known for its golden beaches, vibrant nightlife, and incredible marine life. It is widely considered one of the best places in the world to witness blue whales in their natural habitat.",
+    highlights: [
+      "Whale watching off the coast",
+      "Coconut Tree Hill",
+      "Secret Beach",
+      "Parrot Rock"
+    ],
+    bestSeason: "December – April",
+    activities: [
+      "Whale and dolphin watching tours",
+      "Surfing and snorkeling",
+      "Enjoying beachfront seafood dinners",
+      "Relaxing on Mirissa Beach"
+    ],
+    quickFacts: {
+      "Coast": "South Coast",
+      "Famous for": "Blue whale sightings",
+      "Vibe": "Lively beach town"
+    },
+    localTips: [
+      "Choose an ethical, registered whale watching operator that respects the animals' space.",
+      "Visit Coconut Tree Hill early in the morning to get photos without the large crowds."
+    ],
+    gallery: [
+      images.surf,
+      images.sun_set,
+      images.sl
+    ]
   },
   {
     slug: "nuwara-eliya",
@@ -122,6 +346,35 @@ export const destinations: Destination[] = [
     image: images.teaching,
     blurb:
       "'Little England' - cool climate, rolling tea estates, colonial bungalows, and Horton Plains nearby.",
+    description: "Often referred to as 'Little England', Nuwara Eliya is characterized by its colonial-era bungalows, manicured gardens, and cool climate. Nestled in the heart of tea country, it offers a refreshing contrast to the island's tropical coastal areas.",
+    highlights: [
+      "Gregory Lake",
+      "Hakgala Botanical Garden",
+      "Pedro Tea Estate",
+      "Victoria Park",
+      "Lover's Leap Waterfall"
+    ],
+    bestSeason: "February – April",
+    activities: [
+      "Touring a working tea factory",
+      "Boating or cycling around Gregory Lake",
+      "Playing golf at the Nuwara Eliya Golf Club",
+      "Hiking in Horton Plains to World's End"
+    ],
+    quickFacts: {
+      "Altitude": "1,868 m",
+      "Climate": "Subtropical highland (cool)",
+      "Established": "Founded by Samuel Baker in 1846"
+    },
+    localTips: [
+      "Pack warm clothing, including a jacket or sweater, as temperatures can drop significantly at night.",
+      "Stop for a high tea experience at one of the old colonial hotels to step back in time."
+    ],
+    gallery: [
+      images.stock1,
+      images.stock2,
+      images.sl
+    ]
   },
   {
     slug: "anuradhapura",
@@ -129,6 +382,35 @@ export const destinations: Destination[] = [
     image: images.stock1,
     blurb:
       "An ancient sacred city with vast stupas, monasteries, and the sacred Bodhi tree.",
+    description: "Anuradhapura is one of the ancient capitals of Sri Lanka, renowned for its well-preserved ruins of ancient Sinhala civilization. As a major center of Theravada Buddhism, it is home to magnificent stupas, ancient pools, and the sacred Bodhi Tree.",
+    highlights: [
+      "Jaya Sri Maha Bodhi (Sacred Fig Tree)",
+      "Ruwanwelisaya Stupa",
+      "Jetavanaramaya",
+      "Abhayagiri Vihāra",
+      "Kuttam Pokuna (Twin Ponds)"
+    ],
+    bestSeason: "July – September, January – March",
+    activities: [
+      "Cycling through the ancient city ruins",
+      "Participating in Buddhist rituals at the Bodhi Tree",
+      "Exploring the archaeological museum",
+      "Photographing the massive brick stupas"
+    ],
+    quickFacts: {
+      "UNESCO Status": "World Heritage Site since 1982",
+      "Era": "Capital from 4th century BCE to 11th century CE",
+      "Significance": "First ancient capital of Sri Lanka"
+    },
+    localTips: [
+      "Rent a bicycle to explore the vast complex as walking between monuments can be exhausting.",
+      "Wear easily removable sandals, as you must take off your shoes frequently when entering temple grounds."
+    ],
+    gallery: [
+      images.teaching,
+      images.stock1,
+      images.sl
+    ]
   },
   {
     slug: "polonnaruwa",
@@ -136,6 +418,35 @@ export const destinations: Destination[] = [
     image: images.kudumbigala,
     blurb:
       "A medieval capital filled with well-preserved ruins, royal palaces, and rock-carved Buddhas.",
+    description: "Polonnaruwa was the second ancient royal capital of Sri Lanka, offering incredibly preserved ruins in a compact and easily navigable archaeological park. The city showcases magnificent monumental architecture and stunning rock sculptures created by masterful ancient artisans.",
+    highlights: [
+      "Gal Vihara rock statues",
+      "The Royal Palace of King Parakramabahu",
+      "Parakrama Samudra (massive ancient reservoir)",
+      "The Quadrangle (Dalada Maluva)",
+      "Lankatilaka Vihara"
+    ],
+    bestSeason: "July – September, January – March",
+    activities: [
+      "Cycling around the archaeological park",
+      "Admiring the giant Buddha statues of Gal Vihara",
+      "Bird watching near the Parakrama Samudra",
+      "Visiting the Polonnaruwa Museum"
+    ],
+    quickFacts: {
+      "UNESCO Status": "World Heritage Site since 1982",
+      "Era": "Capital from 11th to 13th century CE",
+      "Key Figure": "King Parakramabahu I"
+    },
+    localTips: [
+      "Start your tour at the museum to gain helpful context before exploring the ruins.",
+      "The ruins are close together, making a half-day bicycle ride the perfect way to see everything."
+    ],
+    gallery: [
+      images.stock2,
+      images.sl,
+      images.sun_set
+    ]
   },
   {
     slug: "trincomalee",
@@ -143,7 +454,36 @@ export const destinations: Destination[] = [
     image: images.sl,
     blurb:
       "A natural deepwater harbour on the east coast with pristine beaches, coral reefs and historic temples.",
-  },
+    description: "Located on the northeast coast, Trincomalee is built around one of the world's deepest natural harbors and features stunning white sand beaches. The area boasts a rich history, ancient Hindu temples, and excellent opportunities for diving and whale watching.",
+    highlights: [
+      "Koneswaram Temple (Temple of a Thousand Pillars)",
+      "Fort Fredrick",
+      "Pigeon Island National Park",
+      "Nilaveli and Uppuveli beaches",
+      "Marble Beach"
+    ],
+    bestSeason: "May – October",
+    activities: [
+      "Snorkeling with reef sharks at Pigeon Island",
+      "Whale watching (Blue and Sperm whales)",
+      "Relaxing on Nilaveli Beach",
+      "Exploring Fort Fredrick and the deer that roam there"
+    ],
+    quickFacts: {
+      "Harbor": "5th largest natural harbor in the world",
+      "Coast": "East Coast",
+      "Key Attraction": "Pigeon Island Marine Sanctuary"
+    },
+    localTips: [
+      "If planning to snorkel at Pigeon Island, go early in the morning to enjoy better visibility and fewer crowds.",
+      "When visiting Koneswaram Temple, enjoy the incredible panoramic ocean views from Swami Rock."
+    ],
+    gallery: [
+      images.surf,
+      images.sun_set,
+      images.sl
+    ]
+  }
 ];
 
 export const tours: Tour[] = [
@@ -153,7 +493,7 @@ export const tours: Tour[] = [
     location: "Arugam Bay",
     duration: "5 days",
     groupSize: 20,
-    price: null,
+    price: 300,
     featured: true,
     image: images.arugamWebp,
     gallery: [images.arugamWebp, images.arugam4, images.kumana, images.kudumbigala],
