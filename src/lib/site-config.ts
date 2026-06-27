@@ -13,7 +13,7 @@ export const siteConfig = {
   creator: "Tarragon Leisure",
   author: "Tarragon Leisure",
   locale: "en_US",
-  defaultOgImage: "/assets/tarragon/sigiriya.jpg",
+  defaultOgImage: "/assets/tarragon/sigiriya-2.jpg",
   keywords: [
     "Sri Lanka tours",
     "Sri Lanka travel",
