@@ -8,11 +8,11 @@ import { breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/structured-data";
 import { AnimatedDestinations } from "@/components/animations/AnimatedDestinations";
 
 export const metadata = buildMetadata({
-  title: "Destinations",
+  title: "Destinations in Sri Lanka",
   description:
-    "Explore Sri Lanka's top destinations including Yala, Ella, Galle, Kandy, Sigiriya, Colombo, and more.",
+    "Explore Sri Lanka's top destinations including Yala, Ella, Galle, Kandy, Sigiriya, Colombo, and Nuwara Eliya with Tarragon Leisure.",
   path: "/destinations",
-  image: images.sigiriya,
+  image: images.sigiriya2,
 });
 
 export const dynamic = "force-static";

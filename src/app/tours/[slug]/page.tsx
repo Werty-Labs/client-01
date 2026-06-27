@@ -87,28 +87,38 @@ export default async function TourDetailPage({ params }: TourPageProps) {
 
       <article>
         {/* ── Hero Section ── */}
-        <section className="relative h-[70vh] min-h-[480px]">
-          <Image
-            src={tour.image}
-            alt={tour.title}
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
-          />
-          {/* Bright airy overlay */}
-          <div className="absolute inset-0 bg-white/10" />
-          <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-white/95 via-white/80 to-transparent" />
-          <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col items-center justify-end px-4 pb-14 text-center sm:px-6">
-            <p className="flex items-center gap-1.5 text-sm uppercase tracking-[0.3em] text-primary font-bold">
-              <MapPin className="size-3.5" /> {tour.location}
-            </p>
-            <h1 className="mt-3 max-w-3xl font-display text-4xl leading-tight text-primary sm:text-5xl lg:text-6xl">
-              {tour.title}
-            </h1>
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-foreground/70 sm:text-base">
-              {tour.summary}
-            </p>
+        <section className="relative flex min-h-[75dvh] flex-col justify-center px-4 pt-32 pb-16 sm:px-8 lg:px-16 xl:px-24">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={tour.image}
+              alt={tour.title}
+              fill
+              priority
+              className="object-cover object-[50%_30%]"
+              sizes="100vw"
+            />
+          </div>
+          
+          {/* Top dark gradient to protect the navbar */}
+          <div className="absolute inset-x-0 top-0 z-0 h-40 bg-gradient-to-b from-black/70 to-transparent" />
+          
+          {/* Cinematic Edge Fade */}
+          <div className="absolute inset-y-0 left-0 z-0 w-full bg-gradient-to-t from-black/90 via-black/40 to-transparent lg:w-3/4 lg:bg-gradient-to-r lg:from-black/90 lg:via-black/50 lg:to-transparent" />
+
+          {/* Content (No box, floating directly on the gradient) */}
+          <div className="relative z-10 mx-auto w-full max-w-7xl">
+            <div className="max-w-2xl mt-auto lg:mt-0 pt-24 lg:pt-0">
+              <p className="flex items-center gap-1.5 text-sm font-bold uppercase tracking-[0.3em] text-white/90">
+                <MapPin className="size-4" /> {tour.location}
+              </p>
+              <h1 className="mt-4 text-4xl leading-tight text-white sm:text-5xl lg:text-6xl text-balance">
+                {tour.title}
+              </h1>
+              <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg text-pretty">
+                {tour.summary}
+              </p>
+            </div>
           </div>
         </section>
 

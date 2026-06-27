@@ -422,7 +422,7 @@ function GallerySection() {
   const { ref, inView } = useScrollAnimation(0.1);
 
   const galleryImages = [
-    { src: images.sigiriya, alt: "Sigiriya Rock Fortress", span: "col-span-2 row-span-2" },
+    { src: images.sigiriya2, alt: "Sigiriya Rock Fortress", span: "col-span-2 row-span-2" },
     { src: images.yala, alt: "Yala National Park Safari", span: "" },
     { src: images.ella, alt: "Ella Hill Country", span: "" },
     { src: images.arugamWebp, alt: "Arugam Bay Beach", span: "col-span-2" },

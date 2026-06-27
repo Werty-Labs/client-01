@@ -12,7 +12,7 @@ export const metadata = buildMetadata({
   title: siteConfig.tagline,
   description: siteConfig.description,
   path: "/",
-  image: images.sigiriya,
+  image: images.sigiriya2,
   keywords: siteConfig.keywords,
 });
 
