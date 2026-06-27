@@ -6,6 +6,7 @@ export const images = {
   heritage: "/assets/tarragon/heritage.jpg",
   yala: "/assets/tarragon/yala.png",
   ella: "/assets/tarragon/ella-2.jpg",
+  ella2: "/assets/tarragon/ella.webp",
   surf: "/assets/tarragon/surf.jpg",
   outdoor: "/assets/tarragon/outdoor-2.jpg",
   kandy: "/assets/tarragon/kandy-1.jpg",
@@ -32,6 +33,7 @@ export const images = {
   anuradhapura2: "/assets/tarragon/anuradhapura-2.webp",
   polonnaruwa: "/assets/tarragon/polonnaruwa.webp",
   beach: "/assets/tarragon/beaches.jpg",
+  surfing: "/assets/tarragon/surfing.webp",
 } as const;
 
 export const categories: Category[] = [
@@ -105,7 +107,7 @@ export const destinations: Destination[] = [
   {
     slug: "ella",
     name: "Ella",
-    image: images.ella,
+    image: images.ella2,
     category: "HILLS",
     blurb:
       "A charming hill station known for its lush tea plantations, stunning landscapes, and hiking opportunities. Key attractions include the Nine Arches Bridge, Little Adam's Peak, and Ella Rock.",
@@ -286,7 +288,7 @@ export const destinations: Destination[] = [
   {
     slug: "arugam-bay",
     name: "Arugam Bay",
-    image: images.arugamWebp,
+    image: images.surfing,
     category: "COASTAL",
     blurb:
       "A world-class surfing destination on the east coast with laid-back vibes, golden beaches, and access to Kumana National Park.",
@@ -315,7 +317,7 @@ export const destinations: Destination[] = [
       "Visit Kumana National Park for a quieter, less crowded alternative to Yala."
     ],
     gallery: [
-      images.arugamWebp,
+      images.surfing,
       images.mirissa,
       images.surf
     ]
@@ -514,8 +516,8 @@ export const tours: Tour[] = [
     duration: "5 days",
     groupSize: 20,
     featured: true,
-    image: images.arugamWebp,
-    gallery: [images.arugamWebp, images.eliya, images.kandy, images.kandy2],
+    image: images.surfing,
+    gallery: [images.surfing, images.eliya, images.kandy],
     summary:
       "Ride world-class waves, explore Kumana National Park, and unwind on the laid-back east coast of Sri Lanka.",
     highlights: [
@@ -772,8 +774,8 @@ export const tours: Tour[] = [
     location: "Ella",
     duration: "4 days",
     groupSize: 14,
-    image: images.ella,
-    gallery: [images.ella, images.teaching, images.kandy],
+    image: images.ella2,
+    gallery: [images.ella2, images.ella, images.kandy],
     summary:
       "Tea plantations, scenic train rides, and the iconic Nine Arches Bridge in Sri Lanka's hill country.",
     highlights: [
