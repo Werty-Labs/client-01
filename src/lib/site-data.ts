@@ -8,13 +8,13 @@ export const images = {
   ella: "/assets/tarragon/ella-2.jpg",
   ella2: "/assets/tarragon/ella.webp",
   surf: "/assets/tarragon/surf.jpg",
-  outdoor: "/assets/tarragon/outdoor-2.jpg",
+  outdoor: "/assets/tarragon/young-man-doing-wakeboarding-in-a-lake-whit-mounta-2026-01-08-02-41-01-utc (1).jpg",
   kandy: "/assets/tarragon/kandy-1.jpg",
   kandy2: "/assets/tarragon/kandy-2.webp",
   teaching: "/assets/tarragon/teaching.jpg",
   sun_set: "/assets/tarragon/tropical-sunset.webp",
   arugamWebp: "/assets/tarragon/arugam-bay.webp",
-  colombo: "/assets/tarragon/colombo-1.jpg",
+  colombo: "/assets/tarragon/Colombo_night.webp",
   colombo2: "/assets/tarragon/colombo-2.webp",
   lotus: "/assets/tarragon/lotus-tower-alt.jpg",
   sl: "/assets/tarragon/sri-lanka.jpg",
@@ -23,8 +23,8 @@ export const images = {
   hero1: "/assets/tarragon/hero-video-alt.mp4",
   hero_vid: "/assets/tarragon/hero-video.mp4",
   contact: "/assets/tarragon/galle-fort.webp",
-  wild: "/assets/tarragon/wildlife.jpg",
-  wellness: "/assets/tarragon/wellness.jpg",
+  wild: "/assets/tarragon/majestic-leopard-lounging-on-a-rocky-surface-in-a-2026-03-25-04-09-33-utc.webp",
+  wellness: "/assets/tarragon/concept-of-spa-relax-and-self-care-with-beautiful-2026-01-09-07-11-51-utc (1) (1) (1).jpg",
   honeymoon2: "/assets/tarragon/honeymoon-2.webp",
   family: "/assets/tarragon/family-2.jpg",
   mirissa: "/assets/tarragon/mirissa.webp",
@@ -33,7 +33,7 @@ export const images = {
   anuradhapura2: "/assets/tarragon/anuradhapura-2.webp",
   polonnaruwa: "/assets/tarragon/polonnaruwa.webp",
   beach: "/assets/tarragon/beaches.jpg",
-  surfing: "/assets/tarragon/surfing.webp",
+  surfing: "/assets/tarragon/surf-twomen.webp",
 } as const;
 
 export const categories: Category[] = [
@@ -251,7 +251,7 @@ export const destinations: Destination[] = [
   {
     slug: "colombo",
     name: "Colombo",
-    image: images.colombo2,
+    image: images.colombo,
     category: "COASTAL",
     blurb:
       "Sri Lanka's vibrant capital - a mix of modern skyline, colonial-era buildings, bustling markets, and beachfront promenades along Galle Face Green.",

@@ -94,7 +94,9 @@ export default async function DestinationDetailPage({
             alt={destination.name}
             fill
             priority
-            className="object-cover object-[80%_40%]"
+            className={`object-cover ${
+              destination.slug === "yala" ? "object-[15%_35%]" : "object-[80%_40%]"
+            }`}
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />

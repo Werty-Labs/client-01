@@ -469,7 +469,9 @@ function GallerySection() {
                 src={img.src}
                 alt={img.alt}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className={`object-cover transition-transform duration-700 group-hover:scale-105 ${
+                  img.src === images.yala ? "object-[20%_35%]" : ""
+                }`}
                 sizes="(max-width: 1024px) 50vw, 25vw"
               />
               {/* Hover overlay with location name */}

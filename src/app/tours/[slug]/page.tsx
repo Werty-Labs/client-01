@@ -95,7 +95,9 @@ export default async function TourDetailPage({ params }: TourPageProps) {
               alt={tour.title}
               fill
               priority
-              className="object-cover object-[50%_30%]"
+              className={`object-cover ${
+                tour.slug === "yala-wildlife-safari" ? "object-[15%_35%]" : "object-[50%_30%]"
+              }`}
               sizes="100vw"
             />
           </div>

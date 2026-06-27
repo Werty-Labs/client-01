@@ -333,7 +333,9 @@ export function AnimatedHome({
                         src={tour.image}
                         alt={tour.title}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        className={`object-cover transition-transform duration-700 group-hover:scale-110 ${
+                          tour.slug === "yala-wildlife-safari" ? "object-[20%_35%]" : ""
+                        }`}
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 z-10 flex items-start opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -415,7 +417,9 @@ export function AnimatedHome({
                         src={destination.image}
                         alt={destination.name}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        className={`object-cover transition-transform duration-700 group-hover:scale-105 ${
+                          destination.slug === "yala" ? "object-[20%_35%]" : ""
+                        }`}
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     </div>

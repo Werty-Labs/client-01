@@ -151,7 +151,9 @@ export function AnimatedDestinations({
                             src={dest.image}
                             alt={dest.name}
                             fill
-                            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
+                            className={`object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105 ${
+                              dest.slug === "yala" ? "object-[20%_35%]" : ""
+                            }`}
                             sizes="(max-width: 768px) 100vw, 50vw"
                           />
                           
