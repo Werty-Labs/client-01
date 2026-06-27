@@ -12,7 +12,7 @@ export function organizationJsonLd() {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.siteUrl,
-    logo: absoluteUrl("/assets/tarragon/K-0020-white.png"),
+    logo: absoluteUrl("/assets/tarragon/logo-white.png"),
     email: siteConfig.email,
     telephone: siteConfig.phone,
     address: {
@@ -116,14 +116,5 @@ export function tourProductJsonLd(tour: Tour) {
       "@type": "Organization",
       name: siteConfig.name,
     },
-    offers: tour.price
-      ? {
-          "@type": "Offer",
-          price: tour.price,
-          priceCurrency: "USD",
-          availability: "https://schema.org/InStock",
-          url: absoluteUrl(`/tours/${tour.slug}`),
-        }
-      : undefined,
   };
 }

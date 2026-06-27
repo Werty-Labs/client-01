@@ -33,6 +33,8 @@
   --font-sans: var(--font-inter);
   --font-display: var(--font-playfair);
   --font-display1: var(--font-Bodoni_Moda);
+  --color-dest-teal: var(--dest-teal);
+  --color-dest-amber: var(--dest-amber);
 }
 
 /* Hide scrollbar but keep scrolling */
@@ -67,6 +69,8 @@ html::-webkit-scrollbar {
   --ring: oklch(0.48 0.12 165);
   --sand: oklch(0.94 0.04 80);
   --ocean: oklch(0.55 0.13 215);
+  --dest-teal: #1A6B6B;
+  --dest-amber: #F5A623;
 }
 
 .dark {
@@ -91,6 +95,8 @@ html::-webkit-scrollbar {
   --ring: oklch(0.7 0.14 165);
   --sand: oklch(0.3 0.03 80);
   --ocean: oklch(0.55 0.13 215);
+  --dest-teal: #1A6B6B;
+  --dest-amber: #F5A623;
 }
 
 @layer base {

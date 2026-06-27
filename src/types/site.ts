@@ -9,6 +9,14 @@ export type Destination = {
   name: string;
   blurb: string;
   image: string;
+  category: string;
+  description?: string;
+  gallery?: string[];
+  highlights?: string[];
+  bestSeason?: string;
+  activities?: string[];
+  quickFacts?: Record<string, string>;
+  localTips?: string[];
 };
 
 export type TourItineraryDay = {
@@ -23,7 +31,6 @@ export type Tour = {
   location: string;
   duration: string;
   groupSize: number;
-  price: number | null;
   featured?: boolean;
   image: string;
   gallery: string[];

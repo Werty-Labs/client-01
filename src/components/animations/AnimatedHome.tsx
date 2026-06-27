@@ -350,14 +350,7 @@ export function AnimatedHome({
                       </div>
                     </div>
                     <div className="mt-5 px-1">
-                      <div className="flex items-end gap-1.5 text-[#101828]">
-                        <span className="text-[1.1rem] font-semibold leading-none tracking-tight sm:text-[1.45rem]">
-                          {tour.price !== null
-                            ? `$${tour.price.toFixed(2)}`
-                            : "Enquire"}
-                        </span>
-                      </div>
-                      <h3 className="mt-4 text-[1.45rem] font-sm leading-tight text-[#0B3B24] transition-colors duration-300 group-hover:text-green-600 sm:text-[1.55rem] font-semibold">
+                      <h3 className="text-[1.45rem] leading-tight text-[#0B3B24] transition-colors duration-300 group-hover:text-green-600 sm:text-[1.55rem] font-semibold">
                         {tour.title}
                       </h3>
                       <div className="mt-2 flex items-center gap-2 text-base text-[#667085] sm:text-[1.1rem]">
@@ -687,7 +680,7 @@ function ServiceCarousel({
       {/* Carousel cards */}
       <div className="absolute inset-0 flex justify-center items-center">
         {services.map((service, index) => {
-          const { xPercent, scale, opacity, zIndex, cardWidth } = getCardStyle(index);
+          const { xPercent, scale, opacity, zIndex, cardWidth, offset } = getCardStyle(index);
 
           return (
             <motion.div
@@ -729,30 +722,37 @@ function ServiceCarousel({
                 willChange: 'transform, opacity',
               }}
             >
-              <div className="relative w-full h-full overflow-hidden rounded-[32px] shadow-[0_12px_48px_rgba(0,0,0,0.12)]">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                {/* Glassmorphism text overlay */}
-                <motion.div
-                  className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 rounded-[20px] bg-gradient-to-br from-white/95 to-white/75 backdrop-blur-xl backdrop-saturate-150 px-5 py-4 sm:px-6 sm:py-5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-white/60"
-                  initial={{ y: 30, opacity: 0 }}
-                  animate={inView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+              <div className="flex flex-col h-full w-full group">
+                <div 
+                  className="relative w-full flex-1 overflow-hidden rounded-[2.5rem]"
+                  style={{
+                    boxShadow: offset === 0 ? "0 20px 40px -15px rgba(0,0,0,0.05)" : "none",
+                    transition: "box-shadow 0.5s ease-out"
+                  }}
+                >
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <motion.div 
+                  className="pt-6 px-2 flex-none flex flex-col items-center justify-start h-[110px]"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={inView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                   transition={{
                     type: 'spring',
                     stiffness: 100,
-                    damping: 15,
-                    delay: 0.3,
+                    damping: 20,
+                    delay: 0.1,
                   }}
                 >
-                  <h3 className="font-sans text-lg sm:text-xl font-bold text-[#111827] text-center tracking-tight">
+                  <h3 className="font-display text-[1.2rem] sm:text-[1.35rem] font-bold text-[#0B3B24] text-center tracking-tight">
                     {service.title}
                   </h3>
-                  <p className="mt-1.5 text-xs sm:text-sm text-[#4b5563] text-center leading-relaxed font-medium">
+                  <p className="mt-1.5 text-[0.85rem] sm:text-[0.95rem] text-gray-500 text-center leading-relaxed text-pretty line-clamp-2">
                     {service.blurb}
                   </p>
                 </motion.div>

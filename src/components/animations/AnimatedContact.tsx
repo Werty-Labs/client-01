@@ -131,7 +131,8 @@ export function AnimatedContact() {
           <div className="bg-white rounded-[24px] p-8 sm:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-border/40">
             <h2 className="font-display text-[28px] text-[#0B3B24] mb-2 tracking-tight">Send an Enquiry</h2>
             <p className="text-muted-foreground text-sm sm:text-base mb-8">
-              Prefer email? Fill out the details below and we'll craft your perfect itinerary.
+                Whether you&apos;re looking to customize an existing itinerary or
+                want to start from scratch, fill out the details below and we&apos;ll craft your perfect itinerary.
             </p>
             <ContactForm />
           </div>
