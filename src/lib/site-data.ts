@@ -2,18 +2,22 @@ import type { Category, Destination, Service, Tour } from "@/types/site";
 
 export const images = {
   logo: "/assets/tarragon/K-0020-white.png",
-  sigiriya: "/assets/tarragon/sigiriya.jpg",
-  yala: "/assets/tarragon/yala-safari.jpg",
-  ella: "/assets/tarragon/ella.jpg",
+  sigiriya: "/assets/tarragon/sigiriya2.jpg",
+  heritage: "/assets/tarragon/heritage.jpg",
+  yala: "/assets/tarragon/safari.jpg",
+  ella: "/assets/tarragon/ella2.jpg",
   surf: "/assets/tarragon/surf.jpg",
+  outdoor: "/assets/tarragon/outdoor2.jpg",
   kandy: "/assets/tarragon/kandy.jpg",
+  kandy2: "/assets/tarragon/kandy2.jpg",
   kumana: "/assets/tarragon/Kumana-National-Park-Safari.jpg",
   kudumbigala: "/assets/tarragon/kudumbigala-monastery.jpg",
   teaching: "/assets/tarragon/a-cool-day-of-teaching.jpg",
   sun_set: "/assets/tarragon/tropical-sunset.jpg",
   arugamWebp: "/assets/tarragon/ArugamBay.webp",
   arugam4: "/assets/tarragon/Arugam-Bay-4.jpg",
-  colombo: "/assets/tarragon/colombo-sri-lanka.jpg",
+  colombo: "/assets/tarragon/colombo.jpg",
+  colombo2: "/assets/tarragon/colombo2.jpg",
   lotus: "/assets/tarragon/lotus-tower.jpg",
   stock1: "/assets/tarragon/StockSnap_J45DTZD2VJ.jpg",
   stock2: "/assets/tarragon/StockSnap_8B828310AC.jpg",
@@ -24,6 +28,8 @@ export const images = {
   hero_vid: "/assets/tarragon/Hero_Vid Final1.mp4",
   contact: "/assets/tarragon/GalleFort.jpg",
   LotusT: "/assets/tarragon/LotusT.jpg",
+  wild: "/assets/tarragon/wild-life.jpg",
+  wellness: "/assets/tarragon/wellness.jpg",
 } as const;
 
 export const categories: Category[] = [
@@ -31,19 +37,19 @@ export const categories: Category[] = [
     title: "Cultural Heritage",
     blurb:
       "Explore Sri Lanka's history with UNESCO sites, ancient temples, and cultural landmarks.",
-    image: images.sigiriya,
+    image: images.heritage,
   },
   {
     title: "Outdoor Adventures",
     blurb:
       "Embark on thrilling adventures with hikes, surfing, safaris, and more for adrenaline seekers.",
-    image: images.surf,
+    image: images.outdoor,
   },
   {
     title: "Wildlife & Nature",
     blurb:
       "Experience the beauty of Sri Lanka's wildlife in stunning national parks and serene rainforests.",
-    image: images.yala,
+    image: images.wild,
   },
   {
     title: "Beach Escapes",
@@ -55,7 +61,7 @@ export const categories: Category[] = [
     title: "Wellness & Retreats",
     blurb:
       "Indulge in Ayurveda, yoga, and peaceful retreats to rejuvenate your body and mind.",
-    image: images.ella,
+    image: images.wellness,
   },
 ];
 
@@ -169,7 +175,7 @@ export const destinations: Destination[] = [
   {
     slug: "kandy",
     name: "Kandy",
-    image: images.kandy,
+    image: images.kandy2,
     category: "HERITAGE",
     blurb:
       "Famous for the Temple of the Tooth, which houses a sacred relic of the Buddha. Kandy is also known for its picturesque lake, botanical gardens, and cultural performances.",
@@ -241,7 +247,7 @@ export const destinations: Destination[] = [
   {
     slug: "colombo",
     name: "Colombo",
-    image: images.colombo,
+    image: images.colombo2,
     category: "COASTAL",
     blurb:
       "Sri Lanka's vibrant capital - a mix of modern skyline, colonial-era buildings, bustling markets, and beachfront promenades along Galle Face Green.",
@@ -585,7 +591,7 @@ export const tours: Tour[] = [
     price: 200,
     featured: true,
     image: images.colombo,
-    gallery: [images.colombo, images.lotus, images.stock1],
+    gallery: [images.colombo, images.lotus, images.colombo2],
     summary:
       "A two-day immersion in Sri Lanka's bustling capital - colonial heritage, modern skyline, street food and Galle Face sunsets.",
     highlights: [
