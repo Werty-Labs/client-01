@@ -30,6 +30,14 @@ export const images = {
   LotusT: "/assets/tarragon/LotusT.jpg",
   wild: "/assets/tarragon/wild-life.jpg",
   wellness: "/assets/tarragon/wellness.jpg",
+  honeymoon: "/assets/tarragon/honeymoon.jpg",
+  honeymoon2: "/assets/tarragon/honeymoon2.jpg",
+  family: "/assets/tarragon/family2.jpg",
+  mirissa: "/assets/tarragon/mirissa.jpg",
+  eliya: "/assets/tarragon/nuwara-eliya.jpg",
+  trinco: "/assets/tarragon/trinco.webp",
+  anuradhapura2: "/assets/tarragon/anuradhapura2.jpg",
+  polonnaruwa: "/assets/tarragon/polonnaruwa.jpg",
 } as const;
 
 export const categories: Category[] = [
@@ -321,7 +329,7 @@ export const destinations: Destination[] = [
   {
     slug: "mirissa",
     name: "Mirissa",
-    image: images.stock2,
+    image: images.mirissa,
     category: "COASTAL",
     blurb:
       "A picturesque coastal town famed for whale watching, palm-fringed beaches, and stunning sunsets.",
@@ -357,7 +365,7 @@ export const destinations: Destination[] = [
   {
     slug: "nuwara-eliya",
     name: "Nuwara Eliya",
-    image: images.teaching,
+    image: images.eliya,
     category: "HILLS",
     blurb:
       "'Little England' - cool climate, rolling tea estates, colonial bungalows, and Horton Plains nearby.",
@@ -394,7 +402,7 @@ export const destinations: Destination[] = [
   {
     slug: "trincomalee",
     name: "Trincomalee",
-    image: images.sl,
+    image: images.trinco,
     category: "COASTAL",
     blurb:
       "A natural deepwater harbour on the east coast with pristine beaches, coral reefs and historic temples.",
@@ -431,7 +439,7 @@ export const destinations: Destination[] = [
   {
     slug: "anuradhapura",
     name: "Anuradhapura",
-    image: images.stock1,
+    image: images.anuradhapura2,
     category: "HERITAGE",
     blurb:
       "An ancient sacred city with vast stupas, monasteries, and the sacred Bodhi tree.",
@@ -468,7 +476,7 @@ export const destinations: Destination[] = [
   {
     slug: "polonnaruwa",
     name: "Polonnaruwa",
-    image: images.kudumbigala,
+    image: images.polonnaruwa,
     category: "HERITAGE",
     blurb:
       "A medieval capital filled with well-preserved ruins, royal palaces, and rock-carved Buddhas.",
@@ -902,7 +910,7 @@ export const services: Service[] = [
     title: "Family-Friendly Tours",
     blurb:
       "Carefully paced itineraries with activities everyone - from toddlers to grandparents - will love.",
-    image: images.stock2,
+    image: images.family,
   },
   {
     title: "Beach Holidays",
@@ -919,7 +927,7 @@ export const services: Service[] = [
     title: "Honeymoon Tours",
     blurb:
       "Romantic escapes blending boutique stays, private dinners and unforgettable experiences.",
-    image: images.ella,
+    image: images.honeymoon2,
   },
   {
     title: "Wildlife Safaris",
