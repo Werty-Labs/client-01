@@ -12,7 +12,7 @@ export function organizationJsonLd() {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.siteUrl,
-    logo: absoluteUrl("/assets/tarragon/K-0020-white.png"),
+    logo: absoluteUrl("/assets/tarragon/logo-white.png"),
     email: siteConfig.email,
     telephone: siteConfig.phone,
     address: {

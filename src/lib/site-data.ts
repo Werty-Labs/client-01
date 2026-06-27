@@ -1,43 +1,37 @@
 import type { Category, Destination, Service, Tour } from "@/types/site";
 
 export const images = {
-  logo: "/assets/tarragon/K-0020-white.png",
-  sigiriya: "/assets/tarragon/sigiriya2.jpg",
+  logo: "/assets/tarragon/logo-white.png",
+  sigiriya2: "/assets/tarragon/sigiriya.webp",
   heritage: "/assets/tarragon/heritage.jpg",
-  yala: "/assets/tarragon/safari.jpg",
-  ella: "/assets/tarragon/ella2.jpg",
+  yala: "/assets/tarragon/yala.png",
+  ella: "/assets/tarragon/ella-2.jpg",
   surf: "/assets/tarragon/surf.jpg",
-  outdoor: "/assets/tarragon/outdoor2.jpg",
-  kandy: "/assets/tarragon/kandy.jpg",
-  kandy2: "/assets/tarragon/kandy2.jpg",
-  kumana: "/assets/tarragon/Kumana-National-Park-Safari.jpg",
-  kudumbigala: "/assets/tarragon/kudumbigala-monastery.jpg",
-  teaching: "/assets/tarragon/a-cool-day-of-teaching.jpg",
-  sun_set: "/assets/tarragon/tropical-sunset.jpg",
-  arugamWebp: "/assets/tarragon/ArugamBay.webp",
-  arugam4: "/assets/tarragon/Arugam-Bay-4.jpg",
-  colombo: "/assets/tarragon/colombo.jpg",
-  colombo2: "/assets/tarragon/colombo2.jpg",
-  lotus: "/assets/tarragon/lotus-tower.jpg",
-  stock1: "/assets/tarragon/StockSnap_J45DTZD2VJ.jpg",
-  stock2: "/assets/tarragon/StockSnap_8B828310AC.jpg",
-  sl: "/assets/tarragon/sl.jpg",
-  galle: "/assets/tarragon/sl.jpg",
-  hero: "/assets/tarragon/AI2.png",
-  hero1: "/assets/tarragon/smoothly_generate_video_form_t.mp4",
-  hero_vid: "/assets/tarragon/Hero_Vid Final1.mp4",
-  contact: "/assets/tarragon/GalleFort.jpg",
-  LotusT: "/assets/tarragon/LotusT.jpg",
-  wild: "/assets/tarragon/wild-life.jpg",
+  outdoor: "/assets/tarragon/outdoor-2.jpg",
+  kandy: "/assets/tarragon/kandy-1.jpg",
+  kandy2: "/assets/tarragon/kandy-2.webp",
+  teaching: "/assets/tarragon/teaching.jpg",
+  sun_set: "/assets/tarragon/tropical-sunset.webp",
+  arugamWebp: "/assets/tarragon/arugam-bay.webp",
+  colombo: "/assets/tarragon/colombo-1.jpg",
+  colombo2: "/assets/tarragon/colombo-2.webp",
+  lotus: "/assets/tarragon/lotus-tower-alt.jpg",
+  sl: "/assets/tarragon/sri-lanka.jpg",
+  galle: "/assets/tarragon/sri-lanka.jpg",
+  hero: "/assets/tarragon/hero-image.png",
+  hero1: "/assets/tarragon/hero-video-alt.mp4",
+  hero_vid: "/assets/tarragon/hero-video.mp4",
+  contact: "/assets/tarragon/galle-fort.webp",
+  wild: "/assets/tarragon/wildlife.jpg",
   wellness: "/assets/tarragon/wellness.jpg",
-  honeymoon: "/assets/tarragon/honeymoon.jpg",
-  honeymoon2: "/assets/tarragon/honeymoon2.jpg",
-  family: "/assets/tarragon/family2.jpg",
-  mirissa: "/assets/tarragon/mirissa.jpg",
-  eliya: "/assets/tarragon/nuwara-eliya.jpg",
+  honeymoon2: "/assets/tarragon/honeymoon-2.webp",
+  family: "/assets/tarragon/family-2.jpg",
+  mirissa: "/assets/tarragon/mirissa.webp",
+  eliya: "/assets/tarragon/nuwara-eliya.webp",
   trinco: "/assets/tarragon/trinco.webp",
-  anuradhapura2: "/assets/tarragon/anuradhapura2.jpg",
-  polonnaruwa: "/assets/tarragon/polonnaruwa.jpg",
+  anuradhapura2: "/assets/tarragon/anuradhapura-2.webp",
+  polonnaruwa: "/assets/tarragon/polonnaruwa.webp",
+  beach: "/assets/tarragon/beaches.jpg",
 } as const;
 
 export const categories: Category[] = [
@@ -63,7 +57,7 @@ export const categories: Category[] = [
     title: "Beach Escapes",
     blurb:
       "Relax on pristine shores, soak up the sun, and unwind with scenic beach views and water activities.",
-    image: images.arugamWebp,
+    image: images.beach,
   },
   {
     title: "Wellness & Retreats",
@@ -104,7 +98,7 @@ export const destinations: Destination[] = [
     ],
     gallery: [
       images.yala,
-      images.kumana,
+      images.colombo,
       images.sl
     ]
   },
@@ -140,7 +134,7 @@ export const destinations: Destination[] = [
     ],
     gallery: [
       images.ella,
-      images.stock1,
+      images.yala,
       images.sl
     ]
   },
@@ -213,13 +207,13 @@ export const destinations: Destination[] = [
     gallery: [
       images.kandy,
       images.teaching,
-      images.stock2
+      images.ella
     ]
   },
   {
     slug: "sigiriya",
     name: "Sigiriya",
-    image: images.sigiriya,
+    image: images.sigiriya2,
     category: "HERITAGE",
     blurb:
       "Known for the iconic Sigiriya Rock Fortress, a UNESCO World Heritage Site. Visitors can explore ancient frescoes, water gardens, and climb to the summit for stunning views.",
@@ -247,9 +241,9 @@ export const destinations: Destination[] = [
       "Beware of the resident monkeys and wasp nests on the rock; do not feed the wildlife or make loud noises."
     ],
     gallery: [
-      images.sigiriya,
+      images.sigiriya2,
       images.sun_set,
-      images.stock1
+      images.sigiriya2
     ]
   },
   {
@@ -286,7 +280,7 @@ export const destinations: Destination[] = [
     gallery: [
       images.colombo,
       images.lotus,
-      images.LotusT
+      images.colombo2
     ]
   },
   {
@@ -322,7 +316,7 @@ export const destinations: Destination[] = [
     ],
     gallery: [
       images.arugamWebp,
-      images.arugam4,
+      images.mirissa,
       images.surf
     ]
   },
@@ -394,8 +388,8 @@ export const destinations: Destination[] = [
       "Stop for a high tea experience at one of the old colonial hotels to step back in time."
     ],
     gallery: [
-      images.stock1,
-      images.stock2,
+      images.eliya,
+      images.ella,
       images.sl
     ]
   },
@@ -469,7 +463,7 @@ export const destinations: Destination[] = [
     ],
     gallery: [
       images.teaching,
-      images.stock1,
+      images.eliya,
       images.sl
     ]
   },
@@ -505,7 +499,7 @@ export const destinations: Destination[] = [
       "The ruins are close together, making a half-day bicycle ride the perfect way to see everything."
     ],
     gallery: [
-      images.stock2,
+      images.colombo,
       images.sl,
       images.sun_set
     ]
@@ -521,7 +515,7 @@ export const tours: Tour[] = [
     groupSize: 20,
     featured: true,
     image: images.arugamWebp,
-    gallery: [images.arugamWebp, images.arugam4, images.kumana, images.kudumbigala],
+    gallery: [images.arugamWebp, images.eliya, images.kandy, images.kandy2],
     summary:
       "Ride world-class waves, explore Kumana National Park, and unwind on the laid-back east coast of Sri Lanka.",
     highlights: [
@@ -655,8 +649,8 @@ export const tours: Tour[] = [
     duration: "3 days",
     groupSize: 16,
     featured: true,
-    image: images.sigiriya,
-    gallery: [images.sigiriya, images.kandy, images.ella],
+    image: images.sigiriya2,
+    gallery: [images.sigiriya2, images.kandy, images.ella],
     summary:
       "Climb the legendary Lion Rock, explore the cave temples of Dambulla, and experience cultural Sri Lanka.",
     highlights: [
@@ -717,7 +711,7 @@ export const tours: Tour[] = [
     duration: "3 days",
     groupSize: 12,
     image: images.yala,
-    gallery: [images.yala, images.kumana, images.kudumbigala],
+    gallery: [images.yala, images.ella, images.eliya],
     summary:
       "Track leopards, elephants and sloth bears through Sri Lanka's most famous national park.",
     highlights: [
@@ -847,7 +841,7 @@ export const tours: Tour[] = [
     duration: "3 days",
     groupSize: 18,
     image: images.galle,
-    gallery: [images.galle, images.stock1, images.stock2],
+    gallery: [images.galle, images.ella, images.eliya],
     summary:
       "Wander the cobbled streets of Galle Fort, swim at Unawatuna, and watch sunsets over the ramparts.",
     highlights: [
@@ -939,6 +933,6 @@ export const services: Service[] = [
     title: "Customized Tours",
     blurb:
       "Tell us your dream trip - we design a one-of-a-kind itinerary just for you.",
-    image: images.sigiriya,
+    image: images.sigiriya2,
   },
 ];
