@@ -116,14 +116,5 @@ export function tourProductJsonLd(tour: Tour) {
       "@type": "Organization",
       name: siteConfig.name,
     },
-    offers: tour.price
-      ? {
-          "@type": "Offer",
-          price: tour.price,
-          priceCurrency: "USD",
-          availability: "https://schema.org/InStock",
-          url: absoluteUrl(`/tours/${tour.slug}`),
-        }
-      : undefined,
   };
 }

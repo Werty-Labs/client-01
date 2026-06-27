@@ -350,14 +350,7 @@ export function AnimatedHome({
                       </div>
                     </div>
                     <div className="mt-5 px-1">
-                      <div className="flex items-end gap-1.5 text-[#101828]">
-                        <span className="text-[1.1rem] font-semibold leading-none tracking-tight sm:text-[1.45rem]">
-                          {tour.price !== null
-                            ? `$${tour.price.toFixed(2)}`
-                            : "Enquire"}
-                        </span>
-                      </div>
-                      <h3 className="mt-4 text-[1.45rem] font-sm leading-tight text-[#0B3B24] transition-colors duration-300 group-hover:text-green-600 sm:text-[1.55rem] font-semibold">
+                      <h3 className="text-[1.45rem] leading-tight text-[#0B3B24] transition-colors duration-300 group-hover:text-green-600 sm:text-[1.55rem] font-semibold">
                         {tour.title}
                       </h3>
                       <div className="mt-2 flex items-center gap-2 text-base text-[#667085] sm:text-[1.1rem]">

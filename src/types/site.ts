@@ -31,7 +31,6 @@ export type Tour = {
   location: string;
   duration: string;
   groupSize: number;
-  price: number | null;
   featured?: boolean;
   image: string;
   gallery: string[];

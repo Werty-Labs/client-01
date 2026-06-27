@@ -208,21 +208,7 @@ export default async function TourDetailPage({ params }: TourPageProps) {
                 </span>
               </div>
 
-              {/* Pricing */}
-              <div className="border-t border-border/40 px-6 pt-5 pb-2">
-                <p className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
-                  Starting from
-                </p>
-                <p className="mt-1 font-display text-4xl font-bold">
-                  {tour.price
-                    ? `$${tour.price.toLocaleString()}`
-                    : "Contact for pricing"}
-                  <span className="text-base font-normal text-muted-foreground">
-                    {" "}
-                    / person
-                  </span>
-                </p>
-              </div>
+
 
               {/* CTA */}
               <div className="px-6 pb-6 pt-4">

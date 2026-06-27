@@ -511,7 +511,6 @@ export const tours: Tour[] = [
     location: "Arugam Bay",
     duration: "5 days",
     groupSize: 20,
-    price: 300,
     featured: true,
     image: images.arugamWebp,
     gallery: [images.arugamWebp, images.arugam4, images.kumana, images.kudumbigala],
@@ -588,7 +587,6 @@ export const tours: Tour[] = [
     location: "Colombo, Sri Lanka",
     duration: "2 days",
     groupSize: 20,
-    price: 200,
     featured: true,
     image: images.colombo,
     gallery: [images.colombo, images.lotus, images.colombo2],
@@ -648,7 +646,6 @@ export const tours: Tour[] = [
     location: "Sigiriya",
     duration: "3 days",
     groupSize: 16,
-    price: 320,
     featured: true,
     image: images.sigiriya,
     gallery: [images.sigiriya, images.kandy, images.ella],
@@ -711,7 +708,6 @@ export const tours: Tour[] = [
     location: "Yala National Park",
     duration: "3 days",
     groupSize: 12,
-    price: 380,
     image: images.yala,
     gallery: [images.yala, images.kumana, images.kudumbigala],
     summary:
@@ -774,7 +770,6 @@ export const tours: Tour[] = [
     location: "Ella",
     duration: "4 days",
     groupSize: 14,
-    price: 420,
     image: images.ella,
     gallery: [images.ella, images.teaching, images.kandy],
     summary:
@@ -843,7 +838,6 @@ export const tours: Tour[] = [
     location: "Galle",
     duration: "3 days",
     groupSize: 18,
-    price: 280,
     image: images.galle,
     gallery: [images.galle, images.stock1, images.stock2],
     summary:
