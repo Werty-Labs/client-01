@@ -3,7 +3,7 @@ import type { Category, Destination, Service, Tour } from "@/types/site";
 export const images = {
   logo: "/assets/tarragon/logo-white.png",
   sigiriya2: "/assets/tarragon/sigiriya.webp",
-  heritage: "/assets/tarragon/heritage.jpg",
+  heritage: "/assets/tarragon/seated-stone-buddha-statue-against-carved-rock-wal-2026-01-05-05-41-04-utc.jpg",
   yala: "/assets/tarragon/yala.png",
   ella: "/assets/tarragon/ella-2.jpg",
   ella2: "/assets/tarragon/ella.webp",
@@ -18,7 +18,7 @@ export const images = {
   colombo2: "/assets/tarragon/colombo-2.webp",
   lotus: "/assets/tarragon/lotus-tower-alt.jpg",
   sl: "/assets/tarragon/sri-lanka.jpg",
-  galle: "/assets/tarragon/sri-lanka.jpg",
+  galle: "/assets/tarragon/Gemini_Generated_Image_atjtavatjtavatjt.jpg",
   hero: "/assets/tarragon/hero-image.png",
   hero1: "/assets/tarragon/hero-video-alt.mp4",
   hero_vid: "/assets/tarragon/hero-video.mp4",

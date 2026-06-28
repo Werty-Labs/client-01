@@ -70,7 +70,9 @@ function MobileStickyCard({
           src={category.image}
           alt={category.title}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className={`object-cover transition-transform duration-700 group-hover:scale-105 ${
+            category.title === "Cultural Heritage" ? "object-top" : ""
+          }`}
           sizes="100vw"
         />
         <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/15 to-transparent" />
@@ -266,7 +268,9 @@ export function AnimatedHome({
                       src={category.image}
                       alt={category.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className={`object-cover transition-transform duration-700 group-hover:scale-105 ${
+                        category.title === "Cultural Heritage" ? "object-top" : ""
+                      }`}
                       sizes="(max-width: 1024px) 50vw, 20vw"
                     />
                   </div>
