@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
+import { ArrowUpRight } from "lucide-react";
 import type { Destination } from "@/types/site";
 
 const customBezier = [0.32, 0.72, 0, 1] as const;
@@ -158,7 +159,7 @@ export function AnimatedDestinations({
                           />
                           
                           {/* Gradient overlay for text legibility */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#0B3B24]/80 via-[#0B3B24]/20 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
 
                           {/* Content */}
                           <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
@@ -208,7 +209,7 @@ export function AnimatedDestinations({
           >
             <span>Explore all tours</span>
             <div className="ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-[1px] group-hover:translate-x-1 group-hover:scale-105">
-              <span className="text-lg">↗</span>
+              <ArrowUpRight className="size-5" strokeWidth={2} />
             </div>
           </Link>
         </motion.div>

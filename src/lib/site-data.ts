@@ -840,9 +840,9 @@ export const tours: Tour[] = [
     ],
   },
   {
-    slug: "south-cost-vibe",
-    title: "South cost vibe",
-    location: "South cost",
+    slug: "south-coast-vibe",
+    title: "South coast vibe",
+    location: "South coast",
     duration: "3 days",
     groupSize: 18,
     image: images.turtle,

@@ -63,7 +63,7 @@ export function ContactForm() {
         <Input 
           id="destination" 
           name="destination" 
-          placeholder="e.g., Amalfi Coast" 
+          placeholder="e.g., Ella, Yala" 
           className="bg-[#f2f5f4] border-0 h-12 px-4 focus-visible:ring-1 focus-visible:ring-[#0B3B24] placeholder:text-muted-foreground/60"
         />
       </div>
