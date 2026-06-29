@@ -12,6 +12,7 @@ export const images = {
   kandy: "/assets/tarragon/kandy-1.jpg",
   kandy2: "/assets/tarragon/kandy-2.webp",
   teaching: "/assets/tarragon/teaching.jpg",
+  elephantsWaterSunset: "/assets/tarragon/elephants-in-the-water-at-sunset-2026-03-20-04-42-13-utc.jpg",
   sun_set: "/assets/tarragon/tropical-sunset.webp",
   arugamWebp: "/assets/tarragon/arugam-bay.webp",
   colombo: "/assets/tarragon/Colombo_night.webp",
@@ -34,6 +35,7 @@ export const images = {
   anuradhapura2: "/assets/tarragon/anuradhapura-2.webp",
   polonnaruwa: "/assets/tarragon/polonnaruwa.webp",
   beach: "/assets/tarragon/beaches.jpg",
+  beachHolidays: "/assets/tarragon/beach holidays.jpg",
   surfing: "/assets/tarragon/surf-twomen.webp",
 } as const;
 
@@ -913,7 +915,7 @@ export const services: Service[] = [
     title: "Beach Holidays",
     blurb:
       "From Mirissa to Arugam Bay, sun-soaked stays with snorkeling, surfing and seafood.",
-    image: images.arugamWebp,
+    image: images.beachHolidays,
   },
   {
     title: "City Tours",

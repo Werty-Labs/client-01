@@ -9,7 +9,7 @@ export const metadata = buildMetadata({
   description:
     "Meet the local Sri Lanka travel experts behind Tarragon Leisure and learn how we craft tailor-made journeys across the island.",
   path: "/about",
-  image: images.teaching,
+  image: images.elephantsWaterSunset,
 });
 
 export const dynamic = "force-static";
