@@ -5,13 +5,21 @@ export const images = {
   sigiriya2: "/assets/tarragon/sigiriya.webp",
   heritage: "/assets/tarragon/seated-stone-buddha-statue-against-carved-rock-wal-2026-01-05-05-41-04-utc.jpg",
   yala: "/assets/tarragon/Yaala.jpg",
-  ella: "/assets/tarragon/ella-2.jpg",
+  yalaLeopard: "/assets/tarragon/leopard-in-yala-national-park.webp",
+  yalaPeacock: "/assets/tarragon/peacock-displaying-feathers.webp",
+  yalaDeer: "/assets/tarragon/spotted-deer.webp",
+  ella: "/assets/tarragon/ella-train-drone.avif",
   ella2: "/assets/tarragon/ella.webp",
+  ellaWomen: "/assets/tarragon/ella-women.jpg",
+  ravanaElla: "/assets/tarragon/ravana-ella.jpg",
+  ellaHike: "/assets/tarragon/ella-rock-hike.jpg",
   surf: "/assets/tarragon/surf.jpg",
   outdoor: "/assets/tarragon/young-man-doing-wakeboarding-in-a-lake-whit-mounta-2026-01-08-02-41-01-utc (1).jpg",
   kandy: "/assets/tarragon/kandy-1.jpg",
-  kandy2: "/assets/tarragon/kandy-2.webp",
-  teaching: "/assets/tarragon/teaching.jpg",
+  kandy2: "/assets/tarragon/kandy-temple-octagon.webp",
+  kandyHindagala: "/assets/tarragon/kandy-hindagala.webp",
+  kandyAmbuluwawa: "/assets/tarragon/kandy-ambuluwawa.jpg",
+  anuradhapuraRuins: "/assets/tarragon/anuradhapura-ruins.webp",
   elephantsWaterSunset: "/assets/tarragon/elephants-in-the-water-at-sunset-2026-03-20-04-42-13-utc.jpg",
   sun_set: "/assets/tarragon/tropical-sunset.webp",
   arugamWebp: "/assets/tarragon/arugam-bay.webp",
@@ -25,6 +33,7 @@ export const images = {
   hero1: "/assets/tarragon/hero-video-alt.mp4",
   hero_vid: "/assets/tarragon/hero-video.mp4",
   contact: "/assets/tarragon/galle-fort.webp",
+  galleFort: "/assets/tarragon/galle-fort.webp",
   wild: "/assets/tarragon/majestic-leopard-lounging-on-a-rocky-surface-in-a-2026-03-25-04-09-33-utc.webp",
   wellness: "/assets/tarragon/concept-of-spa-relax-and-self-care-with-beautiful-2026-01-09-07-11-51-utc (1) (1) (1).jpg",
   honeymoon2: "/assets/tarragon/honeymoon-2.webp",
@@ -103,8 +112,9 @@ export const destinations: Destination[] = [
     ],
     gallery: [
       images.yala,
-      images.colombo,
-      images.sl
+      images.yalaLeopard,
+      images.yalaPeacock,
+      images.yalaDeer
     ]
   },
   {
@@ -139,8 +149,9 @@ export const destinations: Destination[] = [
     ],
     gallery: [
       images.ella,
-      images.yala,
-      images.sl
+      images.ellaWomen,
+      images.ravanaElla,
+      images.ellaHike
     ]
   },
   {
@@ -175,7 +186,7 @@ export const destinations: Destination[] = [
     ],
     gallery: [
       images.galle,
-      images.sun_set,
+      images.galleFort,
       images.sl
     ]
   },
@@ -211,8 +222,8 @@ export const destinations: Destination[] = [
     ],
     gallery: [
       images.kandy,
-      images.teaching,
-      images.ella
+      images.kandyHindagala,
+      images.kandyAmbuluwawa
     ]
   },
   {
@@ -467,7 +478,7 @@ export const destinations: Destination[] = [
       "Wear easily removable sandals, as you must take off your shoes frequently when entering temple grounds."
     ],
     gallery: [
-      images.teaching,
+      images.anuradhapuraRuins,
       images.eliya,
       images.sl
     ]

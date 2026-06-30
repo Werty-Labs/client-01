@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display,Bodoni_Moda,Be_Vietnam_Pro} from "next/font/google";
+import { Bodoni_Moda, Be_Vietnam_Pro } from "next/font/google";
 import { Footer } from "@/components/site/footer";
 import { HeaderAnimated } from "@/components/site/header-animated";
 import { JsonLd } from "@/components/site/json-ld";
@@ -11,7 +11,7 @@ import "./globals.css";
 
 const BeVietnamPro = Be_Vietnam_Pro({
   variable: "--font-BeVietnamPro",
-  weight:["100","200","300"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
