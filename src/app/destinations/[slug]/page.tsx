@@ -124,7 +124,7 @@ export default async function DestinationDetailPage({
               <AnimatedHeading variant="fadeUp" delay={0.2}>
                 <div className="relative pl-6 md:pl-10 border-l-[3px] border-primary/20 max-w-[65ch]">
                   <span className="absolute left-0 top-0 -translate-x-[20%] -translate-y-[45%] font-display1 text-8xl text-primary/10 select-none pointer-events-none">“</span>
-                  <p className="font-display1 text-2xl md:text-3xl font-light italic leading-relaxed text-[#0B3B24] tracking-wide">
+                  <p className="font-sans text-2xl md:text-3xl font-light italic leading-relaxed text-[#0B3B24] tracking-wide">
                     {destination.description || destination.blurb}
                   </p>
                 </div>

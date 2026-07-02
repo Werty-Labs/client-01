@@ -8,11 +8,15 @@ export const images = {
   yalaLeopard: "/assets/tarragon/leopard-in-yala-national-park.webp",
   yalaPeacock: "/assets/tarragon/peacock-displaying-feathers.webp",
   yalaDeer: "/assets/tarragon/spotted-deer.webp",
+  yalaElephantsIntertwine: "/assets/tarragon/two-elephants-intertwine-trunks-in-sri-lankan-wild-2026-03-09-23-04-05-utc.jpg",
+  yalaElephantSafari: "/assets/tarragon/woman-photographs-elephant-on-safari-adventure-2026-03-24-16-41-22-utc.webp",
   ella: "/assets/tarragon/ella-train-drone.avif",
   ella2: "/assets/tarragon/ella.webp",
   ellaWomen: "/assets/tarragon/ella-women.jpg",
   ravanaElla: "/assets/tarragon/ravana-ella.jpg",
   ellaHike: "/assets/tarragon/ella-rock-hike.jpg",
+  ravanaParagliding: "/assets/tarragon/Ravana paraglding.avif",
+  ellaZipline: "/assets/tarragon/the-secret-ella-mega-zipline-3.jpg",
   surf: "/assets/tarragon/surf.jpg",
   outdoor: "/assets/tarragon/young-man-doing-wakeboarding-in-a-lake-whit-mounta-2026-01-08-02-41-01-utc (1).jpg",
   kandy: "/assets/tarragon/kandy-1.jpg",
@@ -114,7 +118,9 @@ export const destinations: Destination[] = [
       images.yala,
       images.yalaLeopard,
       images.yalaPeacock,
-      images.yalaDeer
+      images.yalaDeer,
+      images.yalaElephantsIntertwine,
+      images.yalaElephantSafari
     ]
   },
   {
@@ -151,7 +157,9 @@ export const destinations: Destination[] = [
       images.ella,
       images.ellaWomen,
       images.ravanaElla,
-      images.ellaHike
+      images.ellaHike,
+      images.ravanaParagliding,
+      images.ellaZipline
     ]
   },
   {
