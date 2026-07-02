@@ -3,6 +3,7 @@ import { JsonLd } from "@/components/site/json-ld";
 import { PageSkeleton } from "@/components/site/page-skeleton";
 import { AnimatedHome } from "@/components/animations/AnimatedHome";
 import { getHomePageData } from "@/lib/api";
+import { getAllPosts } from "@/lib/blog";
 import { buildMetadata } from "@/lib/metadata";
 import { images } from "@/lib/site-data";
 import { siteConfig } from "@/lib/site-config";
@@ -22,6 +23,7 @@ async function HomeContent() {
   const { categories, destinations, featuredTours, services } = await getHomePageData();
   const featuredDestinations = destinations.slice(0, 3);
   const popularTours = featuredTours.slice(0, 3);
+  const latestPosts = (await getAllPosts()).slice(0, 3);
 
   return (
     <AnimatedHome
@@ -29,6 +31,7 @@ async function HomeContent() {
       destinations={featuredDestinations}
       popularTours={popularTours}
       services={services}
+      latestPosts={latestPosts}
     />
   );
 }

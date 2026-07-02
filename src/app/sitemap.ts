@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
 import { getDestinationSlugs, getTourSlugs } from "@/lib/api";
+import { getAllPosts } from "@/lib/blog";
 import { absoluteUrl } from "@/lib/site-config";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [destinationSlugs, tourSlugs] = await Promise.all([
+  const [destinationSlugs, tourSlugs, posts] = await Promise.all([
     getDestinationSlugs(),
     getTourSlugs(),
+    getAllPosts(),
   ]);
 
   const lastModified = new Date();
@@ -41,6 +43,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    {
+      url: absoluteUrl("/blog"),
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
   ];
 
   const destinationRoutes = destinationSlugs.map((slug) => ({
@@ -57,5 +65,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...destinationRoutes, ...tourRoutes];
+  const blogRoutes = posts.map((post) => ({
+    url: absoluteUrl(`/blog/${post.slug}`),
+    lastModified: new Date(post.date),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...destinationRoutes, ...tourRoutes, ...blogRoutes];
 }

@@ -1,0 +1,15 @@
+# Tarragon Leisure
+
+Tarragon Leisure is a travel agency specializing in tailor-made Sri Lanka tours, wildlife safaris, beach holidays, and cultural escapes.
+
+Website: https://www.tarragonleisure.com
+Contact: info@tarragonleisure.com
+Phone: +94 77 000 0000
+
+## Important Pages
+- Home: /
+- Tours: /tours
+- Destinations: /destinations
+- About: /about
+- Contact: /contact
+- Blog: /blog

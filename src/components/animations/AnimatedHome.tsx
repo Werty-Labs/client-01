@@ -25,6 +25,8 @@ import {
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { images } from "@/lib/site-data";
 import type { Category, Destination, Tour, Service } from "@/types/site";
+import type { BlogPost } from "@/lib/blog";
+import { BlogCard } from "@/components/blog/BlogCard";
 
 // ─── Mobile sticky-card blur helper ──────────────────────────────────────────
 type ScrollProgress = ReturnType<typeof useScroll>["scrollYProgress"];
@@ -159,6 +161,7 @@ type AnimatedHomeProps = {
   destinations: Destination[];
   popularTours: Tour[];
   services: Service[];
+  latestPosts?: BlogPost[];
 };
 
 export function AnimatedHome({
@@ -166,6 +169,7 @@ export function AnimatedHome({
   destinations,
   popularTours,
   services,
+  latestPosts,
 }: AnimatedHomeProps) {
   const [activeService, setActiveService] = useState(1);
 
@@ -475,6 +479,54 @@ export function AnimatedHome({
 
           <ServiceCarousel services={services} activeService={activeService} prevService={prevService} nextService={nextService} />
         </section>
+
+        {/* ── Latest Blog Posts section ── */}
+        {latestPosts && latestPosts.length > 0 && (
+          <section className="bg-[#FCFAF5] py-16 sm:py-20 lg:py-24">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6">
+              <div className="mx-auto max-w-4xl text-center">
+                <AnimatedHeading threshold={0.25} variant="scaleIn">
+                  <h2 className="font-display1 text-3xl font-semibold tracking-tight text-[#0B3B24] sm:text-4xl lg:text-5xl">
+                    Latest from our Travel Journal
+                  </h2>
+                </AnimatedHeading>
+                <AnimatedHeading threshold={0.3} variant="blurIn" delay={0.2}>
+                  <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#667085] sm:text-lg">
+                    Discover travel tips, destination guides, and expert advice for planning your perfect Sri Lanka adventure.
+                  </p>
+                </AnimatedHeading>
+              </div>
+
+              <StaggerContainer
+                className="mt-12 grid gap-x-7 gap-y-10 sm:mt-14 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3"
+                threshold={0.1}
+                staggerDelay={0.18}
+              >
+                {latestPosts.map((post, index) => (
+                  <div key={post.slug} className="h-full">
+                    <BlogCard post={post} index={index} />
+                  </div>
+                ))}
+              </StaggerContainer>
+
+              <AnimatedHeading threshold={0.2} delay={0.3}>
+                <div className="mt-12 flex justify-center sm:mt-14">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="h-14 rounded-full border-[#0B3B24] bg-white px-7 text-base font-medium text-[#0B3B24] shadow-none transition hover:bg-[#f2f5f4] hover:text-[#072617] sm:px-8"
+                  >
+                    <Link href="/blog" prefetch className={'hover:scale-105 cursor-pointer'}>
+                      Read all articles
+                      <ArrowRight className="ml-2 size-5" />
+                    </Link>
+                  </Button>
+                </div>
+              </AnimatedHeading>
+            </div>
+          </section>
+        )}
 
         {/* ── CTA Hero section ── */}
         <section className="relative isolate h-[40vh] min-h-[350px] flex items-center justify-center">

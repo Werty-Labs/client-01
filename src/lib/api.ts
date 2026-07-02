@@ -25,12 +25,23 @@ export const getFeaturedTours = cache(async () =>
   tours.filter((tour) => tour.featured),
 );
 
-export const getHomePageData = cache(async () => ({
-  categories,
-  destinations: destinations.slice(0, 6),
-  featuredTours: tours.filter((tour) => tour.featured),
-  services,
-}));
+export const getHomePageData = cache(async () => {
+  const homeDestinations = [
+    destinations.find(d => d.slug === "kandy"),
+    destinations.find(d => d.slug === "ella"),
+    destinations.find(d => d.slug === "mirissa"),
+    destinations.find(d => d.slug === "sigiriya"),
+    destinations.find(d => d.slug === "colombo"),
+    destinations.find(d => d.slug === "nuwara-eliya")
+  ].filter(Boolean) as Destination[];
+
+  return {
+    categories,
+    destinations: homeDestinations,
+    featuredTours: tours.filter((tour) => tour.featured),
+    services,
+  };
+});
 
 export const getDestinationBySlug = cache(async (slug: string) =>
   destinations.find((destination) => destination.slug === slug) ?? null,
