@@ -32,6 +32,10 @@ export const images = {
   lotus: "/assets/tarragon/lotus-tower-alt.jpg",
   sl: "/assets/tarragon/sri-lanka.jpg",
   galle: "/assets/tarragon/Gemini_Generated_Image_atjtavatjtavatjt.jpg",
+  galleSurf: "/assets/tarragon/Surf Prac Galle.avif",
+  galleTurtleHatchery: "/assets/tarragon/sea-turtle-farm-and-hatchery.jpg",
+  galleThalpe: "/assets/tarragon/Thalpe.jpg",
+  galleLighthouse: "/assets/tarragon/GALLE-LIGHTHOUSE-2-2-r76pns01mg2utxk3a1ce0ytek6hzm3i4zhohswxvn4.jpg",
   turtle: "/assets/tarragon/turtle.jpg",
   hero: "/assets/tarragon/hero-image.png",
   hero1: "/assets/tarragon/hero-video-alt.mp4",
@@ -195,7 +199,10 @@ export const destinations: Destination[] = [
     gallery: [
       images.galle,
       images.galleFort,
-      images.sl
+      images.galleLighthouse,
+      images.galleSurf,
+      images.galleTurtleHatchery,
+      images.galleThalpe
     ]
   },
   {
