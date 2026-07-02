@@ -130,7 +130,7 @@ export default async function TourDetailPage({ params }: TourPageProps) {
           <div className="space-y-14">
             {/* Curated Experience */}
             <div>
-              <h2 className="mb-4 font-display text-3xl sm:text-4xl">
+              <h2 className="mb-4 font-display1 text-3xl sm:text-4xl">
                 Curated Experience
               </h2>
               <p className="max-w-2xl leading-relaxed text-muted-foreground">
@@ -140,7 +140,7 @@ export default async function TourDetailPage({ params }: TourPageProps) {
 
             {/* Suggested Itinerary */}
             <div>
-              <h2 className="mb-8 font-display text-2xl sm:text-3xl">
+              <h2 className="mb-8 font-display1 text-2xl sm:text-3xl">
                 Suggested Itinerary
               </h2>
               <div className="relative space-y-10 pl-8">
@@ -239,7 +239,7 @@ export default async function TourDetailPage({ params }: TourPageProps) {
 
         {/* ── Visual Serenity Gallery ── */}
         <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6">
-          <h2 className="mb-10 text-center font-display text-3xl sm:text-4xl">
+          <h2 className="mb-10 text-center font-display1 text-3xl sm:text-4xl">
             Visual Serenity
           </h2>
           <div className="grid gap-4 md:grid-cols-[2fr_1fr]">

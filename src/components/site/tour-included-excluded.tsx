@@ -12,7 +12,7 @@ export function TourIncludedExcluded({ tour }: TourIncludedExcludedProps) {
 
   return (
     <section>
-      <h2 className="mb-6 font-display text-2xl text-primary">
+      <h2 className="mb-6 font-display1 text-2xl text-primary">
         Included/Exclude
       </h2>
 

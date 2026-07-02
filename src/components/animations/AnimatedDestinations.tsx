@@ -58,9 +58,9 @@ export function AnimatedDestinations({
               lineHeight: 0.92,
             }}
           >
-            Where Every Road Leads
-            <br />
-            to Something Extraordinary
+            Travel Without Limits
+            {/* <br />
+            to Something Extraordinary */}
           </motion.h1>
 
           {/* Stats Strip */}
@@ -89,11 +89,10 @@ export function AnimatedDestinations({
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`rounded-full px-5 py-2 font-mono text-xs uppercase tracking-widest transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-                filter === cat
+              className={`rounded-full px-5 py-2 font-mono text-xs uppercase tracking-widest transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${filter === cat
                   ? "bg-[#0B3B24] text-[#FDFCF8]"
                   : "bg-transparent text-[#667085] hover:bg-[#EAEAEA]"
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -152,12 +151,11 @@ export function AnimatedDestinations({
                             src={dest.image}
                             alt={dest.name}
                             fill
-                            className={`object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105 ${
-                              dest.slug === "yala" ? "object-[20%_35%]" : dest.slug === "kandy" ? "object-top" : ""
-                            }`}
+                            className={`object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105 ${dest.slug === "yala" ? "object-[20%_35%]" : dest.slug === "kandy" ? "object-top" : ""
+                              }`}
                             sizes="(max-width: 768px) 100vw, 50vw"
                           />
-                          
+
                           {/* Gradient overlay for text legibility */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
 
@@ -166,14 +164,14 @@ export function AnimatedDestinations({
                             <h2 className="font-display text-3xl text-white md:text-4xl">
                               {dest.name}
                             </h2>
-                            
+
                             {/* Hover reveal blurb */}
                             <div className="grid grid-rows-[0fr] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:grid-rows-[1fr]">
                               <p className="mt-2 overflow-hidden text-sm text-white/80 line-clamp-2 md:text-base">
                                 {dest.blurb}
                               </p>
                             </div>
-                            
+
                             {/* Telemetry Overlay */}
                             <div className="mt-6 flex items-center justify-between border-t border-white/20 pt-4 font-mono text-[10px] uppercase tracking-widest text-white/70">
                               <span>[ SRI LANKA / {dest.slug.toUpperCase()} ]</span>

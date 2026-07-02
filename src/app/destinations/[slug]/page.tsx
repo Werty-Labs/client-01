@@ -110,7 +110,7 @@ export default async function DestinationDetailPage({
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
                 Explore Destination
               </p>
-              <h1 className="font-display text-5xl tracking-tight sm:text-7xl lg:text-8xl">
+              <h1 className="font-display1 text-5xl tracking-tight sm:text-7xl lg:text-8xl">
                 {destination.name}
               </h1>
             </AnimatedHeading>
@@ -123,8 +123,8 @@ export default async function DestinationDetailPage({
             <div className="space-y-16 lg:col-span-8">
               <AnimatedHeading variant="fadeUp" delay={0.2}>
                 <div className="relative pl-6 md:pl-10 border-l-[3px] border-primary/20 max-w-[65ch]">
-                  <span className="absolute left-0 top-0 -translate-x-[20%] -translate-y-[45%] font-display text-8xl text-primary/10 select-none pointer-events-none">“</span>
-                  <p className="font-display text-2xl md:text-3xl font-light italic leading-relaxed text-[#0B3B24] tracking-wide">
+                  <span className="absolute left-0 top-0 -translate-x-[20%] -translate-y-[45%] font-display1 text-8xl text-primary/10 select-none pointer-events-none">“</span>
+                  <p className="font-display1 text-2xl md:text-3xl font-light italic leading-relaxed text-[#0B3B24] tracking-wide">
                     {destination.description || destination.blurb}
                   </p>
                 </div>
@@ -133,7 +133,7 @@ export default async function DestinationDetailPage({
               {destination.highlights && destination.highlights.length > 0 && (
                 <AnimatedHeading variant="fadeUp" delay={0.3}>
                   <div className="space-y-6">
-                    <h3 className="font-display text-2xl md:text-3xl text-[#0B3B24]">Highlights</h3>
+                    <h3 className="font-display1 text-2xl md:text-3xl text-[#0B3B24]">Highlights</h3>
                     <div className="grid gap-4 sm:grid-cols-2">
                       {destination.highlights.map((highlight, i) => (
                         <div
@@ -156,7 +156,7 @@ export default async function DestinationDetailPage({
               {destination.activities && destination.activities.length > 0 && (
                 <AnimatedHeading variant="fadeUp" delay={0.4}>
                   <div className="space-y-6">
-                    <h3 className="font-display text-2xl md:text-3xl text-[#0B3B24]">Top Activities</h3>
+                    <h3 className="font-display1 text-2xl md:text-3xl text-[#0B3B24]">Top Activities</h3>
                     <div className="grid gap-4 sm:grid-cols-2">
                       {destination.activities.map((activity, i) => (
                         <div
@@ -268,7 +268,7 @@ export default async function DestinationDetailPage({
         {destination.gallery && destination.gallery.length > 0 && (
           <section className="mx-auto max-w-7xl px-4 pb-24 sm:px-6">
             <AnimatedHeading variant="fadeUp">
-              <h2 className="mb-10 text-center font-display text-4xl">
+              <h2 className="mb-10 text-center font-display1 text-4xl">
                 Photo Gallery
               </h2>
             </AnimatedHeading>
@@ -283,7 +283,7 @@ export default async function DestinationDetailPage({
           <section className="bg-secondary/40 py-24">
             <div className="mx-auto max-w-7xl px-4 sm:px-6">
               <AnimatedHeading variant="fadeUp">
-                <h2 className="mb-12 text-center font-display text-4xl">
+                <h2 className="mb-12 text-center font-display1 text-4xl">
                   Tours featuring {destination.name}
                 </h2>
               </AnimatedHeading>

@@ -12,7 +12,7 @@ export function TourExplore({ tour }: TourExploreProps) {
   return (
     <section className="space-y-8">
       {/* Section heading */}
-      <h2 className="font-display text-2xl text-primary">Explore Tours</h2>
+      <h2 className="font-display1 text-2xl text-primary">Explore Tours</h2>
 
       {/* Overview */}
       <div>

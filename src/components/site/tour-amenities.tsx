@@ -29,7 +29,7 @@ export function TourAmenities({ tour }: TourAmenitiesProps) {
 
   return (
     <section>
-      <h2 className="mb-6 font-display text-2xl">Tour Amenities</h2>
+      <h2 className="mb-6 font-display1 text-2xl">Tour Amenities</h2>
 
       <div className="grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3">
         {tour.amenities.map((amenity) => {

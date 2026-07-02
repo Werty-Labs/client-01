@@ -488,7 +488,7 @@ export function AnimatedHome({
           <div className="absolute inset-0 bg-black/15" />
           <div className="relative z-10 mx-auto max-w-4xl px-4 text-center text-white sm:px-6">
             <AnimatedHeading threshold={0.2} variant="scaleIn">
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight drop-shadow-md">
+              <h2 className="font-display1 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight drop-shadow-md">
                 Discover Sri Lanka with Tarragon Leisure
               </h2>
             </AnimatedHeading>
