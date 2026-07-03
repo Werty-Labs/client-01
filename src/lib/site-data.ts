@@ -3,8 +3,14 @@ import type { Category, Destination, Service, Tour } from "@/types/site";
 export const images = {
   logo: "/assets/tarragon/logo-white.png",
   sigiriya2: "/assets/tarragon/sigiriya.webp",
+  sigiriya1: "/assets/tarragon/sigiriya1.webp",
+  sigiriya_2: "/assets/tarragon/sigiriya2.webp",
+  sigiriya3: "/assets/tarragon/sigiriya3.webp",
   heritage: "/assets/tarragon/seated-stone-buddha-statue-against-carved-rock-wal-2026-01-05-05-41-04-utc.jpg",
   yala: "/assets/tarragon/Yaala.jpg",
+  yala1: "/assets/tarragon/yala1.webp",
+  yala2: "/assets/tarragon/yala2.webp",
+  yala3: "/assets/tarragon/yala3.webp",
   yalaLeopard: "/assets/tarragon/leopard-in-yala-national-park.webp",
   yalaPeacock: "/assets/tarragon/peacock-displaying-feathers.webp",
   yalaDeer: "/assets/tarragon/spotted-deer.webp",
@@ -12,6 +18,9 @@ export const images = {
   yalaElephantSafari: "/assets/tarragon/woman-photographs-elephant-on-safari-adventure-2026-03-24-16-41-22-utc.webp",
   ella: "/assets/tarragon/ella-train-drone.avif",
   ella2: "/assets/tarragon/ella.webp",
+  hill1: "/assets/tarragon/hill1.webp",
+  hill2: "/assets/tarragon/hill2.webp",
+  hill3: "/assets/tarragon/hill3.webp",
   ellaWomen: "/assets/tarragon/ella-women.jpg",
   ravanaElla: "/assets/tarragon/ravana-ella.jpg",
   ellaHike: "/assets/tarragon/ella-rock-hike.jpg",
@@ -27,10 +36,19 @@ export const images = {
   elephantsWaterSunset: "/assets/tarragon/elephants-in-the-water-at-sunset-2026-03-20-04-42-13-utc.jpg",
   sun_set: "/assets/tarragon/tropical-sunset.webp",
   arugamWebp: "/assets/tarragon/arugam-bay.webp",
+  arugambe1: "/assets/tarragon/arugambe1.webp",
+  arugambe2: "/assets/tarragon/arugambe2.webp",
+  arugambe3: "/assets/tarragon/arugambe3.webp",
   colombo: "/assets/tarragon/Colombo_night.webp",
   colombo2: "/assets/tarragon/colombo-2.webp",
+  colombo1: "/assets/tarragon/colombo1.webp",
+  colombo_2: "/assets/tarragon/colombo2.webp",
+  colombo3: "/assets/tarragon/colombo3.webp",
   lotus: "/assets/tarragon/lotus-tower-alt.jpg",
   sl: "/assets/tarragon/sri-lanka.jpg",
+  coast1: "/assets/tarragon/coast1.webp",
+  coast2: "/assets/tarragon/coast2.webp",
+  coast3: "/assets/tarragon/coast3.webp",
   galle: "/assets/tarragon/Gemini_Generated_Image_atjtavatjtavatjt.jpg",
   galleSurf: "/assets/tarragon/Surf Prac Galle.avif",
   galleTurtleHatchery: "/assets/tarragon/sea-turtle-farm-and-hatchery.jpg",
@@ -546,7 +564,7 @@ export const tours: Tour[] = [
     groupSize: 20,
     featured: true,
     image: images.surfing,
-    gallery: [images.surfing, images.eliya, images.kandy],
+    gallery: [images.arugambe1, images.arugambe2, images.arugambe3],
     summary:
       "Ride world-class waves, explore Kumana National Park, and unwind on the laid-back east coast of Sri Lanka.",
     highlights: [
@@ -622,7 +640,7 @@ export const tours: Tour[] = [
     groupSize: 20,
     featured: true,
     image: images.colombo,
-    gallery: [images.colombo, images.lotus, images.colombo2],
+    gallery: [images.colombo1, images.colombo_2, images.colombo3],
     summary:
       "A two-day immersion in Sri Lanka's bustling capital - colonial heritage, modern skyline, street food and Galle Face sunsets.",
     highlights: [
@@ -681,7 +699,7 @@ export const tours: Tour[] = [
     groupSize: 16,
     featured: true,
     image: images.sigiriya2,
-    gallery: [images.sigiriya2, images.kandy, images.ella],
+    gallery: [images.sigiriya1, images.sigiriya_2, images.sigiriya3],
     summary:
       "Climb the legendary Lion Rock, explore the cave temples of Dambulla, and experience cultural Sri Lanka.",
     highlights: [
@@ -742,7 +760,7 @@ export const tours: Tour[] = [
     duration: "3 days",
     groupSize: 12,
     image: images.yala,
-    gallery: [images.yala, images.ella, images.eliya],
+    gallery: [images.yala1, images.yala2, images.yala3],
     summary:
       "Track leopards, elephants and sloth bears through Sri Lanka's most famous national park.",
     highlights: [
@@ -804,7 +822,7 @@ export const tours: Tour[] = [
     duration: "4 days",
     groupSize: 14,
     image: images.ella2,
-    gallery: [images.ella2, images.ella, images.kandy],
+    gallery: [images.hill1, images.hill2, images.hill3],
     summary:
       "Tea plantations, scenic train rides, and the iconic Nine Arches Bridge in Sri Lanka's hill country.",
     highlights: [
@@ -872,7 +890,7 @@ export const tours: Tour[] = [
     duration: "3 days",
     groupSize: 18,
     image: images.turtle,
-    gallery: [images.turtle, images.ella, images.eliya],
+    gallery: [images.coast1, images.coast2, images.coast3],
     summary:
       "Wander the cobbled streets of Galle Fort, swim at Unawatuna, and watch sunsets over the ramparts.",
     highlights: [
