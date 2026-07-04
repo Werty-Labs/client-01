@@ -22,8 +22,9 @@ export const images = {
   ella: "/assets/tarragon/ella-train-drone.avif",
   ella2: "/assets/tarragon/ella.webp",
   hill1: "/assets/tarragon/hill1.webp",
-  hill2: "/assets/tarragon/hill2.webp",
+  hill2: "/assets/tarragon/hill2.jpg",
   hill3: "/assets/tarragon/hill3.webp",
+  hill4: "/assets/tarragon/hill4.webp",
   ellaWomen: "/assets/tarragon/ella-women.jpg",
   ravanaElla: "/assets/tarragon/ravana-ella.jpg",
   ellaHike: "/assets/tarragon/ella-rock-hike.jpg",
@@ -33,6 +34,7 @@ export const images = {
   outdoor: "/assets/tarragon/young-man-doing-wakeboarding-in-a-lake-whit-mounta-2026-01-08-02-41-01-utc (1).jpg",
   kandy: "/assets/tarragon/kandy-1.jpg",
   kandy2: "/assets/tarragon/kandy-temple-octagon.webp",
+  kandyGallery1: "/assets/tarragon/kandy2.webp",
   kandyHindagala: "/assets/tarragon/kandy-hindagala.webp",
   kandyAmbuluwawa: "/assets/tarragon/kandy-ambuluwawa.jpg",
   anuradhapuraRuins: "/assets/tarragon/anuradhapura-ruins.webp",
@@ -265,7 +267,7 @@ export const destinations: Destination[] = [
       "Try to visit during the Esala Perahera festival in July/August to witness spectacular cultural parades."
     ],
     gallery: [
-      images.kandy,
+      images.kandyGallery1,
       images.kandyHindagala,
       images.kandyAmbuluwawa
     ]
@@ -845,7 +847,7 @@ export const tours: Tour[] = [
     duration: "4 days",
     groupSize: 14,
     image: images.ella2,
-    gallery: [images.hill1, images.hill2, images.hill3],
+    gallery: [images.hill1, images.hill2, images.hill4],
     summary:
       "Tea plantations, scenic train rides, and the iconic Nine Arches Bridge in Sri Lanka's hill country.",
     highlights: [
