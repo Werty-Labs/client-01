@@ -8,6 +8,7 @@ import { BlogCTA } from '@/components/blog/BlogCTA';
 import { buildArticleSchema, buildFaqSchema, breadcrumbJsonLd } from '@/lib/structured-data';
 import { buildMetadata } from '@/lib/metadata';
 import { JsonLd } from '@/components/site/json-ld';
+import { BlogTracker } from '@/components/analytics/blog-tracker';
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -96,6 +97,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <>
       <JsonLd data={schemas} />
+      <BlogTracker />
       <article className="min-h-[100dvh] flex flex-col bg-background">
         <BlogHero title={post.title} date={post.date} image={post.image} imagePosition={post.imagePosition} />
         

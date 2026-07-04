@@ -20,6 +20,7 @@ import {
   AntiGravityCard,
 } from "@/components/animations/AnimatedSection";
 import { DestinationGalleryCarousel } from "@/components/site/DestinationGalleryCarousel";
+import { DestinationTracker } from "@/components/analytics/destination-tracker";
 import {
   CheckCircle2,
   Calendar,
@@ -87,6 +88,8 @@ export default async function DestinationDetailPage({
           ]),
         ]}
       />
+      
+      <DestinationTracker name={destination.name} />
 
       <article className="bg-background">
         <section className="relative h-[65vh] min-h-[500px]">

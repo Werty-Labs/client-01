@@ -4,15 +4,18 @@ import { type FormEvent, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useAnalytics } from "@/hooks/use-analytics";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
 export function ContactForm() {
   const [sending, setSending] = useState(false);
+  const { track } = useAnalytics();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSending(true);
+    track("contact_form_submitted");
 
     window.setTimeout(() => {
       setSending(false);

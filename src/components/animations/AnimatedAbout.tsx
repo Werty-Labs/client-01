@@ -10,6 +10,7 @@ import { images } from "@/lib/site-data";
 import { siteConfig } from "@/lib/site-config";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { services as allServices } from "@/lib/site-data";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 // ─── Animation variants (matching contact page style) ────────────────────────
 const fadeUp = {
@@ -578,6 +579,7 @@ function ServicesSection() {
   const [active, setActive] = useState(0);
   const [dir, setDir] = useState(1); // 1 = down, -1 = up
   const prevActive = useRef(0);
+  const { track } = useAnalytics();
 
   const ease = [0.16, 1, 0.3, 1] as const;
   const cinematic: [number, number, number, number] = [0.76, 0, 0.24, 1];
@@ -656,7 +658,7 @@ function ServicesSection() {
               asChild
               className="rounded-sm bg-[#111111] hover:bg-[#2a2a2a] text-white font-medium px-6 h-10 text-sm shadow-none active:scale-[0.98] transition-all duration-200"
             >
-              <Link href="/contact" prefetch>
+              <Link href="/contact" onClick={() => track("service_cta_clicked")} prefetch>
                 Plan your journey
                 <ArrowRight className="ml-2 size-4" />
               </Link>

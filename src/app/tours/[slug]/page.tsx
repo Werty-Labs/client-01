@@ -17,6 +17,7 @@ import { JsonLd } from "@/components/site/json-ld";
 import { TourAmenities } from "@/components/site/tour-amenities";
 import { TourExplore } from "@/components/site/tour-explore";
 import { TourIncludedExcluded } from "@/components/site/tour-included-excluded";
+import { TourCTA } from "@/components/analytics/tour-cta";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { getTourBySlug, getTourSlugs } from "@/lib/api";
@@ -224,11 +225,7 @@ export default async function TourDetailPage({ params }: TourPageProps) {
 
               {/* CTA */}
               <div className="px-6 pb-6 pt-4">
-                <Button asChild className="w-full rounded-md">
-                  <Link href="/contact" prefetch>
-                    Enquire About This Journey
-                  </Link>
-                </Button>
+                <TourCTA />
                 <p className="mt-3 text-center text-xs text-muted-foreground">
                   Or WhatsApp us for instant replies.
                 </p>
