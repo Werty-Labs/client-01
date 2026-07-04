@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import type { Destination } from "@/types/site";
+import { images } from "@/lib/site-data";
 
 const customBezier = [0.32, 0.72, 0, 1] as const;
 
@@ -34,10 +35,9 @@ export function AnimatedDestinations({
       />
 
       <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 md:py-32 lg:py-40">
-        {/* Asymmetric Split Hero Zone */}
-        <header className="mb-24 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20 items-end">
-          {/* Left Column: Eyebrow, Heading, Narrative */}
-          <div className="lg:col-span-7 space-y-6">
+        {/* Hero Zone */}
+        <div className="mb-24 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
+          <header className="space-y-6 lg:col-span-7 max-w-2xl">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -71,47 +71,17 @@ export function AnimatedDestinations({
             >
               From the mist-shrouded emerald tea estates of Ella to the sun-soaked golden shores of Galle, explore the ancient sanctuaries and curated escapes of Sri Lanka. Handpicked destinations crafted for the discerning traveler.
             </motion.p>
-          </div>
+          </header>
 
-          {/* Right Column: Concentric Double-Bezel Stats Panel */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, ease: customBezier, delay: 0.35 }}
-            className="lg:col-span-5 w-full"
+            className="lg:col-span-5 flex justify-center lg:justify-end"
           >
-            {/* Outer Bezel */}
-            <div className="relative rounded-[2rem] bg-black/[0.02] p-1.5 ring-1 ring-black/5">
-              {/* Inner Core */}
-              <div className="rounded-[calc(2rem-0.375rem)] bg-white p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] shadow-sm">
-
-
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <div className="space-y-1">
-                    <p className="font-mono text-3xl font-bold text-[#0B3B24]">
-                      {String(destinations.length).padStart(2, '0')}
-                    </p>
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-[#667085]">
-                      Locations
-                    </p>
-                  </div>
-                  <div className="border-l border-black/5 space-y-1">
-                    <p className="font-mono text-3xl font-bold text-[#0B3B24]">05</p>
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-[#667085]">
-                      Provinces
-                    </p>
-                  </div>
-                  <div className="border-l border-black/5 space-y-1">
-                    <p className="font-mono text-3xl font-bold text-[#0B3B24]">03</p>
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-[#667085]">
-                      Seasons
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <OverlappingHeroImages />
           </motion.div>
-        </header>
+        </div>
 
         {/* Floating Glass Filter Dock */}
         <motion.div
@@ -260,6 +230,111 @@ export function AnimatedDestinations({
           </Link>
         </motion.div>
       </div>
+    </div>
+  );
+}
+
+function OverlappingHeroImages() {
+  return (
+    <div className="relative w-full max-w-[440px] aspect-[1.15] sm:aspect-[1.1] md:aspect-[1.05] lg:aspect-[1.1] mx-auto lg:mx-0 select-none">
+      {/* Back Card (Ella train / tea country) */}
+      <motion.div
+        animate={{
+          y: [-6, 6, -6],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        whileHover={{
+          scale: 1.03,
+          rotate: 1,
+          zIndex: 25,
+          transition: { duration: 0.4, ease: customBezier }
+        }}
+        className="absolute top-0 right-4 w-[65%] h-[82%] rotate-3 origin-center z-10 transition-all duration-500"
+      >
+        {/* Double-Bezel Outer Shell */}
+        <div className="relative w-full h-full rounded-[2.5rem] bg-[#0B3B24]/5 p-2 border border-[#0B3B24]/10 shadow-[0_20px_40px_rgba(11,59,36,0.06)] hover:shadow-[0_24px_48px_rgba(11,59,36,0.1)] transition-shadow duration-500">
+          {/* Double-Bezel Inner Core */}
+          <div className="relative w-full h-full overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]">
+            <Image
+              src={images.ella}
+              alt="Scenic Sri Lanka Train Journey through tea hills"
+              fill
+              priority
+              sizes="(max-width: 768px) 50vw, 30vw"
+              className="object-cover object-center"
+            />
+            {/* Subtle premium gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent pointer-events-none" />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Front Card (Yala Elephant Safari) */}
+      <motion.div
+        animate={{
+          y: [6, -6, 6],
+        }}
+        transition={{
+          duration: 6.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        whileHover={{
+          scale: 1.03,
+          rotate: -1,
+          zIndex: 25,
+          transition: { duration: 0.4, ease: customBezier }
+        }}
+        className="absolute bottom-0 left-4 w-[65%] h-[82%] -rotate-3 origin-center z-20 transition-all duration-500"
+      >
+        {/* Double-Bezel Outer Shell */}
+        <div className="relative w-full h-full rounded-[2.5rem] bg-[#0B3B24]/5 p-2 border border-[#0B3B24]/10 shadow-[0_30px_60px_rgba(11,59,36,0.08)] hover:shadow-[0_36px_72px_rgba(11,59,36,0.12)] transition-shadow duration-500">
+          {/* Double-Bezel Inner Core */}
+          <div className="relative w-full h-full overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]">
+            <Image
+              src={images.yalaElephantSafari}
+              alt="Elephant safari adventure in Sri Lanka"
+              fill
+              priority
+              sizes="(max-width: 768px) 50vw, 30vw"
+              className="object-cover object-center"
+            />
+            {/* Subtle premium gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent pointer-events-none" />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Floating Rating Badge */}
+      <motion.div
+        animate={{
+          y: [-3, 3, -3],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        whileHover={{
+          scale: 1.05,
+          zIndex: 35,
+          transition: { duration: 0.3, ease: customBezier }
+        }}
+        className="absolute top-[28%] left-[42%] z-30"
+      >
+        <div className="rounded-2xl border border-[#0B3B24]/10 bg-white/90 backdrop-blur-md px-5 py-3 shadow-[0_12px_32px_rgba(11,59,36,0.08)] text-center min-w-[130px] select-none">
+          <div className="font-display1 font-bold text-xl text-[#0B3B24] flex items-center justify-center gap-0.5">
+            4.9<span className="text-[#1A6B6B]">★</span>
+          </div>
+          <div className="font-mono text-[9px] uppercase tracking-wider text-[#667085] mt-0.5">
+            Guest Rating
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
