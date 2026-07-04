@@ -63,7 +63,7 @@ export const images = {
   galleThalpe: "/assets/tarragon/Thalpe.jpg",
   galleLighthouse: "/assets/tarragon/GALLE-LIGHTHOUSE-2-2-r76pns01mg2utxk3a1ce0ytek6hzm3i4zhohswxvn4.jpg",
   turtle: "/assets/tarragon/turtle.jpg",
-  hero: "/assets/tarragon/hero-image.png",
+  hero: "/assets/tarragon/hero-image1.jpg",
   hero1: "/assets/tarragon/hero-video-alt.mp4",
   hero_vid: "/assets/tarragon/hero-video.mp4",
   contact: "/assets/tarragon/galle-fort.webp",
