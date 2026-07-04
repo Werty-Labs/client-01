@@ -242,16 +242,26 @@ export default async function TourDetailPage({ params }: TourPageProps) {
           <h2 className="mb-10 text-center font-display1 text-3xl sm:text-4xl">
             Visual Serenity
           </h2>
-          <div className="grid gap-4 md:grid-cols-[2fr_1fr]">
+          <div className={`grid gap-4 ${
+            tour.slug === "colombo-the-vibrant-capital"
+              ? "md:grid-cols-2"
+              : "md:grid-cols-[2fr_1fr]"
+          }`}>
             {/* Large featured image */}
             {tour.gallery[0] && (
-              <div className="relative aspect-[4/3] overflow-hidden rounded-none md:row-span-2 md:aspect-auto md:h-full">
+              <div className={`relative overflow-hidden rounded-none md:row-span-2 md:aspect-auto md:h-full ${
+                tour.slug === "colombo-the-vibrant-capital" ? "aspect-[2/3]" : "aspect-[4/3]"
+              }`}>
                 <Image
                   src={tour.gallery[0]}
                   alt={`${tour.title} photo 1`}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 66vw"
+                  sizes={
+                    tour.slug === "colombo-the-vibrant-capital"
+                      ? "(max-width: 768px) 100vw, 50vw"
+                      : "(max-width: 768px) 100vw, 66vw"
+                  }
                 />
               </div>
             )}
