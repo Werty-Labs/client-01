@@ -257,6 +257,9 @@ export default async function TourDetailPage({ params }: TourPageProps) {
                   alt={`${tour.title} photo 1`}
                   fill
                   className="object-cover"
+                  style={{
+                    objectPosition: tour.gallery[0].includes("rsz_dylan-highres") ? "right" : undefined,
+                  }}
                   sizes={
                     tour.slug === "colombo-the-vibrant-capital"
                       ? "(max-width: 768px) 100vw, 50vw"

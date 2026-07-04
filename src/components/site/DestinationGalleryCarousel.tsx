@@ -36,6 +36,9 @@ export function DestinationGalleryCarousel({
               alt={`${destinationName} gallery image ${i + 1}`}
               fill
               className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/item:scale-105"
+              style={{
+                objectPosition: img.includes("rsz_dylan-highres") ? "right" : undefined,
+              }}
               sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 33vw"
             />
           </motion.div>

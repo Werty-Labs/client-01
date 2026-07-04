@@ -4,8 +4,11 @@ export const images = {
   logo: "/assets/tarragon/logo-white.png",
   sigiriya2: "/assets/tarragon/sigiriya.webp",
   sigiriya1: "/assets/tarragon/sigiriya1.webp",
-  sigiriya_2: "/assets/tarragon/sigiriya2.webp",
+  sigiriya_2: "/assets/tarragon/two-ancient-lion-s-paws-at-the-beginning-of-the-as-2026-03-25-22-48-43-utc.jpg",
   sigiriya3: "/assets/tarragon/sigiriya3.webp",
+  sigiriya4: "/assets/tarragon/Sigiriya4.jpg",
+  sigiriyaScenic: "/assets/tarragon/beautiful-scenic-view-of-natural-landmark-with-in-2026-01-06-00-39-03-utc.jpg",
+  sigiriyaAerial: "/assets/tarragon/sigiriya-rock-or-sinhagiri-aerial-panoramic-view-2026-03-26-01-00-27-utc.jpg",
   heritage: "/assets/tarragon/seated-stone-buddha-statue-against-carved-rock-wal-2026-01-05-05-41-04-utc.jpg",
   yala: "/assets/tarragon/Yaala.jpg",
   yala1: "/assets/tarragon/yala1.webp",
@@ -36,18 +39,23 @@ export const images = {
   elephantsWaterSunset: "/assets/tarragon/elephants-in-the-water-at-sunset-2026-03-20-04-42-13-utc.jpg",
   sun_set: "/assets/tarragon/tropical-sunset.webp",
   arugamWebp: "/assets/tarragon/arugam-bay.webp",
-  arugambe1: "/assets/tarragon/rsz_dylan-highres-3312_2048x2048.webp",
+  arugambe1: "/assets/tarragon/rsz_dylan-highres-3312_2048x2048.jpg",
   arugambe2: "/assets/tarragon/pexels-tomas-malik-793526-1998439.jpg",
   arugambe3: "/assets/tarragon/Arugam-Bay-surf-1.jpg",
+  athenaSurfer: "/assets/tarragon/pexels-athena-2972773.jpg",
+  surfTwoWomen: "/assets/tarragon/surf-twomen.webp",
+  surfBoards: "/assets/tarragon/surf-boards.jpg",
   colombo: "/assets/tarragon/Colombo_night.webp",
   colombo2: "/assets/tarragon/colombo-2.webp",
   colombo1: "/assets/tarragon/pexels-thilina-alagiyawanna-3266092-37010202 (1).jpg",
   colombo_2: "/assets/tarragon/independence-square-in-colombo-2026-01-07-00-18-51-utc (1).jpg",
   colombo3: "/assets/tarragon/Gangarama.webp",
+  colomboTransformed: "/assets/tarragon/wmremove-transformed.jpeg",
+  colomboCasino: "/assets/tarragon/Bally's Casino Colombo.jpg",
   lotus: "/assets/tarragon/lotus-tower-alt.jpg",
   sl: "/assets/tarragon/sri-lanka.jpg",
   coast1: "/assets/tarragon/coast1.webp",
-  coast2: "/assets/tarragon/coast2.webp",
+  coast2: "/assets/tarragon/whale watching mirissa.jpg",
   coast3: "/assets/tarragon/coast3.webp",
   galle: "/assets/tarragon/Gemini_Generated_Image_atjtavatjtavatjt.jpg",
   galleSurf: "/assets/tarragon/Surf Prac Galle.avif",
@@ -290,9 +298,12 @@ export const destinations: Destination[] = [
       "Beware of the resident monkeys and wasp nests on the rock; do not feed the wildlife or make loud noises."
     ],
     gallery: [
-      images.sigiriya2,
-      images.sun_set,
-      images.sigiriya2
+      images.sigiriya1,
+      images.sigiriya_2,
+      images.sigiriya3,
+      images.sigiriya4,
+      images.sigiriyaScenic,
+      images.sigiriyaAerial
     ]
   },
   {
@@ -327,9 +338,12 @@ export const destinations: Destination[] = [
       "Spend an evening strolling along Galle Face Green to experience the local street food and ocean breeze."
     ],
     gallery: [
+      images.colombo1,
+      images.colombo_2,
+      images.colombo3,
       images.colombo,
-      images.lotus,
-      images.colombo2
+      images.colomboTransformed,
+      images.colomboCasino
     ]
   },
   {
@@ -364,9 +378,12 @@ export const destinations: Destination[] = [
       "Visit Kumana National Park for a quieter, less crowded alternative to Yala."
     ],
     gallery: [
-      images.surfing,
-      images.mirissa,
-      images.surf
+      images.arugambe1,
+      images.arugambe2,
+      images.arugambe3,
+      images.athenaSurfer,
+      images.surfTwoWomen,
+      images.surfBoards
     ]
   },
   {
