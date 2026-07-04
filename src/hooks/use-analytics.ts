@@ -1,4 +1,6 @@
-import { posthog } from "@/lib/posthog";
+"use client";
+
+import posthog from "@/lib/posthog";
 
 type ConversionEvent =
   | "contact_form_submitted"
