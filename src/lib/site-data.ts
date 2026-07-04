@@ -73,6 +73,9 @@ export const images = {
   honeymoon2: "/assets/tarragon/honeymoon-2.webp",
   family: "/assets/tarragon/family-2.jpg",
   mirissa: "/assets/tarragon/mirissa.webp",
+  mirissaDrone: "/assets/tarragon/mirissa drone shot.jpg",
+  coconutDrink: "/assets/tarragon/hand-holding-coconut-drink-on-tropical-beach-2026-01-08-01-42-44-utc.jpg",
+  mirissaHotels: "/assets/tarragon/mirissa hotels.jpg",
   eliya: "/assets/tarragon/nuwara-eliya.webp",
   trinco: "/assets/tarragon/trinco.webp",
   anuradhapura2: "/assets/tarragon/anuradhapura-2.webp",
@@ -417,9 +420,12 @@ export const destinations: Destination[] = [
       "Visit Coconut Tree Hill early in the morning to get photos without the large crowds."
     ],
     gallery: [
-      images.surf,
-      images.sun_set,
-      images.sl
+      images.coast2,
+      images.coast1,
+      images.mirissa,
+      images.mirissaDrone,
+      images.coconutDrink,
+      images.mirissaHotels
     ]
   },
   {
