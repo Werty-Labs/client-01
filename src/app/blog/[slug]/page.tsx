@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     <>
       <JsonLd data={schemas} />
       <article className="min-h-[100dvh] flex flex-col bg-background">
-        <BlogHero title={post.title} date={post.date} image={post.image} />
+        <BlogHero title={post.title} date={post.date} image={post.image} imagePosition={post.imagePosition} />
         
         <div className="max-w-4xl mx-auto px-4 md:px-12 w-full">
           <AnswerBlock answer={post.answerSummary} />

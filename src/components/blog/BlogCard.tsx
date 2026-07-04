@@ -55,6 +55,7 @@ export function BlogCard({ post, index }: { post: BlogPost; index: number }) {
                 alt={post.title}
                 fill
                 className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
+                style={{ objectPosition: post.imagePosition || 'center' }}
               />
             </div>
             

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export function BlogHero({ title, date, image }: { title: string; date: string; image: string }) {
+export function BlogHero({ title, date, image, imagePosition }: { title: string; date: string; image: string; imagePosition?: string }) {
   return (
     <section className="relative min-h-[70vh] flex items-end pb-24 pt-40 w-full px-4 md:px-12 xl:px-24">
       {/* Edge-gradient pattern for cinematic fade */}
@@ -12,6 +12,7 @@ export function BlogHero({ title, date, image }: { title: string; date: string; 
           priority
           sizes="100vw"
           className="object-cover"
+          style={{ objectPosition: imagePosition || 'center' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />

@@ -15,6 +15,7 @@ export interface BlogPost {
   summary: string;
   answerSummary: string; // Used for AI Overview
   image: string;
+  imagePosition?: string;
   faq?: FAQItem[];
   content: string; // Raw MDX content
 }
@@ -54,6 +55,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
       summary: data.summary || '',
       answerSummary: data.answerSummary || '',
       image: data.image || '',
+      imagePosition: data.imagePosition || '',
       faq: data.faq,
       content,
     };
