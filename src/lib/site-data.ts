@@ -83,6 +83,7 @@ export const images = {
   mirissaHotels: "/assets/tarragon/mirissa hotels.jpg",
   eliya: "/assets/tarragon/nuwara-eliya.webp",
   eliya1: "/assets/tarragon/eliya1.jpg",
+  eliya7: "/assets/tarragon/eliya7.webp",
   eliyaPostOffice: "/assets/tarragon/nuwara-eliya-post-office.jpg",
   trinco: "/assets/tarragon/trinco.webp",
   trinco1: "/assets/tarragon/trinco1.jpg",
@@ -92,15 +93,13 @@ export const images = {
   trinco5: "/assets/tarragon/trinco5.jpg",
   trinco6: "/assets/tarragon/trinco6.jpg",
   anuradhapura2: "/assets/tarragon/anuradhapura-2.webp",
+  anura1: "/assets/tarragon/anura1.webp",
+  anura2: "/assets/tarragon/anura2.jpg",
+  anura3: "/assets/tarragon/anura3.webp",
+  anura4: "/assets/tarragon/anura4.webp",
+  anura7: "/assets/tarragon/anura7.webp",
+  anura6: "/assets/tarragon/anura6.jpg",
   polonnaruwa: "/assets/tarragon/polonnaruwa.webp",
-  polonnaruwaRankotVihara: "/assets/tarragon/rankot-vihara-pollonaruwa-sri-lanka-2026-03-09-22-10-53-utc.webp",
-  polonnaruwaRoyalPalace: "/assets/tarragon/royal-palace-ruins-2026-03-09-23-02-21-utc.webp",
-  polonnaruwaIshan: "/assets/tarragon/ishan-kahapola-arachchi-wBVdJmt9GxY-unsplash.webp",
-  polonnaruwaKalpa: "/assets/tarragon/pexels-kalpa-chathuranga-3828233-6840389.webp",
-  polonnaruwaNissankaLata: "/assets/tarragon/ruins-of-nissanka-lata-mandapaya-in-polonnaruwa-2026-03-09-08-43-55-utc.webp",
-  polonnaruwaVatadage: "/assets/tarragon/buddha-images-in-vatadage-temple-in-ruins-of-polon-2026-01-05-23-08-55-utc (1).png",
-  polonnaruwaVatadageBuddha: "/assets/tarragon/buddha-images-in-vatadage-temple-in-ruins-of-polon-2026-01-05-23-08-55-utc.webp",
-  polonnaruwaQuadrangle: "/assets/tarragon/ruins-in-quadrangle-group-in-ancient-city-pollonar-2026-03-09-22-11-09-utc.webp",
   beach: "/assets/tarragon/beaches.jpg",
   beachHolidays: "/assets/tarragon/beach holidays.jpg",
   surfing: "/assets/tarragon/surf-twomen.webp",
@@ -485,7 +484,7 @@ export const destinations: Destination[] = [
     ],
     gallery: [
       images.eliyaPostOffice,
-      images.ella,
+      images.eliya7,
       images.eliya1,
       images.hill1,
       images.hill2,
@@ -564,9 +563,12 @@ export const destinations: Destination[] = [
       "Wear easily removable sandals, as you must take off your shoes frequently when entering temple grounds."
     ],
     gallery: [
-      images.anuradhapuraRuins,
-      images.eliya,
-      images.sl
+      images.anura1,
+      images.anura2,
+      images.anura3,
+      images.anura4,
+      images.anura7,
+      images.anura6
     ]
   },
   {
@@ -601,12 +603,9 @@ export const destinations: Destination[] = [
       "The ruins are close together, making a half-day bicycle ride the perfect way to see everything."
     ],
     gallery: [
-      images.polonnaruwaRoyalPalace,
-      images.polonnaruwaIshan,
-      images.polonnaruwaKalpa,
-      images.polonnaruwaNissankaLata,
-      images.polonnaruwaVatadageBuddha,
-      images.polonnaruwaQuadrangle
+      images.colombo,
+      images.sl,
+      images.sun_set
     ]
   }
 ];
