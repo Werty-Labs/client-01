@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ContactForm } from "@/components/forms/contact-form";
 import { siteConfig } from "@/lib/site-config";
 import { images } from "@/lib/site-data";
-import { MessageCircle, Phone, Mail, MapPin, Camera, Share2, Play } from "lucide-react";
+import { MessageCircle, Phone, Mail, MapPin } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
@@ -205,7 +205,7 @@ export function AnimatedContact() {
             variants={slideInRight}
             transition={springTransition(0)}
           >
-            <h3 className="font-display text-2xl text-[#0B3B24] mb-6 tracking-tight">Follow Our Journeys</h3>
+            <h3 className="font-display text-2xl text-[#0B3B24] mb-6 tracking-tight">Connect with Us</h3>
             <motion.div
               className="flex gap-4"
               initial="hidden"
@@ -213,16 +213,31 @@ export function AnimatedContact() {
               variants={{ visible: { transition: { staggerChildren: 0.1, delayChildren: 1.3 } } }}
             >
               {[
-                { icon: <Camera className="size-[18px]" strokeWidth={2} /> },
-                { icon: <Share2 className="size-[18px]" strokeWidth={2} /> },
-                { icon: <Play className="size-[18px]" strokeWidth={2} /> },
+                { 
+                  icon: <WhatsAppIcon className="size-[18px]" />, 
+                  href: `https://wa.me/${siteConfig.whatsapp}`,
+                  label: "WhatsApp"
+                },
+                { 
+                  icon: <InstagramIcon className="size-[18px]" />, 
+                  href: "#",
+                  label: "Instagram"
+                },
+                { 
+                  icon: <FacebookIcon className="size-[18px]" />, 
+                  href: "#",
+                  label: "Facebook"
+                },
               ].map((social, i) => (
                 <motion.a
                   key={i}
-                  href="#"
+                  href={social.href}
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="flex size-11 items-center justify-center rounded-full bg-[#f2f5f4] text-[#0B3B24] hover:bg-[#e8ecea] transition-colors"
                   variants={fadeInScale}
                   transition={springTransition(0)}
+                  aria-label={social.label}
                 >
                   {social.icon}
                 </motion.a>
@@ -234,3 +249,26 @@ export function AnimatedContact() {
     </div>
   );
 }
+
+// ─── Custom Social Icons ──────────────────────────────────────────────────────
+
+const WhatsAppIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M20.52 3.48A11.78 11.78 0 0 0 12.05 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.12 1.6 5.92L0 24l6.42-1.68a11.84 11.84 0 0 0 5.63 1.43h.01c6.54 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.38-8.43ZM12.05 21.3h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.81 1 1.02-3.71-.23-.38a9.46 9.46 0 1 1 17.55-4.84c0 5.21-4.24 9.46-9.35 9.46Zm5.42-7.08c-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.66.15-.2.3-.76.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.27-.47-2.41-1.49-.89-.79-1.5-1.77-1.67-2.07-.18-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.66-1.59-.9-2.18-.24-.57-.49-.5-.66-.5h-.56c-.2 0-.5.07-.77.37-.27.3-1.02 1-1.02 2.43s1.04 2.82 1.19 3.02c.15.2 2.06 3.13 5 4.39.7.3 1.24.48 1.66.62.7.22 1.34.19 1.84.12.56-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z" />
+  </svg>
+);
+
+const InstagramIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+);
+
+const FacebookIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  </svg>
+);
+
