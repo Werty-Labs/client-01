@@ -24,7 +24,7 @@ export const images = {
   hill1: "/assets/tarragon/hill1.webp",
   hill2: "/assets/tarragon/hill2.jpg",
   hill3: "/assets/tarragon/hill3.webp",
-  hill4: "/assets/tarragon/hill4.webp",
+  hill4: "/assets/tarragon/hill4.jpg",
   ellaWomen: "/assets/tarragon/ella-women.jpg",
   ravanaElla: "/assets/tarragon/ravana-ella.jpg",
   ellaHike: "/assets/tarragon/ella-rock-hike.jpg",
@@ -35,6 +35,9 @@ export const images = {
   kandy: "/assets/tarragon/kandy-1.jpg",
   kandy2: "/assets/tarragon/kandy-temple-octagon.webp",
   kandyGallery1: "/assets/tarragon/kandy2.webp",
+  kandy1_webp: "/assets/tarragon/kandy1.webp",
+  kandy3_webp: "/assets/tarragon/kandy3.webp",
+  kandy4_webp: "/assets/tarragon/kandy4.webp",
   kandyHindagala: "/assets/tarragon/kandy-hindagala.webp",
   kandyAmbuluwawa: "/assets/tarragon/kandy-ambuluwawa.jpg",
   anuradhapuraRuins: "/assets/tarragon/anuradhapura-ruins.webp",
@@ -79,7 +82,15 @@ export const images = {
   coconutDrink: "/assets/tarragon/hand-holding-coconut-drink-on-tropical-beach-2026-01-08-01-42-44-utc.jpg",
   mirissaHotels: "/assets/tarragon/mirissa hotels.jpg",
   eliya: "/assets/tarragon/nuwara-eliya.webp",
+  eliya1: "/assets/tarragon/eliya1.jpg",
+  eliyaPostOffice: "/assets/tarragon/nuwara-eliya-post-office.jpg",
   trinco: "/assets/tarragon/trinco.webp",
+  trinco1: "/assets/tarragon/trinco1.jpg",
+  trinco2: "/assets/tarragon/trinco2.jpg",
+  trinco3: "/assets/tarragon/trinco3.webp",
+  trinco4: "/assets/tarragon/trinco4.jpg",
+  trinco5: "/assets/tarragon/trinco5.jpg",
+  trinco6: "/assets/tarragon/trinco6.jpg",
   anuradhapura2: "/assets/tarragon/anuradhapura-2.webp",
   polonnaruwa: "/assets/tarragon/polonnaruwa.webp",
   beach: "/assets/tarragon/beaches.jpg",
@@ -267,7 +278,10 @@ export const destinations: Destination[] = [
       "Try to visit during the Esala Perahera festival in July/August to witness spectacular cultural parades."
     ],
     gallery: [
+      images.kandy1_webp,
       images.kandyGallery1,
+      images.kandy3_webp,
+      images.kandy4_webp,
       images.kandyHindagala,
       images.kandyAmbuluwawa
     ]
@@ -462,9 +476,12 @@ export const destinations: Destination[] = [
       "Stop for a high tea experience at one of the old colonial hotels to step back in time."
     ],
     gallery: [
-      images.eliya,
+      images.eliyaPostOffice,
       images.ella,
-      images.sl
+      images.eliya1,
+      images.hill1,
+      images.hill2,
+      images.hill4
     ]
   },
   {
@@ -499,9 +516,12 @@ export const destinations: Destination[] = [
       "When visiting Koneswaram Temple, enjoy the incredible panoramic ocean views from Swami Rock."
     ],
     gallery: [
-      images.surf,
-      images.sun_set,
-      images.sl
+      images.trinco1,
+      images.trinco2,
+      images.trinco3,
+      images.trinco4,
+      images.trinco5,
+      images.trinco6
     ]
   },
   {
