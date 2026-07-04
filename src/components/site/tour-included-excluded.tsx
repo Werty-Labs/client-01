@@ -1,4 +1,4 @@
-import { Check, X } from "lucide-react";
+import { Check } from "lucide-react";
 import type { Tour } from "@/types/site";
 
 type TourIncludedExcludedProps = {
@@ -8,38 +8,23 @@ type TourIncludedExcludedProps = {
 export function TourIncludedExcluded({ tour }: TourIncludedExcludedProps) {
   if (!tour.includedExcluded) return null;
 
-  const { included, excluded } = tour.includedExcluded;
+  const { included } = tour.includedExcluded;
 
   return (
     <section>
       <h2 className="mb-6 font-display1 text-2xl text-primary">
-        Included/Exclude
+        What's Included
       </h2>
 
-      <div className="grid gap-8 sm:grid-cols-2">
-        {/* Included items */}
-        <ul className="space-y-3">
-          {included.map((item) => (
-            <li key={item} className="flex items-start gap-2.5">
-              <Check className="mt-0.5 size-[18px] shrink-0 text-primary" />
-              <span className="text-sm leading-relaxed text-foreground">
-                {item}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Excluded items */}
-        <ul className="space-y-3">
-          {excluded.map((item) => (
-            <li key={item} className="flex items-start gap-2.5">
-              <X className="mt-0.5 size-[18px] shrink-0 text-foreground" />
-              <span className="text-sm leading-relaxed text-foreground">
-                {item}
-              </span>
-            </li>
-          ))}
-        </ul>
+      <div className="grid gap-4 sm:grid-cols-2">
+        {included.map((item) => (
+          <div key={item} className="flex items-start gap-2.5">
+            <Check className="mt-0.5 size-[18px] shrink-0 text-primary" />
+            <span className="text-sm leading-relaxed text-foreground">
+              {item}
+            </span>
+          </div>
+        ))}
       </div>
     </section>
   );
