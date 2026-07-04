@@ -47,7 +47,7 @@ export function BlogCTA() {
             transition={{ delay: 0.2, duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
             className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 bg-white/5 backdrop-blur-md text-[10px] uppercase tracking-[0.2em] font-medium text-white mb-8 ring-1 ring-white/10"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-dest-amber animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             Bespoke Journeys
           </motion.div>
           <motion.h2 
@@ -72,11 +72,11 @@ export function BlogCTA() {
               ref={buttonRef}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="group relative inline-flex items-center gap-4 rounded-full pl-8 pr-3 py-3 shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-transform duration-500 active:scale-[0.98] ring-1 ring-white/10"
-              style={{ backgroundColor: '#F5A623', color: '#1A1A1A' }}
+              className="group relative inline-flex items-center gap-4 rounded-full pl-8 pr-3 py-3 shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all duration-500 active:scale-[0.98] ring-1 ring-white/10 text-white hover:bg-[#072617]"
+              style={{ backgroundColor: '#0B3B24' }}
             >
               <span className="font-semibold tracking-[0.1em] text-xs uppercase pt-[1px]">Plan My Trip</span>
-              <div className="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center transition-all duration-500 group-hover:bg-black/15 group-hover:scale-105 group-hover:translate-x-1 group-hover:-translate-y-[1px]">
+              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 group-hover:bg-white/15 group-hover:scale-105 group-hover:translate-x-1 group-hover:-translate-y-[1px]">
                 <ArrowRight weight="regular" size={18} />
               </div>
             </Link>

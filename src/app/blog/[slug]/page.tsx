@@ -31,6 +31,50 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   });
 }
 
+const components = {
+  h1: (props: any) => (
+    <h1 className="font-display1 text-4xl md:text-5xl font-bold tracking-tight text-[#0B3B24] dark:text-white mt-16 mb-6 leading-[1.1] text-balance" {...props} />
+  ),
+  h2: (props: any) => (
+    <h2 className="font-display1 text-3xl md:text-4xl font-bold tracking-tight text-[#0B3B24] dark:text-white mt-16 mb-6 leading-[1.15] text-balance border-b border-[#0B3B24]/10 pb-3" {...props} />
+  ),
+  h3: (props: any) => (
+    <h3 className="font-display text-xl md:text-2xl font-semibold tracking-tight text-[#0B3B24] dark:text-white mt-10 mb-4 leading-[1.2]" {...props} />
+  ),
+  p: (props: any) => (
+    <p className="font-sans text-base md:text-lg leading-[1.8] text-[#667085] dark:text-zinc-300 mb-8 max-w-[65ch] font-medium text-wrap-pretty" {...props} />
+  ),
+  strong: (props: any) => (
+    <strong className="font-bold text-[#0B3B24] dark:text-white" {...props} />
+  ),
+  ul: (props: any) => (
+    <ul className="list-disc pl-6 mb-8 space-y-3 text-[#667085] dark:text-zinc-300 text-base md:text-lg max-w-[65ch] font-medium marker:text-[#F5A623]" {...props} />
+  ),
+  ol: (props: any) => (
+    <ol className="list-decimal pl-6 mb-8 space-y-3 text-[#667085] dark:text-zinc-300 text-base md:text-lg max-w-[65ch] font-medium marker:text-[#F5A623]" {...props} />
+  ),
+  li: (props: any) => (
+    <li className="pl-1 leading-[1.8]" {...props} />
+  ),
+  blockquote: (props: any) => (
+    <blockquote className="border-l-4 border-[#1A6B6B] bg-[#1A6B6B]/5 py-6 pr-6 pl-8 rounded-r-3xl text-[#0B3B24] dark:text-zinc-100 font-display1 italic my-10 text-xl leading-relaxed shadow-[0_10px_30px_rgba(26,107,107,0.03)]" {...props} />
+  ),
+  a: (props: any) => (
+    <a className="font-semibold text-[#1A6B6B] dark:text-amber-300 underline underline-offset-4 decoration-[#F5A623]/40 hover:decoration-[#F5A623] transition-colors" {...props} />
+  ),
+  hr: (props: any) => (
+    <hr className="my-16 border-t border-black/10 dark:border-white/10" {...props} />
+  ),
+  img: (props: any) => (
+    <div className="my-12 p-2 rounded-[2.5rem] bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/10 shadow-[0_24px_48px_-15px_rgba(11,59,36,0.04)]">
+      <div className="overflow-hidden rounded-[calc(2.5rem-0.5rem)] relative w-full aspect-[16/9]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="object-cover w-full h-full" {...props} />
+      </div>
+    </div>
+  )
+};
+
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
@@ -55,14 +99,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <article className="min-h-[100dvh] flex flex-col bg-background">
         <BlogHero title={post.title} date={post.date} image={post.image} imagePosition={post.imagePosition} />
         
-        <div className="max-w-4xl mx-auto px-4 md:px-12 w-full">
+        <div className="max-w-5xl mx-auto px-4 md:px-12 w-full">
           <AnswerBlock answer={post.answerSummary} />
           
-          <div className="prose prose-lg dark:prose-invert max-w-[65ch] mx-auto my-24 md:my-32 text-zinc-800 dark:text-zinc-300 [&_p]:text-wrap-pretty [&_h1]:text-wrap-balance [&_h2]:text-wrap-balance [&_h3]:text-wrap-balance prose-headings:font-display1 prose-headings:font-medium prose-headings:tracking-[-0.02em] prose-headings:text-zinc-950 dark:prose-headings:text-white prose-h2:text-4xl prose-h2:mt-24 prose-h2:mb-10 prose-h3:text-2xl prose-h3:mt-16 prose-h3:mb-6 prose-a:text-dest-teal dark:prose-a:text-amber-300 prose-a:underline-offset-4 prose-a:decoration-dest-amber/40 hover:prose-a:decoration-dest-amber prose-img:rounded-[2rem] prose-img:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1)] prose-img:ring-1 prose-img:ring-black/5 dark:prose-img:ring-white/10 prose-li:marker:text-dest-amber leading-[1.8] space-y-8 prose-blockquote:border-l-4 prose-blockquote:border-l-dest-amber prose-blockquote:bg-dest-amber/5 prose-blockquote:py-4 prose-blockquote:pr-6 prose-blockquote:pl-8 prose-blockquote:rounded-r-2xl prose-blockquote:text-zinc-900 dark:prose-blockquote:text-zinc-100 prose-blockquote:font-display1 prose-blockquote:italic">
-            <MDXRemote source={post.content} />
+          <div className="max-w-[65ch] mx-auto my-20 md:my-28">
+            <MDXRemote source={post.content} components={components} />
           </div>
           
-          <div className="max-w-[65ch] mx-auto mb-24 md:mb-32">
+          <div className="max-w-[65ch] mx-auto mb-20 md:mb-28">
             <FAQAccordion faqs={post.faq} />
           </div>
 
