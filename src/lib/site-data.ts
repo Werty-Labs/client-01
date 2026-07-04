@@ -93,6 +93,14 @@ export const images = {
   trinco6: "/assets/tarragon/trinco6.jpg",
   anuradhapura2: "/assets/tarragon/anuradhapura-2.webp",
   polonnaruwa: "/assets/tarragon/polonnaruwa.webp",
+  polonnaruwaRankotVihara: "/assets/tarragon/rankot-vihara-pollonaruwa-sri-lanka-2026-03-09-22-10-53-utc.webp",
+  polonnaruwaRoyalPalace: "/assets/tarragon/royal-palace-ruins-2026-03-09-23-02-21-utc.webp",
+  polonnaruwaIshan: "/assets/tarragon/ishan-kahapola-arachchi-wBVdJmt9GxY-unsplash.webp",
+  polonnaruwaKalpa: "/assets/tarragon/pexels-kalpa-chathuranga-3828233-6840389.webp",
+  polonnaruwaNissankaLata: "/assets/tarragon/ruins-of-nissanka-lata-mandapaya-in-polonnaruwa-2026-03-09-08-43-55-utc.webp",
+  polonnaruwaVatadage: "/assets/tarragon/buddha-images-in-vatadage-temple-in-ruins-of-polon-2026-01-05-23-08-55-utc (1).png",
+  polonnaruwaVatadageBuddha: "/assets/tarragon/buddha-images-in-vatadage-temple-in-ruins-of-polon-2026-01-05-23-08-55-utc.webp",
+  polonnaruwaQuadrangle: "/assets/tarragon/ruins-in-quadrangle-group-in-ancient-city-pollonar-2026-03-09-22-11-09-utc.webp",
   beach: "/assets/tarragon/beaches.jpg",
   beachHolidays: "/assets/tarragon/beach holidays.jpg",
   surfing: "/assets/tarragon/surf-twomen.webp",
@@ -593,9 +601,12 @@ export const destinations: Destination[] = [
       "The ruins are close together, making a half-day bicycle ride the perfect way to see everything."
     ],
     gallery: [
-      images.colombo,
-      images.sl,
-      images.sun_set
+      images.polonnaruwaRoyalPalace,
+      images.polonnaruwaIshan,
+      images.polonnaruwaKalpa,
+      images.polonnaruwaNissankaLata,
+      images.polonnaruwaVatadageBuddha,
+      images.polonnaruwaQuadrangle
     ]
   }
 ];
