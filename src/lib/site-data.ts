@@ -100,6 +100,11 @@ export const images = {
   anura7: "/assets/tarragon/anura7.webp",
   anura6: "/assets/tarragon/anura6.jpg",
   polonnaruwa: "/assets/tarragon/polonnaruwa.webp",
+  polonnaruwaRankotVihara: "/assets/tarragon/rankot-vihara-pollonaruwa-sri-lanka-2026-03-09-22-10-53-utc.webp",
+  polonnaruwaRoyalPalace: "/assets/tarragon/royal-palace-ruins-2026-03-09-23-02-21-utc.webp",
+  polonnaruwaQuadrangle: "/assets/tarragon/ruins-in-quadrangle-group-in-ancient-city-pollonar-2026-03-09-22-11-09-utc.webp",
+  polonnaruwaNissanka: "/assets/tarragon/ruins-of-nissanka-lata-mandapaya-in-polonnaruwa-2026-03-09-08-43-55-utc.webp",
+  polonnaruwaIshan: "/assets/tarragon/ishan-kahapola-arachchi-wBVdJmt9GxY-unsplash.webp",
   beach: "/assets/tarragon/beaches.jpg",
   beachHolidays: "/assets/tarragon/beach holidays.jpg",
   surfing: "/assets/tarragon/surf-twomen.webp",
@@ -603,9 +608,12 @@ export const destinations: Destination[] = [
       "The ruins are close together, making a half-day bicycle ride the perfect way to see everything."
     ],
     gallery: [
-      images.colombo,
-      images.sl,
-      images.sun_set
+      images.polonnaruwa,
+      images.polonnaruwaRankotVihara,
+      images.polonnaruwaRoyalPalace,
+      images.polonnaruwaQuadrangle,
+      images.polonnaruwaNissanka,
+      images.polonnaruwaIshan
     ]
   }
 ];
