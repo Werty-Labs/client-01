@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { WhatsAppFabAnimated } from "@/components/site/whatsapp-fab-animated";
 
 const FacebookIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -126,7 +125,6 @@ export function Footer() {
           &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
         </div>
       </footer>
-      <WhatsAppFabAnimated />
     </>
   );
 }

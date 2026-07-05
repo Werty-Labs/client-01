@@ -3,6 +3,7 @@ import { Bodoni_Moda, Be_Vietnam_Pro } from "next/font/google";
 import { Footer } from "@/components/site/footer";
 import { HeaderAnimated } from "@/components/site/header-animated";
 import { JsonLd } from "@/components/site/json-ld";
+import { WhatsAppFabGlobal } from "@/components/site/whatsapp-fab-global";
 import { Providers } from "@/components/providers";
 import { buildMetadata } from "@/lib/metadata";
 import { organizationJsonLd } from "@/lib/structured-data";
@@ -46,6 +47,7 @@ export default function RootLayout({
             <HeaderAnimated />
             <main className="flex-1">{children}</main>
             <Footer />
+            <WhatsAppFabGlobal />
           </div>
         </Providers>
       </body>
