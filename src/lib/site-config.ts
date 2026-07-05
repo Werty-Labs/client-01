@@ -6,10 +6,10 @@ export const siteConfig = {
   description:
     "Discover Sri Lanka with tailor-made tours, wildlife safaris, beach holidays, cultural escapes, hill-country adventures, and private travel planning.",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tarragonleisure.com",
-  phone: "+94 77 000 0000",
+  phone: "+94 77 72 50 794 / +94 77 22 94 994",
   email: "info@tarragonleisure.com",
-  whatsapp: "94770000000",
-  address: "Colombo, Sri Lanka",
+  whatsapp: "94777250794",
+  address: "No. 439/2, Galle Road, Pamburana, Matara",
   creator: "Tarragon Leisure",
   author: "Tarragon Leisure",
   locale: "en_US",

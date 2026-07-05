@@ -18,7 +18,8 @@ export function organizationJsonLd() {
     telephone: siteConfig.phone,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Colombo",
+      streetAddress: "No. 439/2, Galle Road",
+      addressLocality: "Pamburana, Matara",
       addressCountry: "LK",
     },
     contactPoint: [

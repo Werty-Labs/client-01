@@ -105,7 +105,7 @@ export function AnimatedContact() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#25D366] px-6 py-3.5 text-white font-medium hover:bg-[#20bd5a] transition-colors shadow-sm"
           >
-            <MessageCircle className="size-5" />
+            <WhatsAppIcon className="size-5" />
             Start WhatsApp Chat
           </a>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -161,22 +161,36 @@ export function AnimatedContact() {
               {[
                 {
                   icon: <Phone className="size-4" strokeWidth={2.5} />,
-                  title: "Global Office",
-                  detail: "+1 (800) 555-0199",
+                  title: "Global Office Phone Number",
+                  detail: (
+                    <span className="flex flex-col gap-0.5">
+                      <a href="tel:+94777250794" className="hover:underline">+94 77 72 50 794</a>
+                      <a href="tel:+94772294994" className="hover:underline">+94 77 22 94 994</a>
+                    </span>
+                  ),
+                },
+                {
+                  icon: <WhatsAppIcon className="size-4" fill="currentColor" />,
+                  title: "WhatsApp",
+                  detail: (
+                    <span className="whitespace-nowrap">
+                      <a href="https://wa.me/94777250794" target="_blank" rel="noopener noreferrer" className="hover:underline">+94 77 72 50 794</a>
+                    </span>
+                  ),
                 },
                 {
                   icon: <Mail className="size-4" strokeWidth={2.5} />,
                   title: "General Inquiries",
-                  detail: "concierge@tarragon.com",
+                  detail: <a href={`mailto:${siteConfig.email}`} className="hover:underline">{siteConfig.email}</a>,
                 },
                 {
                   icon: <MapPin className="size-4" strokeWidth={2.5} />,
                   title: "Headquarters",
                   detail: (
                     <span className="whitespace-pre-line leading-relaxed">
-                      100 Serenity Way,<br />
-                      Suite 400<br />
-                      New York, NY 10001
+                      No. 439/2, Galle Road,<br />
+                      Pamburana,<br />
+                      Matara
                     </span>
                   ),
                 },

@@ -78,13 +78,20 @@ export function Footer() {
             <h4 className="mb-3 font-display text-lg">Contact</h4>
             <ul className="space-y-2 text-sm opacity-90">
               <li className="flex items-center gap-2">
-                <MapPin className="size-4" /> {siteConfig.address}
+                <MapPin className="size-4 shrink-0" /> {siteConfig.address}
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="size-4" /> {siteConfig.phone}
+                <Phone className="size-4 shrink-0" /> 
+                <div className="flex flex-col gap-1">
+                  <a href="tel:+94777250794" className="hover:opacity-80 transition-opacity">+94 77 72 50 794</a>
+                  <a href="tel:+94772294994" className="hover:opacity-80 transition-opacity">+94 77 22 94 994</a>
+                </div>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="size-4" /> {siteConfig.email}
+                <Mail className="size-4 shrink-0" /> 
+                <a href={`mailto:${siteConfig.email}`} className="hover:opacity-80 transition-opacity">
+                  {siteConfig.email}
+                </a>
               </li>
             </ul>
           </div>
