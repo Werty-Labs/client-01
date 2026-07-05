@@ -170,7 +170,7 @@ export function AnimatedContact() {
                   ),
                 },
                 {
-                  icon: <WhatsAppIcon className="size-4" fill="currentColor" />,
+                  icon: <WhatsAppIcon className="size-4" />,
                   title: "WhatsApp",
                   detail: (
                     <span className="whitespace-nowrap">
