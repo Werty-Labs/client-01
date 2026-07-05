@@ -44,7 +44,9 @@ function MobileStickyCard({
 }) {
   const isLast = index === total - 1;
 
-  // Each card blurs once the next card starts overlapping it
+  // Each card dims once the next card starts overlapping it.
+  // Using opacity-only (no backdrop-blur) — backdrop-blur is extremely
+  // expensive on mobile GPUs and causes scroll jank every frame.
   const seg = 1 / (total + 1);
   const blurStart = (index + 1) * seg;
   const blurEnd = (index + 1.5) * seg;
@@ -75,7 +77,7 @@ function MobileStickyCard({
           className={`object-cover transition-transform duration-700 group-hover:scale-105 ${
             category.title === "Cultural Heritage" ? "object-top" : ""
           }`}
-          sizes="100vw"
+          sizes="(max-width: 640px) 100vw, 50vw"
         />
         <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/15 to-transparent" />
       </div>
@@ -88,25 +90,12 @@ function MobileStickyCard({
         </p>
       </div>
 
-      {/* Gradient blur overlay — fades in as the next card stacks on top */}
+      {/* Opacity-only overlay — replaces the expensive backdrop-blur */}
       {!isLast && (
         <motion.div
-          className="absolute inset-0 rounded-[24px] pointer-events-none z-10 overflow-hidden"
+          className="absolute inset-0 rounded-[24px] pointer-events-none z-10 bg-white/60"
           style={{ opacity: overlayOpacity }}
-        >
-          {/* Backdrop blur with gradient mask — strongest at top, fading out toward bottom */}
-          <div
-            className="absolute inset-0 backdrop-blur-[6px]"
-            style={{
-              maskImage:
-                "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 75%)",
-              WebkitMaskImage:
-                "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 35%, rgba(0,0,0,0) 75%)",
-            }}
-          />
-          {/* Subtle white wash for the frosted look */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/45 via-white/20 to-transparent" />
-        </motion.div>
+        />
       )}
     </motion.div>
   );
@@ -779,7 +768,7 @@ function ServiceCarousel({
                 zIndex,
                 transformOrigin: 'center center',
                 perspective: 1200,
-                willChange: 'transform, opacity',
+                willChange: 'auto',
               }}
             >
               <div className="flex flex-col h-full w-full group">

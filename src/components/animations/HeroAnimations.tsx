@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 
 // ─── Premium easing ──────────────────────────────────────────────────────────
@@ -12,8 +12,19 @@ const premiumEase = [0.43, 0.13, 0.23, 0.96] as [number, number, number, number]
 export function HeroParallax({ children }: { children: ReactNode }) {
   const { scrollY } = useScroll();
   const shouldReduce = useReducedMotion();
+
+  // Disable scale on mobile — scale forces a repaint every frame on mobile GPUs
+  // which is the primary cause of hero scroll jank on phones.
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const y = useTransform(scrollY, [0, 1000], [0, shouldReduce ? 0 : -200]);
-  const scale = useTransform(scrollY, [0, 800], [1, shouldReduce ? 1 : 1.15]);
+  const scale = useTransform(scrollY, [0, 800], [1, shouldReduce || isMobile ? 1 : 1.15]);
 
   return (
     <motion.div style={{ y, scale, willChange: "transform" }} className="absolute inset-0 overflow-hidden">
@@ -34,10 +45,24 @@ export function HeroContentParallax({
 }) {
   const { scrollY } = useScroll();
   const shouldReduce = useReducedMotion();
+
+  // Disable scale + filter on mobile to avoid per-frame repaints
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const opacity = useTransform(scrollY, [0, 500], [1, shouldReduce ? 1 : 0]);
   const y = useTransform(scrollY, [0, 600], [0, shouldReduce ? 0 : -150]);
-  const scale = useTransform(scrollY, [0, 600], [1, shouldReduce ? 1 : 0.9]);
-  const filter = useTransform(scrollY, [0, 500], ["blur(0px)", shouldReduce ? "blur(0px)" : "blur(6px)"]);
+  const scale = useTransform(scrollY, [0, 600], [1, shouldReduce || isMobile ? 1 : 0.9]);
+  const filter = useTransform(
+    scrollY,
+    [0, 500],
+    ["blur(0px)", shouldReduce || isMobile ? "blur(0px)" : "blur(6px)"]
+  );
 
   return (
     <motion.div

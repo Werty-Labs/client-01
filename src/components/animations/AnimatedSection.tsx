@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import { motion } from "motion/react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -37,7 +37,8 @@ export function StaggerContainer({
 
 // ─── Anti-gravity card (Experience section) ──────────────────────────────────
 // Bounces up slightly past target before settling with spring physics.
-// No useReducedMotion branching — motion handles it internally.
+// willChange is applied transiently — only while animating — to avoid
+// permanently promoting every card to its own GPU layer on mobile.
 export function AntiGravityCard({
   children,
   className,
@@ -45,6 +46,8 @@ export function AntiGravityCard({
   children: ReactNode;
   className?: string;
 }) {
+  const [isAnimating, setIsAnimating] = useState(false);
+
   return (
     <motion.div
       className={className}
@@ -58,7 +61,9 @@ export function AntiGravityCard({
         damping: 12,
         mass: 1.2,
       }}
-      style={{ willChange: "transform, opacity" }}
+      style={{ willChange: isAnimating ? "transform, opacity" : "auto" }}
+      onAnimationStart={() => setIsAnimating(true)}
+      onAnimationComplete={() => setIsAnimating(false)}
     >
       {children}
     </motion.div>
@@ -67,6 +72,8 @@ export function AntiGravityCard({
 
 // ─── Magnetic scroll card (Tours section) ────────────────────────────────────
 // Floats up with a "magnetic snap" effect using rotateY for perspective.
+// willChange is applied transiently — only while animating — to avoid
+// permanently promoting every card to its own GPU layer on mobile.
 export function MagneticScrollCard({
   children,
   className,
@@ -74,6 +81,8 @@ export function MagneticScrollCard({
   children: ReactNode;
   className?: string;
 }) {
+  const [isAnimating, setIsAnimating] = useState(false);
+
   return (
     <motion.div
       className={className}
@@ -87,7 +96,12 @@ export function MagneticScrollCard({
         damping: 15,
         mass: 0.8,
       }}
-      style={{ willChange: "transform, opacity", perspective: 1000 }}
+      style={{
+        willChange: isAnimating ? "transform, opacity" : "auto",
+        perspective: 1000,
+      }}
+      onAnimationStart={() => setIsAnimating(true)}
+      onAnimationComplete={() => setIsAnimating(false)}
     >
       {children}
     </motion.div>
