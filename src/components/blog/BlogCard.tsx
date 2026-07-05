@@ -54,6 +54,7 @@ export function BlogCard({ post, index }: { post: BlogPost; index: number }) {
                 src={post.image || `https://picsum.photos/seed/${post.slug}/800/600`} 
                 alt={post.title}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
                 style={{ objectPosition: post.imagePosition || 'center' }}
               />
