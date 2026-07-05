@@ -88,7 +88,7 @@ export default async function TourDetailPage({ params }: TourPageProps) {
 
       <article>
         {/* ── Hero Section ── */}
-        <section className="relative flex min-h-[75dvh] flex-col justify-center px-4 pt-32 pb-16 sm:px-8 lg:px-16 xl:px-24">
+        <section className="relative flex min-h-[75dvh] flex-col justify-end px-4 pt-32 pb-16 sm:px-8 lg:px-16 xl:px-24 lg:pb-24">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -106,19 +106,21 @@ export default async function TourDetailPage({ params }: TourPageProps) {
           {/* Top dark gradient to protect the navbar */}
           <div className="absolute inset-x-0 top-0 z-0 h-40 bg-gradient-to-b from-black/70 to-transparent" />
           
-          {/* Cinematic Edge Fade */}
-          <div className="absolute inset-y-0 left-0 z-0 w-full bg-gradient-to-t from-black/90 via-black/40 to-transparent lg:w-3/4 lg:bg-gradient-to-r lg:from-black/90 lg:via-black/50 lg:to-transparent" />
+          {/* Cinematic Bottom Fade */}
+          <div className="absolute inset-x-0 bottom-0 z-0 h-[60%] bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+          {/* Additional left fade for text readability */}
+          <div className="absolute inset-y-0 left-0 z-0 w-full lg:w-2/3 bg-gradient-to-r from-black/70 via-black/20 to-transparent" />
 
           {/* Content (No box, floating directly on the gradient) */}
           <div className="relative z-10 mx-auto w-full max-w-7xl">
-            <div className="max-w-2xl mt-auto lg:mt-0 pt-24 lg:pt-0">
+            <div className="max-w-2xl pt-24 lg:pt-0">
               <p className="flex items-center gap-1.5 text-sm font-bold uppercase tracking-[0.3em] text-white/90">
                 <MapPin className="size-4" /> {tour.location}
               </p>
-              <h1 className="mt-4 text-4xl leading-tight text-white sm:text-5xl lg:text-6xl text-balance">
+              <h1 className="mt-4 text-4xl leading-tight text-white sm:text-5xl lg:text-7xl tracking-tighter text-balance font-display1">
                 {tour.title}
               </h1>
-              <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg text-pretty">
+              <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg lg:text-xl text-pretty max-w-[65ch]">
                 {tour.summary}
               </p>
             </div>
