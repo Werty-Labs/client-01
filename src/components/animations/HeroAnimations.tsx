@@ -144,9 +144,10 @@ export function HeroButtons({ children }: { children: ReactNode }) {
   );
 }
 
-export function HeroButton({ children }: { children: ReactNode }) {
+export function HeroButton({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <motion.div
+      className={className}
       variants={{
         hidden: { opacity: 0, scale: 0.9 },
         visible: { opacity: 1, scale: 1 },

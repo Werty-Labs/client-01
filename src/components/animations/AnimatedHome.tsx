@@ -175,7 +175,7 @@ export function AnimatedHome({
       <ScrollProgressBar />
 
       {/* ── Fixed hero (stays in place while you scroll) ── */}
-      <section className="fixed inset-0 z-0 flex items-center overflow-hidden">
+      <section className="fixed inset-0 z-0 flex items-end sm:items-center overflow-hidden pb-8 sm:pb-0">
         <HeroParallax>
           <Image
             src={images.hero}
@@ -186,9 +186,9 @@ export function AnimatedHome({
             sizes="100vw"
           />
         </HeroParallax>
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 via-black/30 to-black/10" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-black/30 to-black/10 sm:bg-gradient-to-r sm:from-black/80 sm:via-black/30 sm:to-black/10" />
         <HeroContentParallax className="w-full min-w-0 overflow-hidden mx-auto max-w-7xl px-5 sm:px-6 py-20 sm:py-24 z-10 text-[#F2F0EF]">
-          <HeroHeadline className="mt-3 max-w-full sm:max-w-2xl lg:max-w-3xl font-display1 text-[1.85rem] leading-[1.1] sm:text-5xl sm:leading-[0.95] lg:text-7xl lg:leading-[0.92] font-normal tracking-[-0.02em] sm:tracking-[-0.04em]">
+          <HeroHeadline className="mt-3 max-w-full sm:max-w-2xl lg:max-w-3xl font-display1 text-[2.2rem] leading-[1.1] sm:text-5xl sm:leading-[0.95] lg:text-7xl lg:leading-[0.92] font-normal tracking-[-0.02em] sm:tracking-[-0.04em]">
             Discover Sri Lanka Like Never Before
           </HeroHeadline>
           <HeroSubtext className="mt-4 sm:mt-5 max-w-xl text-base sm:text-lg opacity-90 leading-relaxed">
@@ -196,15 +196,24 @@ export function AnimatedHome({
             beaches — crafted into one unforgettable journey.
           </HeroSubtext>
           <HeroButtons>
-            <HeroButton>
+            {/* Desktop Buttons */}
+            <HeroButton className="hidden sm:block">
               <Button asChild size="lg" className={'rounded-full'}>
                 <Link href="/tours" prefetch>
                   Browse tours
                 </Link>
               </Button>
             </HeroButton>
-            <HeroButton>
+            <HeroButton className="hidden sm:block">
               <Button asChild size="lg" variant="secondary" className={'rounded-full'}>
+                <Link href="/contact" prefetch>
+                  Plan with us
+                </Link>
+              </Button>
+            </HeroButton>
+            {/* Mobile Button */}
+            <HeroButton className="sm:hidden block">
+              <Button asChild size="lg" className={'rounded-full px-8'}>
                 <Link href="/contact" prefetch>
                   Plan with us
                 </Link>
