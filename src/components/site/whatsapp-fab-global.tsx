@@ -42,7 +42,7 @@ export function WhatsAppFabGlobal() {
             stiffness: 260,
             damping: 20,
           }}
-          className="fixed bottom-24 right-6 md:bottom-6 md:right-6 z-50 flex items-center justify-center"
+          className="fixed bottom-6 right-6 md:bottom-6 md:right-6 z-50 flex items-center justify-center"
         >
           {/* Double-bezel outer shell with blur */}
           <div className="relative group flex items-center justify-center rounded-[2rem] bg-white/20 p-1.5 ring-1 ring-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.12)] backdrop-blur-xl dark:bg-black/20 dark:ring-white/10">

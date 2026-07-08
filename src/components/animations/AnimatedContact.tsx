@@ -234,12 +234,12 @@ export function AnimatedContact() {
                 },
                 { 
                   icon: <InstagramIcon className="size-[18px]" />, 
-                  href: "#",
+                  href: "https://www.instagram.com/tarragonleisure?igsh=ZDI0YWdna3hoOTVq",
                   label: "Instagram"
                 },
                 { 
                   icon: <FacebookIcon className="size-[18px]" />, 
-                  href: "#",
+                  href: "https://www.facebook.com/tarragonleisure",
                   label: "Facebook"
                 },
               ].map((social, i) => (
