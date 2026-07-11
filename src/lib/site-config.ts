@@ -12,7 +12,7 @@ export const siteConfig = {
   address: "No. 439/2, Galle Road, Pamburana, Matara",
   creator: "Tarragon Leisure",
   author: "Tarragon Leisure",
-  locale: "en_US",
+  locale: "en_GB",
   defaultOgImage: "/assets/tarragon/sigiriya-2.jpg",
   keywords: [
     "Sri Lanka tours",
@@ -22,6 +22,13 @@ export const siteConfig = {
     "tailor-made Sri Lanka trips",
     "Arugam Bay tours",
     "Sigiriya tour packages",
+    "luxury Sri Lanka holidays",
+    "Sri Lanka honeymoon",
+    "Sri Lanka and Maldives tour",
+    "bespoke Sri Lanka itinerary",
+    "Yala National Park safari",
+    "Kandy Ella train",
+    "Galle Fort Sri Lanka",
   ],
 } as const;
 

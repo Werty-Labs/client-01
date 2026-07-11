@@ -11,9 +11,9 @@ import { images } from "@/lib/site-data";
 import { breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Tours",
+  title: "Sri Lanka Tour Packages — Bespoke & Luxury Itineraries",
   description:
-    "Browse all Sri Lanka tours including wildlife safaris, beach holidays, hill-country escapes, and cultural journeys.",
+    "Browse our handcrafted Sri Lanka tour packages — cultural heritage tours, luxury wildlife safaris, honeymoon itineraries, and Sri Lanka-Maldives combination holidays.",
   path: "/tours",
   image: images.arugamWebp,
 });

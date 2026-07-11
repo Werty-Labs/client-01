@@ -4,8 +4,8 @@ import { buildMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd, contactPageJsonLd } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Contact",
-  description: "Get in touch with Tarragon Leisure to plan your Sri Lanka trip.",
+  title: "Plan Your Sri Lanka Holiday — Get a Free Quote",
+  description: "Ready to start planning? Contact Tarragon Leisure to design your bespoke Sri Lanka holiday. Call, WhatsApp, or email our local team in Matara.",
   path: "/contact",
 });
 

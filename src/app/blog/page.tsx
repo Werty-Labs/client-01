@@ -5,8 +5,8 @@ import { JsonLd } from '@/components/site/json-ld';
 import { breadcrumbJsonLd, collectionPageJsonLd } from '@/lib/structured-data';
 
 export const metadata = buildMetadata({
-  title: 'Blog',
-  description: 'Read the latest travel insights, guides, and itineraries for Sri Lanka from our local experts.',
+  title: 'Sri Lanka Travel Blog — Expert Guides & Itineraries',
+  description: 'In-depth Sri Lanka travel guides, itineraries, and insider tips written by our local team in Matara. Yala safari guides, beach tips, honeymoon itineraries, and more.',
   path: '/blog',
 });
 

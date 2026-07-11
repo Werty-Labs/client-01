@@ -8,9 +8,9 @@ import { breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/structured-data";
 import { AnimatedDestinations } from "@/components/animations/AnimatedDestinations";
 
 export const metadata = buildMetadata({
-  title: "Destinations in Sri Lanka",
+  title: "Sri Lanka Destinations — Best Places to Visit",
   description:
-    "Explore Sri Lanka's top destinations including Yala, Ella, Galle, Kandy, Sigiriya, Colombo, and Nuwara Eliya with Tarragon Leisure.",
+    "Discover the best places to visit in Sri Lanka — from the ancient Cultural Triangle to Yala safari and golden southern beaches. View our Sri Lanka travel guide.",
   path: "/destinations",
   image: images.sigiriya2,
 });

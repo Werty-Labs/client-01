@@ -11,12 +11,19 @@ export interface BlogPost {
   slug: string;
   title: string;
   date: string;
+  updatedAt: string;
   author: string;
   summary: string;
   answerSummary: string; // Used for AI Overview
   image: string;
   imagePosition?: string;
   faq?: FAQItem[];
+  category?: string;
+  tags?: string[];
+  readTime?: string;
+  authorBio?: string;
+  relatedTours?: string[];
+  relatedDestinations?: string[];
   content: string; // Raw MDX content
 }
 
@@ -51,12 +58,19 @@ export function getPostBySlug(slug: string): BlogPost | null {
       slug,
       title: data.title || '',
       date: data.date || new Date().toISOString(),
+      updatedAt: data.updatedAt || data.date || new Date().toISOString(),
       author: data.author || '',
-      summary: data.summary || '',
+      summary: data.description || data.summary || '',
       answerSummary: data.answerSummary || '',
       image: data.image || '',
       imagePosition: data.imagePosition || '',
       faq: data.faq,
+      category: data.category || '',
+      tags: data.tags || [],
+      readTime: data.readTime || '',
+      authorBio: data.authorBio || '',
+      relatedTours: data.relatedTours || [],
+      relatedDestinations: data.relatedDestinations || [],
       content,
     };
   } catch (_error) {

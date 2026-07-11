@@ -11,6 +11,7 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${siteConfig.siteUrl}/#organization`,
     name: siteConfig.name,
     url: siteConfig.siteUrl,
     logo: absoluteUrl("/assets/tarragon/logo-white.png"),
@@ -125,13 +126,16 @@ export function buildArticleSchema(post: BlogPost) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": absoluteUrl(`/blog/${post.slug}#article`),
     headline: post.title,
     description: post.summary,
     image: absoluteUrl(post.image),
     datePublished: new Date(post.date).toISOString(),
+    dateModified: new Date(post.updatedAt).toISOString(),
     author: {
       "@type": "Organization",
       name: siteConfig.name,
+      url: siteConfig.siteUrl,
     },
     publisher: {
       "@type": "Organization",
@@ -162,5 +166,31 @@ export function buildFaqSchema(post: BlogPost) {
         text: item.answer,
       },
     })),
+  };
+}
+
+export function localBusinessJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${siteConfig.siteUrl}/#business`,
+    name: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.siteUrl,
+    telephone: siteConfig.phone,
+    email: siteConfig.email,
+    image: absoluteUrl(siteConfig.defaultOgImage),
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "No. 439/2, Galle Road",
+      addressLocality: "Pamburana",
+      addressRegion: "Matara",
+      addressCountry: "LK",
+    },
+    priceRange: "$$$",
+    areaServed: {
+      "@type": "Country",
+      name: "Sri Lanka",
+    },
   };
 }

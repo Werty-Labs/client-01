@@ -1,15 +1,28 @@
-# Tarragon Leisure
+# tarragonleisure.com
 
-Tarragon Leisure is a travel agency specializing in tailor-made Sri Lanka tours, wildlife safaris, beach holidays, and cultural escapes.
+> Tarragon Leisure is a Sri Lanka-based travel company designing bespoke, tailor-made tours, luxury safaris, and honeymoon itineraries for international travellers.
 
-Website: https://www.tarragonleisure.com
-Contact: info@tarragonleisure.com
-Phone: +94 77 000 0000
+## Key Pages
 
-## Important Pages
-- Home: /
-- Tours: /tours
-- Destinations: /destinations
-- About: /about
-- Contact: /contact
-- Blog: /blog
+- [Home](https://www.tarragonleisure.com/): Overview of Tarragon Leisure's services and featured Sri Lanka tours
+- [Tours](https://www.tarragonleisure.com/tours): Full catalogue of bespoke Sri Lanka tour packages
+- [Destinations](https://www.tarragonleisure.com/destinations): Guide to Sri Lanka's top travel destinations
+- [Blog](https://www.tarragonleisure.com/blog): In-depth Sri Lanka travel guides and itineraries
+- [About](https://www.tarragonleisure.com/about): About the Tarragon Leisure team based in Matara, Sri Lanka
+- [Contact](https://www.tarragonleisure.com/contact): Enquire about a bespoke Sri Lanka holiday
+
+## Featured Guides
+
+- [2-Week Sri Lanka Itinerary](https://www.tarragonleisure.com/blog/2-week-sri-lanka-itinerary)
+- [Best Time to Visit Sri Lanka](https://www.tarragonleisure.com/blog/best-time-to-visit-sri-lanka)
+- [Yala National Park Safari Guide](https://www.tarragonleisure.com/blog/yala-national-park-safari-guide)
+- [Sri Lanka Honeymoon Itinerary](https://www.tarragonleisure.com/blog/sri-lanka-honeymoon-itinerary)
+- [Sri Lanka Visa & ETA Guide 2026](https://www.tarragonleisure.com/blog/sri-lanka-visa-eta-guide)
+
+## About the Business
+
+Tarragon Leisure is a boutique Sri Lanka travel operator based in Matara, Sri Lanka. The team designs personalised itineraries for couples, families, and solo travellers from the UK and international markets. Specialities include luxury wildlife safaris (Yala National Park), Cultural Triangle tours, honeymoon packages, and Sri Lanka-Maldives combination holidays.
+
+## Exclude
+
+/api, /admin, /_next

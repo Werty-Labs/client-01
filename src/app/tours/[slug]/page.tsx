@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: TourPageProps) {
   }
 
   return buildMetadata({
-    title: tour.title,
+    title: `${tour.title} — ${tour.location} Sri Lanka Tour`,
     description: tour.summary,
     path: `/tours/${tour.slug}`,
     image: tour.image,
