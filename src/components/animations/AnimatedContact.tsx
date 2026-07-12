@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/forms/contact-form";
 import { siteConfig } from "@/lib/site-config";
 import { images } from "@/lib/site-data";
 import { MessageCircle, Phone, Mail, MapPin } from "lucide-react";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
@@ -47,6 +48,7 @@ const springTransition = (delay: number = 0) => ({
 });
 
 export function AnimatedContact() {
+  const { track } = useAnalytics();
   return (
     <div className="relative min-h-[100dvh] py-20 pb-32 overflow-hidden bg-[#f8f9fa]">
       {/* Blurred Background Image — cinematic reveal */}
@@ -104,6 +106,7 @@ export function AnimatedContact() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#25D366] px-6 py-3.5 text-white font-medium hover:bg-[#20bd5a] transition-colors shadow-sm"
+            onClick={() => track("whatsapp_clicked", { location: "contact_page" })}
           >
             <WhatsAppIcon className="size-5" />
             Start WhatsApp Chat
@@ -174,7 +177,7 @@ export function AnimatedContact() {
                   title: "WhatsApp",
                   detail: (
                     <span className="whitespace-nowrap">
-                      <a href="https://wa.me/94777250794" target="_blank" rel="noopener noreferrer" className="hover:underline">+94 77 72 50 794</a>
+                      <a href="https://wa.me/94777250794" target="_blank" rel="noopener noreferrer" className="hover:underline" onClick={() => track("whatsapp_clicked", { location: "contact_page_list" })}>+94 77 72 50 794</a>
                     </span>
                   ),
                 },
@@ -252,6 +255,7 @@ export function AnimatedContact() {
                   variants={fadeInScale}
                   transition={springTransition(0)}
                   aria-label={social.label}
+                  onClick={() => social.label === "WhatsApp" && track("whatsapp_clicked", { location: "contact_page_social" })}
                 >
                   {social.icon}
                 </motion.a>

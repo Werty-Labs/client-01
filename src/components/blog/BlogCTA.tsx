@@ -3,8 +3,10 @@ import { useRef } from 'react';
 import { motion, useMotionValue } from 'motion/react';
 import Link from 'next/link';
 import { ArrowRight } from '@phosphor-icons/react';
+import { useAnalytics } from '@/hooks/use-analytics';
 
 export function BlogCTA() {
+  const { track } = useAnalytics();
   const buttonRef = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -72,6 +74,7 @@ export function BlogCTA() {
               ref={buttonRef}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
+              onClick={() => track("plan_trip_clicked", { location: "blog_cta" })}
               className="group relative inline-flex items-center gap-4 rounded-full pl-8 pr-3 py-3 shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all duration-500 active:scale-[0.98] ring-1 ring-white/10 text-white hover:bg-[#072617]"
               style={{ backgroundColor: '#0B3B24' }}
             >

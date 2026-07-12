@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site-config";
 import { images } from "@/lib/site-data";
 import type { NavigationItem } from "@/types/site";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 type MobileNavProps = {
   items: NavigationItem[];
@@ -29,6 +30,7 @@ export function MobileNav({ items }: MobileNavProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const { track } = useAnalytics();
 
   useEffect(() => {
     setMounted(true);
@@ -114,7 +116,7 @@ export function MobileNav({ items }: MobileNavProps) {
               transition={{ delay: 0.1 + items.length * 0.06, type: "spring" }}
               className="w-full"
             >
-              <Button asChild className="w-full h-12 rounded-full bg-green-600 hover:bg-green-700 text-white text-base font-semibold">
+              <Button asChild className="w-full h-12 rounded-full bg-green-600 hover:bg-green-700 text-white text-base font-semibold" onClick={() => track("plan_trip_clicked", { location: "header_mobile" })}>
                 <Link href="/contact" prefetch onClick={() => setOpen(false)}>
                   Plan your trip
                 </Link>

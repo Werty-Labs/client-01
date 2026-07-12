@@ -7,7 +7,9 @@ type ConversionEvent =
   | "tour_enquiry_clicked"
   | "blog_article_read"
   | "destination_viewed"
-  | "service_cta_clicked";
+  | "service_cta_clicked"
+  | "plan_trip_clicked"
+  | "whatsapp_clicked";
 
 export function useAnalytics() {
   function track(event: ConversionEvent, properties?: Record<string, unknown>) {
