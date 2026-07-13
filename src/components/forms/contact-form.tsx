@@ -12,16 +12,38 @@ export function ContactForm() {
   const [sending, setSending] = useState(false);
   const { track } = useAnalytics();
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSending(true);
     track("contact_form_submitted");
 
-    window.setTimeout(() => {
+    const formData = new FormData(event.currentTarget);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: formData.get('firstName'),
+          lastName: formData.get('lastName'),
+          email: formData.get('email'),
+          destination: formData.get('destination'),
+          message: formData.get('message'),
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Thanks! We will be in touch shortly.");
+        event.currentTarget?.reset();
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
       setSending(false);
-      toast.success("Thanks! We will be in touch shortly.");
-      event.currentTarget.reset();
-    }, 700);
+    }
   }
 
   return (

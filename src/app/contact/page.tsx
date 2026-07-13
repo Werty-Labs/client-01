@@ -9,8 +9,6 @@ export const metadata = buildMetadata({
   path: "/contact",
 });
 
-export const dynamic = "force-static";
-
 export default function ContactPage() {
   return (
     <>
