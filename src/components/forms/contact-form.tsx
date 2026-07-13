@@ -17,7 +17,8 @@ export function ContactForm() {
     setSending(true);
     track("contact_form_submitted");
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
 
     try {
       const response = await fetch('/api/contact', {
@@ -34,7 +35,7 @@ export function ContactForm() {
 
       if (response.ok) {
         toast.success("Thanks! We will be in touch shortly.");
-        event.currentTarget?.reset();
+        form.reset();
       } else {
         const errorData = await response.json();
         toast.error(errorData.error || "Something went wrong. Please try again.");
@@ -105,7 +106,7 @@ export function ContactForm() {
         />
       </div>
 
-      <Button type="submit" disabled={sending} className="w-full h-12 bg-[#0B3B24] hover:bg-[#072617] text-white font-medium text-base rounded-md mt-2">
+      <Button type="submit" disabled={sending} className="w-full h-12 bg-[#0B3B24] hover:bg-[#072617] text-white font-medium text-base rounded-md mt-2 cursor-pointer hover:scale-105">
         {sending ? "Sending..." : "Submit Request"}
       </Button>
     </form>
