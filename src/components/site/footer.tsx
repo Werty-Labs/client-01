@@ -100,8 +100,18 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="border-t border-background/15 py-5 text-center text-xs opacity-70">
-          &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+        <div className="border-t border-background/15 py-6">
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-xs sm:px-6 md:flex-row">
+            <div className="opacity-70">
+              &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+            </div>
+            <div className="flex items-center gap-1 opacity-70">
+              <span>Crafted by</span>
+              <a href="#" target="_blank" rel="noopener noreferrer" className="font-medium opacity-100 hover:opacity-80 transition-opacity">
+                Werty
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
     </>
