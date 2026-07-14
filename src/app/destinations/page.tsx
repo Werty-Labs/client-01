@@ -8,9 +8,9 @@ import { breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/structured-data";
 import { AnimatedDestinations } from "@/components/animations/AnimatedDestinations";
 
 export const metadata = buildMetadata({
-  title: "Sri Lanka Destinations — Best Places to Visit",
+  title: "Where to Visit in Sri Lanka — Best Places & Destinations",
   description:
-    "Discover the best places to visit in Sri Lanka — from the ancient Cultural Triangle to Yala safari and golden southern beaches. View our Sri Lanka travel guide.",
+    "Discover the best places to visit in Sri Lanka — from the ancient Cultural Triangle to Yala wildlife safaris and golden southern beaches. Explore our Sri Lanka travel guide.",
   path: "/destinations",
   image: images.sigiriya2,
 });

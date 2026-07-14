@@ -1,5 +1,8 @@
 import { notFound } from 'next/navigation';
 import { getPostBySlug, getAllPosts } from '@/lib/blog';
+import { getTours } from '@/lib/api';
+import Image from 'next/image';
+import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { BlogHero } from '@/components/blog/BlogHero';
 import { AnswerBlock } from '@/components/blog/AnswerBlock';
@@ -85,6 +88,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
+  const allTours = await getTours();
+  const relatedToursList = post.relatedTours 
+    ? allTours.filter(t => post.relatedTours?.includes(t.slug)).slice(0, 3)
+    : [];
+
   const articleSchema = buildArticleSchema(post);
   const faqSchema = buildFaqSchema(post);
   const breadcrumbs = breadcrumbJsonLd([
@@ -113,6 +121,54 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="max-w-[65ch] mx-auto mb-20 md:mb-28">
             <FAQAccordion faqs={post.faq} />
           </div>
+
+          {relatedToursList.length > 0 && (
+            <div className="mb-20 md:mb-28 w-full max-w-[1200px] mx-auto">
+              <div className="text-center mb-12">
+                <span className="inline-block py-1 px-3 rounded-full bg-[#1A6B6B]/10 text-[#1A6B6B] dark:text-amber-300 font-semibold text-xs tracking-widest mb-4">
+                  TAILOR-MADE FOR YOU
+                </span>
+                <h2 className="font-display1 text-3xl md:text-4xl font-bold tracking-tight text-[#0B3B24] dark:text-white mb-4">
+                  Handpicked Tours for This Journey
+                </h2>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {relatedToursList.map((tour) => (
+                  <div key={tour.slug} className="group flex flex-col bg-white dark:bg-zinc-900 rounded-3xl overflow-hidden border border-black/5 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] transition-all duration-300">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                      <Image 
+                        src={tour.image || '/images/tours/placeholder.jpg'} 
+                        alt={tour.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                      {tour.location && (
+                        <div className="absolute top-4 left-4 bg-white/90 dark:bg-black/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-[#0B3B24] dark:text-zinc-200 flex items-center gap-1 shadow-sm">
+                          <svg className="w-3 h-3 text-[#F5A623]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg>
+                          {tour.location}
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <h3 className="font-display text-xl font-bold text-[#0B3B24] dark:text-white mb-3 line-clamp-2">
+                        {tour.title}
+                      </h3>
+                      <div className="mt-auto pt-4 border-t border-black/5 dark:border-white/10">
+                        <Link 
+                          href={`/tours/${tour.slug}`}
+                          className="inline-flex items-center text-[#1A6B6B] dark:text-amber-300 font-semibold text-sm group-hover:text-[#0B3B24] dark:group-hover:text-amber-400 transition-colors"
+                        >
+                          Explore Tour <span className="ml-1 group-hover:translate-x-1 transition-transform">-&gt;</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <BlogCTA />
         </div>

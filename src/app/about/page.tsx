@@ -5,7 +5,7 @@ import { images } from "@/lib/site-data";
 import { aboutPageJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Local Sri Lanka Travel Experts",
+  title: "About Tarragon Leisure — Sri Lanka Travel Experts Based in Matara",
   description:
     "Tarragon Leisure is a Sri Lanka-based travel company designing personalised tours and luxury itineraries. Meet the team behind your perfect Sri Lanka journey.",
   path: "/about",

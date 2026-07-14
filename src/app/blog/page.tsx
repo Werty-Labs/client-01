@@ -2,7 +2,8 @@ import { getAllPosts } from '@/lib/blog';
 import { BlogCard } from '@/components/blog/BlogCard';
 import { buildMetadata } from '@/lib/metadata';
 import { JsonLd } from '@/components/site/json-ld';
-import { breadcrumbJsonLd, collectionPageJsonLd } from '@/lib/structured-data';
+import { breadcrumbJsonLd } from '@/lib/structured-data';
+import { absoluteUrl, siteConfig } from '@/lib/site-config';
 
 export const metadata = buildMetadata({
   title: 'Sri Lanka Travel Blog — Expert Guides & Itineraries',
@@ -17,7 +18,18 @@ export default async function BlogIndexPage() {
     <>
       <JsonLd
         data={[
-          collectionPageJsonLd("Blog", "/blog", posts),
+          {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            name: "Sri Lanka Travel Blog — Tarragon Leisure",
+            description: "Expert Sri Lanka travel guides, itineraries, and insider tips.",
+            url: absoluteUrl("/blog"),
+            publisher: {
+              "@type": "Organization",
+              name: "Tarragon Leisure",
+              url: siteConfig.siteUrl,
+            }
+          },
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
             { name: "Blog", path: "/blog" },
