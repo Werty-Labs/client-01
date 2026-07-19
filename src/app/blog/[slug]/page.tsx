@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { BlogHero } from '@/components/blog/BlogHero';
 import { AnswerBlock } from '@/components/blog/AnswerBlock';
+import { BlogWhatsAppStrip } from '@/components/blog/BlogWhatsAppStrip';
 import { FAQAccordion } from '@/components/blog/FAQAccordion';
 import { BlogCTA } from '@/components/blog/BlogCTA';
 import { buildArticleSchema, buildFaqSchema, breadcrumbJsonLd } from '@/lib/structured-data';
@@ -134,6 +135,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         
         <div className="max-w-5xl mx-auto px-4 md:px-12 w-full">
           <AnswerBlock answer={post.answerSummary} />
+          <BlogWhatsAppStrip />
           
           <div className="max-w-[65ch] mx-auto my-20 md:my-28">
             <MDXRemote source={post.content} components={components} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
