@@ -111,9 +111,26 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   const allTours = await getTours();
-  const relatedToursList = post.relatedTours 
-    ? allTours.filter(t => post.relatedTours?.includes(t.slug)).slice(0, 3)
+  
+  // 1. Explicitly related tours
+  let relatedToursList = post.relatedTours 
+    ? allTours.filter(t => post.relatedTours?.includes(t.slug))
     : [];
+
+  // 2. Backfill if needed
+  if (relatedToursList.length < 3) {
+    const existingSlugs = new Set(relatedToursList.map(t => t.slug));
+    const featuredTours = allTours.filter(t => t.featured && !existingSlugs.has(t.slug));
+    const otherTours = allTours.filter(t => !t.featured && !existingSlugs.has(t.slug));
+    
+    const fallbacks = [...featuredTours, ...otherTours];
+    const needed = 3 - relatedToursList.length;
+    
+    relatedToursList = [...relatedToursList, ...fallbacks.slice(0, needed)];
+  }
+
+  // Ensure exactly 3
+  relatedToursList = relatedToursList.slice(0, 3);
 
   const articleSchema = buildArticleSchema(post);
   const faqSchema = buildFaqSchema(post);
