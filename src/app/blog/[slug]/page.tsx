@@ -12,6 +12,7 @@ import { buildArticleSchema, buildFaqSchema, breadcrumbJsonLd } from '@/lib/stru
 import { buildMetadata } from '@/lib/metadata';
 import { JsonLd } from '@/components/site/json-ld';
 import { BlogTracker } from '@/components/analytics/blog-tracker';
+import remarkGfm from 'remark-gfm';
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -72,12 +73,32 @@ const components = {
     <hr className="my-16 border-t border-black/10 dark:border-white/10" {...props} />
   ),
   img: (props: any) => (
-    <div className="my-12 p-2 rounded-[2.5rem] bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/10 shadow-[0_24px_48px_-15px_rgba(11,59,36,0.04)]">
-      <div className="overflow-hidden rounded-[calc(2.5rem-0.5rem)] relative w-full aspect-[16/9]">
+    <div className="my-12 p-2 rounded-2xl bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/10 shadow-[0_24px_48px_-15px_rgba(11,59,36,0.04)]">
+      <div className="overflow-hidden rounded-[calc(1rem-0.5rem)] relative w-full aspect-[16/9]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="object-cover w-full h-full" {...props} />
       </div>
     </div>
+  ),
+  table: (props: any) => (
+    <div className="w-full overflow-x-auto my-12 rounded-2xl border border-black/5 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-white dark:bg-zinc-900/50">
+      <table className="w-full text-left border-collapse" {...props} />
+    </div>
+  ),
+  thead: (props: any) => (
+    <thead className="border-b border-black/5 dark:border-white/10 bg-[#1A6B6B]/5 dark:bg-[#1A6B6B]/10" {...props} />
+  ),
+  tbody: (props: any) => (
+    <tbody className="divide-y divide-black/5 dark:divide-white/10" {...props} />
+  ),
+  tr: (props: any) => (
+    <tr className="hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors" {...props} />
+  ),
+  th: (props: any) => (
+    <th className="px-6 py-5 text-sm md:text-base font-semibold text-[#0B3B24] dark:text-[#F5A623] tracking-wider" {...props} />
+  ),
+  td: (props: any) => (
+    <td className="px-6 py-5 text-sm md:text-base text-[#667085] dark:text-zinc-300 font-medium whitespace-nowrap" {...props} />
   )
 };
 
@@ -115,7 +136,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <AnswerBlock answer={post.answerSummary} />
           
           <div className="max-w-[65ch] mx-auto my-20 md:my-28">
-            <MDXRemote source={post.content} components={components} />
+            <MDXRemote source={post.content} components={components} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
           </div>
           
           <div className="max-w-[65ch] mx-auto mb-20 md:mb-28">
