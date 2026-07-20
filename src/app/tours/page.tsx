@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { ArrowRight, Clock, MapPin, Users } from "lucide-react";
 import { JsonLd } from "@/components/site/json-ld";
 import { PageSkeleton } from "@/components/site/page-skeleton";
+import { CustomTourCTA } from "@/components/tours/CustomTourCTA";
 import { Card } from "@/components/ui/card";
 import { getTours } from "@/lib/api";
 import { buildMetadata } from "@/lib/metadata";
@@ -79,6 +80,8 @@ async function ToursContent() {
           </Link>
         ))}
       </div>
+      
+      <CustomTourCTA />
     </div>
   );
 }
