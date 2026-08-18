@@ -158,12 +158,12 @@ export function buildFaqSchema(post: BlogPost) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: post.faq.map((item) => ({
+    mainEntity: post.faq.map((item: any) => ({
       "@type": "Question",
-      name: item.question,
+      name: item.question || item.q,
       acceptedAnswer: {
         "@type": "Answer",
-        text: item.answer,
+        text: item.answer || item.a,
       },
     })),
   };
