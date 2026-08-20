@@ -23,13 +23,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: absoluteUrl("/about"),
       lastModified,
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.6,
     },
     {
       url: absoluteUrl("/contact"),
       lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
+      changeFrequency: "yearly",
+      priority: 0.5,
     },
     {
       url: absoluteUrl("/destinations"),
@@ -65,10 +65,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
+  const VISA_SLUG = "sri-lanka-visa-eta-guide";
   const blogRoutes = posts.map((post) => ({
     url: absoluteUrl(`/blog/${post.slug}`),
     lastModified: new Date(post.date),
-    changeFrequency: "weekly" as const,
+    changeFrequency: post.slug === VISA_SLUG ? ("weekly" as const) : ("monthly" as const),
     priority: 0.8,
   }));
 

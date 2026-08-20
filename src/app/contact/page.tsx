@@ -4,12 +4,10 @@ import { buildMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd, contactPageJsonLd } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Contact",
-  description: "Get in touch with Tarragon Leisure to plan your Sri Lanka trip.",
+  title: "Contact Us — Plan Your Sri Lanka Trip",
+  description: "Ready to start planning? Contact Tarragon Leisure to design your bespoke Sri Lanka holiday. Call, WhatsApp, or email our local team.",
   path: "/contact",
 });
-
-export const dynamic = "force-static";
 
 export default function ContactPage() {
   return (

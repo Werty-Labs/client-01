@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/forms/contact-form";
 import { siteConfig } from "@/lib/site-config";
 import { images } from "@/lib/site-data";
 import { MessageCircle, Phone, Mail, MapPin } from "lucide-react";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
@@ -47,8 +48,9 @@ const springTransition = (delay: number = 0) => ({
 });
 
 export function AnimatedContact() {
+  const { track } = useAnalytics();
   return (
-    <div className="relative min-h-[100dvh] py-20 pb-32 overflow-hidden bg-[#f8f9fa]">
+    <div className="relative min-h-[100dvh] py-32 pb-40 overflow-hidden bg-[#f8f9fa]">
       {/* Blurred Background Image — cinematic reveal */}
       <motion.div
         className="absolute inset-0 z-0 pointer-events-none"
@@ -71,7 +73,17 @@ export function AnimatedContact() {
       </motion.div>
 
       {/* Hero text section — staggered entrance */}
-      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center mb-16 mt-8">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center mb-24 mt-8 flex flex-col items-center">
+        <motion.div
+          className="mb-8 rounded-full bg-[#0B3B24]/5 px-3 py-1 text-[10px] font-medium tracking-[0.2em] text-[#0B3B24] uppercase ring-1 ring-[#0B3B24]/10"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={transition(0.2)}
+        >
+          Plan Your Trip
+        </motion.div>
+        
         <motion.h1
           className="font-display1 text-4xl sm:text-5xl font-bold tracking-tight text-[#0B3B24] mb-6"
           variants={fadeUp}
@@ -79,8 +91,9 @@ export function AnimatedContact() {
           animate="visible"
           transition={transition(0.3)}
         >
-          Chat with a Travel Expert
+          Your Custom Trip Starts Here
         </motion.h1>
+        
         <motion.p
           className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#667085] sm:text-lg mb-10"
           variants={fadeUp}
@@ -88,12 +101,11 @@ export function AnimatedContact() {
           animate="visible"
           transition={transition(0.5)}
         >
-          Experience guided serenity before your journey even begins. Connect with our concierge
-          team instantly for personalized recommendations and booking assistance.
+          Ready for a custom-tailored holiday? Message us on WhatsApp to begin planning right away.
         </motion.p>
 
         <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-6"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
@@ -103,10 +115,13 @@ export function AnimatedContact() {
             href={`https://wa.me/${siteConfig.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#25D366] px-6 py-3.5 text-white font-medium hover:bg-[#20bd5a] transition-colors shadow-sm"
+            className="group flex items-center gap-4 rounded-full bg-[#25D366] pl-6 pr-2 py-2 text-white font-medium hover:bg-[#20bd5a] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-sm"
+            onClick={() => track("whatsapp_clicked", { location: "contact_page" })}
           >
-            <WhatsAppIcon className="size-5" />
-            Start WhatsApp Chat
+            <span>Start WhatsApp Chat</span>
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105 group-hover:translate-x-0.5">
+              <WhatsAppIcon className="size-5" />
+            </div>
           </a>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <span className="relative flex size-2">
@@ -174,7 +189,7 @@ export function AnimatedContact() {
                   title: "WhatsApp",
                   detail: (
                     <span className="whitespace-nowrap">
-                      <a href="https://wa.me/94777250794" target="_blank" rel="noopener noreferrer" className="hover:underline">+94 77 72 50 794</a>
+                      <a href="https://wa.me/94777250794" target="_blank" rel="noopener noreferrer" className="hover:underline" onClick={() => track("whatsapp_clicked", { location: "contact_page_list" })}>+94 77 72 50 794</a>
                     </span>
                   ),
                 },
@@ -234,12 +249,12 @@ export function AnimatedContact() {
                 },
                 { 
                   icon: <InstagramIcon className="size-[18px]" />, 
-                  href: "#",
+                  href: "https://www.instagram.com/tarragonleisure?igsh=ZDI0YWdna3hoOTVq",
                   label: "Instagram"
                 },
                 { 
                   icon: <FacebookIcon className="size-[18px]" />, 
-                  href: "#",
+                  href: "https://www.facebook.com/tarragonleisure",
                   label: "Facebook"
                 },
               ].map((social, i) => (
@@ -252,6 +267,7 @@ export function AnimatedContact() {
                   variants={fadeInScale}
                   transition={springTransition(0)}
                   aria-label={social.label}
+                  onClick={() => social.label === "WhatsApp" && track("whatsapp_clicked", { location: "contact_page_social" })}
                 >
                   {social.icon}
                 </motion.a>

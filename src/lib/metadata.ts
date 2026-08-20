@@ -8,6 +8,8 @@ type BuildMetadataOptions = {
   image?: string;
   keywords?: readonly string[];
   type?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
 };
 
 export function buildMetadata({
@@ -17,26 +19,28 @@ export function buildMetadata({
   image = siteConfig.defaultOgImage,
   keywords = siteConfig.keywords,
   type = "website",
+  publishedTime,
+  modifiedTime,
 }: BuildMetadataOptions): Metadata {
   const url = absoluteUrl(path);
   const imageUrl = absoluteUrl(image);
 
+  const finalTitle = title === siteConfig.name ? siteConfig.name : `${title} | ${siteConfig.name}`;
+
   return {
     metadataBase: new URL(siteConfig.siteUrl),
-    title: {
-      default: siteConfig.name,
-      template: `%s | ${siteConfig.name}`,
-      absolute: title === siteConfig.name ? siteConfig.name : undefined,
-    },
+    title: finalTitle,
     description,
     keywords: [...keywords],
     authors: [{ name: siteConfig.author }],
     creator: siteConfig.creator,
     openGraph: {
-      title,
+      title: finalTitle,
       description,
       url,
       siteName: siteConfig.name,
+      ...(publishedTime ? { publishedTime } : {}),
+      ...(modifiedTime ? { modifiedTime } : {}),
       images: [
         {
           url: imageUrl,
@@ -50,7 +54,7 @@ export function buildMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: finalTitle,
       description,
       images: [imageUrl],
     },

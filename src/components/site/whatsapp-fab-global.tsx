@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { siteConfig } from "@/lib/site-config";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor">
@@ -12,6 +13,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export function WhatsAppFabGlobal() {
   const [isVisible, setIsVisible] = useState(false);
+  const { track } = useAnalytics();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +44,7 @@ export function WhatsAppFabGlobal() {
             stiffness: 260,
             damping: 20,
           }}
-          className="fixed bottom-24 right-6 md:bottom-6 md:right-6 z-50 flex items-center justify-center"
+          className="fixed bottom-6 right-6 md:bottom-6 md:right-6 z-50 flex items-center justify-center"
         >
           {/* Double-bezel outer shell with blur */}
           <div className="relative group flex items-center justify-center rounded-[2rem] bg-white/20 p-1.5 ring-1 ring-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.12)] backdrop-blur-xl dark:bg-black/20 dark:ring-white/10">
@@ -53,6 +55,7 @@ export function WhatsAppFabGlobal() {
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
               className="relative flex items-center justify-center overflow-hidden rounded-[calc(2rem-0.375rem)] bg-[#25D366] p-3.5 text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)] transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.96]"
+              onClick={() => track("whatsapp_clicked", { location: "fab" })}
             >
               <WhatsAppIcon className="size-6 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110 group-hover:-rotate-3" />
             </a>

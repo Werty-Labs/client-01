@@ -12,16 +12,39 @@ export function ContactForm() {
   const [sending, setSending] = useState(false);
   const { track } = useAnalytics();
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSending(true);
     track("contact_form_submitted");
 
-    window.setTimeout(() => {
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: formData.get('firstName'),
+          lastName: formData.get('lastName'),
+          email: formData.get('email'),
+          destination: formData.get('destination'),
+          message: formData.get('message'),
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Thanks! We will be in touch shortly.");
+        form.reset();
+      } else {
+        const errorData = await response.json();
+        toast.error(errorData.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
       setSending(false);
-      toast.success("Thanks! We will be in touch shortly.");
-      event.currentTarget.reset();
-    }, 700);
+    }
   }
 
   return (
@@ -83,7 +106,7 @@ export function ContactForm() {
         />
       </div>
 
-      <Button type="submit" disabled={sending} className="w-full h-12 bg-[#0B3B24] hover:bg-[#072617] text-white font-medium text-base rounded-md mt-2">
+      <Button type="submit" disabled={sending} className="w-full h-12 bg-[#0B3B24] hover:bg-[#072617] text-white font-medium text-base rounded-md mt-2 cursor-pointer hover:scale-105">
         {sending ? "Sending..." : "Submit Request"}
       </Button>
     </form>

@@ -5,9 +5,9 @@ import { images } from "@/lib/site-data";
 import { aboutPageJsonLd, breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "About",
+  title: "About Tarragon Leisure — Sri Lanka Travel Experts Based in Matara",
   description:
-    "Meet the local Sri Lanka travel experts behind Tarragon Leisure and learn how we craft tailor-made journeys across the island.",
+    "Tarragon Leisure is a Sri Lanka-based travel company designing personalised tours and luxury itineraries. Meet the team behind your perfect Sri Lanka journey.",
   path: "/about",
   image: images.elephantsWaterSunset,
 });

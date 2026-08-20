@@ -27,6 +27,7 @@ import { images } from "@/lib/site-data";
 import type { Category, Destination, Tour, Service } from "@/types/site";
 import type { BlogPost } from "@/lib/blog";
 import { BlogCard } from "@/components/blog/BlogCard";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 // ─── Mobile sticky-card blur helper ──────────────────────────────────────────
 type ScrollProgress = ReturnType<typeof useScroll>["scrollYProgress"];
@@ -160,6 +161,7 @@ export function AnimatedHome({
   services,
   latestPosts,
 }: AnimatedHomeProps) {
+  const { track } = useAnalytics();
   const [activeService, setActiveService] = useState(1);
 
   const prevService = () => {
@@ -205,7 +207,7 @@ export function AnimatedHome({
               </Button>
             </HeroButton>
             <HeroButton className="hidden sm:block">
-              <Button asChild size="lg" variant="secondary" className={'rounded-full'}>
+              <Button asChild size="lg" variant="secondary" className={'rounded-full'} onClick={() => track("plan_trip_clicked", { location: "home_hero_desktop" })}>
                 <Link href="/contact" prefetch>
                   Plan with us
                 </Link>
@@ -213,7 +215,7 @@ export function AnimatedHome({
             </HeroButton>
             {/* Mobile Button */}
             <HeroButton className="sm:hidden block">
-              <Button asChild size="lg" className={'rounded-full px-8'}>
+              <Button asChild size="lg" className={'rounded-full px-8'} onClick={() => track("plan_trip_clicked", { location: "home_hero_mobile" })}>
                 <Link href="/contact" prefetch>
                   Plan with us
                 </Link>

@@ -8,6 +8,8 @@ import { Providers } from "@/components/providers";
 import { buildMetadata } from "@/lib/metadata";
 import { organizationJsonLd } from "@/lib/structured-data";
 import { siteConfig } from "@/lib/site-config";
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import "./globals.css";
 
 const BeVietnamPro = Be_Vietnam_Pro({
@@ -45,9 +47,12 @@ export default function RootLayout({
         <Providers>
           <div className="flex min-h-screen flex-col">
             <HeaderAnimated />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">{children}
+            </main>
             <Footer />
             <WhatsAppFabGlobal />
+            <Analytics />
+            <SpeedInsights />
           </div>
         </Providers>
       </body>

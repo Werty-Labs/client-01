@@ -7,11 +7,11 @@ import { getAllPosts } from "@/lib/blog";
 import { buildMetadata } from "@/lib/metadata";
 import { images } from "@/lib/site-data";
 import { siteConfig } from "@/lib/site-config";
-import { websiteJsonLd } from "@/lib/structured-data";
+import { websiteJsonLd, localBusinessJsonLd } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: siteConfig.tagline,
-  description: siteConfig.description,
+  title: "Luxury Sri Lanka Tours & Tailor-Made Holidays",
+  description: "Plan your perfect Sri Lanka holiday with Tarragon Leisure. We design bespoke tours, luxury safaris, and honeymoon itineraries from our team in Matara. Speak to a local expert today.",
   path: "/",
   image: images.sigiriya2,
   keywords: siteConfig.keywords,
@@ -39,7 +39,7 @@ async function HomeContent() {
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={websiteJsonLd()} />
+      <JsonLd data={[websiteJsonLd(), localBusinessJsonLd()]} />
       <Suspense fallback={<PageSkeleton heading="Loading homepage" cards={6} />}>
         <HomeContent />
       </Suspense>

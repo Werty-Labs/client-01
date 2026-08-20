@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { ArrowRight, Clock, MapPin, Users } from "lucide-react";
 import { JsonLd } from "@/components/site/json-ld";
 import { PageSkeleton } from "@/components/site/page-skeleton";
+import { CustomTourCTA } from "@/components/tours/CustomTourCTA";
 import { Card } from "@/components/ui/card";
 import { getTours } from "@/lib/api";
 import { buildMetadata } from "@/lib/metadata";
@@ -11,9 +12,9 @@ import { images } from "@/lib/site-data";
 import { breadcrumbJsonLd, collectionPageJsonLd } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Tours",
+  title: "Bespoke Sri Lanka Tour Packages — Tailor-Made Holidays",
   description:
-    "Browse all Sri Lanka tours including wildlife safaris, beach holidays, hill-country escapes, and cultural journeys.",
+    "Browse our handcrafted Sri Lanka tour packages — cultural heritage tours, luxury wildlife safaris, honeymoon itineraries, and Sri Lanka–Maldives combination holidays.",
   path: "/tours",
   image: images.arugamWebp,
 });
@@ -29,7 +30,7 @@ async function ToursContent() {
         <p className="text-sm uppercase tracking-[0.25em] text-primary font-semibold">
           Our journeys
         </p>
-        <h1 className="mt-4 font-display1 text-4xl sm:text-5xl font-bold tracking-tight text-[#0B3B24]">All Tours</h1>
+        <h1 className="mt-4 font-display1 text-4xl sm:text-5xl font-bold tracking-tight text-[#0B3B24]">Bespoke Sri Lanka Tour Packages</h1>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#667085] sm:text-lg">
           Hand-crafted itineraries across Sri Lanka - pick a starting point and
           we&apos;ll customise the rest.
@@ -79,6 +80,8 @@ async function ToursContent() {
           </Link>
         ))}
       </div>
+      
+      <CustomTourCTA />
     </div>
   );
 }

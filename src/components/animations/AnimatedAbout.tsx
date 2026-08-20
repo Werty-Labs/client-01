@@ -161,6 +161,7 @@ function AnimatedStat({ number, label }: { number: string; label: string }) {
 
 // ─── Main component ──────────────────────────────────────────────────────────
 export function AnimatedAbout() {
+  const { track } = useAnalytics();
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -236,6 +237,7 @@ export function AnimatedAbout() {
                   asChild
                   size="lg"
                   className="rounded-full bg-[#0B3B24] hover:bg-[#072617] text-white pl-6 pr-2 gap-4 h-12"
+                  onClick={() => track("plan_trip_clicked", { location: "about_page" })}
                 >
                   <Link href="/contact" prefetch>
                     Plan Your Trip
