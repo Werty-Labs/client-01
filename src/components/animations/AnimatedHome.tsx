@@ -28,6 +28,7 @@ import type { Category, Destination, Tour, Service } from "@/types/site";
 import type { BlogPost } from "@/lib/blog";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { useAnalytics } from "@/hooks/use-analytics";
+import { TransferPricingPopup } from "@/components/site/TransferPricingPopup";
 
 // ─── Mobile sticky-card blur helper ──────────────────────────────────────────
 type ScrollProgress = ReturnType<typeof useScroll>["scrollYProgress"];
@@ -175,6 +176,9 @@ export function AnimatedHome({
     <>
       {/* Scroll progress bar at top of viewport */}
       <ScrollProgressBar />
+
+      {/* Transfer pricing popup — fires after 8s OR scroll past hero */}
+      <TransferPricingPopup />
 
       {/* ── Fixed hero (stays in place while you scroll) ── */}
       <section className="fixed inset-0 z-0 flex items-end sm:items-center overflow-hidden pb-8 sm:pb-0">
