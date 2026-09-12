@@ -71,9 +71,9 @@ export function TransferPricingPopup() {
           className="fixed bottom-24 right-4 z-40 w-[300px] sm:bottom-6 sm:right-24 sm:w-[320px]"
         >
           {/* Double-bezel outer shell */}
-          <div className="relative rounded-[2rem] bg-[#1A6B6B]/12 p-2 ring-1 ring-[#1A6B6B]/20 shadow-[0_12px_48px_rgba(26,107,107,0.18)]">
+          <div className="relative rounded-[2rem] bg-[#0B3B24]/12 p-2 ring-1 ring-[#0B3B24]/20 shadow-[0_12px_48px_rgba(11,59,36,0.18)]">
             {/* Inner core */}
-            <div className="relative overflow-hidden rounded-[calc(2rem-0.5rem)] bg-[#1A6B6B] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]">
+            <div className="relative overflow-hidden rounded-[calc(2rem-0.5rem)] bg-[#0B3B24] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]">
 
               {/* Subtle background glow */}
               <div
