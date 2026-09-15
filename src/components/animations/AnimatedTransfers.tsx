@@ -131,7 +131,7 @@ function TransferHeroVisual() {
         className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] shadow-[0_30px_70px_rgba(11,59,36,0.14)]"
       >
         <Image
-          src="/assets/transfers/car-chauffeur.jpg"
+          src="/assets/transfers/car-chauffeur-srilanka.jpg"
           alt="Executive private car transfer with chauffeur in Sri Lanka"
           fill
           priority
@@ -1141,7 +1141,7 @@ export function AnimatedTransfers() {
           >
             <div className="group/fleet relative aspect-[16/10] w-full overflow-hidden">
               <Image
-                src="/assets/transfers/car-chauffeur.jpg"
+                src="/assets/transfers/car-chauffeur-srilanka.jpg"
                 alt="Executive private car transfer with chauffeur in Sri Lanka"
                 fill
                 className="object-cover transition-transform duration-700 group-hover/fleet:scale-105"
@@ -1223,7 +1223,7 @@ export function AnimatedTransfers() {
           >
             <div className="group/fleet relative aspect-[16/10] w-full overflow-hidden">
               <Image
-                src="/assets/transfers/kdh-van.jpg"
+                src="/assets/transfers/kdh-van-srilanka.jpg"
                 alt="Luxury Toyota KDH Van on Sri Lanka expressway"
                 fill
                 className="object-cover transition-transform duration-700 group-hover/fleet:scale-105"
