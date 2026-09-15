@@ -39,68 +39,61 @@ function WhatsAppIcon({ className = "size-5" }: { className?: string }) {
   );
 }
 
-// ─── Overlapping Hero Photo Stack (matches Destinations page hero) ───────────
-function OverlappingTransferImages() {
+// ─── Hero Visual: single photo + floating fare card ──────────────────────────
+function TransferHeroVisual() {
   return (
-    <div className="relative mx-auto aspect-[1.05] w-full max-w-[440px] select-none lg:mx-0">
-      {/* Back Card */}
+    <div className="relative mx-auto w-full max-w-[420px] select-none lg:mx-0 lg:mr-6">
+      {/* Photo */}
       <motion.div
         animate={{ y: [-6, 6, -6] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        whileHover={{ scale: 1.03, rotate: 1, zIndex: 25, transition: { duration: 0.4, ease: [0.32, 0.72, 0, 1] } }}
-        className="absolute top-0 right-4 z-10 h-[82%] w-[65%] origin-center rotate-3 transition-all duration-500"
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] shadow-[0_30px_70px_rgba(11,59,36,0.14)]"
       >
-        <div className="relative h-full w-full rounded-[2.5rem] border border-[#0B3B24]/10 bg-[#0B3B24]/5 p-2 shadow-[0_20px_40px_rgba(11,59,36,0.06)] transition-shadow duration-500 hover:shadow-[0_24px_48px_rgba(11,59,36,0.1)]">
-          <div className="relative h-full w-full overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-white">
-            <Image
-              src="/assets/transfers/hero-transfers-srilanka.jpg"
-              alt="Scenic Southern Expressway route in Sri Lanka"
-              fill
-              priority
-              sizes="(max-width: 768px) 50vw, 30vw"
-              className="object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent pointer-events-none" />
-          </div>
-        </div>
+        <Image
+          src="/assets/transfers/car-chauffeur.jpg"
+          alt="Executive private car transfer with chauffeur in Sri Lanka"
+          fill
+          priority
+          sizes="(max-width: 768px) 80vw, 30vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-transparent" />
       </motion.div>
 
-      {/* Front Card */}
+      {/* Floating rating chip */}
       <motion.div
-        animate={{ y: [6, -6, 6] }}
-        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
-        whileHover={{ scale: 1.03, rotate: -1, zIndex: 25, transition: { duration: 0.4, ease: [0.32, 0.72, 0, 1] } }}
-        className="absolute bottom-0 left-4 z-20 h-[82%] w-[65%] origin-center -rotate-3 transition-all duration-500"
-      >
-        <div className="relative h-full w-full rounded-[2.5rem] border border-[#0B3B24]/10 bg-[#0B3B24]/5 p-2 shadow-[0_30px_60px_rgba(11,59,36,0.08)] transition-shadow duration-500 hover:shadow-[0_36px_72px_rgba(11,59,36,0.12)]">
-          <div className="relative h-full w-full overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-white">
-            <Image
-              src="/assets/transfers/car-chauffeur.jpg"
-              alt="Executive private car transfer with chauffeur in Sri Lanka"
-              fill
-              priority
-              sizes="(max-width: 768px) 50vw, 30vw"
-              className="object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent pointer-events-none" />
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Floating Rating Badge */}
-      <motion.div
-        animate={{ y: [-3, 3, -3] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ y: [-4, 4, -4] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
         whileHover={{ scale: 1.05, zIndex: 35, transition: { duration: 0.3, ease: [0.32, 0.72, 0, 1] } }}
-        className="absolute top-[28%] left-[42%] z-30"
+        className="absolute -top-5 -right-4 rounded-2xl border border-[#0B3B24]/10 bg-white px-4 py-2.5 shadow-[0_12px_32px_rgba(11,59,36,0.1)] sm:-right-6"
       >
-        <div className="min-w-[130px] select-none rounded-2xl border border-[#0B3B24]/10 bg-white/90 px-5 py-3 text-center shadow-[0_12px_32px_rgba(11,59,36,0.08)]">
-          <div className="flex items-center justify-center gap-0.5 font-display1 text-xl font-bold text-[#0B3B24]">
-            4.9<span className="text-[#287A71]">★</span>
-          </div>
-          <div className="mt-0.5 font-mono text-[9px] uppercase tracking-wider text-[#667085]">
-            Guest Rating
-          </div>
+        <div className="flex items-center gap-0.5 font-display1 text-base font-bold text-[#0B3B24]">
+          4.9<span className="text-[#287A71]">★</span>
+        </div>
+        <div className="font-mono text-[9px] uppercase tracking-wider text-[#667085]">Guest Rating</div>
+      </motion.div>
+
+      {/* Floating route / fixed-fare card */}
+      <motion.div
+        animate={{ y: [4, -4, 4] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        whileHover={{ scale: 1.03, zIndex: 35, transition: { duration: 0.3, ease: [0.32, 0.72, 0, 1] } }}
+        className="absolute -bottom-8 -left-6 w-[82%] rounded-2xl border border-[#0B3B24]/10 bg-white px-5 py-4 shadow-[0_20px_45px_rgba(11,59,36,0.14)] sm:-left-8"
+      >
+        <div className="flex items-center gap-2 text-[11px] font-medium text-[#667085]">
+          <span className="flex items-center gap-1.5">
+            <span className="size-1.5 rounded-full bg-[#287A71]" />
+            Mirissa
+          </span>
+          <span className="h-px flex-1 border-t border-dashed border-[#0B3B24]/20" />
+          <span className="flex items-center gap-1.5">
+            <span className="size-1.5 rounded-full bg-[#0B3B24]" />
+            Colombo
+          </span>
+        </div>
+        <div className="mt-3 flex items-center justify-between">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-[#667085]">Fixed Fare</span>
+          <span className="font-display1 text-lg font-bold text-[#0B3B24]">LKR 22,000</span>
         </div>
       </motion.div>
     </div>
@@ -627,7 +620,7 @@ export function AnimatedTransfers() {
               transition={{ duration: 1, delay: 0.35, ease: [0.32, 0.72, 0, 1] }}
               className="flex justify-center lg:col-span-5 lg:justify-end"
             >
-              <OverlappingTransferImages />
+              <TransferHeroVisual />
             </motion.div>
           </div>
         </div>
