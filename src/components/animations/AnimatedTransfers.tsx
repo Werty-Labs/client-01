@@ -47,8 +47,8 @@ const SAMPLE_ROUTES = [
   { to: "Yala", price: "LKR 20,000" },
 ];
 
-const ROUTE_TRAVEL_SECONDS = 2.2;
-const ROUTE_CYCLE_MS = 3100;
+const ROUTE_TRAVEL_SECONDS = 3.4;
+const ROUTE_CYCLE_MS = 4300;
 
 function AnimatedRouteFareCard() {
   const [index, setIndex] = useState(0);
@@ -79,7 +79,7 @@ function AnimatedRouteFareCard() {
               left: { duration: ROUTE_TRAVEL_SECONDS, ease: [0.45, 0, 0.2, 1] },
               opacity: { duration: 0.25, ease: [0.32, 0.72, 0, 1] },
             }}
-            className="absolute -top-4 flex -translate-x-1/2 items-center justify-center rounded-full bg-[#FDFCF8]"
+            className="absolute -top-2 z-10 flex -translate-x-1/2 items-center justify-center rounded-full bg-[#FDFCF8]"
           >
             <Car className="size-3.5 text-[#0B3B24]" />
           </motion.span>
