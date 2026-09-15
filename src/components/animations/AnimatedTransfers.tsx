@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
@@ -36,6 +36,87 @@ function WhatsAppIcon({ className = "size-5" }: { className?: string }) {
     <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
       <path d="M20.52 3.48A11.78 11.78 0 0 0 12.05 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.12 1.6 5.92L0 24l6.42-1.68a11.84 11.84 0 0 0 5.63 1.43h.01c6.54 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.38-8.43ZM12.05 21.3h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.81 1 1.02-3.71-.23-.38a9.46 9.46 0 1 1 17.55-4.84c0 5.21-4.24 9.46-9.35 9.46Zm5.42-7.08c-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.66.15-.2.3-.76.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.27-.47-2.41-1.49-.89-.79-1.5-1.77-1.67-2.07-.18-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.66-1.59-.9-2.18-.24-.57-.49-.5-.66-.5h-.56c-.2 0-.5.07-.77.37-.27.3-1.02 1-1.02 2.43s1.04 2.82 1.19 3.02c.15.2 2.06 3.13 5 4.39.7.3 1.24.48 1.66.62.7.22 1.34.19 1.84.12.56-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z" />
     </svg>
+  );
+}
+
+// ─── Animated Route / Fixed-Fare Card ─────────────────────────────────────────
+const SAMPLE_ROUTES = [
+  { to: "Colombo", price: "LKR 22,000" },
+  { to: "Galle", price: "LKR 8,000" },
+  { to: "Ella", price: "LKR 24,000" },
+  { to: "Yala", price: "LKR 20,000" },
+];
+
+const ROUTE_TRAVEL_SECONDS = 2.2;
+const ROUTE_CYCLE_MS = 3100;
+
+function AnimatedRouteFareCard() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % SAMPLE_ROUTES.length);
+    }, ROUTE_CYCLE_MS);
+    return () => clearInterval(id);
+  }, []);
+
+  const route = SAMPLE_ROUTES[index];
+
+  return (
+    <>
+      <div className="flex items-center gap-2 text-[11px] font-medium text-[#667085]">
+        <span className="flex items-center gap-1.5 whitespace-nowrap">
+          <span className="size-1.5 rounded-full bg-[#287A71]" />
+          Mirissa
+        </span>
+
+        <span className="relative h-px flex-1 border-t border-dashed border-[#0B3B24]/20">
+          <motion.span
+            key={index}
+            initial={{ left: "0%", opacity: 0 }}
+            animate={{ left: "100%", opacity: 1 }}
+            transition={{
+              left: { duration: ROUTE_TRAVEL_SECONDS, ease: [0.45, 0, 0.2, 1] },
+              opacity: { duration: 0.25, ease: [0.32, 0.72, 0, 1] },
+            }}
+            className="absolute -top-4 flex -translate-x-1/2 items-center justify-center rounded-full bg-[#FDFCF8]"
+          >
+            <Car className="size-3.5 text-[#0B3B24]" />
+          </motion.span>
+        </span>
+
+        <span className="flex items-center gap-1.5 whitespace-nowrap">
+          <span className="size-1.5 rounded-full bg-[#0B3B24]" />
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={route.to}
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 4 }}
+              transition={{ duration: 0.25 }}
+            >
+              {route.to}
+            </motion.span>
+          </AnimatePresence>
+        </span>
+      </div>
+
+      <div className="mt-3 flex items-center justify-between">
+        <span className="font-mono text-[10px] uppercase tracking-wider text-[#667085]">Fixed Fare</span>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={route.price}
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 4 }}
+            transition={{ duration: 0.25 }}
+            className="font-display1 text-lg font-bold text-[#0B3B24]"
+          >
+            {route.price}
+          </motion.span>
+        </AnimatePresence>
+      </div>
+    </>
   );
 }
 
@@ -80,21 +161,7 @@ function TransferHeroVisual() {
         whileHover={{ scale: 1.03, zIndex: 35, transition: { duration: 0.3, ease: [0.32, 0.72, 0, 1] } }}
         className="absolute -bottom-8 -left-6 w-[82%] rounded-2xl border border-[#0B3B24]/10 bg-white px-5 py-4 shadow-[0_20px_45px_rgba(11,59,36,0.14)] sm:-left-8"
       >
-        <div className="flex items-center gap-2 text-[11px] font-medium text-[#667085]">
-          <span className="flex items-center gap-1.5">
-            <span className="size-1.5 rounded-full bg-[#287A71]" />
-            Mirissa
-          </span>
-          <span className="h-px flex-1 border-t border-dashed border-[#0B3B24]/20" />
-          <span className="flex items-center gap-1.5">
-            <span className="size-1.5 rounded-full bg-[#0B3B24]" />
-            Colombo
-          </span>
-        </div>
-        <div className="mt-3 flex items-center justify-between">
-          <span className="font-mono text-[10px] uppercase tracking-wider text-[#667085]">Fixed Fare</span>
-          <span className="font-display1 text-lg font-bold text-[#0B3B24]">LKR 22,000</span>
-        </div>
+        <AnimatedRouteFareCard />
       </motion.div>
     </div>
   );
