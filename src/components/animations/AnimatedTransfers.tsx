@@ -79,7 +79,7 @@ function AnimatedRouteFareCard() {
               left: { duration: ROUTE_TRAVEL_SECONDS, ease: [0.45, 0, 0.2, 1] },
               opacity: { duration: 0.25, ease: [0.32, 0.72, 0, 1] },
             }}
-            className="absolute -top-2 z-10 flex -translate-x-1/2 items-center justify-center rounded-full bg-[#FDFCF8]"
+            className="absolute -top-4 flex -translate-x-1/2 items-center justify-center rounded-full bg-[#FDFCF8]"
           >
             <Car className="size-3.5 text-[#0B3B24]" />
           </motion.span>
@@ -735,8 +735,8 @@ export function AnimatedTransfers() {
                     key={tab.id}
                     onClick={() => setSelectedCategory(tab.id)}
                     className={`rounded-full px-4 py-2 text-xs font-medium tracking-wide transition-all duration-300 ${isActive
-                        ? "bg-[#0B3B24] text-white shadow-[0_4px_16px_rgba(11,59,36,0.2)]"
-                        : "bg-white text-[#344054] border border-[#0B3B24]/10 hover:border-[#0B3B24]/30 hover:bg-[#f4f5fb]"
+                      ? "bg-[#0B3B24] text-white shadow-[0_4px_16px_rgba(11,59,36,0.2)]"
+                      : "bg-white text-[#344054] border border-[#0B3B24]/10 hover:border-[#0B3B24]/30 hover:bg-[#f4f5fb]"
                       }`}
                   >
                     {tab.label}
@@ -812,123 +812,123 @@ export function AnimatedTransfers() {
               {filteredTransfers.map((item) => {
                 const { main, suffix } = splitRouteTitle(item.route);
                 return (
-                <motion.div
-                  key={item.id}
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-                  className="group/card flex flex-col justify-between overflow-hidden rounded-[24px] bg-white border border-border/40 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(11,59,36,0.08)] transition-shadow duration-300"
-                >
-                  {/* Image Header */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={item.destination}
-                      fill
-                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/card:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/5" />
+                  <motion.div
+                    key={item.id}
+                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+                    className="group/card flex flex-col justify-between overflow-hidden rounded-[24px] bg-white border border-border/40 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(11,59,36,0.08)] transition-shadow duration-300"
+                  >
+                    {/* Image Header */}
+                    <div className="relative aspect-[16/10] w-full overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={item.destination}
+                        fill
+                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/card:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/5" />
 
-                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
-                      {item.isTour ? (
-                        <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-[#287A71]">
-                          Round Trip Tour
-                        </span>
-                      ) : item.expressway ? (
-                        <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#0B3B24]">
-                          Expressway (E01)
-                        </span>
-                      ) : (
-                        <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-medium text-[#344054]">
-                          Door-to-Door
-                        </span>
-                      )}
-                      {item.durationApprox && (
-                        <span className="flex items-center gap-1 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white">
-                          <Clock className="size-3.5" />
-                          {item.durationApprox}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Route Title */}
-                    <h3 className="absolute bottom-4 left-4 right-4 font-display text-lg font-bold text-white leading-snug drop-shadow-sm">
-                      {main}
-                      {suffix && (
-                        <span className="mt-0.5 block text-sm font-medium text-white/80">
-                          {suffix}
-                        </span>
-                      )}
-                    </h3>
-                  </div>
-
-                  <div className="flex flex-1 flex-col justify-between p-6">
-                  {/* Highlights */}
-                  {item.highlights && (
-                    <p className="text-xs text-[#667085] leading-relaxed line-clamp-2">
-                      {item.highlights}
-                    </p>
-                  )}
-
-                  {/* Pricing Comparison */}
-                  <div className="mt-6 pt-5 border-t border-[#0B3B24]/10">
-                    <div className="grid grid-cols-2 gap-3">
-                      {/* Car Box */}
-                      <div className="rounded-xl bg-[#FDFCF8] p-3 border border-[#0B3B24]/5">
-                        <div className="flex items-center gap-1 text-[11px] font-medium text-[#667085]">
-                          <Car className="size-3 text-[#0B3B24]" />
-                          <span>Private Car</span>
-                        </div>
-                        <p className="mt-1 font-display font-bold text-sm text-[#0B3B24]">
-                          {fmt(item.car)}
-                        </p>
-                        <span className="text-[10px] text-gray-400">1–3 Guests</span>
+                      <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
+                        {item.isTour ? (
+                          <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-[#287A71]">
+                            Round Trip Tour
+                          </span>
+                        ) : item.expressway ? (
+                          <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#0B3B24]">
+                            Expressway (E01)
+                          </span>
+                        ) : (
+                          <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-medium text-[#344054]">
+                            Door-to-Door
+                          </span>
+                        )}
+                        {item.durationApprox && (
+                          <span className="flex items-center gap-1 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white">
+                            <Clock className="size-3.5" />
+                            {item.durationApprox}
+                          </span>
+                        )}
                       </div>
 
-                      {/* Van Box */}
-                      <div className="rounded-xl bg-[#FDFCF8] p-3 border border-[#0B3B24]/5">
-                        <div className="flex items-center gap-1 text-[11px] font-medium text-[#667085]">
-                          <Users className="size-3 text-[#287A71]" />
-                          <span>KDH Van</span>
-                        </div>
-                        <p className="mt-1 font-display font-bold text-sm text-[#0B3B24]">
-                          {fmt(item.van)}
-                        </p>
-                        <span className="text-[10px] text-gray-400">4–8 Guests</span>
-                      </div>
+                      {/* Route Title */}
+                      <h3 className="absolute bottom-4 left-4 right-4 font-display text-lg font-bold text-white leading-snug drop-shadow-sm">
+                        {main}
+                        {suffix && (
+                          <span className="mt-0.5 block text-sm font-medium text-white/80">
+                            {suffix}
+                          </span>
+                        )}
+                      </h3>
                     </div>
 
-                    {/* WhatsApp Buttons */}
-                    <div className="mt-4 grid grid-cols-2 gap-2">
-                      <a
-                        href={buildWhatsAppUrl(item.route, "Private Car", item.car)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/btn inline-flex items-center justify-between rounded-full bg-primary hover:bg-primary/90 pl-3.5 pr-1.5 py-1.5 text-[11px] font-semibold text-primary-foreground shadow-sm transition-all duration-300 active:scale-[0.98]"
-                      >
-                        <span>Book Car</span>
-                        <div className="flex size-6 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
-                          <WhatsAppIcon className="size-3.5" />
+                    <div className="flex flex-1 flex-col justify-between p-6">
+                      {/* Highlights */}
+                      {item.highlights && (
+                        <p className="text-xs text-[#667085] leading-relaxed line-clamp-2">
+                          {item.highlights}
+                        </p>
+                      )}
+
+                      {/* Pricing Comparison */}
+                      <div className="mt-6 pt-5 border-t border-[#0B3B24]/10">
+                        <div className="grid grid-cols-2 gap-3">
+                          {/* Car Box */}
+                          <div className="rounded-xl bg-[#FDFCF8] p-3 border border-[#0B3B24]/5">
+                            <div className="flex items-center gap-1 text-[11px] font-medium text-[#667085]">
+                              <Car className="size-3 text-[#0B3B24]" />
+                              <span>Private Car</span>
+                            </div>
+                            <p className="mt-1 font-display font-bold text-sm text-[#0B3B24]">
+                              {fmt(item.car)}
+                            </p>
+                            <span className="text-[10px] text-gray-400">1–3 Guests</span>
+                          </div>
+
+                          {/* Van Box */}
+                          <div className="rounded-xl bg-[#FDFCF8] p-3 border border-[#0B3B24]/5">
+                            <div className="flex items-center gap-1 text-[11px] font-medium text-[#667085]">
+                              <Users className="size-3 text-[#287A71]" />
+                              <span>KDH Van</span>
+                            </div>
+                            <p className="mt-1 font-display font-bold text-sm text-[#0B3B24]">
+                              {fmt(item.van)}
+                            </p>
+                            <span className="text-[10px] text-gray-400">4–8 Guests</span>
+                          </div>
                         </div>
-                      </a>
-                      <a
-                        href={buildWhatsAppUrl(item.route, "KDH Van", item.van)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/btn inline-flex items-center justify-between rounded-full bg-primary hover:bg-primary/90 pl-3.5 pr-1.5 py-1.5 text-[11px] font-semibold text-primary-foreground shadow-sm transition-all duration-300 active:scale-[0.98]"
-                      >
-                        <span>Book Van</span>
-                        <div className="flex size-6 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
-                          <WhatsAppIcon className="size-3.5" />
+
+                        {/* WhatsApp Buttons */}
+                        <div className="mt-4 grid grid-cols-2 gap-2">
+                          <a
+                            href={buildWhatsAppUrl(item.route, "Private Car", item.car)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group/btn inline-flex items-center justify-between rounded-full bg-primary hover:bg-primary/90 pl-3.5 pr-1.5 py-1.5 text-[11px] font-semibold text-primary-foreground shadow-sm transition-all duration-300 active:scale-[0.98]"
+                          >
+                            <span>Book Car</span>
+                            <div className="flex size-6 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
+                              <WhatsAppIcon className="size-3.5" />
+                            </div>
+                          </a>
+                          <a
+                            href={buildWhatsAppUrl(item.route, "KDH Van", item.van)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group/btn inline-flex items-center justify-between rounded-full bg-primary hover:bg-primary/90 pl-3.5 pr-1.5 py-1.5 text-[11px] font-semibold text-primary-foreground shadow-sm transition-all duration-300 active:scale-[0.98]"
+                          >
+                            <span>Book Van</span>
+                            <div className="flex size-6 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
+                              <WhatsAppIcon className="size-3.5" />
+                            </div>
+                          </a>
                         </div>
-                      </a>
+                      </div>
                     </div>
-                  </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
                 );
               })}
             </AnimatePresence>
