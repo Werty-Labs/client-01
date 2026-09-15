@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  ArrowRight,
   Car,
   Check,
   ChevronDown,
@@ -13,14 +12,12 @@ import {
   LayoutGrid,
   List,
   Luggage,
-  MapPin,
   Navigation,
   Plane,
   Search,
   Shield,
   ShieldCheck,
   Sparkles,
-  Star,
   Users,
   Wind,
   X,
@@ -42,6 +39,74 @@ function WhatsAppIcon({ className = "size-5" }: { className?: string }) {
   );
 }
 
+// ─── Overlapping Hero Photo Stack (matches Destinations page hero) ───────────
+function OverlappingTransferImages() {
+  return (
+    <div className="relative mx-auto aspect-[1.05] w-full max-w-[440px] select-none lg:mx-0">
+      {/* Back Card */}
+      <motion.div
+        animate={{ y: [-6, 6, -6] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        whileHover={{ scale: 1.03, rotate: 1, zIndex: 25, transition: { duration: 0.4, ease: [0.32, 0.72, 0, 1] } }}
+        className="absolute top-0 right-4 z-10 h-[82%] w-[65%] origin-center rotate-3 transition-all duration-500"
+      >
+        <div className="relative h-full w-full rounded-[2.5rem] border border-[#0B3B24]/10 bg-[#0B3B24]/5 p-2 shadow-[0_20px_40px_rgba(11,59,36,0.06)] transition-shadow duration-500 hover:shadow-[0_24px_48px_rgba(11,59,36,0.1)]">
+          <div className="relative h-full w-full overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-white">
+            <Image
+              src="/assets/transfers/hero-transfers-srilanka.jpg"
+              alt="Scenic Southern Expressway route in Sri Lanka"
+              fill
+              priority
+              sizes="(max-width: 768px) 50vw, 30vw"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent pointer-events-none" />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Front Card */}
+      <motion.div
+        animate={{ y: [6, -6, 6] }}
+        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+        whileHover={{ scale: 1.03, rotate: -1, zIndex: 25, transition: { duration: 0.4, ease: [0.32, 0.72, 0, 1] } }}
+        className="absolute bottom-0 left-4 z-20 h-[82%] w-[65%] origin-center -rotate-3 transition-all duration-500"
+      >
+        <div className="relative h-full w-full rounded-[2.5rem] border border-[#0B3B24]/10 bg-[#0B3B24]/5 p-2 shadow-[0_30px_60px_rgba(11,59,36,0.08)] transition-shadow duration-500 hover:shadow-[0_36px_72px_rgba(11,59,36,0.12)]">
+          <div className="relative h-full w-full overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-white">
+            <Image
+              src="/assets/transfers/car-chauffeur.jpg"
+              alt="Executive private car transfer with chauffeur in Sri Lanka"
+              fill
+              priority
+              sizes="(max-width: 768px) 50vw, 30vw"
+              className="object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent pointer-events-none" />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Floating Rating Badge */}
+      <motion.div
+        animate={{ y: [-3, 3, -3] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        whileHover={{ scale: 1.05, zIndex: 35, transition: { duration: 0.3, ease: [0.32, 0.72, 0, 1] } }}
+        className="absolute top-[28%] left-[42%] z-30"
+      >
+        <div className="min-w-[130px] select-none rounded-2xl border border-[#0B3B24]/10 bg-white/90 px-5 py-3 text-center shadow-[0_12px_32px_rgba(11,59,36,0.08)]">
+          <div className="flex items-center justify-center gap-0.5 font-display1 text-xl font-bold text-[#0B3B24]">
+            4.9<span className="text-[#287A71]">★</span>
+          </div>
+          <div className="mt-0.5 font-mono text-[9px] uppercase tracking-wider text-[#667085]">
+            Guest Rating
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
 // ─── Types ─────────────────────────────────────────────────────────────────────
 export type RouteCategory = "ALL" | "AIRPORT" | "COASTAL" | "HILLS" | "TOURS";
 
@@ -57,6 +122,7 @@ export type TransferRoute = {
   durationApprox?: string;
   highlights?: string;
   expressway?: boolean;
+  image: string;
 };
 
 // ─── Verified Transfer Data ───────────────────────────────────────────────────
@@ -72,6 +138,7 @@ const TRANSFERS: TransferRoute[] = [
     durationApprox: "2h 30m",
     highlights: "Southern Expressway (E01) direct route. Door-to-door hotel drop-off.",
     expressway: true,
+    image: images.colombo2,
   },
   {
     id: 2,
@@ -83,6 +150,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "TOURS",
     durationApprox: "2h 45m",
     highlights: "Direct transfer to Yala Safari camps, hotels, or gate.",
+    image: images.yalaLeopard,
   },
   {
     id: 3,
@@ -95,6 +163,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "TOURS",
     durationApprox: "Full Day",
     highlights: "Both ways transfer with 4-hour safari wait time included.",
+    image: images.yalaLeopard,
   },
   {
     id: 4,
@@ -106,6 +175,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "TOURS",
     durationApprox: "2h 15m",
     highlights: "Direct hotel or safari camp drop-off.",
+    image: images.elephantsWaterSunset,
   },
   {
     id: 5,
@@ -118,6 +188,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "TOURS",
     durationApprox: "Full Day",
     highlights: "Round trip transfer with 4-hour safari wait included.",
+    image: images.elephantsWaterSunset,
   },
   {
     id: 6,
@@ -130,6 +201,7 @@ const TRANSFERS: TransferRoute[] = [
     durationApprox: "1h 45m",
     highlights: "Southern Expressway route directly to departures.",
     expressway: true,
+    image: images.beach,
   },
   {
     id: 7,
@@ -142,6 +214,7 @@ const TRANSFERS: TransferRoute[] = [
     durationApprox: "1h 45m",
     highlights: "Includes nameboard paging in arrivals & parking fees.",
     expressway: true,
+    image: images.mirissaDrone,
   },
   {
     id: 8,
@@ -154,6 +227,7 @@ const TRANSFERS: TransferRoute[] = [
     durationApprox: "2h 45m",
     highlights: "Direct via Southern Expressway & Katunayake Expressway.",
     expressway: true,
+    image: images.beachHolidays,
   },
   {
     id: 9,
@@ -166,6 +240,7 @@ const TRANSFERS: TransferRoute[] = [
     durationApprox: "2h 30m",
     highlights: "Doorstep hotel pickup to international departures. All tolls included.",
     expressway: true,
+    image: images.colombo1,
   },
   {
     id: 10,
@@ -178,6 +253,7 @@ const TRANSFERS: TransferRoute[] = [
     durationApprox: "2h 30m",
     highlights: "Flight tracking + personalized nameboard paging in arrivals.",
     expressway: true,
+    image: images.mirissa,
   },
   {
     id: 11,
@@ -190,6 +266,7 @@ const TRANSFERS: TransferRoute[] = [
     durationApprox: "4h 30m",
     highlights: "Scenic cross-island transfer into the Cultural Triangle.",
     expressway: true,
+    image: images.sigiriya2,
   },
   {
     id: 12,
@@ -201,6 +278,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "HILLS",
     durationApprox: "5h 00m",
     highlights: "Breathtaking ascent through waterfalls and tea plantations.",
+    image: images.eliya,
   },
   {
     id: 13,
@@ -213,6 +291,7 @@ const TRANSFERS: TransferRoute[] = [
     durationApprox: "4h 15m",
     highlights: "Comfortable air-conditioned ride to the Central Highlands.",
     expressway: true,
+    image: images.kandy,
   },
   {
     id: 14,
@@ -224,6 +303,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "COASTAL",
     durationApprox: "45m",
     highlights: "Scenic coastal highway route or expressway.",
+    image: images.galleLighthouse,
   },
   {
     id: 15,
@@ -236,6 +316,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "TOURS",
     durationApprox: "Full Day",
     highlights: "Full day tour: Galle Fort ramparts, turtle hatchery & stilt fishermen.",
+    image: images.galleTurtleHatchery,
   },
   {
     id: 16,
@@ -247,6 +328,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "COASTAL",
     durationApprox: "40m",
     highlights: "Quick point-to-point coastal transfer.",
+    image: images.beach,
   },
   {
     id: 17,
@@ -258,6 +340,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "COASTAL",
     durationApprox: "15m",
     highlights: "Door-to-door beach shuttle or surf transfer.",
+    image: images.surf,
   },
   {
     id: 18,
@@ -269,6 +352,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "COASTAL",
     durationApprox: "55m",
     highlights: "South coast transfer to horseshoe bay surfing hub.",
+    image: images.surfBoards,
   },
   {
     id: 19,
@@ -280,6 +364,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "COASTAL",
     durationApprox: "1h 10m",
     highlights: "Scenic drive along the coral sanctuary coast.",
+    image: images.turtle,
   },
   {
     id: 20,
@@ -291,6 +376,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "COASTAL",
     durationApprox: "4h 30m",
     highlights: "East coast surf transit with space for boards & luggage.",
+    image: images.arugamWebp,
   },
   {
     id: 21,
@@ -302,6 +388,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "HILLS",
     durationApprox: "3h 30m",
     highlights: "Direct journey to Nine Arches Bridge & Ella peaks.",
+    image: images.ella2,
   },
   {
     id: 22,
@@ -314,6 +401,7 @@ const TRANSFERS: TransferRoute[] = [
     category: "TOURS",
     durationApprox: "Full Day",
     highlights: "Round trip: Nine Arches Bridge, Ravana Falls & Little Adam's Peak.",
+    image: images.ella,
   },
 ];
 
@@ -410,6 +498,12 @@ Please let me know availability. Thank you!`;
   return `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(text)}`;
 }
 
+function splitRouteTitle(route: string) {
+  const idx = route.indexOf("(");
+  if (idx === -1) return { main: route, suffix: null as string | null };
+  return { main: route.slice(0, idx).trim(), suffix: route.slice(idx).trim() };
+}
+
 // ─── Component ─────────────────────────────────────────────────────────────────
 export function AnimatedTransfers() {
   const [selectedCategory, setSelectedCategory] = useState<RouteCategory>("ALL");
@@ -433,126 +527,109 @@ export function AnimatedTransfers() {
 
   return (
     <div className="min-h-screen bg-[#FDFCF8] text-[#0B3B24]">
-      {/* Subtle Grain Overlay */}
-      <div
-        className="pointer-events-none fixed inset-0 z-50 opacity-[0.02]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }}
-      />
-
       {/* ─── Hero Section ───────────────────────────────────────────────────── */}
-      <section className="relative flex min-h-[92dvh] items-center justify-center overflow-hidden pt-24 pb-16 sm:pt-32 sm:pb-24">
-        {/* Background Image with Cinematic Gradient */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/assets/transfers/hero-transfers.jpg"
-            alt="Luxury chauffeur car driving along scenic Sri Lanka coastal road"
-            fill
-            priority
-            className="object-cover brightness-[0.78] contrast-[1.05]"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0B3B24]/95 via-black/45 to-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/40" />
-        </div>
+      <section className="relative overflow-hidden bg-[#FDFCF8]">
+        <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-28 md:py-32">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
+            <header className="max-w-2xl space-y-6 lg:col-span-7">
+              {/* Eyebrow */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
+                className="inline-flex items-center gap-2 rounded-full border border-[#0B3B24]/10 bg-[#0B3B24]/5 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#0B3B24]/80"
+              >
+                <span>Transfers</span>
+                <span className="opacity-40">/</span>
+                <span>Sri Lanka</span>
+                <span className="opacity-40">/</span>
+                <span className="text-[#287A71]">Fixed Fares</span>
+              </motion.div>
 
-        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 text-center text-white">
-          {/* Eyebrow Pill */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
-          >
-            <span className="size-2 rounded-full bg-[#F5A623] animate-pulse" />
-            <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#F5A623]">
-              Fixed Fares · Tolls Included · English Chauffeurs
-            </span>
-          </motion.div>
+              {/* Main Title */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.15, ease: [0.32, 0.72, 0, 1] }}
+                className="font-display1 font-semibold tracking-tight text-[#0B3B24] leading-[0.95]"
+                style={{ fontSize: "clamp(2.75rem, 5.5vw, 5rem)" }}
+              >
+                Effortless Private Transfers
+              </motion.h1>
 
-          {/* Main Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.32, 0.72, 0, 1] }}
-            className="mt-6 font-display1 text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[1.05]"
-          >
-            Effortless Private Transfers &amp; Scenic Day Tours
-          </motion.h1>
+              {/* Subtext */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.25, ease: [0.32, 0.72, 0, 1] }}
+                className="max-w-[55ch] text-base leading-relaxed text-[#667085] font-medium"
+              >
+                Travel across Sri Lanka in air-conditioned comfort — door-to-door hotel pickup from Mirissa,
+                Southern Expressway (E01) routes to Colombo &amp; the airport, and professional English-speaking
+                chauffeurs at fixed, all-inclusive fares.
+              </motion.p>
 
-          {/* Subtext */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25, ease: [0.32, 0.72, 0, 1] }}
-            className="mx-auto mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-white/85 font-light"
-          >
-            Travel across Sri Lanka in air-conditioned luxury. Direct door-to-door hotel pickup from Mirissa,
-            Southern Expressway (E01) routes to Colombo &amp; Airport, and professional certified chauffeurs.
-          </motion.p>
-
-          {/* Action Buttons: WhatsApp button matching contact page style */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35, ease: [0.32, 0.72, 0, 1] }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-4"
-          >
-            <a
-              href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
-                "Hello Tarragon Leisure! I would like to inquire about booking a private transfer."
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-full bg-[#25D366] hover:bg-[#20bd5a] pl-6 pr-2 py-2 text-white font-medium transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-[0_12px_32px_rgba(37,211,102,0.35)]"
-            >
-              <span className="text-sm font-semibold">Start WhatsApp Chat</span>
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105 group-hover:translate-x-0.5">
-                <WhatsAppIcon className="size-5" />
-              </div>
-            </a>
-
-            <a
-              href="#rates"
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 hover:bg-white/20 px-6 py-3.5 text-sm font-medium text-white backdrop-blur-md transition-all duration-300 hover:border-white/40"
-            >
-              <span>Explore All Fares</span>
-              <ChevronDown className="size-4 animate-bounce" />
-            </a>
-          </motion.div>
-
-          {/* Double-Bezel Floating Trust Metrics Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.45, ease: [0.32, 0.72, 0, 1] }}
-            className="mt-14 mx-auto max-w-4xl rounded-[2.2rem] bg-white/[0.04] p-1.5 ring-1 ring-white/15 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
-          >
-            <div className="rounded-[calc(2.2rem-0.375rem)] bg-white/[0.06] p-4 sm:p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]">
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/10 text-center">
-                <div className="px-3 py-2">
-                  <p className="font-display1 text-2xl sm:text-3xl font-bold text-[#F5A623]">22+</p>
-                  <p className="mt-1 text-xs text-white/70 font-medium">Islandwide Routes</p>
-                </div>
-                <div className="px-3 py-2">
-                  <p className="font-display1 text-2xl sm:text-3xl font-bold text-[#F5A623]">100%</p>
-                  <p className="mt-1 text-xs text-white/70 font-medium">Tolls &amp; Fees Included</p>
-                </div>
-                <div className="px-3 py-2">
-                  <p className="font-display1 text-2xl sm:text-3xl font-bold text-[#F5A623]">15–60m</p>
-                  <p className="mt-1 text-xs text-white/70 font-medium">Rapid Chauffeur Dispatch</p>
-                </div>
-                <div className="px-3 py-2">
-                  <div className="flex items-center justify-center gap-1 text-[#F5A623]">
-                    <Star className="size-4 fill-current" />
-                    <span className="font-display1 text-2xl sm:text-3xl font-bold text-white">4.9</span>
+              {/* Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.35, ease: [0.32, 0.72, 0, 1] }}
+                className="flex flex-wrap items-center gap-4 pt-2"
+              >
+                <a
+                  href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
+                    "Hello Tarragon Leisure! I would like to inquire about booking a private transfer."
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 rounded-full bg-[#25D366] hover:bg-[#20bd5a] pl-6 pr-2 py-2 text-white font-medium transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-[0_12px_32px_rgba(37,211,102,0.25)]"
+                >
+                  <span className="text-sm font-semibold">Start WhatsApp Chat</span>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105 group-hover:translate-x-0.5">
+                    <WhatsAppIcon className="size-5" />
                   </div>
-                  <p className="mt-1 text-xs text-white/70 font-medium">Verified Guest Rating</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+                </a>
+
+                <a
+                  href="#rates"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#0B3B24]/15 px-6 py-3.5 text-sm font-medium text-[#0B3B24] transition-colors duration-300 hover:bg-[#0B3B24]/5"
+                >
+                  <span>Explore All Fares</span>
+                  <ChevronDown className="size-4" />
+                </a>
+              </motion.div>
+
+              {/* Compact Trust Row */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.45, ease: [0.32, 0.72, 0, 1] }}
+                className="flex flex-wrap items-center gap-x-7 gap-y-3 pt-2 text-xs font-medium text-[#667085]"
+              >
+                <span className="inline-flex items-center gap-1.5">
+                  <Shield className="size-3.5 text-[#287A71]" />
+                  100% Tolls Included
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Clock className="size-3.5 text-[#287A71]" />
+                  15–60m Dispatch
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Navigation className="size-3.5 text-[#287A71]" />
+                  22+ Islandwide Routes
+                </span>
+              </motion.div>
+            </header>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.35, ease: [0.32, 0.72, 0, 1] }}
+              className="flex justify-center lg:col-span-5 lg:justify-end"
+            >
+              <OverlappingTransferImages />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -597,11 +674,10 @@ export function AnimatedTransfers() {
                   <button
                     key={tab.id}
                     onClick={() => setSelectedCategory(tab.id)}
-                    className={`rounded-full px-4 py-2 text-xs font-medium tracking-wide transition-all duration-300 ${
-                      isActive
+                    className={`rounded-full px-4 py-2 text-xs font-medium tracking-wide transition-all duration-300 ${isActive
                         ? "bg-[#0B3B24] text-white shadow-[0_4px_16px_rgba(11,59,36,0.2)]"
                         : "bg-white text-[#344054] border border-[#0B3B24]/10 hover:border-[#0B3B24]/30 hover:bg-[#f4f5fb]"
-                    }`}
+                      }`}
                   >
                     {tab.label}
                   </button>
@@ -636,9 +712,8 @@ export function AnimatedTransfers() {
                 <button
                   onClick={() => setViewMode("cards")}
                   aria-label="Cards view"
-                  className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
-                    viewMode === "cards" ? "bg-[#0B3B24] text-white" : "text-[#667085] hover:text-[#0B3B24]"
-                  }`}
+                  className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${viewMode === "cards" ? "bg-[#0B3B24] text-white" : "text-[#667085] hover:text-[#0B3B24]"
+                    }`}
                 >
                   <LayoutGrid className="size-3.5" />
                   <span>Cards</span>
@@ -646,9 +721,8 @@ export function AnimatedTransfers() {
                 <button
                   onClick={() => setViewMode("table")}
                   aria-label="Table view"
-                  className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
-                    viewMode === "table" ? "bg-[#0B3B24] text-white" : "text-[#667085] hover:text-[#0B3B24]"
-                  }`}
+                  className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${viewMode === "table" ? "bg-[#0B3B24] text-white" : "text-[#667085] hover:text-[#0B3B24]"
+                    }`}
                 >
                   <List className="size-3.5" />
                   <span>Table</span>
@@ -671,11 +745,13 @@ export function AnimatedTransfers() {
           </div>
         </div>
 
-        {/* ── Visual Double-Bezel Cards View ── */}
+        {/* ── Cards View ── */}
         {viewMode === "cards" && (
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <AnimatePresence mode="popLayout">
-              {filteredTransfers.map((item) => (
+              {filteredTransfers.map((item) => {
+                const { main, suffix } = splitRouteTitle(item.route);
+                return (
                 <motion.div
                   key={item.id}
                   layout
@@ -683,216 +759,193 @@ export function AnimatedTransfers() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-                  className="group/card relative flex flex-col justify-between rounded-[2.2rem] bg-[#0B3B24]/[0.03] p-1.5 ring-1 ring-[#0B3B24]/10 shadow-[0_12px_36px_rgba(11,59,36,0.03)] hover:shadow-[0_22px_50px_rgba(11,59,36,0.1)] transition-all duration-500 hover:-translate-y-1"
+                  className="group/card flex flex-col justify-between overflow-hidden rounded-[24px] bg-white border border-border/40 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgba(11,59,36,0.08)] transition-shadow duration-300"
                 >
-                  {/* Double-Bezel Inner Core */}
-                  <div className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-[calc(2.2rem-0.375rem)] bg-white p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)]">
-                    {/* Top Bar with Badges */}
-                    <div>
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-[#287A71] bg-[#287A71]/10 px-3 py-1 rounded-full">
-                          #{item.id.toString().padStart(2, "0")}
+                  {/* Image Header */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.destination}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/card:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/5" />
+
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
+                      {item.isTour ? (
+                        <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-[#287A71]">
+                          Round Trip Tour
                         </span>
-                        {item.isTour ? (
-                          <span className="rounded-full bg-[#F5A623]/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#b87a00]">
-                            Round Trip Tour
-                          </span>
-                        ) : item.expressway ? (
-                          <span className="rounded-full bg-[#0B3B24]/10 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-[#0B3B24]">
-                            Expressway (E01)
-                          </span>
-                        ) : (
-                          <span className="rounded-full bg-gray-100 px-3 py-1 font-mono text-[10px] font-medium text-gray-600">
-                            Door-to-Door
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Route Title */}
-                      <h3 className="mt-4 font-display text-lg font-bold text-[#0B3B24] leading-snug group-hover/card:text-[#287A71] transition-colors">
-                        {item.route}
-                      </h3>
-
-                      {/* Highlights / Meta */}
-                      {item.highlights && (
-                        <p className="mt-2 text-xs text-[#667085] leading-relaxed line-clamp-2">
-                          {item.highlights}
-                        </p>
+                      ) : item.expressway ? (
+                        <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#0B3B24]">
+                          Expressway (E01)
+                        </span>
+                      ) : (
+                        <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-medium text-[#344054]">
+                          Door-to-Door
+                        </span>
                       )}
-
                       {item.durationApprox && (
-                        <div className="mt-3 flex items-center gap-1.5 text-xs text-[#667085] font-medium">
-                          <Clock className="size-3.5 text-[#287A71]" />
-                          <span>Approx. {item.durationApprox}</span>
-                        </div>
+                        <span className="flex items-center gap-1 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white">
+                          <Clock className="size-3.5" />
+                          {item.durationApprox}
+                        </span>
                       )}
                     </div>
 
-                    {/* Pricing Comparison Box */}
-                    <div className="mt-6 pt-5 border-t border-[#0B3B24]/10">
-                      <div className="grid grid-cols-2 gap-3">
-                        {/* Car Box */}
-                        <div className="rounded-xl bg-[#FDFCF8] p-3 border border-[#0B3B24]/5">
-                          <div className="flex items-center gap-1 text-[11px] font-medium text-[#667085]">
-                            <Car className="size-3 text-[#0B3B24]" />
-                            <span>Private Car</span>
-                          </div>
-                          <p className="mt-1 font-display font-bold text-sm text-[#0B3B24]">
-                            {fmt(item.car)}
-                          </p>
-                          <span className="text-[10px] text-gray-400">1–3 Guests</span>
-                        </div>
+                    {/* Route Title */}
+                    <h3 className="absolute bottom-4 left-4 right-4 font-display text-lg font-bold text-white leading-snug drop-shadow-sm">
+                      {main}
+                      {suffix && (
+                        <span className="mt-0.5 block text-sm font-medium text-white/80">
+                          {suffix}
+                        </span>
+                      )}
+                    </h3>
+                  </div>
 
-                        {/* Van Box */}
-                        <div className="rounded-xl bg-[#FDFCF8] p-3 border border-[#0B3B24]/5">
-                          <div className="flex items-center gap-1 text-[11px] font-medium text-[#667085]">
-                            <Users className="size-3 text-[#287A71]" />
-                            <span>KDH Van</span>
-                          </div>
-                          <p className="mt-1 font-display font-bold text-sm text-[#0B3B24]">
-                            {fmt(item.van)}
-                          </p>
-                          <span className="text-[10px] text-gray-400">4–8 Guests</span>
+                  <div className="flex flex-1 flex-col justify-between p-6">
+                  {/* Highlights */}
+                  {item.highlights && (
+                    <p className="text-xs text-[#667085] leading-relaxed line-clamp-2">
+                      {item.highlights}
+                    </p>
+                  )}
+
+                  {/* Pricing Comparison */}
+                  <div className="mt-6 pt-5 border-t border-[#0B3B24]/10">
+                    <div className="grid grid-cols-2 gap-3">
+                      {/* Car Box */}
+                      <div className="rounded-xl bg-[#FDFCF8] p-3 border border-[#0B3B24]/5">
+                        <div className="flex items-center gap-1 text-[11px] font-medium text-[#667085]">
+                          <Car className="size-3 text-[#0B3B24]" />
+                          <span>Private Car</span>
                         </div>
+                        <p className="mt-1 font-display font-bold text-sm text-[#0B3B24]">
+                          {fmt(item.car)}
+                        </p>
+                        <span className="text-[10px] text-gray-400">1–3 Guests</span>
                       </div>
 
-                      {/* WhatsApp Buttons with Contact Page Green [#25D366] & Button-in-Button */}
-                      <div className="mt-4 grid grid-cols-2 gap-2">
-                        <a
-                          href={buildWhatsAppUrl(item.route, "Private Car", item.car)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group/btn inline-flex items-center justify-between rounded-full bg-[#25D366] hover:bg-[#20bd5a] pl-3.5 pr-1.5 py-1.5 text-[11px] font-semibold text-white shadow-sm transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
-                        >
-                          <span>Book Car</span>
-                          <div className="flex size-6 items-center justify-center rounded-full bg-white/20 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
-                            <WhatsAppIcon className="size-3.5" />
-                          </div>
-                        </a>
-                        <a
-                          href={buildWhatsAppUrl(item.route, "KDH Van", item.van)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group/btn inline-flex items-center justify-between rounded-full bg-[#25D366] hover:bg-[#20bd5a] pl-3.5 pr-1.5 py-1.5 text-[11px] font-semibold text-white shadow-sm transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
-                        >
-                          <span>Book Van</span>
-                          <div className="flex size-6 items-center justify-center rounded-full bg-white/20 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
-                            <WhatsAppIcon className="size-3.5" />
-                          </div>
-                        </a>
+                      {/* Van Box */}
+                      <div className="rounded-xl bg-[#FDFCF8] p-3 border border-[#0B3B24]/5">
+                        <div className="flex items-center gap-1 text-[11px] font-medium text-[#667085]">
+                          <Users className="size-3 text-[#287A71]" />
+                          <span>KDH Van</span>
+                        </div>
+                        <p className="mt-1 font-display font-bold text-sm text-[#0B3B24]">
+                          {fmt(item.van)}
+                        </p>
+                        <span className="text-[10px] text-gray-400">4–8 Guests</span>
                       </div>
+                    </div>
+
+                    {/* WhatsApp Buttons */}
+                    <div className="mt-4 grid grid-cols-2 gap-2">
+                      <a
+                        href={buildWhatsAppUrl(item.route, "Private Car", item.car)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/btn inline-flex items-center justify-between rounded-full bg-primary hover:bg-primary/90 pl-3.5 pr-1.5 py-1.5 text-[11px] font-semibold text-primary-foreground shadow-sm transition-all duration-300 active:scale-[0.98]"
+                      >
+                        <span>Book Car</span>
+                        <div className="flex size-6 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
+                          <WhatsAppIcon className="size-3.5" />
+                        </div>
+                      </a>
+                      <a
+                        href={buildWhatsAppUrl(item.route, "KDH Van", item.van)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/btn inline-flex items-center justify-between rounded-full bg-primary hover:bg-primary/90 pl-3.5 pr-1.5 py-1.5 text-[11px] font-semibold text-primary-foreground shadow-sm transition-all duration-300 active:scale-[0.98]"
+                      >
+                        <span>Book Van</span>
+                        <div className="flex size-6 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
+                          <WhatsAppIcon className="size-3.5" />
+                        </div>
+                      </a>
                     </div>
                   </div>
+                  </div>
                 </motion.div>
-              ))}
+                );
+              })}
             </AnimatePresence>
           </div>
         )}
 
         {/* ── Table View ── */}
         {viewMode === "table" && (
-          <div className="mt-8 rounded-[2.2rem] bg-[#0B3B24]/[0.03] p-1.5 ring-1 ring-[#0B3B24]/10 shadow-[0_16px_40px_rgba(11,59,36,0.04)]">
-            <div className="overflow-hidden rounded-[calc(2.2rem-0.375rem)] bg-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)]">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs sm:text-sm">
-                  <thead>
-                    <tr className="border-b border-[#0B3B24]/10 bg-[#0B3B24] text-white">
-                      <th className="py-4 px-6 font-semibold tracking-wider font-mono text-xs">#</th>
-                      <th className="py-4 px-6 font-semibold">Route / Destination</th>
-                      <th className="py-4 px-6 font-semibold">Duration / Notes</th>
-                      <th className="py-4 px-6 text-right font-semibold">Private Car (1–3 Pax)</th>
-                      <th className="py-4 px-6 text-right font-semibold">KDH Van (4–8 Pax)</th>
-                      <th className="py-4 px-6 text-center font-semibold">Instant Action</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[#0B3B24]/5">
-                    {filteredTransfers.map((row, idx) => (
-                      <tr
-                        key={row.id}
-                        className={`hover:bg-[#0B3B24]/[0.02] transition-colors ${
-                          idx % 2 === 0 ? "bg-white" : "bg-[#FDFCF8]"
+          <div className="mt-8 overflow-hidden rounded-[24px] border border-border/40 bg-white shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs sm:text-sm">
+                <thead>
+                  <tr className="border-b border-[#0B3B24]/10 bg-[#0B3B24] text-white">
+                    <th className="py-4 px-6 font-semibold tracking-wider text-xs">#</th>
+                    <th className="py-4 px-6 font-semibold">Route / Destination</th>
+                    <th className="py-4 px-6 font-semibold">Duration / Notes</th>
+                    <th className="py-4 px-6 text-right font-semibold">Private Car (1–3 Pax)</th>
+                    <th className="py-4 px-6 text-right font-semibold">KDH Van (4–8 Pax)</th>
+                    <th className="py-4 px-6 text-center font-semibold">Instant Action</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[#0B3B24]/5">
+                  {filteredTransfers.map((row, idx) => (
+                    <tr
+                      key={row.id}
+                      className={`hover:bg-[#0B3B24]/[0.02] transition-colors ${idx % 2 === 0 ? "bg-white" : "bg-[#FDFCF8]"
                         }`}
-                      >
-                        <td className="py-4 px-6 font-mono text-xs text-[#667085]">
-                          {row.id.toString().padStart(2, "0")}
-                        </td>
-                        <td className="py-4 px-6">
-                          <span className="font-semibold text-[#0B3B24]">{row.route}</span>
-                          {row.isTour && (
-                            <span className="ml-2 inline-flex items-center rounded-full bg-[#F5A623]/15 px-2 py-0.5 text-[10px] font-bold text-[#b87a00]">
-                              Day Tour
-                            </span>
-                          )}
-                          {row.expressway && (
-                            <span className="ml-2 inline-flex items-center rounded-full bg-[#0B3B24]/10 px-2 py-0.5 text-[10px] font-semibold text-[#0B3B24]">
-                              Expressway
-                            </span>
-                          )}
-                        </td>
-                        <td className="py-4 px-6 text-xs text-[#667085] max-w-xs">
-                          {row.durationApprox && <span className="font-medium text-[#0B3B24]">{row.durationApprox} · </span>}
-                          {row.highlights}
-                        </td>
-                        <td className="py-4 px-6 text-right font-bold text-[#0B3B24] tabular-nums whitespace-nowrap">
-                          {fmt(row.car)}
-                        </td>
-                        <td className="py-4 px-6 text-right font-bold text-[#0B3B24] tabular-nums whitespace-nowrap">
-                          {fmt(row.van)}
-                        </td>
-                        <td className="py-4 px-6 text-center whitespace-nowrap">
-                          <a
-                            href={buildWhatsAppUrl(row.route, "Private Car", row.car)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group/btn inline-flex items-center gap-2 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white pl-3.5 pr-1.5 py-1.5 text-xs font-semibold shadow-sm transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
-                          >
-                            <span>Book</span>
-                            <div className="flex size-5 items-center justify-center rounded-full bg-white/20 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/btn:scale-110">
-                              <WhatsAppIcon className="size-3" />
-                            </div>
-                          </a>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                    >
+                      <td className="py-4 px-6 text-xs text-[#667085]">
+                        {row.id.toString().padStart(2, "0")}
+                      </td>
+                      <td className="py-4 px-6">
+                        <span className="font-semibold text-[#0B3B24]">{row.route}</span>
+                        {row.isTour && (
+                          <span className="ml-2 inline-flex items-center rounded-full bg-[#287A71]/10 px-2 py-0.5 text-[10px] font-bold text-[#287A71]">
+                            Day Tour
+                          </span>
+                        )}
+                        {row.expressway && (
+                          <span className="ml-2 inline-flex items-center rounded-full bg-[#0B3B24]/10 px-2 py-0.5 text-[10px] font-semibold text-[#0B3B24]">
+                            Expressway
+                          </span>
+                        )}
+                      </td>
+                      <td className="py-4 px-6 text-xs text-[#667085] max-w-xs">
+                        {row.durationApprox && <span className="font-medium text-[#0B3B24]">{row.durationApprox} · </span>}
+                        {row.highlights}
+                      </td>
+                      <td className="py-4 px-6 text-right font-bold text-[#0B3B24] tabular-nums whitespace-nowrap">
+                        {fmt(row.car)}
+                      </td>
+                      <td className="py-4 px-6 text-right font-bold text-[#0B3B24] tabular-nums whitespace-nowrap">
+                        {fmt(row.van)}
+                      </td>
+                      <td className="py-4 px-6 text-center whitespace-nowrap">
+                        <a
+                          href={buildWhatsAppUrl(row.route, "Private Car", row.car)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/btn inline-flex items-center gap-2 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground pl-3.5 pr-1.5 py-1.5 text-xs font-semibold shadow-sm transition-all duration-300 active:scale-[0.98]"
+                        >
+                          <span>Book</span>
+                          <div className="flex size-5 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover/btn:scale-110">
+                            <WhatsAppIcon className="size-3" />
+                          </div>
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         )}
-
-        {/* Double-Bezel Pricing Policy Box */}
-        <div className="mt-10 rounded-[2.2rem] bg-[#0B3B24]/[0.03] p-1.5 ring-1 ring-[#0B3B24]/10 shadow-[0_8px_30px_rgba(11,59,36,0.03)]">
-          <div className="rounded-[calc(2.2rem-0.375rem)] bg-white p-6 sm:p-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)]">
-            <div className="flex items-start gap-4">
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#287A71]/10 text-[#287A71]">
-                <ShieldCheck className="size-5" />
-              </div>
-              <div>
-                <h4 className="font-display text-base font-bold text-[#0B3B24]">
-                  Tarragon Leisure Guaranteed Pricing Policy
-                </h4>
-                <ul className="mt-2 grid gap-2 text-xs text-[#667085] sm:grid-cols-3">
-                  <li className="flex items-center gap-2">
-                    <Check className="size-3.5 text-[#287A71]" />
-                    <span><strong>Zero Hidden Tolls:</strong> All expressway &amp; parking included.</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="size-3.5 text-[#287A71]" />
-                    <span><strong>Fuel Fluctuations:</strong> Listed prices held firm once booked.</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="size-3.5 text-[#287A71]" />
-                    <span><strong>Flexible Pickup:</strong> From any hotel or villa in Mirissa &amp; south coast.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
-      {/* ─── Curated Day Tours & Safari Experiences (Double-Bezel Architecture) ─── */}
+      {/* ─── Curated Day Tours & Safari Experiences ────────────────────────── */}
       <section className="bg-[#FCFAF5] py-20 sm:py-28 border-y border-[#0B3B24]/5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="mx-auto max-w-3xl text-center">
@@ -921,76 +974,72 @@ export function AnimatedTransfers() {
           >
             {DAY_TOURS_SHOWCASE.map((tour) => (
               <AntiGravityCard key={tour.id} className="h-full flex flex-col">
-                {/* Double-Bezel Outer Shell */}
-                <div className="group/tour flex flex-col h-full rounded-[2.5rem] bg-[#0B3B24]/[0.04] p-2 ring-1 ring-[#0B3B24]/10 shadow-[0_20px_45px_rgba(11,59,36,0.05)] hover:shadow-[0_30px_60px_rgba(11,59,36,0.12)] transition-all duration-500 hover:-translate-y-1.5">
-                  {/* Double-Bezel Inner Core */}
-                  <div className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-[calc(2.5rem-0.5rem)] bg-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)]">
-                    {/* Tour Image */}
-                    <div className="relative aspect-[16/11] w-full overflow-hidden">
-                      <Image
-                        src={tour.image}
-                        alt={tour.title}
-                        fill
-                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/tour:scale-105"
-                        sizes="(max-width: 640px) 100vw, 25vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-                      
-                      {/* Badge */}
-                      <div className="absolute top-4 left-4 z-10">
-                        <span className="rounded-full bg-white/90 backdrop-blur-md px-3 py-1 font-mono text-[10px] font-bold text-[#0B3B24] shadow-sm">
-                          {tour.duration}
-                        </span>
-                      </div>
+                <div className="group/tour flex flex-col h-full overflow-hidden rounded-[24px] bg-white border border-border/40 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_36px_rgba(11,59,36,0.1)] transition-shadow duration-300">
+                  {/* Tour Image */}
+                  <div className="relative aspect-[16/11] w-full overflow-hidden">
+                    <Image
+                      src={tour.image}
+                      alt={tour.title}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/tour:scale-105"
+                      sizes="(max-width: 640px) 100vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
 
-                      <div className="absolute bottom-4 left-4 right-4 z-10 text-white">
-                        <h3 className="font-display text-xl font-bold leading-snug drop-shadow-sm">
-                          {tour.title}
-                        </h3>
-                        <p className="text-xs text-white/80 font-medium mt-0.5">{tour.route}</p>
-                      </div>
+                    {/* Badge */}
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold text-[#0B3B24] shadow-sm">
+                        {tour.duration}
+                      </span>
                     </div>
 
-                    {/* Body Details */}
-                    <div className="flex flex-1 flex-col justify-between p-6">
-                      <div>
-                        <p className="text-xs text-[#667085] leading-relaxed line-clamp-3">
-                          {tour.description}
-                        </p>
+                    <div className="absolute bottom-4 left-4 right-4 z-10 text-white">
+                      <h3 className="font-display text-xl font-bold leading-snug drop-shadow-sm">
+                        {tour.title}
+                      </h3>
+                      <p className="text-xs text-white/80 font-medium mt-0.5">{tour.route}</p>
+                    </div>
+                  </div>
 
-                        <ul className="mt-4 space-y-2 border-t border-[#0B3B24]/10 pt-4">
-                          {tour.features.map((feat) => (
-                            <li key={feat} className="flex items-center gap-2 text-xs text-[#344054]">
-                              <Check className="size-3.5 text-[#287A71] shrink-0" />
-                              <span>{feat}</span>
-                            </li>
-                          ))}
-                        </ul>
+                  {/* Body Details */}
+                  <div className="flex flex-1 flex-col justify-between p-6">
+                    <div>
+                      <p className="text-xs text-[#667085] leading-relaxed line-clamp-3">
+                        {tour.description}
+                      </p>
+
+                      <ul className="mt-4 space-y-2 border-t border-[#0B3B24]/10 pt-4">
+                        {tour.features.map((feat) => (
+                          <li key={feat} className="flex items-center gap-2 text-xs text-[#344054]">
+                            <Check className="size-3.5 text-[#287A71] shrink-0" />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Prices & Contact WhatsApp Button */}
+                    <div className="mt-6 pt-4 border-t border-[#0B3B24]/10">
+                      <div className="flex items-baseline justify-between mb-2.5">
+                        <span className="text-xs text-[#667085]">Private Car:</span>
+                        <span className="font-display font-bold text-sm text-[#0B3B24]">{fmt(tour.carPrice)}</span>
+                      </div>
+                      <div className="flex items-baseline justify-between mb-4">
+                        <span className="text-xs text-[#667085]">KDH Van:</span>
+                        <span className="font-display font-bold text-sm text-[#0B3B24]">{fmt(tour.vanPrice)}</span>
                       </div>
 
-                      {/* Prices & Contact WhatsApp Button */}
-                      <div className="mt-6 pt-4 border-t border-[#0B3B24]/10">
-                        <div className="flex items-baseline justify-between mb-2.5">
-                          <span className="text-xs text-[#667085]">Private Car:</span>
-                          <span className="font-display font-bold text-sm text-[#0B3B24]">{fmt(tour.carPrice)}</span>
+                      <a
+                        href={buildWhatsAppUrl(tour.title, "Private Car", tour.carPrice)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/btn flex w-full items-center justify-between rounded-full bg-[#25D366] hover:bg-[#20bd5a] pl-5 pr-2 py-2 text-xs font-semibold text-white shadow-sm transition-all duration-300 active:scale-[0.98]"
+                      >
+                        <span>Book Safari Tour</span>
+                        <div className="flex size-7 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
+                          <WhatsAppIcon className="size-4" />
                         </div>
-                        <div className="flex items-baseline justify-between mb-4">
-                          <span className="text-xs text-[#667085]">KDH Van:</span>
-                          <span className="font-display font-bold text-sm text-[#0B3B24]">{fmt(tour.vanPrice)}</span>
-                        </div>
-
-                        <a
-                          href={buildWhatsAppUrl(tour.title, "Private Car", tour.carPrice)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group/btn flex w-full items-center justify-between rounded-full bg-[#25D366] hover:bg-[#20bd5a] pl-5 pr-2 py-2 text-xs font-semibold text-white shadow-sm transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
-                        >
-                          <span>Book Safari Tour</span>
-                          <div className="flex size-7 items-center justify-center rounded-full bg-white/20 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
-                            <WhatsAppIcon className="size-4" />
-                          </div>
-                        </a>
-                      </div>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -1000,7 +1049,7 @@ export function AnimatedTransfers() {
         </div>
       </section>
 
-      {/* ─── Executive Fleet Showcase (Double-Bezel Architecture) ─────────────── */}
+      {/* ─── Executive Fleet Showcase ───────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="mx-auto max-w-3xl text-center">
           <AnimatedHeading threshold={0.2} variant="fadeUp">
@@ -1022,191 +1071,183 @@ export function AnimatedTransfers() {
         </div>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
-          {/* Executive Private Car - Double Bezel */}
+          {/* Executive Private Car */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-            className="group/fleet rounded-[2.6rem] bg-[#0B3B24]/[0.04] p-2 sm:p-2.5 ring-1 ring-[#0B3B24]/10 shadow-[0_24px_50px_rgba(11,59,36,0.06)] hover:shadow-[0_32px_64px_rgba(11,59,36,0.12)] transition-all duration-500"
+            className="overflow-hidden rounded-[24px] bg-white border border-border/40 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_36px_rgba(11,59,36,0.1)] transition-shadow duration-300"
           >
-            {/* Double-Bezel Inner Core */}
-            <div className="overflow-hidden rounded-[calc(2.6rem-0.625rem)] bg-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.95)]">
-              <div className="relative aspect-[16/10] w-full overflow-hidden">
-                <Image
-                  src="/assets/transfers/car-chauffeur.jpg"
-                  alt="Executive private car transfer with chauffeur in Sri Lanka"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover/fleet:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute top-6 left-6 z-10">
-                  <span className="rounded-full bg-[#0B3B24] text-white px-4 py-1.5 font-mono text-xs font-semibold shadow-md">
-                    From LKR 5,000
+            <div className="group/fleet relative aspect-[16/10] w-full overflow-hidden">
+              <Image
+                src="/assets/transfers/car-chauffeur.jpg"
+                alt="Executive private car transfer with chauffeur in Sri Lanka"
+                fill
+                className="object-cover transition-transform duration-700 group-hover/fleet:scale-105"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute top-6 left-6 z-10">
+                <span className="rounded-full bg-[#0B3B24] text-white px-4 py-1.5 text-xs font-semibold shadow-md">
+                  From LKR 5,000
+                </span>
+              </div>
+            </div>
+
+            <div className="p-8">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <h3 className="font-display1 text-2xl font-bold text-[#0B3B24]">Executive Private Car</h3>
+                  <p className="mt-1 text-xs text-[#667085]">Premium Sedan or Crossover (e.g. Toyota Crown / Axio / Prius)</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#0B3B24] bg-[#0B3B24]/10 px-3 py-1 rounded-full">
+                    <Users className="size-3.5" /> 1–3 Guests
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#0B3B24] bg-[#0B3B24]/10 px-3 py-1 rounded-full">
+                    <Luggage className="size-3.5" /> 3 Bags
                   </span>
                 </div>
               </div>
 
-              <div className="p-8">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div>
-                    <h3 className="font-display1 text-2xl font-bold text-[#0B3B24]">Executive Private Car</h3>
-                    <p className="mt-1 text-xs text-[#667085]">Premium Sedan or Crossover (e.g. Toyota Crown / Axio / Prius)</p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#0B3B24] bg-[#0B3B24]/10 px-3 py-1 rounded-full">
-                      <Users className="size-3.5" /> 1–3 Guests
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#0B3B24] bg-[#0B3B24]/10 px-3 py-1 rounded-full">
-                      <Luggage className="size-3.5" /> 3 Bags
-                    </span>
-                  </div>
-                </div>
+              <p className="mt-4 text-sm text-[#667085] leading-relaxed">
+                The perfect choice for couples, solo travelers, and business airport runs. Quiet, plush seating with ample legroom
+                and full climate control.
+              </p>
 
-                <p className="mt-4 text-sm text-[#667085] leading-relaxed">
-                  The perfect choice for couples, solo travelers, and business airport runs. Quiet, plush seating with ample legroom
-                  and full climate control.
-                </p>
-
-                <div className="mt-6 grid grid-cols-2 gap-3 border-t border-[#0B3B24]/10 pt-6 text-xs text-[#344054]">
-                  <div className="flex items-center gap-2">
-                    <Wind className="size-4 text-[#287A71]" />
-                    <span>Dual-Zone Climate A/C</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Sparkles className="size-4 text-[#287A71]" />
-                    <span>Bottled Mineral Water</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck className="size-4 text-[#287A71]" />
-                    <span>English-Speaking Chauffeur</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="size-4 text-[#287A71]" />
-                    <span>15m–1hr Rapid Dispatch</span>
-                  </div>
+              <div className="mt-6 grid grid-cols-2 gap-3 border-t border-[#0B3B24]/10 pt-6 text-xs text-[#344054]">
+                <div className="flex items-center gap-2">
+                  <Wind className="size-4 text-[#287A71]" />
+                  <span>Dual-Zone Climate A/C</span>
                 </div>
-
-                {/* Contact Page WhatsApp Button */}
-                <div className="mt-8">
-                  <a
-                    href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
-                      "Hello Tarragon Leisure! I would like to book an Executive Private Car transfer."
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/btn flex w-full items-center justify-between rounded-full bg-[#25D366] hover:bg-[#20bd5a] pl-6 pr-2 py-2.5 text-xs font-semibold text-white transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-sm"
-                  >
-                    <span>Book Private Car on WhatsApp</span>
-                    <div className="flex size-8 items-center justify-center rounded-full bg-white/20 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
-                      <WhatsAppIcon className="size-4" />
-                    </div>
-                  </a>
+                <div className="flex items-center gap-2">
+                  <Sparkles className="size-4 text-[#287A71]" />
+                  <span>Bottled Mineral Water</span>
                 </div>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="size-4 text-[#287A71]" />
+                  <span>English-Speaking Chauffeur</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="size-4 text-[#287A71]" />
+                  <span>15m–1hr Rapid Dispatch</span>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <a
+                  href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
+                    "Hello Tarragon Leisure! I would like to book an Executive Private Car transfer."
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/btn flex w-full items-center justify-between rounded-full bg-[#25D366] hover:bg-[#20bd5a] pl-6 pr-2 py-2.5 text-xs font-semibold text-white transition-all duration-300 active:scale-[0.98] shadow-sm"
+                >
+                  <span>Book Private Car on WhatsApp</span>
+                  <div className="flex size-8 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
+                    <WhatsAppIcon className="size-4" />
+                  </div>
+                </a>
               </div>
             </div>
           </motion.div>
 
-          {/* Luxury Toyota KDH Van - Double Bezel */}
+          {/* Luxury Toyota KDH Van */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.32, 0.72, 0, 1] }}
-            className="group/fleet rounded-[2.6rem] bg-[#0B3B24]/[0.04] p-2 sm:p-2.5 ring-1 ring-[#0B3B24]/10 shadow-[0_24px_50px_rgba(11,59,36,0.06)] hover:shadow-[0_32px_64px_rgba(11,59,36,0.12)] transition-all duration-500"
+            className="overflow-hidden rounded-[24px] bg-white border border-border/40 shadow-[0_4px_24px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_36px_rgba(11,59,36,0.1)] transition-shadow duration-300"
           >
-            {/* Double-Bezel Inner Core */}
-            <div className="overflow-hidden rounded-[calc(2.6rem-0.625rem)] bg-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.95)]">
-              <div className="relative aspect-[16/10] w-full overflow-hidden">
-                <Image
-                  src="/assets/transfers/kdh-van.jpg"
-                  alt="Luxury Toyota KDH Van on Sri Lanka expressway"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover/fleet:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute top-6 left-6 z-10">
-                  <span className="rounded-full bg-[#F5A623] text-white px-4 py-1.5 font-mono text-xs font-bold shadow-md">
-                    From LKR 8,000
+            <div className="group/fleet relative aspect-[16/10] w-full overflow-hidden">
+              <Image
+                src="/assets/transfers/kdh-van.jpg"
+                alt="Luxury Toyota KDH Van on Sri Lanka expressway"
+                fill
+                className="object-cover transition-transform duration-700 group-hover/fleet:scale-105"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute top-6 left-6 z-10">
+                <span className="rounded-full bg-[#287A71] text-white px-4 py-1.5 text-xs font-bold shadow-md">
+                  From LKR 8,000
+                </span>
+              </div>
+            </div>
+
+            <div className="p-8">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <h3 className="font-display1 text-2xl font-bold text-[#0B3B24]">Luxury Toyota KDH Van</h3>
+                  <p className="mt-1 text-xs text-[#667085]">Flat-Roof &amp; High-Roof Available (Toyota HiAce Super GL)</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#0B3B24] bg-[#0B3B24]/10 px-3 py-1 rounded-full">
+                    <Users className="size-3.5" /> 4–8 Guests
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#0B3B24] bg-[#0B3B24]/10 px-3 py-1 rounded-full">
+                    <Luggage className="size-3.5" /> 6–8 Bags
                   </span>
                 </div>
               </div>
 
-              <div className="p-8">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div>
-                    <h3 className="font-display1 text-2xl font-bold text-[#0B3B24]">Luxury Toyota KDH Van</h3>
-                    <p className="mt-1 text-xs text-[#667085]">Flat-Roof &amp; High-Roof Available (Toyota HiAce Super GL)</p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#0B3B24] bg-[#0B3B24]/10 px-3 py-1 rounded-full">
-                      <Users className="size-3.5" /> 4–8 Guests
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#0B3B24] bg-[#0B3B24]/10 px-3 py-1 rounded-full">
-                      <Luggage className="size-3.5" /> 6–8 Bags
-                    </span>
-                  </div>
-                </div>
+              <p className="mt-4 text-sm text-[#667085] leading-relaxed">
+                Spacious luxury travel for families, surf groups with board bags, and luggage-heavy itineraries.
+                High panoramic windows and individual rear A/C vents for ultimate comfort.
+              </p>
 
-                <p className="mt-4 text-sm text-[#667085] leading-relaxed">
-                  Spacious luxury travel for families, surf groups with board bags, and luggage-heavy itineraries.
-                  High panoramic windows and individual rear A/C vents for ultimate panoramic comfort.
-                </p>
-
-                <div className="mt-6 grid grid-cols-2 gap-3 border-t border-[#0B3B24]/10 pt-6 text-xs text-[#344054]">
-                  <div className="flex items-center gap-2">
-                    <Wind className="size-4 text-[#F5A623]" />
-                    <span>Individual Rear Air Vents</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Luggage className="size-4 text-[#F5A623]" />
-                    <span>Surfboard &amp; Stroller Space</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Sparkles className="size-4 text-[#F5A623]" />
-                    <span>Reclining Plush Seats</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck className="size-4 text-[#F5A623]" />
-                    <span>Certified Long-Haul Driver</span>
-                  </div>
+              <div className="mt-6 grid grid-cols-2 gap-3 border-t border-[#0B3B24]/10 pt-6 text-xs text-[#344054]">
+                <div className="flex items-center gap-2">
+                  <Wind className="size-4 text-[#0B3B24]" />
+                  <span>Individual Rear Air Vents</span>
                 </div>
-
-                {/* Contact Page WhatsApp Button */}
-                <div className="mt-8">
-                  <a
-                    href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
-                      "Hello Tarragon Leisure! I would like to book a Luxury Toyota KDH Van transfer."
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/btn flex w-full items-center justify-between rounded-full bg-[#25D366] hover:bg-[#20bd5a] pl-6 pr-2 py-2.5 text-xs font-semibold text-white transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] shadow-sm"
-                  >
-                    <span>Book KDH Van on WhatsApp</span>
-                    <div className="flex size-8 items-center justify-center rounded-full bg-white/20 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
-                      <WhatsAppIcon className="size-4" />
-                    </div>
-                  </a>
+                <div className="flex items-center gap-2">
+                  <Luggage className="size-4 text-[#0B3B24]" />
+                  <span>Surfboard &amp; Stroller Space</span>
                 </div>
+                <div className="flex items-center gap-2">
+                  <Sparkles className="size-4 text-[#0B3B24]" />
+                  <span>Reclining Plush Seats</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="size-4 text-[#0B3B24]" />
+                  <span>Certified Long-Haul Driver</span>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <a
+                  href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
+                    "Hello Tarragon Leisure! I would like to book a Luxury Toyota KDH Van transfer."
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/btn flex w-full items-center justify-between rounded-full bg-[#25D366] hover:bg-[#20bd5a] pl-6 pr-2 py-2.5 text-xs font-semibold text-white transition-all duration-300 active:scale-[0.98] shadow-sm"
+                >
+                  <span>Book KDH Van on WhatsApp</span>
+                  <div className="flex size-8 items-center justify-center rounded-full bg-white/20 transition-transform duration-300 group-hover/btn:scale-110 group-hover/btn:translate-x-0.5">
+                    <WhatsAppIcon className="size-4" />
+                  </div>
+                </a>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ─── The Tarragon Chauffeur Standard (Double-Bezel Bento Grid) ──────── */}
+      {/* ─── The Tarragon Chauffeur Standard ─────────────────────────────────── */}
       <section className="bg-[#0B3B24] py-20 sm:py-28 text-white relative overflow-hidden">
         {/* Subtle decorative glow */}
         <div
           className="pointer-events-none absolute -top-40 -right-40 size-[500px] rounded-full opacity-10 blur-3xl"
-          style={{ background: "radial-gradient(circle, #F5A623 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, #287A71 0%, transparent 70%)" }}
         />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-[#F5A623] font-semibold">
+            <p className="text-xs uppercase tracking-[0.25em] text-[#48b3a7] font-semibold">
               The Tarragon Standard
             </p>
             <h2 className="mt-3 font-display1 text-3xl sm:text-5xl font-semibold tracking-tight text-white">
@@ -1214,67 +1255,59 @@ export function AnimatedTransfers() {
             </h2>
             <p className="mt-4 text-base text-white/75 leading-relaxed">
               We eliminate the uncertainty and stress of island travel with certified chauffeurs,
-              pre-paid expressway tolls, and dependable door-to-door luxury.
+              pre-paid expressway tolls, and dependable door-to-door service.
             </p>
           </div>
 
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {/* Bento Card 1 - Double Bezel */}
-            <div className="rounded-[2.2rem] bg-white/[0.04] p-1.5 ring-1 ring-white/10 backdrop-blur-sm">
-              <div className="h-full rounded-[calc(2.2rem-0.375rem)] bg-white/[0.06] p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]">
-                <div className="flex size-12 items-center justify-center rounded-2xl bg-[#F5A623]/20 text-[#F5A623]">
-                  <Shield className="size-6" />
-                </div>
-                <h3 className="mt-5 font-display text-lg font-bold text-white">100% Tolls Included</h3>
-                <p className="mt-2 text-xs text-white/70 leading-relaxed">
-                  Southern Expressway (E01) tolls and airport terminal parking fees are fully pre-paid. No awkward meter negotiations.
-                </p>
+            {/* Card 1 */}
+            <div className="rounded-[24px] bg-white/[0.06] border border-white/10 p-6">
+              <div className="flex size-12 items-center justify-center rounded-2xl bg-white/10 text-white">
+                <Shield className="size-6" />
               </div>
+              <h3 className="mt-5 font-display text-lg font-bold text-white">100% Tolls Included</h3>
+              <p className="mt-2 text-xs text-white/70 leading-relaxed">
+                Southern Expressway (E01) tolls and airport terminal parking fees are fully pre-paid. No awkward meter negotiations.
+              </p>
             </div>
 
-            {/* Bento Card 2 - Double Bezel */}
-            <div className="rounded-[2.2rem] bg-white/[0.04] p-1.5 ring-1 ring-white/10 backdrop-blur-sm">
-              <div className="h-full rounded-[calc(2.2rem-0.375rem)] bg-white/[0.06] p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]">
-                <div className="flex size-12 items-center justify-center rounded-2xl bg-[#287A71]/30 text-[#48b3a7]">
-                  <Plane className="size-6" />
-                </div>
-                <h3 className="mt-5 font-display text-lg font-bold text-white">Airport Paging Service</h3>
-                <p className="mt-2 text-xs text-white/70 leading-relaxed">
-                  Your chauffeur tracks your incoming flight in real time and awaits your arrival in the terminal with a personalized nameboard.
-                </p>
+            {/* Card 2 */}
+            <div className="rounded-[24px] bg-white/[0.06] border border-white/10 p-6">
+              <div className="flex size-12 items-center justify-center rounded-2xl bg-[#287A71]/30 text-[#48b3a7]">
+                <Plane className="size-6" />
               </div>
+              <h3 className="mt-5 font-display text-lg font-bold text-white">Airport Paging Service</h3>
+              <p className="mt-2 text-xs text-white/70 leading-relaxed">
+                Your chauffeur tracks your incoming flight in real time and awaits your arrival in the terminal with a personalized nameboard.
+              </p>
             </div>
 
-            {/* Bento Card 3 - Double Bezel */}
-            <div className="rounded-[2.2rem] bg-white/[0.04] p-1.5 ring-1 ring-white/10 backdrop-blur-sm">
-              <div className="h-full rounded-[calc(2.2rem-0.375rem)] bg-white/[0.06] p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]">
-                <div className="flex size-12 items-center justify-center rounded-2xl bg-[#F5A623]/20 text-[#F5A623]">
-                  <Clock className="size-6" />
-                </div>
-                <h3 className="mt-5 font-display text-lg font-bold text-white">15m–1hr Fast Dispatch</h3>
-                <p className="mt-2 text-xs text-white/70 leading-relaxed">
-                  Need an urgent ride from your hotel? Our dedicated local driver network across Mirissa &amp; Weligama responds rapidly.
-                </p>
+            {/* Card 3 */}
+            <div className="rounded-[24px] bg-white/[0.06] border border-white/10 p-6">
+              <div className="flex size-12 items-center justify-center rounded-2xl bg-white/10 text-white">
+                <Clock className="size-6" />
               </div>
+              <h3 className="mt-5 font-display text-lg font-bold text-white">15m–1hr Fast Dispatch</h3>
+              <p className="mt-2 text-xs text-white/70 leading-relaxed">
+                Need an urgent ride from your hotel? Our dedicated local driver network across Mirissa &amp; Weligama responds rapidly.
+              </p>
             </div>
 
-            {/* Bento Card 4 - Double Bezel */}
-            <div className="rounded-[2.2rem] bg-white/[0.04] p-1.5 ring-1 ring-white/10 backdrop-blur-sm">
-              <div className="h-full rounded-[calc(2.2rem-0.375rem)] bg-white/[0.06] p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]">
-                <div className="flex size-12 items-center justify-center rounded-2xl bg-[#287A71]/30 text-[#48b3a7]">
-                  <Navigation className="size-6" />
-                </div>
-                <h3 className="mt-5 font-display text-lg font-bold text-white">Certified Local Guides</h3>
-                <p className="mt-2 text-xs text-white/70 leading-relaxed">
-                  Friendly, polite English-speaking chauffeurs who know the safest routes, best scenic photo spots, and hidden gems.
-                </p>
+            {/* Card 4 */}
+            <div className="rounded-[24px] bg-white/[0.06] border border-white/10 p-6">
+              <div className="flex size-12 items-center justify-center rounded-2xl bg-[#287A71]/30 text-[#48b3a7]">
+                <Navigation className="size-6" />
               </div>
+              <h3 className="mt-5 font-display text-lg font-bold text-white">Certified Local Guides</h3>
+              <p className="mt-2 text-xs text-white/70 leading-relaxed">
+                Friendly, polite English-speaking chauffeurs who know the safest routes, best scenic photo spots, and hidden gems.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── How to Book (Double-Bezel 3-Step Flow) ─────────────────────────── */}
+      {/* ─── How to Book ─────────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="text-center">
           <p className="text-xs uppercase tracking-[0.25em] text-[#287A71] font-bold">
@@ -1308,21 +1341,17 @@ export function AnimatedTransfers() {
           ].map((s) => (
             <div
               key={s.step}
-              className="rounded-[2.2rem] bg-[#0B3B24]/[0.03] p-1.5 ring-1 ring-[#0B3B24]/10 shadow-[0_12px_36px_rgba(11,59,36,0.03)]"
+              className="flex flex-col items-center rounded-[24px] bg-white border border-border/40 shadow-[0_4px_24px_rgba(0,0,0,0.02)] p-7 text-center"
             >
-              {/* Double-Bezel Inner Core */}
-              <div className="relative flex flex-col items-center rounded-[calc(2.2rem-0.375rem)] bg-white p-7 text-center shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)]">
-                <div className="flex size-14 items-center justify-center rounded-full bg-[#0B3B24] font-display1 text-xl font-bold text-[#F5A623] shadow-md">
-                  {s.step}
-                </div>
-                <h3 className="mt-5 font-display text-base font-bold text-[#0B3B24]">{s.title}</h3>
-                <p className="mt-2 text-xs text-[#667085] leading-relaxed">{s.desc}</p>
+              <div className="flex size-14 items-center justify-center rounded-full bg-[#0B3B24] font-display1 text-xl font-bold text-white shadow-md">
+                {s.step}
               </div>
+              <h3 className="mt-5 font-display text-base font-bold text-[#0B3B24]">{s.title}</h3>
+              <p className="mt-2 text-xs text-[#667085] leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>
 
-        {/* Contact Us WhatsApp Button Styling */}
         <div className="mt-12 text-center">
           <a
             href={`https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
@@ -1340,7 +1369,7 @@ export function AnimatedTransfers() {
         </div>
       </section>
 
-      {/* ─── Frequently Asked Questions (Double-Bezel Accordion) ─────────────── */}
+      {/* ─── Frequently Asked Questions ───────────────────────────────────────── */}
       <section className="bg-[#FCFAF5] py-20 sm:py-28 border-t border-[#0B3B24]/5">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <div className="text-center">
@@ -1358,40 +1387,37 @@ export function AnimatedTransfers() {
               return (
                 <div
                   key={i}
-                  className="rounded-2xl bg-[#0B3B24]/[0.03] p-1 ring-1 ring-[#0B3B24]/10 transition-shadow duration-300 hover:shadow-md"
+                  className="overflow-hidden rounded-2xl bg-white border border-border/40 shadow-[0_4px_24px_rgba(0,0,0,0.02)]"
                 >
-                  <div className="overflow-hidden rounded-[calc(1rem-0.125rem)] bg-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)]">
-                    <button
-                      onClick={() => setOpenFaq(isOpen ? null : i)}
-                      className="flex w-full items-center justify-between gap-4 p-6 text-left font-display font-semibold text-sm sm:text-base text-[#0B3B24]"
-                      aria-expanded={isOpen}
-                    >
-                      <span>{faq.q}</span>
-                      <span
-                        className={`flex size-6 shrink-0 items-center justify-center rounded-full bg-[#0B3B24]/5 text-[#0B3B24] transition-transform duration-300 ${
-                          isOpen ? "rotate-180 bg-[#0B3B24] text-white" : ""
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : i)}
+                    className="flex w-full items-center justify-between gap-4 p-6 text-left font-display font-semibold text-sm sm:text-base text-[#0B3B24]"
+                    aria-expanded={isOpen}
+                  >
+                    <span>{faq.q}</span>
+                    <span
+                      className={`flex size-6 shrink-0 items-center justify-center rounded-full bg-[#0B3B24]/5 text-[#0B3B24] transition-transform duration-300 ${isOpen ? "rotate-180 bg-[#0B3B24] text-white" : ""
                         }`}
-                      >
-                        <ChevronDown className="size-4" />
-                      </span>
-                    </button>
+                    >
+                      <ChevronDown className="size-4" />
+                    </span>
+                  </button>
 
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
-                          className="overflow-hidden px-6 pb-6 pt-0"
-                        >
-                          <p className="text-xs sm:text-sm text-[#667085] leading-relaxed border-t border-[#0B3B24]/5 pt-4">
-                            {faq.a}
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
+                        className="overflow-hidden px-6 pb-6 pt-0"
+                      >
+                        <p className="text-xs sm:text-sm text-[#667085] leading-relaxed border-t border-[#0B3B24]/5 pt-4">
+                          {faq.a}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
