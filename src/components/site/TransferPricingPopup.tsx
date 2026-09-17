@@ -47,6 +47,13 @@ export function TransferPricingPopup() {
     };
   }, [show]);
 
+  // Auto-dismiss 5 seconds after it appears
+  useEffect(() => {
+    if (!visible) return;
+    const timer = setTimeout(dismiss, 5000);
+    return () => clearTimeout(timer);
+  }, [visible, dismiss]);
+
   return (
     <AnimatePresence>
       {visible && (
@@ -64,9 +71,9 @@ export function TransferPricingPopup() {
           <button
             onClick={dismiss}
             aria-label="Close"
-            className="absolute right-0 top-0 z-20 flex size-7 items-center justify-center rounded-full border border-white/40 bg-black/35 text-white/90 shadow-[0_2px_8px_rgba(0,0,0,0.35)] backdrop-blur-md transition-colors duration-200 hover:bg-black/55 hover:text-white"
+            className="absolute right-0 top-0 z-20 flex size-5 items-center justify-center rounded-full border border-white/40 bg-black/35 text-white/90 shadow-[0_2px_8px_rgba(0,0,0,0.35)] backdrop-blur-md transition-colors duration-200 hover:bg-black/55 hover:text-white"
           >
-            <svg viewBox="0 0 12 12" className="size-3 stroke-current" strokeWidth="1.5" fill="none" aria-hidden="true">
+            <svg viewBox="0 0 12 12" className="size-2 stroke-current" strokeWidth="1.5" fill="none" aria-hidden="true">
               <path d="M2 2l8 8M10 2l-8 8" strokeLinecap="round" />
             </svg>
           </button>
