@@ -36,6 +36,7 @@ export const mainNavigation: NavigationItem[] = [
   { href: "/", label: "Home" },
   { href: "/tours", label: "Tours" },
   { href: "/destinations", label: "Destinations" },
+  { href: "/transfers", label: "Transfers" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
