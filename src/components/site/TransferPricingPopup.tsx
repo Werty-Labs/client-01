@@ -137,7 +137,7 @@ export function TransferPricingPopup() {
                 style={{ left: "50%", top: "58%", width: "46%", transform: "translate(-50%, -50%)" }}
               >
                 <span
-                  className="font-sans whitespace-nowrap text-[0.9rem] font-bold leading-none text-[#FFFBF2] sm:text-[1.1rem]"
+                  className="font-sans whitespace-nowrap text-[0.9rem] font-bold leading-none text-[#F4EAD5] sm:text-[1.1rem]"
                   style={{ textShadow: "0 2px 5px rgba(0,0,0,0.85)" }}
                 >
                   From LKR 5,000
@@ -147,7 +147,7 @@ export function TransferPricingPopup() {
               {/* "Special Offer" ribbon — the first thing the eye should land on */}
               <div
                 className="pointer-events-none absolute"
-                style={{ left: "50%", top: "35%", transform: "translate(-50%, -50%)" }}
+                style={{ left: "50%", top: "42%", transform: "translate(-50%, -50%)" }}
               >
                 {/* Pulsing glow ring behind the badge */}
                 <motion.span
