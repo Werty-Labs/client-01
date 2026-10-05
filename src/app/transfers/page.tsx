@@ -8,6 +8,7 @@ export const metadata = buildMetadata({
   description:
     "Book private car & KDH van transfers from Mirissa to Colombo, Ella, Yala, Kandy & more. Fixed prices, English-speaking chauffeur. Instant WhatsApp booking.",
   path: "/transfers",
+  image: "/assets/transfers/hero-transfers.jpg",
   keywords: [
     "private transfer Mirissa",
     "Mirissa chauffeur service",

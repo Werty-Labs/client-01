@@ -1,8 +1,6 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
+// Resend client is instantiated in POST handler to avoid build-time errors when RESEND_API_KEY is unset
 /** Escape HTML special characters to prevent injection in email body */
 function escapeHtml(str: string): string {
   return str
@@ -25,6 +23,17 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error('RESEND_API_KEY is not set');
+      return NextResponse.json(
+        { error: 'Email service configuration missing' },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(apiKey);
 
     const safeName = `${escapeHtml(firstName)} ${escapeHtml(lastName)}`;
     const safeEmail = escapeHtml(email);
