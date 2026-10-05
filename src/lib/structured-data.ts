@@ -1,3 +1,4 @@
+import { homeFaqs, siteLastModified, socialProfiles } from "@/lib/geo-data";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 import type { Destination, Service, Tour } from "@/types/site";
 import type { BlogPost } from "./blog";
@@ -17,6 +18,7 @@ export function organizationJsonLd() {
     logo: absoluteUrl("/assets/tarragon/logo-white.png"),
     email: siteConfig.email,
     telephone: siteConfig.phone,
+    sameAs: [...socialProfiles],
     address: {
       "@type": "PostalAddress",
       streetAddress: "No. 439/2, Galle Road",
@@ -41,10 +43,28 @@ export function websiteJsonLd() {
     name: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.siteUrl,
+    inLanguage: "en",
+    dateModified: siteLastModified,
     publisher: {
       "@type": "Organization",
+      "@id": `${siteConfig.siteUrl}/#organization`,
       name: siteConfig.name,
     },
+  };
+}
+
+export function homeFaqJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: homeFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
   };
 }
 
@@ -180,6 +200,7 @@ export function localBusinessJsonLd() {
     telephone: siteConfig.phone,
     email: siteConfig.email,
     image: absoluteUrl(siteConfig.defaultOgImage),
+    sameAs: [...socialProfiles],
     address: {
       "@type": "PostalAddress",
       streetAddress: "No. 439/2, Galle Road",

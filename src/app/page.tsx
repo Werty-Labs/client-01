@@ -7,7 +7,8 @@ import { getAllPosts } from "@/lib/blog";
 import { buildMetadata } from "@/lib/metadata";
 import { images } from "@/lib/site-data";
 import { siteConfig } from "@/lib/site-config";
-import { websiteJsonLd, localBusinessJsonLd } from "@/lib/structured-data";
+import { HomeFaq } from "@/components/site/home-faq";
+import { websiteJsonLd, localBusinessJsonLd, homeFaqJsonLd } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Luxury Sri Lanka Tours & Tailor-Made Holidays",
@@ -39,10 +40,11 @@ async function HomeContent() {
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={[websiteJsonLd(), localBusinessJsonLd()]} />
+      <JsonLd data={[websiteJsonLd(), localBusinessJsonLd(), homeFaqJsonLd()]} />
       <Suspense fallback={<PageSkeleton heading="Loading homepage" cards={6} />}>
         <HomeContent />
       </Suspense>
+      <HomeFaq />
     </>
   );
 }

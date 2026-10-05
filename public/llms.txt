@@ -7,6 +7,8 @@
 - [Home](https://www.tarragonleisure.com/): Overview of Tarragon Leisure's services and featured Sri Lanka tours
 - [Tours](https://www.tarragonleisure.com/tours): Full catalogue of bespoke Sri Lanka tour packages
 - [Destinations](https://www.tarragonleisure.com/destinations): Guide to Sri Lanka's top travel destinations
+- [Transfers](https://www.tarragonleisure.com/transfers): Fixed-price private car and KDH van transfers from Mirissa, with FAQs on pricing and booking
+- [Services](https://www.tarragonleisure.com/services): Family, beach, city, honeymoon, wildlife and customised tours
 - [Blog](https://www.tarragonleisure.com/blog): In-depth Sri Lanka travel guides and itineraries
 - [About](https://www.tarragonleisure.com/about): About the Tarragon Leisure team based in Matara, Sri Lanka
 - [Contact](https://www.tarragonleisure.com/contact): Enquire about a bespoke Sri Lanka holiday
@@ -35,6 +37,13 @@
 ## About the Business
 
 Tarragon Leisure is a boutique Sri Lanka travel operator based in Matara, Sri Lanka. The team designs personalised itineraries for couples, families, and solo travellers from the UK and international markets. Specialities include luxury wildlife safaris (Yala National Park), Cultural Triangle tours, honeymoon packages, and Sri Lanka-Maldives combination holidays.
+
+## Machine-Readable Resources
+
+- [Site summary (JSON)](https://www.tarragonleisure.com/ai/summary.json): Name, description, location and contact details
+- [FAQ (JSON)](https://www.tarragonleisure.com/ai/faq.json): Answers on best time to visit, visas, tailor-made tours, transfers and booking
+- [Services (JSON)](https://www.tarragonleisure.com/ai/service.json): Tour and transfer services offered
+- [AI policy](https://www.tarragonleisure.com/.well-known/ai.txt): Crawler permissions
 
 ## Exclude
 
