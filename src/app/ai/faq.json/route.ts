@@ -7,3 +7,4 @@ export function GET() {
     faqs: homeFaqs.map(({ question, answer }) => ({ question, answer })),
   });
 }
+//test comment
