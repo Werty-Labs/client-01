@@ -552,7 +552,7 @@ export function AnimatedTransfers() {
           >
             <WhatsAppCTA
               label="Message us now"
-              className="bg-white text-[#1A6B6B] hover:bg-white/90 [&>span]:bg-[#1A6B6B]/15 [&>span]:text-[#1A6B6B]"
+              className="!bg-white !text-[#1A6B6B] hover:!bg-white/90 [&>span]:!bg-[#1A6B6B]/15 [&>span]:!text-[#1A6B6B]"
             />
           </motion.div>
         </div>

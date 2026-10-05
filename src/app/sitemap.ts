@@ -10,7 +10,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getAllPosts(),
   ]);
 
-  const lastModified = new Date();
+  // Bump this when a static page's content actually changes — not on every build.
+  const lastModified = new Date("2026-10-05");
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
@@ -74,7 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const VISA_SLUG = "sri-lanka-visa-eta-guide";
   const blogRoutes = posts.map((post) => ({
     url: absoluteUrl(`/blog/${post.slug}`),
-    lastModified: new Date(post.date),
+    lastModified: new Date(post.updatedAt),
     changeFrequency: post.slug === VISA_SLUG ? ("weekly" as const) : ("monthly" as const),
     priority: 0.8,
   }));

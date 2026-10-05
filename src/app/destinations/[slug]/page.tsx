@@ -253,6 +253,20 @@ export default async function DestinationDetailPage({
                 </AnimatedHeading>
               )}
 
+              {destination.slug === "mirissa" && (
+                <AnimatedHeading variant="fadeUp" delay={0.45}>
+                  <div className="rounded-2xl border border-primary/10 bg-primary/5 p-5">
+                    <p className="text-sm text-muted-foreground">
+                      Need a ride in or out of Mirissa?{" "}
+                      <Link href="/transfers" className="font-semibold text-primary underline underline-offset-2">
+                        See fixed private transfer prices
+                      </Link>{" "}
+                      to Colombo, the airport, Ella, Kandy, Galle and Yala.
+                    </p>
+                  </div>
+                </AnimatedHeading>
+              )}
+
               <AnimatedHeading variant="fadeUp" delay={0.5}>
                 <div className="pt-4">
                   <DestinationCTA />

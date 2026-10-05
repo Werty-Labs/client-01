@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { getTourBySlug, getTourSlugs } from "@/lib/api";
 import { buildMetadata } from "@/lib/metadata";
-import { breadcrumbJsonLd, tourProductJsonLd } from "@/lib/structured-data";
+import { breadcrumbJsonLd, tourTripJsonLd } from "@/lib/structured-data";
 
 function getHighlightIcon(text: string): LucideIcon {
   const lower = text.toLowerCase();
@@ -77,7 +77,7 @@ export default async function TourDetailPage({ params }: TourPageProps) {
     <>
       <JsonLd
         data={[
-          tourProductJsonLd(tour),
+          tourTripJsonLd(tour),
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
             { name: "Tours", path: "/tours" },

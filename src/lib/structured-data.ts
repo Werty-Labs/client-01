@@ -128,16 +128,28 @@ export function destinationJsonLd(destination: Destination) {
   };
 }
 
-export function tourProductJsonLd(tour: Tour) {
+export function tourTripJsonLd(tour: Tour) {
   return {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": "TouristTrip",
     name: tour.title,
     description: tour.summary,
     image: tour.gallery.map((image) => absoluteUrl(image)),
-    brand: {
+    url: absoluteUrl(`/tours/${tour.slug}`),
+    touristType: ["Leisure travelers", "Adventure travelers"],
+    provider: {
       "@type": "Organization",
       name: siteConfig.name,
+      url: siteConfig.siteUrl,
+    },
+    itinerary: {
+      "@type": "ItemList",
+      itemListElement: tour.itinerary.map((day, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: day.title,
+        description: day.details,
+      })),
     },
   };
 }
