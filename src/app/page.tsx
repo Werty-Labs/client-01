@@ -1,6 +1,4 @@
-import { Suspense } from "react";
 import { JsonLd } from "@/components/site/json-ld";
-import { PageSkeleton } from "@/components/site/page-skeleton";
 import { AnimatedHome } from "@/components/animations/AnimatedHome";
 import { getHomePageData } from "@/lib/api";
 import { getAllPosts } from "@/lib/blog";
@@ -41,9 +39,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={[websiteJsonLd(), localBusinessJsonLd(), homeFaqJsonLd()]} />
-      <Suspense fallback={<PageSkeleton heading="Loading homepage" cards={6} />}>
-        <HomeContent />
-      </Suspense>
+      <HomeContent />
       <HomeFaq />
     </>
   );

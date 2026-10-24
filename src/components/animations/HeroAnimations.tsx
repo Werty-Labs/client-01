@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, useEffect, useState } from "react";
+import { Fragment, type ReactNode, useEffect, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 
 // ─── Premium easing ──────────────────────────────────────────────────────────
@@ -88,20 +88,24 @@ export function HeroHeadline({
   return (
     <h1 className={className} style={{ overflowWrap: "break-word", wordBreak: "break-word" }}>
       {words.map((word, i) => (
-        <motion.span
-          key={`${word}-${i}`}
-          className="inline-block mr-[0.25em] last:mr-0"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            type: "spring",
-            stiffness: 120,
-            damping: 14,
-            delay: 0.6 + i * 0.05,
-          }}
-        >
-          {word}
-        </motion.span>
+        // Real space text nodes between the word spans, so the raw HTML reads
+        // "Discover Sri Lanka…" instead of "DiscoverSriLanka…" for crawlers.
+        <Fragment key={`${word}-${i}`}>
+          {i > 0 && " "}
+          <motion.span
+            className="inline-block"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 120,
+              damping: 14,
+              delay: 0.6 + i * 0.05,
+            }}
+          >
+            {word}
+          </motion.span>
+        </Fragment>
       ))}
     </h1>
   );

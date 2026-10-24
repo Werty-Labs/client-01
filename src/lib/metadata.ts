@@ -69,6 +69,12 @@ export function buildMetadata({
     },
     alternates: {
       canonical: url,
+      // Site-wide feed autodiscovery for the blog.
+      types: {
+        "application/rss+xml": [
+          { url: absoluteUrl("/blog/rss.xml"), title: `${siteConfig.name} Blog` },
+        ],
+      },
     },
   };
 }

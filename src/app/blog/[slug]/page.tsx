@@ -8,6 +8,7 @@ import { BlogHero } from '@/components/blog/BlogHero';
 import { AnswerBlock } from '@/components/blog/AnswerBlock';
 import { BlogWhatsAppStrip } from '@/components/blog/BlogWhatsAppStrip';
 import { FAQAccordion } from '@/components/blog/FAQAccordion';
+import { AuthorBox } from '@/components/blog/AuthorBox';
 import { BlogCTA } from '@/components/blog/BlogCTA';
 import { buildArticleSchema, buildFaqSchema, breadcrumbJsonLd } from '@/lib/structured-data';
 import { buildMetadata } from '@/lib/metadata';
@@ -161,6 +162,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="max-w-[65ch] mx-auto mb-20 md:mb-28">
             <FAQAccordion faqs={post.faq} />
           </div>
+
+          <AuthorBox author={post.author} bio={post.authorBio} updatedAt={post.updatedAt} />
 
           {relatedToursList.length > 0 && (
             <div className="mb-20 md:mb-28 w-full max-w-[1200px] mx-auto">

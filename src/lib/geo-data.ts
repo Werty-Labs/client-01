@@ -8,7 +8,7 @@ import { services } from "@/lib/site-data";
  */
 
 /** Bump this only when the homepage content genuinely changes. */
-export const siteLastModified = "2026-10-05";
+export const siteLastModified = "2026-10-21";
 
 export const socialProfiles = [
   "https://www.facebook.com/tarragonleisure",
@@ -26,7 +26,7 @@ export const homeFaqs: HomeFaq[] = [
   {
     question: "Do I need a visa to travel to Sri Lanka?",
     answer:
-      "Most visitors need an Electronic Travel Authorisation (ETA), which is applied for online and is usually approved within 24 to 48 hours. We recommend applying at least a week before your flight and only using the official government site, eta.gov.lk. Visa on arrival is available at Bandaranaike International Airport for many nationalities but costs more and involves queues.",
+      "Yes, you need an Electronic Travel Authorisation (ETA) before you fly. Since 25 May 2026 the 30-day tourist ETA is free for UK citizens and visitors from most of Europe, but you must still apply online at the official site, eta.gov.lk, and your passport needs at least six months' validity on arrival. Apply at least a week before your flight and avoid third-party sites that charge a fee.",
   },
   {
     question: "Does Tarragon Leisure create tailor-made Sri Lanka tours?",

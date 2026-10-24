@@ -41,7 +41,59 @@ const nextConfig: NextConfig = {
     ];
   },
   async redirects() {
-    return [];
+    return [
+      // Legacy WordPress /booking/* tour pages → closest matching new page.
+      {
+        source: "/booking/arugam-bay-the-surfing-paradise",
+        destination: "/tours/arugam-bay-the-surfing-paradise",
+        permanent: true,
+      },
+      {
+        source: "/booking/ella-the-scenic-mountain-retreat",
+        destination: "/tours/explore-the-cold-country",
+        permanent: true,
+      },
+      {
+        source: "/booking/kandy-the-sacred-city-of-sri-lanka",
+        destination: "/destinations/kandy",
+        permanent: true,
+      },
+      {
+        source: "/booking/mirissa-whale-watching-and-beaches",
+        destination: "/destinations/mirissa",
+        permanent: true,
+      },
+      {
+        source: "/booking/polonnaruwa-the-ancient-royal-city",
+        destination: "/destinations/polonnaruwa",
+        permanent: true,
+      },
+      {
+        source: "/booking/trincomalee-the-serene-east-coast",
+        destination: "/destinations/trincomalee",
+        permanent: true,
+      },
+      // Merged into the weather guide, which Google already ranked far higher.
+      {
+        source: "/blog/best-time-to-visit-sri-lanka",
+        destination: "/blog/sri-lanka-weather-guide",
+        permanent: true,
+      },
+      // The services content now lives on the About page.
+      { source: "/services", destination: "/about", permanent: true },
+      // Legacy WordPress pages with a direct equivalent on the new site.
+      // (No rule needed for /about — it already resolves to the real /about page.)
+      { source: "/tours-page", destination: "/tours", permanent: true },
+      { source: "/tours-list-view", destination: "/tours", permanent: true },
+      { source: "/destination", destination: "/destinations", permanent: true },
+      { source: "/news", destination: "/blog", permanent: true },
+      { source: "/news-:slug", destination: "/blog", permanent: true },
+      { source: "/gallery", destination: "/", permanent: true },
+      { source: "/terms-conditions", destination: "/", permanent: true },
+      { source: "/categories/tour", destination: "/tours", permanent: true },
+      { source: "/category-portfolio/:slug", destination: "/tours", permanent: true },
+      { source: "/ba_type/beach-coastal", destination: "/tours", permanent: true },
+    ];
   },
 };
 

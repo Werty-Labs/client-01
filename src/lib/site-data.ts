@@ -698,7 +698,7 @@ export const tours: Tour[] = [
   {
     slug: "colombo-the-vibrant-capital",
     title: "The Vibrant Capital",
-    location: "Colombo, Sri Lanka",
+    location: "Colombo",
     duration: "2 days",
     groupSize: 20,
     featured: true,
@@ -881,7 +881,7 @@ export const tours: Tour[] = [
   {
     slug: "explore-the-cold-country",
     title: "Explore the Cold Country",
-    location: "Hill country",
+    location: "Hill Country",
     duration: "4 days",
     groupSize: 14,
     image: images.ella2,
@@ -948,8 +948,8 @@ export const tours: Tour[] = [
   },
   {
     slug: "south-coast-vibe",
-    title: "South coast vibe",
-    location: "South coast",
+    title: "South Coast Vibe",
+    location: "South Coast",
     duration: "3 days",
     groupSize: 18,
     image: images.turtle,

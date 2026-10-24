@@ -1,5 +1,6 @@
 import { homeFaqs, siteLastModified, socialProfiles } from "@/lib/geo-data";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
+import { transferFaqs } from "@/lib/transfer-faqs";
 import type { Destination, Service, Tour } from "@/types/site";
 import type { BlogPost } from "./blog";
 
@@ -128,16 +129,28 @@ export function destinationJsonLd(destination: Destination) {
   };
 }
 
-export function tourProductJsonLd(tour: Tour) {
+export function tourTripJsonLd(tour: Tour) {
   return {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": "TouristTrip",
     name: tour.title,
     description: tour.summary,
     image: tour.gallery.map((image) => absoluteUrl(image)),
-    brand: {
+    url: absoluteUrl(`/tours/${tour.slug}`),
+    touristType: ["Leisure travelers", "Adventure travelers"],
+    provider: {
       "@type": "Organization",
       name: siteConfig.name,
+      url: siteConfig.siteUrl,
+    },
+    itinerary: {
+      "@type": "ItemList",
+      itemListElement: tour.itinerary.map((day, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: day.title,
+        description: day.details,
+      })),
     },
   };
 }
@@ -279,59 +292,36 @@ export function transfersServiceJsonLd() {
   };
 }
 
+/** Bump when the transfer prices or the /transfers page content change. */
+export const transfersLastModified = "2026-10-21";
+
+export function transfersWebPageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Private Chauffeur Transfers & Day Tours from Mirissa",
+    url: absoluteUrl("/transfers"),
+    inLanguage: "en-GB",
+    dateModified: transfersLastModified,
+    publisher: {
+      "@type": "Organization",
+      "@id": `${siteConfig.siteUrl}/#organization`,
+      name: siteConfig.name,
+    },
+  };
+}
+
 export function transfersFaqJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "How much is a taxi from Mirissa to Colombo?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "A private car transfer from Mirissa to Colombo costs LKR 22,000 and a KDH van costs LKR 28,000. These are fixed prices with no hidden charges — highway tolls and fuel surcharges are included.",
-        },
+    mainEntity: transferFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
       },
-      {
-        "@type": "Question",
-        name: "How do I get from Mirissa to Ella?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "The most comfortable way to get from Mirissa to Ella is by private chauffeur transfer. Tarragon Leisure offers this route for LKR 24,000 (private car) or LKR 30,000 (KDH van), with door-to-door hotel pickup included.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do your transfer prices include highway tolls?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. No additional charges will apply for relevant locations — highway tolls and fuel surcharges are all included in the listed price.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How quickly can a vehicle be arranged?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Vehicle arrangements can be made within a maximum of 1 hour (between 15 minutes and 1 hour). For best availability, we recommend booking in advance via WhatsApp.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What vehicles do you offer for private transfers in Sri Lanka?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "We offer two vehicle types: a private air-conditioned car (suitable for 1–3 passengers with luggage) and a KDH flat-roof van (ideal for larger groups or passengers with significant luggage). Both come with an English-speaking chauffeur-guide.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How do I book a private transfer from Mirissa?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Simply message us on WhatsApp at +94 77 72 50 794 with your route, date, time, and number of passengers. We'll confirm your booking within minutes.",
-        },
-      },
-    ],
+    })),
   };
 }

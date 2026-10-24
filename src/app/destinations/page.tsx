@@ -1,6 +1,4 @@
-import { Suspense } from "react";
 import { JsonLd } from "@/components/site/json-ld";
-import { PageSkeleton } from "@/components/site/page-skeleton";
 import { getDestinations } from "@/lib/api";
 import { buildMetadata } from "@/lib/metadata";
 import { images } from "@/lib/site-data";
@@ -37,9 +35,7 @@ export default async function DestinationsPage() {
           ]),
         ]}
       />
-      <Suspense fallback={<PageSkeleton heading="Loading destinations" showHero={false} />}>
-        <DestinationsContent />
-      </Suspense>
+      <DestinationsContent />
     </>
   );
 }
