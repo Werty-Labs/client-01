@@ -1098,20 +1098,24 @@ export function AnimatedTransfers() {
                   key={i}
                   className="overflow-hidden rounded-2xl bg-white border border-border/40 shadow-[0_4px_24px_rgba(0,0,0,0.02)]"
                 >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-4 p-6 text-left font-display font-semibold text-sm sm:text-base text-[#0B3B24]"
-                    aria-expanded={isOpen}
-                    aria-controls={`transfer-faq-answer-${i}`}
-                  >
-                    <span>{faq.q}</span>
-                    <span
-                      className={`flex size-6 shrink-0 items-center justify-center rounded-full bg-[#0B3B24]/5 text-[#0B3B24] transition-transform duration-300 ${isOpen ? "rotate-180 bg-[#0B3B24] text-white" : ""
-                        }`}
+                  {/* Question as a heading wrapping the button (WAI-ARIA accordion
+                      pattern), so crawlers read it as a question/answer pair. */}
+                  <h3>
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : i)}
+                      className="flex w-full items-center justify-between gap-4 p-6 text-left font-display font-semibold text-sm sm:text-base text-[#0B3B24]"
+                      aria-expanded={isOpen}
+                      aria-controls={`transfer-faq-answer-${i}`}
                     >
-                      <ChevronDown className="size-4" />
-                    </span>
-                  </button>
+                      <span>{faq.q}</span>
+                      <span
+                        className={`flex size-6 shrink-0 items-center justify-center rounded-full bg-[#0B3B24]/5 text-[#0B3B24] transition-transform duration-300 ${isOpen ? "rotate-180 bg-[#0B3B24] text-white" : ""
+                          }`}
+                      >
+                        <ChevronDown className="size-4" />
+                      </span>
+                    </button>
+                  </h3>
 
                   {/* Answer stays in the HTML when collapsed (CSS grid-rows collapse),
                       so crawlers and the FAQPage schema see the same text. */}

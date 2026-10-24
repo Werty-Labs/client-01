@@ -42,6 +42,7 @@ Tarragon Leisure is a boutique Sri Lanka travel operator based in Matara, Sri La
 - [Site summary (JSON)](https://www.tarragonleisure.com/ai/summary.json): Name, description, location and contact details
 - [FAQ (JSON)](https://www.tarragonleisure.com/ai/faq.json): Answers on best time to visit, visas, tailor-made tours, transfers and booking
 - [Services (JSON)](https://www.tarragonleisure.com/ai/service.json): Tour and transfer services offered
+- [Blog RSS feed](https://www.tarragonleisure.com/blog/rss.xml): Latest travel guides and updates
 - [AI policy](https://www.tarragonleisure.com/.well-known/ai.txt): Crawler permissions
 
 ## Exclude
