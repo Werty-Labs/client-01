@@ -79,6 +79,8 @@ const nextConfig: NextConfig = {
         destination: "/blog/sri-lanka-weather-guide",
         permanent: true,
       },
+      // The services content now lives on the About page.
+      { source: "/services", destination: "/about", permanent: true },
       // Legacy WordPress pages with a direct equivalent on the new site.
       // (No rule needed for /about — it already resolves to the real /about page.)
       { source: "/tours-page", destination: "/tours", permanent: true },

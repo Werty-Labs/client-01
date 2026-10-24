@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: DestinationPageProps) {
   }
 
   return buildMetadata({
-    title: destination.name,
+    title: `${destination.name}, Sri Lanka: Things to Do & Best Time`,
     description: destination.blurb,
     path: `/destinations/${destination.slug}`,
     image: destination.image,

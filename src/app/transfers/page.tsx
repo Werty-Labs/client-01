@@ -8,7 +8,7 @@ import {
 import { AnimatedTransfers } from "@/components/animations/AnimatedTransfers";
 
 export const metadata = buildMetadata({
-  title: "Private Chauffeur Transfers & Day Tours from Mirissa | Prices",
+  title: "Mirissa Private Transfers & Day Tours — Fixed Prices",
   description:
     "Book private car & KDH van transfers from Mirissa to Colombo, Ella, Yala, Kandy & more. Fixed prices, English-speaking chauffeur. Instant WhatsApp booking.",
   path: "/transfers",
